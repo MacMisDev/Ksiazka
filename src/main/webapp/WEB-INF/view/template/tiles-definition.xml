@@ -9,4 +9,4 @@
         <put-attribute name="footer" value="/WEB-INF/view/template/footer.jsp" />
     </definition>
 
-</tiles-definitions>?
+</tiles-definitions>
