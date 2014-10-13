@@ -5,6 +5,7 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="Ksiazka" />
+          <element id="dir-copy" path="$PROJECT_DIR$/src/main/webapp" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-context:4.0.5.RELEASE" />
@@ -34,6 +35,7 @@
           <element id="library" level="project" name="Maven: org.jboss:jandex:1.1.0.Final" />
           <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.1" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.6" />
+          <element id="library" level="project" name="Maven: junit:junit:4.6" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-ehcache:4.3.5.Final" />
           <element id="library" level="project" name="Maven: net.sf.ehcache:ehcache-core:2.4.3" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.6" />
