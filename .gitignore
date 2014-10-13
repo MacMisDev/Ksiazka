@@ -1,2 +1,2 @@
 # Ignore db.properties
-/src/main/webapp/db.properties
+src/main/webapp/db.properties
