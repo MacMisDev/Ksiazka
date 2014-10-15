@@ -14,7 +14,7 @@ public class AuthControllerImpl implements AuthController{
         return "login";
     }
 
-    @RequestMapping(value = "/register"ą, method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register(Model model) {
         model.addAttribute("user", new User());
         return "register";
