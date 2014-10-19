@@ -14,9 +14,7 @@ public class BookControllerImpl implements BookController {
     @Autowired
     BookService bookService;
 
-    public String showBook(Long id, Model model) {
-        return null;
-    }
+    public String showBook(Long id, Model model) { return null; }
 
 
     public String addBookToSystem(Model model) {

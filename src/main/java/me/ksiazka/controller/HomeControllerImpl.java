@@ -12,12 +12,12 @@ public class HomeControllerImpl implements HomeController{
         return "home";
     }
 
-    @RequestMapping(value = "about", method = RequestMethod.GET)
+    @RequestMapping(value = "/about", method = RequestMethod.GET)
     public String showAbout() {
         return "about";
     }
 
-    @RequestMapping(value = "contact", method = RequestMethod.GET)
+    @RequestMapping(value = "/contact", method = RequestMethod.GET)
     public String showContact() {
         return "contact";
     }
