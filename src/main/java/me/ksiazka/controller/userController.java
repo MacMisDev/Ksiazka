@@ -4,7 +4,7 @@ import me.ksiazka.model.User;
 import org.springframework.ui.Model;
 
 
-public interface userController {
+public interface UserController {
     public String showUserPage(Long id, Model model);
     public String editUserData(Long id, Model model);
     public String updateEditedUser(User user);

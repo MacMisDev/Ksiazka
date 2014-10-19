@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller("bookController")
 @RequestMapping("/book")
-public class bookControllerImpl implements bookController{
+public class BookControllerImpl implements BookController {
 
     @Autowired
     BookService bookService;
