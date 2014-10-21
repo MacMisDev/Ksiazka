@@ -1,6 +1,7 @@
 package me.ksiazka.test.general;
 
 import junit.framework.Assert;
+import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,11 @@ public class GeneralConfigurationTest {
 
     @Autowired
     private ApplicationContext applicationContext;
+    @Autowired
+    private SessionFactory sessionFactory;
 
     @Test
-    public void applicationContextTest() {
+    public void applicationContextTest() throws Exception {
 
         Assert.assertNotNull(applicationContext);
     }
