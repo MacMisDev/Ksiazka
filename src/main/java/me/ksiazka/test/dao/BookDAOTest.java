@@ -31,7 +31,7 @@ public class BookDAOTest {
     public void getBookTest() {
 
         Book book = bookDAO.getBook(1);
-        Assert.assertEquals("test", book.getTitle());
+        Assert.assertEquals("Jarek Cimoch i Piwnica Tajemnic", book.getTitle());
     }
 
 }

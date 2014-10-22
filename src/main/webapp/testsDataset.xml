@@ -1,4 +1,4 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dataset>
-    <book id="1" title="test" />
+    <Book id="1" title="Jarek Cimoch i Piwnica Tajemnic" ISBN="9785353031710" author="Severus Snape" publisher="Beyond Dimension" description="Jarek Cimoch, historia prawdziwa" publicationYear="1992" pages="1081" bookStatus="ACCEPTED"/>
 </dataset>
