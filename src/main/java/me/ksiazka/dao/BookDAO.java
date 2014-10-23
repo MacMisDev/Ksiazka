@@ -1,5 +1,6 @@
 package me.ksiazka.dao;
 import me.ksiazka.model.Book;
+import org.hibernate.SessionFactory;
 
 public interface BookDAO {
 
@@ -16,4 +17,7 @@ public interface BookDAO {
     //wartosci przekazane w obiekcie bedacym
     //drugim parametrem.
     public void updateBook(long bookId, Book updatedBook);
+
+    public long testowySaveUserBook(Book book);
+
 }

@@ -3,11 +3,14 @@ package me.ksiazka.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name="Book")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    @Column(nullable = false)
+    private Long id;
     private String title;
     private String ISBN;
     private String author;
@@ -19,11 +22,11 @@ public class Book {
     private BookStatus bookStatus;
 
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
