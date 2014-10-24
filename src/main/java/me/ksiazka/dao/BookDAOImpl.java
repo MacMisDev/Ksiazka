@@ -33,18 +33,18 @@ public class BookDAOImpl implements BookDAO {
     @Override
     @Transactional
     public long testowySaveUserBook(Book book) {
+        User u = new User();
+        u.setName("Jarke");
+
         UserBook b = new UserBook();
         b.setTitle(book.getTitle());
         b.setAuthor(book.getAuthor());
         b.setBookCondition("Ok");
-        User u = new User();
-        u.setName("Jarke");
-        sessionFactory.getCurrentSession().persist(u);
+        b.setUserBook(u);
 
-        User u2 = (User) this.sessionFactory.getCurrentSession().get(User.class, (long) 1);
-        b.setUser(u2);
-
+        u.getBooksHave().add(b);
         sessionFactory.getCurrentSession().persist(b);
+        sessionFactory.getCurrentSession().persist(u);
 
         return 0;
     }

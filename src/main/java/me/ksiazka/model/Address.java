@@ -21,6 +21,7 @@ public class Address {
     private String city;
     private String postalCode;
     @ManyToOne
+    @JoinColumn(name = "userId")
     private User user;
 
     public Long getId() {

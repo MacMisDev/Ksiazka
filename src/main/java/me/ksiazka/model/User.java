@@ -8,14 +8,18 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "userId")
     private Long id;
     private String name;
     private String surname;
     private String email;
     @ManyToMany
-    @JoinTable(name ="booksWant")
+    @JoinTable(name = "booksWant",
+            joinColumns = @JoinColumn(name = "userId"),
+            inverseJoinColumns = @JoinColumn(name = "bookId")
+    )
     private List<Book> booksWant = new ArrayList<Book>(0);
-    @OneToMany
+    @OneToMany(mappedBy = "userBook")
     private List<UserBook> booksHave = new ArrayList<UserBook>(0);
     @OneToMany(mappedBy = "user")
     private List<Address> addressList = new ArrayList<Address>(0);
@@ -58,6 +62,22 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Book> getBooksWant() {
+        return booksWant;
+    }
+
+    public void setBooksWant(List<Book> booksWant) {
+        this.booksWant = booksWant;
+    }
+
+    public List<UserBook> getBooksHave() {
+        return booksHave;
+    }
+
+    public void setBooksHave(List<UserBook> booksHave) {
+        this.booksHave = booksHave;
     }
 
 }

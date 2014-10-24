@@ -1,6 +1,8 @@
 package me.ksiazka.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="Book")
@@ -9,7 +11,7 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(nullable = false)
+    @Column(name = "bookId")
     private Long id;
     private String title;
     private String ISBN;
@@ -20,6 +22,8 @@ public class Book {
     private int pages;
     @Enumerated(EnumType.STRING)
     private BookStatus bookStatus;
+    @ManyToMany(mappedBy = "booksWant")
+    private List<User> user = new ArrayList<User>(0);
 
 
     public Long getId() {

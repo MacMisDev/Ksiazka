@@ -8,7 +8,8 @@ public class UserBook extends Book {
 
     private String bookCondition;
     @ManyToOne
-    private User user;
+    @JoinColumn(name = "userId")
+    private User userBook;
 
     public String getBookCondition() {
         return bookCondition;
@@ -18,11 +19,11 @@ public class UserBook extends Book {
         this.bookCondition = bookCondition;
     }
 
-    public User getUser() {
-        return user;
+    public User getUserBook() {
+        return userBook;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserBook(User userBook) {
+        this.userBook = userBook;
     }
 }
