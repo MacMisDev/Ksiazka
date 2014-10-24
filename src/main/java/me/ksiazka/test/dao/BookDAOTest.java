@@ -4,11 +4,11 @@ import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import junit.framework.Assert;
 import me.ksiazka.dao.BookDAO;
-import me.ksiazka.model.Book;
-import me.ksiazka.model.User;
-import me.ksiazka.model.UserBook;
+import me.ksiazka.dao.UserDAO;
+import me.ksiazka.model.*;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +32,8 @@ public class BookDAOTest {
     @Autowired
     BookDAO bookDAO;
     @Autowired
+    UserDAO userDAO;
+    @Autowired
     SessionFactory session;
 
     @Test
@@ -43,6 +45,36 @@ public class BookDAOTest {
 
     }
 
+    @Test
+    @Ignore
+    @DatabaseSetup("classpath:/testsDataset.xml")
+    public void haveListAdditionTest_proposal1() {
+
+        /*
+        W tym rozwiazaniu pobieramy uzytkownika i ksiazke,
+        ktora chce on dodac do swojej listy, nastepnie
+        obiekt uzytkownika dokonuje dodania, a dao update'uje
+        uzytkownika, zapisujac go z nowa ksiazka na liscie.
+         */
+        User user = userDAO.getUser(2);
+        Book book = bookDAO.getBook(1);
+        //user.addToHaveList(book, Condition.GOOD);
+        userDAO.updateUser(2, user);
+    }
+
+    @Test
+    @Ignore
+    @DatabaseSetup("classpath:/testsDataset.xml")
+    public void haveListAdditionTest_proposal2() {
+
+        /*
+        W tym rozwiazaniu ktores DAO (w tym przykladzie usera)
+        zawiera w sobie metode do bezposredniego przypisania
+        ksiazki do uzytkownika (najlpeiej gdyby bylo to jakies named
+        query w warstwie hibernate'owej).
+         */
+        //userDAO.addToHaveList(2, bookDAO.getBook(1), Condition.GOOD);
+    }
 
     @Test
     @DatabaseSetup("classpath:/testsDataset.xml")

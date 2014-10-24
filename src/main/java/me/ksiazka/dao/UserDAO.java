@@ -27,4 +27,5 @@ public interface UserDAO {
 
     //Pobiera wszystkie adresy danego uzytkonika
     public List<Address> getUserAddresses(long userId);
+
 }
