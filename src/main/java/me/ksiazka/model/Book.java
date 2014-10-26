@@ -6,11 +6,10 @@ import java.util.List;
 
 @Entity
 @Table(name="Book")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "bookId")
     private Long id;
     private String title;
@@ -22,9 +21,10 @@ public class Book {
     private int pages;
     @Enumerated(EnumType.STRING)
     private BookStatus bookStatus;
-    @ManyToMany(mappedBy = "booksWant")
+    @ManyToMany(mappedBy = "booksWant", cascade = CascadeType.ALL)
     private List<User> user = new ArrayList<User>(0);
-
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    private List<UserBook> bookList = new ArrayList<UserBook>(0);
 
     public Long getId() {
         return id;

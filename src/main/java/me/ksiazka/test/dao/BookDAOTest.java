@@ -87,4 +87,11 @@ public class BookDAOTest {
         bookDAO.testowySaveUserBook(book);
 
     }
+
+    @Test
+    @DatabaseSetup("classpath:/testsDataset.xml")
+    public void test() {
+        Book book = bookDAO.getBook(1);
+        bookDAO.testowySaveUserBook(book);
+    }
 }

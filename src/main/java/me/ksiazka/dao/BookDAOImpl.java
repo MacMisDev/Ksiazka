@@ -3,6 +3,7 @@ package me.ksiazka.dao;
 import me.ksiazka.model.Book;
 import me.ksiazka.model.User;
 import me.ksiazka.model.UserBook;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -33,18 +34,22 @@ public class BookDAOImpl implements BookDAO {
     @Override
     @Transactional
     public long testowySaveUserBook(Book book) {
-        User u = new User();
-        u.setName("Jarke");
+//        User u = new User();
+//        u.setName("Jarke");
+//
+//        UserBook b = new UserBook();
+//        b.setTitle(book.getTitle());
+//        b.setAuthor(book.getAuthor());
+//        b.setBookCondition("Ok");
+//        b.setUserBook(u);
+//
+//        u.getBooksHave().add(b);
+//        sessionFactory.getCurrentSession().persist(b);
+//        sessionFactory.getCurrentSession().persist(u);
 
-        UserBook b = new UserBook();
-        b.setTitle(book.getTitle());
-        b.setAuthor(book.getAuthor());
-        b.setBookCondition("Ok");
-        b.setUserBook(u);
-
-        u.getBooksHave().add(b);
-        sessionFactory.getCurrentSession().persist(b);
-        sessionFactory.getCurrentSession().persist(u);
+        Query query = sessionFactory.getCurrentSession().createQuery("delete Book where bookId = :id");
+        query.setParameter("id", 1);
+        int result = query.executeUpdate();
 
         return 0;
     }
