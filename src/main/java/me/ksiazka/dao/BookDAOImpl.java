@@ -1,8 +1,6 @@
 package me.ksiazka.dao;
 
-import me.ksiazka.model.Book;
-import me.ksiazka.model.User;
-import me.ksiazka.model.UserBook;
+import me.ksiazka.model.*;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import java.io.Serializable;
 
 @Component
 public class BookDAOImpl implements BookDAO {
@@ -20,49 +19,53 @@ public class BookDAOImpl implements BookDAO {
     @Override
     @Transactional
     public Book getBook(long bookId) {
+
         Book b = (Book) this.sessionFactory.getCurrentSession().get(Book.class, bookId);
         return b;
     }
 
     @Override
     @Transactional
-    public long saveBook(Book book) {
-        return 0;
-    }
-
-
-    @Override
-    @Transactional
-    public long testowySaveUserBook(Book book) {
-//        User u = new User();
-//        u.setName("Jarke");
-//
-//        UserBook b = new UserBook();
-//        b.setTitle(book.getTitle());
-//        b.setAuthor(book.getAuthor());
-//        b.setBookCondition("Ok");
-//        b.setUserBook(u);
-//
-//        u.getBooksHave().add(b);
-//        sessionFactory.getCurrentSession().persist(b);
-//        sessionFactory.getCurrentSession().persist(u);
-
-        Query query = sessionFactory.getCurrentSession().createQuery("delete Book where bookId = :id");
-        query.setParameter("id", 1);
-        int result = query.executeUpdate();
-
-        return 0;
+    public Long saveBook(Book book) {
+        return new Long(0);
     }
 
     @Override
     @Transactional
     public void deleteBook(long bookId) {
 
+        Book b = (Book) this.sessionFactory.getCurrentSession().get(Book.class, bookId);
+        sessionFactory.getCurrentSession().delete(b);
+
     }
 
     @Override
     @Transactional
     public void updateBook(long bookId, Book updatedBook) {
+
+    }
+
+
+    @Override
+    @Transactional
+    public Long testowySaveUserBook(User user, Book book) {
+
+        UserBook ub = new UserBook();
+        ub.setUser(user);
+        ub.setBook(book);
+        ub.setBookCondition(Condition.GOOD);
+
+        Long id = (Long) this.sessionFactory.getCurrentSession().save(ub);
+
+        return id;
+    }
+
+    @Override
+    @Transactional
+    public UserBook getUserBook(long bookid){
+
+        UserBook ub = (UserBook) this.sessionFactory.getCurrentSession().get(UserBook.class, bookid);
+        return ub;
 
     }
 }

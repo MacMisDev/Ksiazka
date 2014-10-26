@@ -13,13 +13,13 @@ public class User {
     private String name;
     private String surname;
     private String email;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(name = "booksWant",
             joinColumns = @JoinColumn(name = "userId"),
             inverseJoinColumns = @JoinColumn(name = "bookId")
     )
     private List<Book> booksWant = new ArrayList<Book>(0);
-    @OneToMany(mappedBy = "userBook", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<UserBook> booksHave = new ArrayList<UserBook>(0);
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Address> addressList = new ArrayList<Address>(0);

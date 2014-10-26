@@ -78,20 +78,38 @@ public class BookDAOTest {
 
     @Test
     @DatabaseSetup("classpath:/testsDataset.xml")
+    public void getUserBookTest() {
+       UserBook userBook = bookDAO.getUserBook(1);
+
+       Assert.assertEquals(new Long(1), userBook.getId());
+       Assert.assertEquals(new Long(1), userBook.getUser().getId());
+       Assert.assertEquals(new Long(1), userBook.getBook().getId());
+    }
+
+    @Test
+    @DatabaseSetup("classpath:/testsDataset.xml")
     public void saveUserBookTest() {
-
+        User user = userDAO.getUser(1);
         Book book = bookDAO.getBook(2);
+        Long ubId = bookDAO.testowySaveUserBook(user, book);
 
-
-        bookDAO.saveBook(book);
-        bookDAO.testowySaveUserBook(book);
+        Assert.assertNotNull(bookDAO.getUserBook(ubId).getId());
 
     }
 
     @Test
     @DatabaseSetup("classpath:/testsDataset.xml")
-    public void test() {
+    public void deleteBook() {
+
         Book book = bookDAO.getBook(1);
-        bookDAO.testowySaveUserBook(book);
+        bookDAO.deleteBook(book.getId());
+
+        Assert.assertNull(bookDAO.getBook(1));
+        /*
+            Usuniecie ksiazki powoduje rowniez kaskadowe usuniecie wszystkich
+            ksiazek uzytkownikow, ktorzy sie do tej ksiazki odwolywali.
+            Dlatego bedzie potrzebne rowniez sprawdzenie, czy rekordy
+            z UserBook rowniez zostaly usuniete.
+         */
     }
 }
