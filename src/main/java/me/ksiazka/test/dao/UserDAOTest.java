@@ -32,7 +32,6 @@ public class UserDAOTest {
     @Autowired
     BookDAO bookDAO;
 
-    @Ignore
     @Test
     public void addToHaveListTest() {
 

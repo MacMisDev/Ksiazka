@@ -1,11 +1,13 @@
 package me.ksiazka.dao;
 
 import me.ksiazka.model.*;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -78,7 +80,13 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<UserBook> getUserHaveList(long userId) {
-        return null;
+
+        List<UserBook> list;
+        String query = "FROM UserBook where userId=:id";
+        Query listQuery = this.sessionFactory.getCurrentSession().createQuery(query);
+        list = listQuery.setParameter("id", userId).list();
+
+        return list;
     }
 
     @Override
