@@ -26,6 +26,10 @@ public class Book {
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private List<UserBook> bookList = new ArrayList<UserBook>(0);
 
+    public Book() {
+        this.bookStatus = BookStatus.AWAITING;
+    }
+
     public Long getId() {
         return id;
     }

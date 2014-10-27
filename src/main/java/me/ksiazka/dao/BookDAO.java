@@ -4,6 +4,8 @@ import me.ksiazka.model.User;
 import me.ksiazka.model.UserBook;
 import org.hibernate.SessionFactory;
 
+import java.util.List;
+
 public interface BookDAO {
 
     //Zwraca ksiazke po Id.
@@ -20,7 +22,10 @@ public interface BookDAO {
     //drugim parametrem.
     public void updateBook(long bookId, Book updatedBook);
 
-    public Long testowySaveUserBook(User user, Book book);
+    //Pobranie wszystkich ksiazek z bazy
+    public List<Book> getAll();
 
-    public UserBook getUserBook(long bookID);
+    //Pobiera wszystkie instancje UserBook w ktorych znajduje sie
+    //dana ksiazka
+    public List<UserBook> getAllInstancesOfThisBook(long bookId);
 }

@@ -68,5 +68,11 @@
         </property>
     </bean>
 
+    <!-- For tests -->
+    <context:property-placeholder location="tests.properties" />
+    <bean id="booksInDatabase"
+          class="java.lang.Integer">
+        <constructor-arg value="3" type="int"/>
+    </bean>
 
 </beans>
