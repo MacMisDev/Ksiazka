@@ -12,7 +12,9 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "bookId")
     private Long id;
+    @Column(nullable = false)
     private String title;
+    @Column(nullable = false)
     private String ISBN;
     private String author;
     private String publisher;
@@ -20,6 +22,7 @@ public class Book {
     private int publicationYear;
     private int pages;
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private BookStatus bookStatus;
     @ManyToMany(mappedBy = "booksWant")
     private List<User> user = new ArrayList<User>(0);

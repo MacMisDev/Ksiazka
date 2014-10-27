@@ -11,7 +11,9 @@ public class User {
     @Column(name = "userId")
     private Long id;
     private String name;
+    @Column(nullable = false)
     private String surname;
+    @Column(nullable = false)
     private String email;
     @ManyToMany
     @JoinTable(name = "booksWant",

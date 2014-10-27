@@ -15,10 +15,14 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable = false)
     private String street;
+    @Column(nullable = false)
     private String buildingNumber;
     private String flatNumber;
+    @Column(nullable = false)
     private String city;
+    @Column(nullable = false)
     private String postalCode;
     @ManyToOne
     @JoinColumn(name = "userId")
