@@ -51,16 +51,15 @@ public class BookDAOTest {
         Assert.assertEquals(BookStatus.ACCEPTED, book.getBookStatus());
     }
 
-    @Ignore
     @Test
     public void getAllBooksTest() {
 
         List<Book> allBooks = bookDAO.getAll();
         Assert.assertEquals((int) booksInDatabase, allBooks.size());
+
     }
 
 
-    @Ignore
     @Test
     public void addBookTest() {
 
@@ -103,7 +102,6 @@ public class BookDAOTest {
     }
 
     //Test do rozbudowy, aczkolwiek ta wersja juz moze sluzyc do testowania
-    @Ignore
     @Test
     public void deleteBookTest() {
 
@@ -120,7 +118,7 @@ public class BookDAOTest {
         Assert.assertEquals(null, userDAO.getUserBook(2));
     }
 
-    @Ignore
+
     @Test
     public void updateBookTest() {
 
@@ -129,9 +127,10 @@ public class BookDAOTest {
         book.setDescription("Best hard s-f ever made!");
         bookDAO.updateBook(book.getId(), book);
 
-        Assert.assertEquals(booksInDatabase, bookDAO.getAll());
+        Assert.assertEquals((int) booksInDatabase, bookDAO.getAll().size());
         Assert.assertEquals(410, bookDAO.getBook(3).getPages());
         Assert.assertEquals("Best hard s-f ever made!", bookDAO.getBook(3).getDescription());
+
     }
 
 }

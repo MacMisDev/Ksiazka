@@ -27,7 +27,9 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     public Long saveBook(Book book) {
-        return new Long(0);
+        Long id = (Long) this.sessionFactory.getCurrentSession().save(book);
+
+        return id;
     }
 
     @Override
@@ -40,12 +42,17 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     public void updateBook(long bookId, Book updatedBook) {
-
+        this.sessionFactory.getCurrentSession().update(updatedBook);
     }
 
     @Override
     public List<Book> getAll() {
-        return null;
+        List<Book> list;
+        String query = "FROM Book";
+        Query listQuery = this.sessionFactory.getCurrentSession().createQuery(query);
+        list = listQuery.list();
+
+        return list;
     }
 
     @Override
