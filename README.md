@@ -1,5 +1,6 @@
 Ksiazka
 =======
+Projekt został podpięty pod system Travis CI
 [![Build Status](https://magnum.travis-ci.com/MacMisDev/Ksiazka.svg?token=wPyCvNqNkwPFcSsA8x84&branch=master)](https://magnum.travis-ci.com/MacMisDev/Ksiazka)
 
 Projekt na zaliczenie przedmiotu Projekt Zespołowy.
