@@ -5,7 +5,7 @@ jdk:
 before_script:
   - mysql -e 'create database myapp_test;'
   - pwd
-  - touch \src\main\webapp\db.properties
-  - echo db.url=jdbc:mysql://localhost:3306/myapp_test >> \src\main\webapp\db.properties
-  - echo db.username=root >> \src\main\webapp\db.properties
-  - echo db.password= >> \src\main\webapp\db.properties
+  - touch /home/travis/build/MacMisDev/Ksiazka/src/main/webapp/db.properties
+  - echo db.url=jdbc:mysql://localhost:3306/myapp_test >> /home/travis/build/MacMisDev/Ksiazka/src/main/webapp/db.properties
+  - echo db.username=root >> /home/travis/build/MacMisDev/Ksiazka/src/main/webapp/db.properties
+  - echo db.password= >> /home/travis/build/MacMisDev/Ksiazka/src/main/webapp/db.properties
