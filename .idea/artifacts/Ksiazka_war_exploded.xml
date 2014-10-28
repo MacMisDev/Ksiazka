@@ -74,7 +74,6 @@
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:3.2.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-taglibs:3.2.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-acl:3.2.5.RELEASE" />
-          <element id="library" level="project" name="Maven: org.dbunit:dbunit:2.4.9" />
           <element id="library" level="project" name="Maven: org.springframework:spring-test:4.0.5.RELEASE" />
           <element id="library" level="project" name="Maven: com.github.springtestdbunit:spring-test-dbunit:1.1.0" />
         </element>

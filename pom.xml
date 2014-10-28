@@ -7,6 +7,10 @@
   <version>1.0-SNAPSHOT</version>
   <name>ksiazka</name>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <dependencies>
 
         <dependency>
@@ -67,7 +71,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.6</version>
-            <scope>compile</scope>
+
         </dependency>
 
         <dependency>
@@ -183,6 +187,7 @@
             <groupId>org.dbunit</groupId>
             <artifactId>dbunit</artifactId>
             <version>2.4.9</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -200,6 +205,33 @@
     </dependencies>
 
   <build>
+
+      <resources>
+          <resource>
+              <filtering>true</filtering>
+              <directory>src/main/webapp</directory>
+              <includes>
+                  <include>**/*.properties</include>
+                  <include>**/*.xml</include>
+              </includes>
+          </resource>
+      </resources>
+
     <finalName>ksiazka</finalName>
+
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.0</version>
+              <configuration>
+                  <source>1.7</source>
+                  <target>1.7</target>
+                  <showDeprecation>true</showDeprecation>
+                  <showWarnings>true</showWarnings>
+              </configuration>
+          </plugin>
+      </plugins>
   </build>
+
 </project>
