@@ -4,4 +4,5 @@ jdk:
   - oraclejdk7
 before_script:
   - mysql -e 'create database myapp_test;'
+  - chmod 777 travis-db-prop-populate.sh
   - './travis-db-prop-populate.sh'
