@@ -10,5 +10,5 @@ Projekt na zaliczenie przedmiotu Projekt Zespołowy.
 |  [Maciej Miś](https://github.com/MacMisDev)  |  206295  |
 |  [Łukasz Skarżyński](https://github.com/LukSkarDev)  |  206276  |
 |  [Jarek Cimoch](https://github.com/jcimoch)  |  206355  |
-|  [Krzysztof Lamkiewicz](https://github.com/KLamkiewicz)  |  xxx  |
+|  [Krzysztof Lamkiewicz](https://github.com/KLamkiewicz)  |  206318 |
 |  [Jakub Karolczak](https://github.com/Taureli)  |  xxx  |
