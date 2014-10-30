@@ -17,6 +17,11 @@
                         <td><sf:errors path="email" cssClas="error" /></td>
                     </tr>
                     <tr>
+                        <td><label>name: </label></td>
+                        <td><sf:input path="name" id="name" /></td>
+                        <td><sf:errors path="name" cssClas="error" /></td>
+                    </tr>
+                    <tr>
                         <td><label>password: </label></td>
                         <td><sf:password path="password" id="password" /></td>
                         <td><sf:errors path="password" cssClas="error" /></td>

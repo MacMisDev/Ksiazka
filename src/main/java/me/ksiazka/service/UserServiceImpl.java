@@ -1,6 +1,8 @@
 package me.ksiazka.service;
 
+import me.ksiazka.dao.UserDAO;
 import me.ksiazka.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,9 +10,12 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
+    @Autowired
+    private UserDAO userDAO;
+
     @Override
     public long save(User toSave) {
-        return 0;
+        return userDAO.save(toSave);
     }
 
     @Override

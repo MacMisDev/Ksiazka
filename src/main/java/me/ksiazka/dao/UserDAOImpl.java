@@ -35,8 +35,10 @@ public class UserDAOImpl implements UserDAO {
 //    }
 
     @Override
+    @Transactional
     public long save(User toSave) {
-        return 0;
+        this.sessionFactory.getCurrentSession().save(toSave);
+        return toSave.getId();
     }
 
     @Override

@@ -39,7 +39,8 @@ public class AuthControllerImpl implements AuthController{
 
         if(!bindingResult.hasErrors()){
             user.setPassword(hashPassword(user.getPassword()));
-            userService.saveUser(user);
+            //ustawienie role
+            userService.save(user);
         }else{
             return "register";
         }
