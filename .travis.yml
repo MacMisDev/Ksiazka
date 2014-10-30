@@ -1,0 +1,11 @@
+language: java
+jdk:
+  - oraclejdk8
+  - oraclejdk7
+before_script:
+  - mysql -e 'create database myapp_test;'
+  - pwd
+  - touch /home/travis/build/MacMisDev/Ksiazka/src/main/webapp/db.properties
+  - echo db.url=jdbc:mysql://localhost:3306/myapp_test >> /home/travis/build/MacMisDev/Ksiazka/src/main/webapp/db.properties
+  - echo db.username=root >> /home/travis/build/MacMisDev/Ksiazka/src/main/webapp/db.properties
+  - echo db.password= >> /home/travis/build/MacMisDev/Ksiazka/src/main/webapp/db.properties

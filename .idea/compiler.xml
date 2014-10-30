@@ -25,6 +25,9 @@
         <module name="Ksiazka" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Ksiazka" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 
