@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,7 +25,10 @@ public class AuthDetailsImpl implements UserDetailsService{
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        return null;
+        me.ksiazka.model.User user = userDao.getUserByEmail(email);
+        List<GrantedAuthority> authorities = buildUserAuthority(user.getRoles());
+
+        return buildUserForAuth(user, authorities);
     }
 
     //Zamienia User z modelu na User z org.springframework.security.core.userdetails.User
@@ -32,12 +36,16 @@ public class AuthDetailsImpl implements UserDetailsService{
         return new User(user.getEmail(), user.getPassword(), true, true, true, true, authorities);
     }
 
-    private List<GrantedAuthority> buildUserAuthority(Set<UserRole> userRoles){
+    private List<GrantedAuthority> buildUserAuthority(List<UserRole> userRoles){
 
         Set<GrantedAuthority> setAuth = new HashSet<GrantedAuthority>();
 
         for(UserRole userRole : userRoles){
-            //setAuth.add(new SimpleGrantedAuthority(userRole.))
+            setAuth.add(new SimpleGrantedAuthority(userRole.getRole()));
         }
+
+        List<GrantedAuthority> result = new ArrayList<GrantedAuthority>(setAuth);
+
+        return result;
     }
 }

@@ -1,9 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+<%@page language="Java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-</body>
-</html>
+<tiles:insertDefinition name="template">
+    <tiles:putAttribute name="content">
+       <h2>ACCESS DENIED!!</h2><br />
+       <h2>Nie dla psa.. :)</h2>
+
+    </tiles:putAttribute>
+</tiles:insertDefinition>
+
