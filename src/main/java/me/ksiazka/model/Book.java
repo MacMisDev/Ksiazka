@@ -18,7 +18,7 @@ public class Book {
     private String ISBN;
     private String author;
     private String publisher;
-    @Column(length = 500)
+    @Column(length = 1000)
     private String description;
     private int publicationYear;
     private int pages;

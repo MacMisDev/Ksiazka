@@ -125,7 +125,7 @@ public class BookDAOTest {
         Book book = bookDAO.getBook(3);
         book.setPages(410);
         book.setDescription("Best hard s-f ever made!");
-        bookDAO.updateBook(book.getId(), book);
+        bookDAO.updateBook(book);
 
         Assert.assertEquals((int) booksInDatabase, bookDAO.getAll().size());
         Assert.assertEquals(410, bookDAO.getBook(3).getPages());

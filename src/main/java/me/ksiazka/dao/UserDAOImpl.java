@@ -105,4 +105,13 @@ public class UserDAOImpl implements UserDAO {
     public void deleteFromWantList(long userId, long bookId) {
 
     }
+
+    @Override
+    public User findUserByUsername(String username) {
+        String query = "FROM User where username=:username";
+        Query userQuery = this.sessionFactory.getCurrentSession().createQuery(query);
+        List list = userQuery.setParameter("username", username).list();
+
+        return list.isEmpty()?null:(User)list.get(0);
+    }
 }

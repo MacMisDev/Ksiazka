@@ -41,9 +41,10 @@ public class BookDAOImpl implements BookDAO {
     }
 
     @Override
-    public void updateBook(long bookId, Book updatedBook) {
+    public void updateBook(Book updatedBook) {
         this.sessionFactory.getCurrentSession().update(updatedBook);
     }
+
 
     @Override
     public List<Book> getAll() {

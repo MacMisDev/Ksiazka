@@ -15,6 +15,9 @@ public class User {
     private String surname;
     @Column(nullable = false)
     private String email;
+    @Column(nullable = false)
+    private String password;
+    private String username;
     @ManyToMany
     @JoinTable(name = "booksWant",
             joinColumns = @JoinColumn(name = "userId"),
@@ -25,6 +28,8 @@ public class User {
     private List<UserBook> booksHave = new ArrayList<UserBook>(0);
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Address> addressList = new ArrayList<Address>(0);
+    @OneToMany(mappedBy = "user")
+    private List<UserRole> roles = new ArrayList<UserRole>(0);
 
     public Long getId() {
         return id;
@@ -82,4 +87,27 @@ public class User {
         this.booksHave = booksHave;
     }
 
+    public List<UserRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<UserRole> roles) {
+        this.roles = roles;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }
