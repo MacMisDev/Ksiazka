@@ -31,6 +31,9 @@
                             <td><input type="checkbox" name="_spring_security_remember_me" id="remember_me"></td>
                         </tr>
                         <tr>
+                            <a href="<s:url value="/register" />"> Register </a>
+                        </tr>
+                        <tr>
                             <td><input type="submit" name="commit" value="Submit"></td>
                         </tr>
                     </table>
