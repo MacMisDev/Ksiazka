@@ -43,7 +43,7 @@ public class BookDAOTest {
     @Test
     public void getBookTest() {
 
-        Book book = bookDAO.getBook(3);
+        Book book = bookDAO.get(3);
         Assert.assertEquals(3, (long) book.getId());
         Assert.assertEquals("Ślepowidzenie", book.getTitle());
         Assert.assertEquals("9788374802932", book.getISBN());
@@ -84,8 +84,8 @@ public class BookDAOTest {
         b.setPublicationYear(2008);
         b.setPages(530);
 
-        long bookId = bookDAO.saveBook(b);
-        Book getted = bookDAO.getBook(bookId);
+        long bookId = bookDAO.save(b);
+        Book getted = bookDAO.get(bookId);
 
         Assert.assertEquals(bookId, (long) getted.getId());
         Assert.assertEquals(b.getTitle(), getted.getTitle());
@@ -106,36 +106,33 @@ public class BookDAOTest {
     }
 
     //Test do rozbudowy, aczkolwiek ta wersja juz moze sluzyc do testowania
+    //to do:
+    //-testowanie kaskadowego usuwania w nowej strukturze
     @Test
     public void deleteBookTest() {
 
-        Book book = bookDAO.getBook(3);
+        Book book = bookDAO.get(3);
         Assert.assertNotNull(book);
-        UserBook userBook = userDAO.getUserBook(2);
-        //Sprawdzamy czy ksiazki na pewno sa powiazane
-        Assert.assertEquals(userBook.getBook().getId(), book.getId());
 
-        bookDAO.deleteBook(3);
+        bookDAO.delete(book);
 
-        Assert.assertEquals(null, bookDAO.getBook(3));
+        Assert.assertEquals(null, bookDAO.get(3));
         Assert.assertEquals(booksInDatabase-1, bookDAO.getAll().size());
-        Assert.assertEquals(null, userDAO.getUserBook(2));
     }
 
 
     @Test
     public void updateBookTest() {
 
-        Book book = bookDAO.getBook(3);
+        Book book = bookDAO.get(3);
         Assert.assertFalse(book.getPages()==410);
         book.setPages(410);
         book.setDescription("Best hard s-f ever made!");
-        bookDAO.updateBook(book);
+        bookDAO.update(book);
 
         Assert.assertEquals((int) booksInDatabase, bookDAO.getAll().size());
-        Assert.assertEquals(410, bookDAO.getBook(3).getPages());
-        Assert.assertEquals("Best hard s-f ever made!", bookDAO.getBook(3).getDescription());
-
+        Assert.assertEquals(410, bookDAO.get(3).getPages());
+        Assert.assertEquals("Best hard s-f ever made!", bookDAO.get(3).getDescription());
     }
 
 }
