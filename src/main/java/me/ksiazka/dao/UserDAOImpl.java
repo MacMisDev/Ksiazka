@@ -105,4 +105,9 @@ public class UserDAOImpl implements UserDAO {
     public void deleteFromWantList(long userId, long bookId) {
 
     }
+
+    @Override
+    public User getUserByName(String username) {
+        return null;
+    }
 }
