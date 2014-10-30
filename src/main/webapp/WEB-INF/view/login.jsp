@@ -11,6 +11,10 @@
             <p>Please login!</p>
             <spring:url var="auth" value="/static/j_spring_security_check" />
 
+            <c:if test="${error!=null}">
+                <div class="alert alert-danger" role="alert"><c:out value="${error}" /></div>
+            </c:if>
+
             <form method="post" name="f" action="${auth}">
                 <fieldset>
                     <table>
