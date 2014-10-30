@@ -1,4 +1,7 @@
 package me.ksiazka.service;
 
-public interface BookService {
+import me.ksiazka.model.Book;
+
+public interface BookService extends BasicServiceInterface<Book> {
+
 }

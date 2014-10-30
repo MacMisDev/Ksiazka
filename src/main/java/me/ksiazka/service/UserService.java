@@ -1,6 +1,7 @@
 package me.ksiazka.service;
 
-import org.springframework.stereotype.Service;
+import me.ksiazka.model.User;
 
-public interface UserService {
+public interface UserService extends BasicServiceInterface<User> {
+
 }

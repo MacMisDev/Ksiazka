@@ -6,48 +6,29 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
-import java.io.Serializable;
 import java.util.List;
 
 @Component
-@Transactional
 public class BookDAOImpl implements BookDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public Book getBook(long bookId) {
+    public long save(Book toSave) {
 
-        Book b = (Book) this.sessionFactory.getCurrentSession().get(Book.class, bookId);
-        return b;
+        return (Long) this.sessionFactory.getCurrentSession().save(toSave);
     }
 
     @Override
-    public Long saveBook(Book book) {
-        Long id = (Long) this.sessionFactory.getCurrentSession().save(book);
+    public Book get(long id) {
 
-        return id;
+        return (Book) this.sessionFactory.getCurrentSession().get(Book.class, id);
     }
-
-    @Override
-    public void deleteBook(long bookId) {
-
-        Book b = (Book) this.sessionFactory.getCurrentSession().get(Book.class, bookId);
-        sessionFactory.getCurrentSession().delete(b);
-
-    }
-
-    @Override
-    public void updateBook(Book updatedBook) {
-        this.sessionFactory.getCurrentSession().update(updatedBook);
-    }
-
 
     @Override
     public List<Book> getAll() {
+
         List<Book> list;
         String query = "FROM Book";
         Query listQuery = this.sessionFactory.getCurrentSession().createQuery(query);
@@ -57,7 +38,23 @@ public class BookDAOImpl implements BookDAO {
     }
 
     @Override
-    public List<UserBook> getAllInstancesOfThisBook(long bookId) {
+    public void update(Book toUpdate) {
+
+        this.sessionFactory.getCurrentSession().update(toUpdate);
+    }
+
+    @Override
+    public void delete(Book toDelete) {
+
+        Book b = (Book) this.sessionFactory.getCurrentSession().get(Book.class, toDelete.getId());
+        sessionFactory.getCurrentSession().delete(b);
+    }
+
+    //Ma znajdowac wszystkie instancje ksiazki Book o id = x posrod ksiazek UserBook.
+    //Wystarczy jakies query typu select * from UserBook where bookId = x pewnie.
+    @Override
+    public List<UserBook> findEachInstanceOfBook(long id) {
         return null;
     }
+
 }

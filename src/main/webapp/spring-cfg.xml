@@ -75,4 +75,10 @@
         <constructor-arg value="3" type="int"/>
     </bean>
 
+    <context:property-placeholder location="tests.properties" />
+    <bean id="usersInDatabase"
+          class="java.lang.Integer">
+        <constructor-arg value="2" type="int"/>
+    </bean>
+
 </beans>

@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 @Service("authService")
-public class AuthServiceImpl implements UserDetailsService{
+public class AuthServiceImpl implements UserDetailsService {
 
     @Autowired
     private UserDAO userDao;

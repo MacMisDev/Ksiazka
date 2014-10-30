@@ -10,6 +10,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -17,6 +18,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -26,9 +28,11 @@ import java.util.List;
         TransactionalTestExecutionListener.class,
         DbUnitTestExecutionListener.class })
 @DatabaseSetup("classpath:/testsDataset.xml")
+@Transactional
 public class BookDAOTest {
 
     @Autowired
+    @Qualifier("booksInDatabase")
     Integer booksInDatabase;
 
     @Autowired
@@ -123,6 +127,7 @@ public class BookDAOTest {
     public void updateBookTest() {
 
         Book book = bookDAO.getBook(3);
+        Assert.assertFalse(book.getPages()==410);
         book.setPages(410);
         book.setDescription("Best hard s-f ever made!");
         bookDAO.updateBook(book);
