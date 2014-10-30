@@ -20,7 +20,7 @@ public interface BookDAO {
     //Update'uje ksiazke o podanym Id na
     //wartosci przekazane w obiekcie bedacym
     //drugim parametrem.
-    public void updateBook(long bookId, Book updatedBook);
+    public void updateBook(Book updatedBook);
 
     //Pobranie wszystkich ksiazek z bazy
     public List<Book> getAll();

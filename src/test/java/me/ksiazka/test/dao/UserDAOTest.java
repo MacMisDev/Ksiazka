@@ -6,6 +6,7 @@ import junit.framework.Assert;
 import me.ksiazka.dao.BookDAO;
 import me.ksiazka.dao.UserDAO;
 import me.ksiazka.model.Condition;
+import me.ksiazka.model.User;
 import me.ksiazka.model.UserBook;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -54,5 +55,21 @@ public class UserDAOTest {
         Assert.assertEquals(2, (long) userBook.getId());
         Assert.assertEquals(2, (long) userBook.getUser().getId());
         Assert.assertEquals(3, (long) userBook.getBook().getId());
+    }
+
+    @Test
+    public void findUserByUsername() {
+        User user = userDAO.findUserByUsername("Konasz");
+
+        Assert.assertEquals(new Long(1), user.getId());
+        Assert.assertEquals("Konasz", user.getUsername());
+        Assert.assertEquals("jarke69@bdimension.org", user.getEmail());
+        Assert.assertEquals("Caroslaw", user.getName());
+        Assert.assertEquals("Jimoch", user.getSurname());
+        Assert.assertEquals("tajne", user.getPassword());
+
+        User nuser = userDAO.findUserByUsername("Nieistniejacy user");
+
+        Assert.assertNull(nuser);
     }
 }

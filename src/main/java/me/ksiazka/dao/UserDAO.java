@@ -51,6 +51,9 @@ public interface UserDAO {
     //Usuwa ksiazka z listy want uzytkownika
     public void deleteFromWantList(long userId, long bookId);
 
+    //Jesli uzytkownik istnieje to go zwraca, jesl nie to zwraca null
+    public User findUserByUsername(String username);
+
     //Zwraca uzytkownika po jego emailu.
     public User getUserByEmail(String email);
 }

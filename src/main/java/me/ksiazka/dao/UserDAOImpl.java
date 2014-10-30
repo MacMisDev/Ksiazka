@@ -107,6 +107,15 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    public User findUserByUsername(String username) {
+        String query = "FROM User where username=:username";
+        Query userQuery = this.sessionFactory.getCurrentSession().createQuery(query);
+        List list = userQuery.setParameter("username", username).list();
+
+        return list.isEmpty()?null:(User)list.get(0);
+    }
+
+    @Override
     public User getUserByEmail(String email) {
         return null;
     }
