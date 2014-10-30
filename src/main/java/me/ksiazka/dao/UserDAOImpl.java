@@ -114,4 +114,13 @@ public class UserDAOImpl implements UserDAO {
 
         return list.isEmpty()?null:(User)list.get(0);
     }
+
+    @Override
+    public User findUserByEmail(String email) {
+        String query = "FROM User where email=:email";
+        Query userQuery = this.sessionFactory.getCurrentSession().createQuery(query);
+        List list = userQuery.setParameter("email", email).list();
+
+        return list.isEmpty()?null:(User)list.get(0);
+    }
 }
