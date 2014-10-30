@@ -72,4 +72,20 @@ public class UserDAOTest {
 
         Assert.assertNull(nuser);
     }
+
+    @Test
+    public void findUserByEmail() {
+        User user = userDAO.findUserByEmail("jarke69@bdimension.org");
+
+        Assert.assertEquals(new Long(1), user.getId());
+        Assert.assertEquals("Konasz", user.getUsername());
+        Assert.assertEquals("jarke69@bdimension.org", user.getEmail());
+        Assert.assertEquals("Caroslaw", user.getName());
+        Assert.assertEquals("Jimoch", user.getSurname());
+        Assert.assertEquals("tajne", user.getPassword());
+
+        User nuser = userDAO.findUserByEmail("Jarkonosze@bdimension.pl");
+
+        Assert.assertNull(nuser);
+    }
 }

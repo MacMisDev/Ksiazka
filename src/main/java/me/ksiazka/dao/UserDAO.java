@@ -54,6 +54,7 @@ public interface UserDAO {
     //Jesli uzytkownik istnieje to go zwraca, jesl nie to zwraca null
     public User findUserByUsername(String username);
 
-    //Zwraca uzytkownika po jego emailu.
-    public User getUserByEmail(String email);
+    //Jesli uzytkownik o podanym emailu istnieje to go zwraca, jesl nie to zwraca null
+    public User findUserByEmail(String email);
+
 }
