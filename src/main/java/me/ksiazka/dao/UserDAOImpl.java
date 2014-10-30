@@ -62,6 +62,11 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    public void delete(long id) {
+
+    }
+
+    @Override
     public User findUserByUsername(String username) {
         String query = "FROM User where username=:username";
         Query userQuery = this.sessionFactory.getCurrentSession().createQuery(query);

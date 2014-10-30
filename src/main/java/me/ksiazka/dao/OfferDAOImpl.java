@@ -30,4 +30,9 @@ public class OfferDAOImpl implements OfferDAO {
     public void delete(Offer toDelete) {
 
     }
+
+    @Override
+    public void delete(long id) {
+
+    }
 }

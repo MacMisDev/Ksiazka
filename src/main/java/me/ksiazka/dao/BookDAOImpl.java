@@ -50,6 +50,13 @@ public class BookDAOImpl implements BookDAO {
         sessionFactory.getCurrentSession().delete(b);
     }
 
+    @Override
+    public void delete(long id) {
+
+        Book b = (Book) this.sessionFactory.getCurrentSession().get(Book.class, id);
+        sessionFactory.getCurrentSession().delete(b);
+    }
+
     //Ma znajdowac wszystkie instancje ksiazki Book o id = x posrod ksiazek UserBook.
     //Wystarczy jakies query typu select * from UserBook where bookId = x pewnie.
     @Override

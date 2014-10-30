@@ -1,9 +1,11 @@
 package me.ksiazka.dao;
 
 import me.ksiazka.model.UserBook;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class UserBookDAOImpl implements UserBookDAO {
 
     @Override
@@ -28,6 +30,11 @@ public class UserBookDAOImpl implements UserBookDAO {
 
     @Override
     public void delete(UserBook toDelete) {
+
+    }
+
+    @Override
+    public void delete(long id) {
 
     }
 }

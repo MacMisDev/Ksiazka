@@ -17,6 +17,9 @@ public interface BasicDAOInterface<T> {
     //Update
     public void update(T toUpdate);
 
-    //Delete
+    //Usuwanie wersja po obiekcie
     public void delete(T toDelete);
+
+    //Usuwanie wersja po id
+    public void delete(long id);
 }
