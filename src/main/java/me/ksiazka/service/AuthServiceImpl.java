@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 @Service("authService")
-public class AuthDetailsImpl implements UserDetailsService{
+public class AuthServiceImpl implements UserDetailsService{
 
     @Autowired
     private UserDAO userDao;
@@ -25,7 +25,7 @@ public class AuthDetailsImpl implements UserDetailsService{
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        me.ksiazka.model.User user = userDao.getUserByEmail(email);
+        me.ksiazka.model.User user = userDao.findUserByEmail(email);
         List<GrantedAuthority> authorities = buildUserAuthority(user.getRoles());
 
         return buildUserForAuth(user, authorities);
