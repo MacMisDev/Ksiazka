@@ -107,7 +107,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User getUserByName(String username) {
+    public User getUserByEmail(String email) {
         return null;
     }
 }

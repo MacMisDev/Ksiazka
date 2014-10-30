@@ -51,6 +51,6 @@ public interface UserDAO {
     //Usuwa ksiazka z listy want uzytkownika
     public void deleteFromWantList(long userId, long bookId);
 
-    //Zwraca uzytkownika po jego nazwie.
-    public User getUserByName(String username);
+    //Zwraca uzytkownika po jego emailu.
+    public User getUserByEmail(String email);
 }

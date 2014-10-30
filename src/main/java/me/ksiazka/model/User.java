@@ -15,6 +15,8 @@ public class User {
     private String surname;
     @Column(nullable = false)
     private String email;
+    @Column(nullable = false)
+    private String password;
     @ManyToMany
     @JoinTable(name = "booksWant",
             joinColumns = @JoinColumn(name = "userId"),
@@ -82,4 +84,7 @@ public class User {
         this.booksHave = booksHave;
     }
 
+    public String getPassword() { return password; }
+
+    public void setPassword(String password) { this.password = password; }
 }
