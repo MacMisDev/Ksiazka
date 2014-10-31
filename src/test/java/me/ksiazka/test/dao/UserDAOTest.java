@@ -88,16 +88,14 @@ public class UserDAOTest {
     }
 
     @Test
-    //Brak implementacji deleteUser
-    @Ignore
     public void deleteUserTest() {
 
         Assert.assertNotNull(userDAO.get(1));
-        Assert.assertNotNull(userBookDAO.get(1));
+        Assert.assertNotNull(userBookDAO.getUserBooks(1));
 
         userDAO.delete(1);
         Assert.assertNull(userDAO.get(1));
-        Assert.assertNull(userBookDAO.get(1));
+        Assert.assertNull(userBookDAO.getUserBooks(1));
     }
 
     @Test
@@ -146,8 +144,5 @@ public class UserDAOTest {
         User nuser = userDAO.findUserByEmail("Jarkonosze@bdimension.pl");
         Assert.assertNull(nuser);
 
-        for(UserRole r: user.getRoles()){
-            System.out.println(r.getRole());
-        }
     }
 }

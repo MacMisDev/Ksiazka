@@ -38,6 +38,7 @@ public class UserDAOImpl implements UserDAO {
     @Override
     @Transactional
     public long save(User toSave) {
+
         return (Long) this.sessionFactory.getCurrentSession().save(toSave);
     }
 
@@ -68,7 +69,8 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void delete(long id) {
-
+        User u = (User) this.sessionFactory.getCurrentSession().get(User.class, id);
+        sessionFactory.getCurrentSession().delete(u);
     }
 
     @Override
