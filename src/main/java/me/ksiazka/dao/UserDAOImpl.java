@@ -51,7 +51,9 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<User> getAll() {
-        return null;
+        String query = "FROM User";
+        List list = (List<User>) this.sessionFactory.getCurrentSession().createQuery(query).list();
+        return list;
     }
 
     @Override
@@ -84,9 +86,11 @@ public class UserDAOImpl implements UserDAO {
         String query = "FROM User where email=:email";
         Query userQuery = this.sessionFactory.getCurrentSession().createQuery(query);
         List list = userQuery.setParameter("email", email).list();
+        if(list.isEmpty()){
+            return null;
+        }
         User user = (User)list.get(0);
-        Hibernate.initialize(user.getRoles());
-        return list.isEmpty()?null:user;
+        return user;
     }
 
 

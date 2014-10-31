@@ -10,6 +10,7 @@ import me.ksiazka.dao.UserDAO;
 import me.ksiazka.model.Condition;
 import me.ksiazka.model.User;
 import me.ksiazka.model.UserBook;
+import me.ksiazka.model.UserRole;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -64,11 +65,8 @@ public class UserDAOTest {
     }
 
     @Test
-    //Brak implementacji getAll
-    @Ignore
     public void getAllUsersTest() {
-
-        Assert.assertEquals(usersInDatabse, userDAO.getAll());
+        Assert.assertEquals((int) usersInDatabse, userDAO.getAll().size());
     }
 
     @Test
@@ -109,7 +107,7 @@ public class UserDAOTest {
     public void updateUserTest() {
 
        User user = userDAO.get(2);
-       Assert.assertFalse(user.getEmail()=="wojtek.py");
+       Assert.assertFalse(user.getEmail() == "wojtek.py");
        user.setEmail("wojtek.py");
        userDAO.update(user);
 
@@ -147,5 +145,9 @@ public class UserDAOTest {
 
         User nuser = userDAO.findUserByEmail("Jarkonosze@bdimension.pl");
         Assert.assertNull(nuser);
+
+        for(UserRole r: user.getRoles()){
+            System.out.println(r.getRole());
+        }
     }
 }
