@@ -40,12 +40,12 @@ public class BookDAOTest {
 
     @Autowired
     @Qualifier("booksInDatabase")
-    Integer booksInDatabase;
+    private Integer booksInDatabase;
 
     @Autowired
-    BookDAO bookDAO;
+    private BookDAO bookDAO;
     @Autowired
-    UserDAO userDAO;
+    private UserDAO userDAO;
 
     @Test
     public void getBookTest() {
@@ -104,16 +104,7 @@ public class BookDAOTest {
         Assert.assertEquals(BookStatus.AWAITING, getted.getBookStatus());
     }
 
-    @Ignore
-    @Test
-    public void addBookWithNotNullablePropsTest() {
-        //Test zostanie napisany po tym jak addBookTest()
-        //bedzie przechodzil oraz jak rozwiazany zostanie issue #2
-    }
-
-    //Test sprawdza usuniecie ksiazki i kaskadowe usuniecie z listy have.
-    //Poniewaz lista want nie posiada swojego dao tak jak lista have
-    //kaskadowe usuniecie z want sprawdzone zostaje poprzez obiekt
+    //Test sprawdza usuniecie ksiazki i kaskadowe usuniecie z listy have i want.
     @Test
     //Konfiguracja kaskadowego usuwania jest do zrobienia
     @Ignore

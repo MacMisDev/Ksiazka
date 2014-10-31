@@ -7,10 +7,8 @@ import junit.framework.Assert;
 import me.ksiazka.dao.BookDAO;
 import me.ksiazka.dao.UserBookDAO;
 import me.ksiazka.dao.UserDAO;
-import me.ksiazka.model.Condition;
-import me.ksiazka.model.User;
-import me.ksiazka.model.UserBook;
-import me.ksiazka.model.UserRole;
+import me.ksiazka.model.*;
+import org.hibernate.exception.ConstraintViolationException;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +25,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:/spring-cfg.xml"})
+@ContextConfiguration(locations = {"classpath:/spring-cfg.xml", "classpath:/spring-tests-cfg.xml"})
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class,
         DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class,
@@ -38,19 +36,14 @@ public class UserDAOTest {
 
     @Autowired
     @Qualifier("usersInDatabase")
-    Integer usersInDatabse;
+    private Integer usersInDatabse;
 
     @Autowired
-    UserDAO userDAO;
+    private UserDAO userDAO;
     @Autowired
-    BookDAO bookDAO;
-    @Autowired
-    UserBookDAO userBookDAO;
+    private UserBookDAO userBookDAO;
 
     @Test
-    /*
-    Test do rozbudowy o zaleznosci na listach
-     */
     public void getUserTest() {
 
         User user = userDAO.get(2);
@@ -59,6 +52,12 @@ public class UserDAOTest {
         Assert.assertEquals("jarke@jarke.jr", user.getEmail());
         Assert.assertEquals("Jarke", user.getName());
         Assert.assertEquals("Cimoche", user.getSurname());
+        Assert.assertEquals("ChybaTy", user.getUsername());
+        Assert.assertEquals(1, user.getBooksHave().size());
+        Assert.assertEquals(2, user.getBooksWant().size());
+        //Dla pewnosci sprawdzamy czy np. na liscie books have znajduje
+        //sie odpowiednia ksiazka
+        Assert.assertEquals("Ślepowidzenie", user.getBooksHave().get(0).getBook().getTitle());
 
     }
 
@@ -66,6 +65,7 @@ public class UserDAOTest {
     //Brak implementacji getAll
     @Ignore
     public void getAllUsersTest() {
+
         Assert.assertEquals((int) usersInDatabse, userDAO.getAll().size());
     }
 
@@ -92,12 +92,29 @@ public class UserDAOTest {
     @Ignore
     public void deleteUserTest() {
 
+        //Porzadny opis testu specjalnie dla Krzysia bo nie kuma i robi mi
+        //gowno-metody w dao.
+        //Najpierw sprawdzamy czy uzytkownik, ktorego chcemy usunac w ogole
+        //istnieje w bazie.
         Assert.assertNotNull(userDAO.get(1));
-        Assert.assertNotNull(userBookDAO.getUserBooks(1));
+        //Potem przygotowujemy sie do sprawdzenia dzialania kaskadowego usuwania.
+        //Sprawdzamy czy ilosc ksiazek na liscie have sie zgadza, powinny byc 2
+        Assert.assertEquals(2, userDAO.get(1).getBooksHave().size());
 
+        //Teraz usuwamy
         userDAO.delete(1);
+        //Sprawdzamy czy uzytkownik zostal usuniety
         Assert.assertNull(userDAO.get(1));
-        Assert.assertNull(userBookDAO.getUserBooks(1));
+        //Uzytkownik posiadal w swojej liscie have ksiazki z encji UserBook o id 1 i 3
+        //Sprawdzamy czy sie usunely.
+        Assert.assertNull(userBookDAO.get(1));
+        Assert.assertNull(userBookDAO.get(3));
+        //Dla pewnosci sprawdzamy, czy w bazie pozostal wpis w UserBook o id 2
+        Assert.assertNotNull(userBookDAO.get(2));
+
+        //Tutaj mozna dopisac sprawdzenie czy usunely sie wpisy w bazie z listy want
+        //Obiekt uzytkownika naturalnie nie posiada tych wpisow, jako ze nie istnieje
+        //Ale to jak najpierw przejdzie test w takiej formie jakiej jest.
     }
 
     @Test
@@ -142,5 +159,11 @@ public class UserDAOTest {
 
         User nuser = userDAO.findUserByEmail("Jarkonosze@bdimension.pl");
         Assert.assertNull(nuser);
+    }
+
+    @Test(expected = ConstraintViolationException.class)
+    public void saveWithNullPropertyTest() {
+
+        userDAO.save(new User());
     }
 }

@@ -18,5 +18,9 @@
         <constructor-arg value="2" type="int"/>
     </bean>
 
+    <bean id="userBooksInDatabase"
+          class="java.lang.Integer">
+        <constructor-arg value="4" type="int"/>
+    </bean>
 
 </beans>

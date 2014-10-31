@@ -44,12 +44,15 @@ public class UserBookDAOImpl implements UserBookDAO {
 
     }
 
-    @Override
+    //Wykomentowane bo doublowalo funcjonalnosc, zostawiam, zeby jak Krzysiowi przyszlo
+    //znowu do glowy to napisac, to bedzie widzial, ze raz juz napisal i bylo niepotrzebne
+    /*@Override
     public List<UserBook> getUserBooks(long id) {
+
         String q = "FROM UserBook where userId=:userId";
         Query query = this.sessionFactory.getCurrentSession().createQuery(q);
         List list = (List<UserBook>) query.setParameter("userId", id).list();
 
         return list.isEmpty()?null:list;
-    }
+    }*/
 }
