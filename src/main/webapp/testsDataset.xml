@@ -11,4 +11,8 @@
     <UserBook id="1" userId="1" bookId="1" bookCondition="GOOD" />
     <UserBook id="2" userId="2" bookId="3" bookCondition="GOOD" />
 
+    <!-- booksWant -->
+    <booksWant userId="2" bookId="2" />
+    <booksWant userId="2" bookId="3" />
+
 </dataset>

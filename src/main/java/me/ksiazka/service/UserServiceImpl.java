@@ -6,6 +6,7 @@ import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -40,9 +41,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public User findUserByEmail(String email) {
-        User user = userDAO.findUserByEmail(email);
 
+        User user = userDAO.findUserByEmail(email);
         return user;
     }
 }

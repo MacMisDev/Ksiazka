@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class AuthServiceImpl implements UserDetailsService {
     private UserService userService;
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
         me.ksiazka.model.User user = userService.findUserByEmail(email);
@@ -52,7 +54,9 @@ public class AuthServiceImpl implements UserDetailsService {
         return hashedPass;
     }
 
+    @Transactional
     public void saveUser(me.ksiazka.model.User user){
+
         UserRole userRole = new UserRole();
         userRole.setRole("ROLE_USER");
         user.setPassword(hashPassword(user.getPassword()));

@@ -11,23 +11,28 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:/spring-cfg.xml"})
+@ContextConfiguration(locations = {"classpath:/spring-cfg.xml", "classpath:/spring-tests-cfg.xml"})
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class,
         DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class,
         DbUnitTestExecutionListener.class })
 @DatabaseSetup("classpath:/testsDataset.xml")
+@EnableTransactionManagement
+@TransactionConfiguration(defaultRollback = false)
 @Transactional
 public class BookDAOTest {
 
@@ -62,7 +67,6 @@ public class BookDAOTest {
         Assert.assertEquals((int) booksInDatabase, allBooks.size());
 
     }
-
 
     @Test
     public void addBookTest() {
@@ -105,19 +109,33 @@ public class BookDAOTest {
         //bedzie przechodzil oraz jak rozwiazany zostanie issue #2
     }
 
-    //Test do rozbudowy, aczkolwiek ta wersja juz moze sluzyc do testowania
-    //to do:
-    //-testowanie kaskadowego usuwania w nowej strukturze
+    //Test sprawdza usuniecie ksiazki i kaskadowe usuniecie z listy have.
+    //Poniewaz lista want nie posiada swojego dao tak jak lista have
+    //kaskadowe usuniecie z want sprawdzone zostaje poprzez obiekt
     @Test
     public void deleteBookTest() {
 
+        //Pobranie uzytkownika w celu ulatwienia testowania
+        User user = userDAO.get(2);
+        //Sprawdzamy czy ksiazka i jej kaskadowe zaleznosci istnieja w bazie
         Book book = bookDAO.get(3);
         Assert.assertNotNull(book);
-
+        //Czy uzytkownik posiada ksiazke na have list
+        Assert.assertEquals(user.getBooksHave().get(0).getBook().getId(),
+                book.getId());
+        //Czy uzytkownik posiada ksiazke na want list
+        Assert.assertEquals(user.getBooksWant().get(1).getId(),
+                book.getId());
+        //Czy listy have i want maja odpowiednie dlugosci
+        int haveListLength = user.getBooksHave().size();
+        int wantListLength = user.getBooksWant().size();
+        Assert.assertEquals(1, haveListLength);
+        Assert.assertEquals(2, wantListLength);
+/*
         bookDAO.delete(book);
 
         Assert.assertEquals(null, bookDAO.get(3));
-        Assert.assertEquals(booksInDatabase-1, bookDAO.getAll().size());
+        Assert.assertEquals(booksInDatabase-1, bookDAO.getAll().size());*/
     }
 
 
