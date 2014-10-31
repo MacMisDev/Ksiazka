@@ -2,11 +2,15 @@ package me.ksiazka.test.dao;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
+import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import junit.framework.Assert;
 import me.ksiazka.dao.BookDAO;
 import me.ksiazka.dao.UserBookDAO;
 import me.ksiazka.dao.UserDAO;
+import me.ksiazka.model.Condition;
 import me.ksiazka.model.User;
+import me.ksiazka.model.UserBook;
+import me.ksiazka.model.UserRole;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +24,7 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:/spring-cfg.xml"})
@@ -61,19 +66,17 @@ public class UserDAOTest {
     //Brak implementacji getAll
     @Ignore
     public void getAllUsersTest() {
-
-        Assert.assertEquals(usersInDatabse, userDAO.getAll());
+        Assert.assertEquals((int) usersInDatabse, userDAO.getAll().size());
     }
 
     @Test
-    //Brak implementacji saveUser
-    @Ignore
     public void addUserTest() {
 
         User user = new User();
         user.setName("Wojtek");
-        user.setName("Nowak");
-        user.setEmail("wojtek@py.py");
+        user.setSurname("Nowak");
+        user.setEmail("Wojtek@py.py");
+        user.setPassword("wojtek.py"); //cannot be null
 
         long id = userDAO.save(user);
 
@@ -81,30 +84,27 @@ public class UserDAOTest {
         Assert.assertEquals("Wojtek", retrivedUser.getName());
         Assert.assertEquals("Nowak", retrivedUser.getSurname());
         Assert.assertEquals("Wojtek@py.py", retrivedUser.getEmail());
+        Assert.assertEquals("wojtek.py", retrivedUser.getPassword());
     }
 
     @Test
     //Brak implementacji deleteUser
-    //Brak implemetacji metod w userBookDAO
     @Ignore
     public void deleteUserTest() {
 
         Assert.assertNotNull(userDAO.get(1));
-        Assert.assertNotNull(userBookDAO.get(1));
+        Assert.assertNotNull(userBookDAO.getUserBooks(1));
 
         userDAO.delete(1);
         Assert.assertNull(userDAO.get(1));
-        Assert.assertNull(userBookDAO.get(1));
+        Assert.assertNull(userBookDAO.getUserBooks(1));
     }
 
     @Test
-    //Brak implementacji getAll
-    //Brak implementacji updateUser
-    @Ignore
     public void updateUserTest() {
 
        User user = userDAO.get(2);
-       Assert.assertFalse(user.getEmail().equals("wojtek.py"));
+       Assert.assertFalse(user.getEmail() == "wojtek.py");
        user.setEmail("wojtek.py");
        userDAO.update(user);
 

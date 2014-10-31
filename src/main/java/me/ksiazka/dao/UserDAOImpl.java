@@ -38,8 +38,7 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public long save(User toSave) {
 
-        this.sessionFactory.getCurrentSession().save(toSave);
-        return toSave.getId();
+        return (Long) this.sessionFactory.getCurrentSession().save(toSave);
     }
 
     @Override
@@ -51,12 +50,15 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<User> getAll() {
-        return null;
+        String query = "FROM User";
+        List list = (List<User>) this.sessionFactory.getCurrentSession().createQuery(query).list();
+
+        return list;
     }
 
     @Override
     public void update(User toUpdate) {
-
+        this.sessionFactory.getCurrentSession().update(toUpdate);
     }
 
     @Override
@@ -66,7 +68,8 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void delete(long id) {
-
+        User u = (User) this.sessionFactory.getCurrentSession().get(User.class, id);
+        sessionFactory.getCurrentSession().delete(u);
     }
 
     @Override
@@ -85,8 +88,11 @@ public class UserDAOImpl implements UserDAO {
         String query = "FROM User where email=:email";
         Query userQuery = this.sessionFactory.getCurrentSession().createQuery(query);
         List list = userQuery.setParameter("email", email).list();
+        if(list.isEmpty()){
+            return null;
+        }
         User user = (User)list.get(0);
-        return list.isEmpty() ? null : user;
+        return user;
     }
 
 
