@@ -2,6 +2,7 @@ package me.ksiazka.service;
 
 import me.ksiazka.dao.UserDAO;
 import me.ksiazka.model.User;
+import me.ksiazka.model.UserRole;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,9 @@ public class UserServiceImpl implements UserService {
     private UserDAO userDAO;
 
     @Override
+    @Transactional
     public long save(User toSave) {
+
         return userDAO.save(toSave);
     }
 

@@ -1,12 +1,9 @@
 package me.ksiazka.controller;
 
-import me.ksiazka.dao.UserDAO;
 import me.ksiazka.model.User;
-import me.ksiazka.model.UserRole;
-import me.ksiazka.service.AuthServiceImpl;
+import me.ksiazka.service.AuthService;
 import me.ksiazka.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AuthControllerImpl implements AuthController{
 
     @Autowired
-    private AuthServiceImpl authService;
+    private AuthService authService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
@@ -41,7 +40,8 @@ public class AuthControllerImpl implements AuthController{
     public String registerDone(User user, BindingResult bindingResult){
 
         if(!bindingResult.hasErrors()){
-            authService.saveUser(user);
+            authService.includeRoles(user);
+            userService.save(user);
         }else{
             return "register";
         }

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service("authService")
-public class AuthServiceImpl implements UserDetailsService {
+public class AuthServiceImpl implements UserDetailsService, AuthService {
 
     @Autowired
     private UserService userService;
@@ -30,6 +30,16 @@ public class AuthServiceImpl implements UserDetailsService {
         List<GrantedAuthority> authorities = buildUserAuthority(user.getRoles());
 
         return buildUserForAuth(user, authorities);
+    }
+
+    @Override
+    public void includeRoles(me.ksiazka.model.User user){
+
+        UserRole userRole = new UserRole();
+        userRole.setRole("ROLE_USER");
+        user.setPassword(hashPassword(user.getPassword()));
+        userRole.setUser(user);
+        user.getRoles().add(userRole);
     }
 
     //Zamienia User z modelu na User z org.springframework.security.core.userdetails.User
@@ -52,16 +62,5 @@ public class AuthServiceImpl implements UserDetailsService {
     private String hashPassword(String pass){
         String hashedPass = BCrypt.hashpw(pass, BCrypt.gensalt());
         return hashedPass;
-    }
-
-    @Transactional
-    public void saveUser(me.ksiazka.model.User user){
-
-        UserRole userRole = new UserRole();
-        userRole.setRole("ROLE_USER");
-        user.setPassword(hashPassword(user.getPassword()));
-        userRole.setUser(user);
-        user.getRoles().add(userRole);
-        userService.save(user);
     }
 }
