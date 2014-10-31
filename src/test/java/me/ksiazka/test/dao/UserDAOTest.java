@@ -99,9 +99,6 @@ public class UserDAOTest {
     }
 
     @Test
-    //Brak implementacji getAll
-    //Brak implementacji updateUser
-    @Ignore
     public void updateUserTest() {
 
        User user = userDAO.get(2);

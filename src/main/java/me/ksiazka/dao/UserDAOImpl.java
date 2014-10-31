@@ -59,7 +59,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void update(User toUpdate) {
-
+        this.sessionFactory.getCurrentSession().update(toUpdate);
     }
 
     @Override
