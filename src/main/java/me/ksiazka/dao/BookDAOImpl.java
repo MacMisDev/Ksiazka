@@ -57,11 +57,19 @@ public class BookDAOImpl implements BookDAO {
         sessionFactory.getCurrentSession().delete(b);
     }
 
-    //Ma znajdowac wszystkie instancje ksiazki Book o id = x posrod ksiazek UserBook.
-    //Wystarczy jakies query typu select * from UserBook where bookId = x pewnie.
+
+    //Zapewne da sie to zrobic jakims zlaczeniem hql-owym. Daloby sie pewnie tez
+    //zrobic to przeszukujac obiekty, ale zapytanie do bazy bedzie milion razy
+    //efektywniejsze, dlatego ta metoda droga wyjatku chociaz wykonuje pewna logike
+    //znajduje sie w dao
     @Override
-    public List<UserBook> findEachInstanceOfBook(long id) {
+    public List<User> findEachUserWithBookInHaveList(long bookId) {
         return null;
     }
 
+    //j.w.
+    @Override
+    public List<User> findEachUserWithBookInWantList(long bookId) {
+        return null;
+    }
 }

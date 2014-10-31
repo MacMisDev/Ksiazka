@@ -8,5 +8,9 @@ import java.util.List;
 
 public interface BookDAO extends BasicDAOInterface<Book> {
 
-    public List<UserBook> findEachInstanceOfBook(long id);
+    //Zwraca wszystkich uzytkownikow, ktorzy posiadaja ta ksiazke na liscie have
+    public List<User> findEachUserWithBookInHaveList(long bookId);
+
+    //Zwraca wszystkich uzytkownikow, ktorzy posiadaja ta ksiazke na liscie want
+    public List<User> findEachUserWithBookInWantList(long bookId);
 }

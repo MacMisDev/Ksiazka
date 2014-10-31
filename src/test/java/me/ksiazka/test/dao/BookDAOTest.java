@@ -2,10 +2,12 @@ package me.ksiazka.test.dao;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import junit.framework.Assert;
 import me.ksiazka.dao.BookDAO;
 import me.ksiazka.dao.UserDAO;
 import me.ksiazka.model.*;
+import org.hibernate.exception.ConstraintViolationException;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +34,7 @@ import java.util.List;
         DbUnitTestExecutionListener.class })
 @DatabaseSetup("classpath:/testsDataset.xml")
 @EnableTransactionManagement
-@TransactionConfiguration(defaultRollback = false)
+@TransactionConfiguration(defaultRollback = true)
 @Transactional
 public class BookDAOTest {
 
@@ -113,6 +115,8 @@ public class BookDAOTest {
     //Poniewaz lista want nie posiada swojego dao tak jak lista have
     //kaskadowe usuniecie z want sprawdzone zostaje poprzez obiekt
     @Test
+    //Konfiguracja kaskadowego usuwania jest do zrobienia
+    @Ignore
     public void deleteBookTest() {
 
         //Pobranie uzytkownika w celu ulatwienia testowania
@@ -131,11 +135,16 @@ public class BookDAOTest {
         int wantListLength = user.getBooksWant().size();
         Assert.assertEquals(1, haveListLength);
         Assert.assertEquals(2, wantListLength);
-/*
+
         bookDAO.delete(book);
 
         Assert.assertEquals(null, bookDAO.get(3));
-        Assert.assertEquals(booksInDatabase-1, bookDAO.getAll().size());*/
+
+        //Do dopisania sprawdzenie usuniecia zaleznosci
+        //jak Krzysiu zrobi kaskadowe usuwanie, bo na razie nawet
+        //book nie mozna usunac bo ma zaleznosci (ofc)
+
+        //Do dopisania sprawdzenie czy ksiazke usunieto z ofert
     }
 
 
@@ -151,6 +160,40 @@ public class BookDAOTest {
         Assert.assertEquals((int) booksInDatabase, bookDAO.getAll().size());
         Assert.assertEquals(410, bookDAO.get(3).getPages());
         Assert.assertEquals("Best hard s-f ever made!", bookDAO.get(3).getDescription());
+    }
+
+
+    @Test
+    //Brak implementacji metody findEachUserWithBookInHaveListTest
+    @Ignore
+    public void findEachUserWithBookInHaveListTest() {
+
+        List<User> list = bookDAO.findEachUserWithBookInHaveList(3);
+
+        Assert.assertEquals(2, list.size());
+        //Sprawdzamy, czy na pewno mamy tych uzytkownikow, ktorych chcemy
+        Assert.assertTrue(
+                (list.get(0).getName().equals("Caroslaw") && list.get(1).getName().equals("Jarke")) ||
+                        (list.get(0).getName().equals("Jarke") && list.get(1).getName().equals("Caroslaw"))
+        );
+    }
+
+    @Test
+    //Brak implementacji metody findEachUserWithBookInWantList
+    @Ignore
+    public void findEachUserWithBookInWantListTest() {
+
+        //Test analogiczny do testu wyzej
+        List<User> list = bookDAO.findEachUserWithBookInWantList(3);
+
+        Assert.assertEquals(1, list.size());
+        Assert.assertTrue(list.get(0).getName().equals("Jarke"));
+    }
+
+    @Test(expected = ConstraintViolationException.class)
+    public void saveWithNullPropertyTest() {
+
+        bookDAO.save(new Book());
     }
 
 }
