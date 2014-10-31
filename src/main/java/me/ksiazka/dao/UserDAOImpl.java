@@ -1,6 +1,7 @@
 package me.ksiazka.dao;
 
 import me.ksiazka.model.*;
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,11 +79,15 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    @Transactional
     public User findUserByEmail(String email) {
         String query = "FROM User where email=:email";
         Query userQuery = this.sessionFactory.getCurrentSession().createQuery(query);
         List list = userQuery.setParameter("email", email).list();
-
-        return list.isEmpty()?null:(User)list.get(0);
+        User user = (User)list.get(0);
+        Hibernate.initialize(user.getRoles());
+        return list.isEmpty()?null:user;
     }
+
+
 }

@@ -9,23 +9,22 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Service("authService")
 public class AuthServiceImpl implements UserDetailsService {
 
     @Autowired
-    private UserDAO userDao;
+    private UserService userService;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        me.ksiazka.model.User user = userDao.findUserByEmail(email);
+        me.ksiazka.model.User user = userService.findUserByEmail(email);
         List<GrantedAuthority> authorities = buildUserAuthority(user.getRoles());
 
         return buildUserForAuth(user, authorities);
@@ -38,14 +37,27 @@ public class AuthServiceImpl implements UserDetailsService {
 
     private List<GrantedAuthority> buildUserAuthority(List<UserRole> userRoles){
 
-        Set<GrantedAuthority> setAuth = new HashSet<GrantedAuthority>();
+        List<GrantedAuthority> setAuth = new ArrayList<GrantedAuthority>();
 
+        //Przepisanie wszystkich roli uzytkownika.
         for(UserRole userRole : userRoles){
             setAuth.add(new SimpleGrantedAuthority(userRole.getRole()));
         }
 
-        List<GrantedAuthority> result = new ArrayList<GrantedAuthority>(setAuth);
+        return setAuth;
+    }
 
-        return result;
+    private String hashPassword(String pass){
+        String hashedPass = BCrypt.hashpw(pass, BCrypt.gensalt());
+        return hashedPass;
+    }
+
+    public void saveUser(me.ksiazka.model.User user){
+        UserRole userRole = new UserRole();
+        userRole.setRole("ROLE_USER");
+        user.setPassword(hashPassword(user.getPassword()));
+        userRole.setUser(user);
+        user.getRoles().add(userRole);
+        userService.save(user);
     }
 }

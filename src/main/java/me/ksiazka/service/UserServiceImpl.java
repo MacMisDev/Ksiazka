@@ -2,6 +2,7 @@ package me.ksiazka.service;
 
 import me.ksiazka.dao.UserDAO;
 import me.ksiazka.model.User;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +37,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(User toDelete) {
 
+    }
+
+    @Override
+    public User findUserByEmail(String email) {
+        User user = userDAO.findUserByEmail(email);
+
+        return user;
     }
 }

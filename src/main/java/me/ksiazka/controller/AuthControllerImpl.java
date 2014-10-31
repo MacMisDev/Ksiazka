@@ -1,6 +1,9 @@
 package me.ksiazka.controller;
 
+import me.ksiazka.dao.UserDAO;
 import me.ksiazka.model.User;
+import me.ksiazka.model.UserRole;
+import me.ksiazka.service.AuthServiceImpl;
 import me.ksiazka.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -15,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AuthControllerImpl implements AuthController{
 
     @Autowired
-    private UserService userService;
+    private AuthServiceImpl authService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
@@ -38,26 +41,12 @@ public class AuthControllerImpl implements AuthController{
     public String registerDone(User user, BindingResult bindingResult){
 
         if(!bindingResult.hasErrors()){
-            user.setPassword(hashPassword(user.getPassword()));
-            //ustawienie role
-            userService.save(user);
+            authService.saveUser(user);
         }else{
             return "register";
         }
 
-        return "login";
+        return "redirect:/login";
     }
 
-    private boolean comparePasswords(String hashedPassword, String plainPassword){
-        if(BCrypt.checkpw(plainPassword, hashedPassword)){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    private String hashPassword(String pass){
-        String hashedPass = BCrypt.hashpw(pass, BCrypt.gensalt());
-        return hashedPass;
-    }
 }
