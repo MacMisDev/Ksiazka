@@ -70,14 +70,13 @@ public class UserDAOTest {
     }
 
     @Test
-    //Brak implementacji saveUser
-    @Ignore
     public void addUserTest() {
 
         User user = new User();
         user.setName("Wojtek");
-        user.setName("Nowak");
-        user.setEmail("wojtek@py.py");
+        user.setSurname("Nowak");
+        user.setEmail("Wojtek@py.py");
+        user.setPassword("wojtek.py"); //cannot be null
 
         long id = userDAO.save(user);
 
@@ -85,6 +84,7 @@ public class UserDAOTest {
         Assert.assertEquals("Wojtek", retrivedUser.getName());
         Assert.assertEquals("Nowak", retrivedUser.getSurname());
         Assert.assertEquals("Wojtek@py.py", retrivedUser.getEmail());
+        Assert.assertEquals("wojtek.py", retrivedUser.getPassword());
     }
 
     @Test

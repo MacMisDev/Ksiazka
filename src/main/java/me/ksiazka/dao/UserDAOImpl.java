@@ -38,8 +38,7 @@ public class UserDAOImpl implements UserDAO {
     @Override
     @Transactional
     public long save(User toSave) {
-        this.sessionFactory.getCurrentSession().save(toSave);
-        return toSave.getId();
+        return (Long) this.sessionFactory.getCurrentSession().save(toSave);
     }
 
     @Override
@@ -53,6 +52,7 @@ public class UserDAOImpl implements UserDAO {
     public List<User> getAll() {
         String query = "FROM User";
         List list = (List<User>) this.sessionFactory.getCurrentSession().createQuery(query).list();
+
         return list;
     }
 
