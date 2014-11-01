@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 
 
 public interface UserController {
+    public String showHomePage(Model model);
     public String showUserPage(Long id, Model model);
     public String editUserData(Long id, Model model);
     public String updateEditedUser(User user);

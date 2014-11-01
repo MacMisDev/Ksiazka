@@ -7,11 +7,6 @@ package me.ksiazka.controller;
 @Controller("homeController")
 public class StaticPagesControllerImpl implements StaticPagesController {
 
-    @RequestMapping(value = {"/", "home"}, method = RequestMethod.GET)
-    public String showHomePage() {
-        return "home";
-    }
-
     @RequestMapping(value = "/about", method = RequestMethod.GET)
     public String showAbout() {
         return "about";
