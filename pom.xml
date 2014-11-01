@@ -234,7 +234,7 @@
 
     </dependencies>
 
-  <build>
+    <build>
 
       <resources>
           <resource>
@@ -262,6 +262,6 @@
               </configuration>
           </plugin>
       </plugins>
-  </build>
+    </build>
 
 </project>
