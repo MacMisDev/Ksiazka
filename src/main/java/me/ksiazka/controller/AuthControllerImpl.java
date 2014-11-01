@@ -25,7 +25,7 @@ public class AuthControllerImpl implements AuthController{
     }
 
     @RequestMapping(value = "/login", params = "error", method = RequestMethod.GET)
-    public String loginError(@RequestParam(value = "error", defaultValue = "Wrong email or password!") String error, Model model) {
+    public String login(@RequestParam(value = "error", defaultValue = "Wrong email or password!") String error, Model model) {
         model.addAttribute("error", error);
         return "login";
     }
@@ -37,7 +37,7 @@ public class AuthControllerImpl implements AuthController{
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String registerDone(User user, BindingResult bindingResult){
+    public String register(User user, BindingResult bindingResult){
 
         if(!bindingResult.hasErrors()){
             authService.includeRoles(user);

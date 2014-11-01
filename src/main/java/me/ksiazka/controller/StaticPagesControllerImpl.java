@@ -5,7 +5,7 @@ package me.ksiazka.controller;
         import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller("homeController")
-public class HomeControllerImpl implements HomeController{
+public class StaticPagesControllerImpl implements StaticPagesController {
 
     @RequestMapping(value = {"/", "home"}, method = RequestMethod.GET)
     public String showHomePage() {
