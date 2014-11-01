@@ -4,7 +4,7 @@ package me.ksiazka.controller;
         import org.springframework.web.bind.annotation.RequestMapping;
         import org.springframework.web.bind.annotation.RequestMethod;
 
-@Controller("homeController")
+@Controller("staticPageController")
 public class StaticPagesControllerImpl implements StaticPagesController {
 
     @RequestMapping(value = "/about", method = RequestMethod.GET)
