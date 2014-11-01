@@ -2,3 +2,4 @@
 src/main/webapp/db.properties
 *.class
 .idea/workspace.xml
+target/*
