@@ -30,6 +30,8 @@ public class User {
     private List<Address> addressList = new ArrayList<Address>(0);
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<UserRole> roles = new ArrayList<UserRole>(0);
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Message> messages = new ArrayList<Message>(0);
 
     public Long getId() {
         return id;
@@ -109,5 +111,13 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
     }
 }

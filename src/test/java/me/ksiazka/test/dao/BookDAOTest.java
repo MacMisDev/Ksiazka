@@ -154,7 +154,6 @@ public class BookDAOTest {
 
 
     @Test
-    //Brak implementacji metody findEachUserWithBookInHaveListTest
     @Ignore
     public void findEachUserWithBookInHaveListTest() {
 

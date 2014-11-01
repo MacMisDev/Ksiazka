@@ -64,12 +64,14 @@ public class BookDAOImpl implements BookDAO {
     //znajduje sie w dao
     @Override
     public List<User> findEachUserWithBookInHaveList(long bookId) {
+        
         return null;
     }
 
     //j.w.
     @Override
     public List<User> findEachUserWithBookInWantList(long bookId) {
-        return null;
+
+         return null;
     }
 }
