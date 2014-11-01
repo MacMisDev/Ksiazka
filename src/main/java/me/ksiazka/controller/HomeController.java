@@ -1,7 +1,7 @@
 package me.ksiazka.controller;
 
+import org.springframework.ui.Model;
+
 public interface HomeController {
-    public String showHomePage();
-    public String showAbout();
-    public String showContact();
+    public String showHomePage(Model model);
 }

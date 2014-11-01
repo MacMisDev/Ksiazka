@@ -1,6 +1,5 @@
 package me.ksiazka.service;
 
-import me.ksiazka.dao.UserDAO;
 import me.ksiazka.model.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

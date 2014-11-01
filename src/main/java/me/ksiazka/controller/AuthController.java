@@ -6,7 +6,7 @@ import org.springframework.validation.BindingResult;
 
 public interface AuthController {
     public String login();
-    public String loginError(String error, Model model);
+    public String login(String error, Model model);
     public String register(Model model);
-    public String registerDone(User user, BindingResult bindingResult);
+    public String register(User user, BindingResult bindingResult);
 }
