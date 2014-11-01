@@ -107,7 +107,6 @@ public class BookDAOTest {
     //Test sprawdza usuniecie ksiazki i kaskadowe usuniecie z listy have i want.
     @Test
     //Konfiguracja kaskadowego usuwania jest do zrobienia
-    @Ignore
     public void deleteBookTest() {
 
         //Pobranie uzytkownika w celu ulatwienia testowania

@@ -25,7 +25,7 @@ public class Book {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private BookStatus bookStatus;
-    @ManyToMany(mappedBy = "booksWant")
+    @ManyToMany(mappedBy = "booksWant", cascade = CascadeType.ALL)
     private List<User> user = new ArrayList<User>(0);
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private List<UserBook> bookList = new ArrayList<UserBook>(0);
