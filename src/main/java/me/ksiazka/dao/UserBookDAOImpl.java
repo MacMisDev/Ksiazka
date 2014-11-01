@@ -21,7 +21,10 @@ public class UserBookDAOImpl implements UserBookDAO {
 
     @Override
     public UserBook get(long id) {
-        return null;
+
+        UserBook ub = (UserBook) this.sessionFactory.getCurrentSession().get(UserBook.class, id);
+        return ub;
+
     }
 
     @Override
