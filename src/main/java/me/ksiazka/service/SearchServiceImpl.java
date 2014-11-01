@@ -1,5 +1,6 @@
 package me.ksiazka.service;
 
+import me.ksiazka.dao.BookDAO;
 import me.ksiazka.dao.UserDAO;
 import me.ksiazka.model.Book;
 import me.ksiazka.model.User;
@@ -18,6 +19,10 @@ public class SearchServiceImpl implements SearchService {
 
     @Autowired
     UserDAO userDAO;
+    @Autowired
+    BookDAO bookDAO;
+    @Autowired
+    SessionFactory sessionFactory;
 
     @Override
     @Transactional
@@ -42,9 +47,8 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    @Autowired
     @Transactional
-    public void reindex(SessionFactory sessionFactory) throws InterruptedException {
+    public void reindex() throws InterruptedException {
 
         FullTextSession fullTextSession = Search.getFullTextSession(sessionFactory.getCurrentSession());
         fullTextSession.createIndexer().startAndWait();

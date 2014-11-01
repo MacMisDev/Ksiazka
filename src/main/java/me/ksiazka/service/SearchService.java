@@ -23,6 +23,6 @@ public interface SearchService {
     public List<Book> searchByAutohor(String author);
 
     //Wykonaj reindexowanie
-    public void reindex(SessionFactory sessionFactory) throws InterruptedException;
+    public void reindex() throws InterruptedException;
 
 }

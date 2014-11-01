@@ -14,6 +14,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -34,7 +35,7 @@ import java.util.List;
         DbUnitTestExecutionListener.class })
 @DatabaseSetup("classpath:/testsDataset.xml")
 @EnableTransactionManagement
-@TransactionConfiguration(defaultRollback = false)
+@TransactionConfiguration(defaultRollback = true)
 @Transactional
 public class UserDAOTest {
 
@@ -157,7 +158,7 @@ public class UserDAOTest {
         Assert.assertNull(nuser);
     }
 
-    @Test(expected = ConstraintViolationException.class)
+    @Test(expected = DataIntegrityViolationException.class)
     public void saveWithNullPropertyTest() {
 
         userDAO.save(new User());
@@ -169,15 +170,15 @@ public class UserDAOTest {
     @Ignore
     public void searchByEmailTest() {
 
-        List<User> u = null;
-        try {
-            u = userDAO.searchByEmail("jarke@jarke.jr");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println(":: " + u.size());
-        System.out.println(":: " + u.get(0).getName());
+//        List<User> u = null;
+//        try {
+//            u = userDAO.searchByEmail("jarke@jarke.jr");
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//
+//        System.out.println(":: " + u.size());
+//        System.out.println(":: " + u.get(0).getName());
 
     }
 }

@@ -105,9 +105,10 @@ public class UserDAOImpl implements UserDAO {
         return user;
     }
 
-    //Zostanie przeniesione do search service, plz dont touch
-//    @Override
-//    public List<User> searchByEmail(String email) throws InterruptedException {
+
+    //Plz dont touch now
+    @Override
+    public List<User> searchByEmail(String email) throws InterruptedException {
 //
 //        FullTextSession fullTextSession = Search.getFullTextSession(sessionFactory.getCurrentSession());
 //        QueryBuilder queryBuilder = fullTextSession.getSearchFactory().buildQueryBuilder().forEntity(User.class).get();
@@ -118,6 +119,7 @@ public class UserDAOImpl implements UserDAO {
 //        System.out.println(":: " + usersIndexed);
 //
 //        return fullTextQuery.list();
-//    }
+        return null;
+    }
 
 }

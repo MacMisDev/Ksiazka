@@ -10,4 +10,7 @@ public interface UserDAO extends BasicDAOInterface<User> {
 
     //Jesli uzytkownik o podanym emailu istnieje to go zwraca, jesl nie to zwraca null
     public User findUserByEmail(String email);
+
+    //Wyszukiwanie po emailu
+    public List<User> searchByEmail(String email) throws InterruptedException;
 }
