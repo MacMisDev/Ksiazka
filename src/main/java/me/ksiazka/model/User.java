@@ -32,6 +32,12 @@ public class User {
     private List<UserRole> roles = new ArrayList<UserRole>(0);
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Message> messages = new ArrayList<Message>(0);
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="UserOffer",
+            joinColumns = @JoinColumn(name="userId"),
+            inverseJoinColumns = @JoinColumn(name="offerId")
+    )
+    private List<Offer> offerList = new ArrayList<Offer>(0);
 
     public Long getId() {
         return id;
@@ -119,5 +125,13 @@ public class User {
 
     public void setMessages(List<Message> messages) {
         this.messages = messages;
+    }
+
+    public List<Offer> getOfferList() {
+        return offerList;
+    }
+
+    public void setOfferList(List<Offer> offerList) {
+        this.offerList = offerList;
     }
 }
