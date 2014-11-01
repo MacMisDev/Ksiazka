@@ -66,11 +66,10 @@ public class UserDAOTest {
     }
 
     @Test
-    //Brak implementacji getAll
-    @Ignore
     public void getAllUsersTest() {
 
         Assert.assertEquals((int) usersInDatabse, userDAO.getAll().size());
+
     }
 
     @Test
@@ -94,22 +93,13 @@ public class UserDAOTest {
     }
 
     @Test
-    //Brak implementacji deleteUser
-    @Ignore
     public void deleteUserTest() {
 
-        //Porzadny opis testu specjalnie dla Krzysia bo nie kuma i robi mi
-        //gowno-metody w dao.
-        //Najpierw sprawdzamy czy uzytkownik, ktorego chcemy usunac w ogole
-        //istnieje w bazie.
         Assert.assertNotNull(userDAO.get(1));
-        //Potem przygotowujemy sie do sprawdzenia dzialania kaskadowego usuwania.
-        //Sprawdzamy czy ilosc ksiazek na liscie have sie zgadza, powinny byc 2
         Assert.assertEquals(2, userDAO.get(1).getBooksHave().size());
 
-        //Teraz usuwamy
         userDAO.delete(1);
-        //Sprawdzamy czy uzytkownik zostal usuniety
+
         Assert.assertNull(userDAO.get(1));
         //Uzytkownik posiadal w swojej liscie have ksiazki z encji UserBook o id 1 i 3
         //Sprawdzamy czy sie usunely.

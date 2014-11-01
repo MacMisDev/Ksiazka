@@ -5,3 +5,4 @@ src/searching_indexes
 #
 *.class
 .idea/workspace.xml
+target/*
