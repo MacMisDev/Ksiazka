@@ -120,6 +120,32 @@
     <orderEntry type="library" name="Maven: org.webjars:bootstrap:3.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:jquery:2.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:animate.css:3.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate:hibernate-search-orm:4.5.1.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate:hibernate-search-engine:4.5.1.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate:hibernate-search-analyzers:4.5.1.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-core:3.6.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-analyzers:3.6.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.solr:solr-analysis-extras:3.6.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.solr:solr-core:3.6.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.solr:solr-solrj:3.6.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-highlighter:3.6.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-memory:3.6.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-kuromoji:3.6.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-misc:3.6.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-phonetic:3.6.2" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.6" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-spatial:3.6.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-spellchecker:3.6.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-grouping:3.6.2" level="project" />
+    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-smartcn:3.6.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-stempel:3.6.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.avro:avro:1.7.6" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.13" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.13" level="project" />
+    <orderEntry type="library" name="Maven: com.thoughtworks.paranamer:paranamer:2.3" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-compress:1.4.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-facet:3.6.2" level="project" />
   </component>
 </module>
 

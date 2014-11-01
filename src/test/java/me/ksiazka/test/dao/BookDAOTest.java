@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
@@ -179,7 +180,7 @@ public class BookDAOTest {
         Assert.assertTrue(list.get(0).getName().equals("Jarke"));
     }
 
-    @Test(expected = ConstraintViolationException.class)
+    @Test(expected = DataIntegrityViolationException.class)
     public void saveWithNullPropertyTest() {
 
         bookDAO.save(new Book());

@@ -1,11 +1,15 @@
 package me.ksiazka.model;
 
+import org.hibernate.search.annotations.*;
+import org.hibernate.search.annotations.Index;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name="Book")
+@Indexed
 public class Book {
 
     @Id
@@ -13,9 +17,12 @@ public class Book {
     @Column(name = "bookId")
     private Long id;
     @Column(nullable = false)
+    @Field(index = Index.YES, analyze=Analyze.YES, store=Store.NO)
     private String title;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String ISBN;
+    @Column(nullable = false)
+    @Field(index = Index.YES, analyze=Analyze.YES, store=Store.NO)
     private String author;
     private String publisher;
     @Column(length = 1000)

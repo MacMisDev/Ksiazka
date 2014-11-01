@@ -37,8 +37,8 @@
         <property name="url" value="${db.url}" />
         <property name="username" value="${db.username}" />
         <property name="password" value="${db.password}" />
-        <property name="initialSize" value="1" />
-        <property name="maxActive" value="5" />
+        <property name="initialSize" value="5" />
+        <property name="maxActive" value="100" />
     </bean>
 
     <!-- Hibernate 4 SessionFactory Bean definition -->
@@ -54,6 +54,9 @@
                 <prop key="hibernate.cache.use_second_level_cache">true</prop>
                 <prop key="hibernate.cache.use_query_cache">true</prop>
                 <prop key="hibernate.hbm2ddl.auto">create</prop>
+
+                <prop key="hibernate.search.default.directory_provider">filesystem</prop>
+                <prop key="hibernate.search.default.indexBase">src/searching_indexes</prop>
             </props>
         </property>
     </bean>
