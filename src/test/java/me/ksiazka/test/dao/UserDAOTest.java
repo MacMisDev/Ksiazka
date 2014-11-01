@@ -62,11 +62,10 @@ public class UserDAOTest {
     }
 
     @Test
-    //Brak implementacji getAll
-    @Ignore
     public void getAllUsersTest() {
 
         Assert.assertEquals((int) usersInDatabse, userDAO.getAll().size());
+
     }
 
     @Test
