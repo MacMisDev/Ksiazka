@@ -2,10 +2,11 @@ package me.ksiazka.dao;
 
 import me.ksiazka.model.Offer;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Component
+@Repository
 public class OfferDAOImpl implements OfferDAO {
 
     @Override

@@ -19,7 +19,9 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -31,6 +33,8 @@ import java.util.List;
         TransactionalTestExecutionListener.class,
         DbUnitTestExecutionListener.class })
 @DatabaseSetup("classpath:/testsDataset.xml")
+@EnableTransactionManagement
+@TransactionConfiguration(defaultRollback = false)
 @Transactional
 public class UserDAOTest {
 
@@ -75,7 +79,8 @@ public class UserDAOTest {
         User user = new User();
         user.setName("Wojtek");
         user.setSurname("Nowak");
-        user.setEmail("Wojtek@py.py");
+        user.setUsername("wojtekN");
+        user.setEmail("Wojtek@py.py lolada heldan");
         user.setPassword("wojtek.py"); //cannot be null
 
         long id = userDAO.save(user);
@@ -83,7 +88,8 @@ public class UserDAOTest {
         User retrivedUser = userDAO.get(id);
         Assert.assertEquals("Wojtek", retrivedUser.getName());
         Assert.assertEquals("Nowak", retrivedUser.getSurname());
-        Assert.assertEquals("Wojtek@py.py", retrivedUser.getEmail());
+        Assert.assertEquals("wojtekN", retrivedUser.getUsername());
+        Assert.assertEquals("Wojtek@py.py lolada heldan", retrivedUser.getEmail());
         Assert.assertEquals("wojtek.py", retrivedUser.getPassword());
     }
 
@@ -165,5 +171,23 @@ public class UserDAOTest {
     public void saveWithNullPropertyTest() {
 
         userDAO.save(new User());
+    }
+
+    @Test
+    //Test do przeniesienia w inna klase z @Before.
+    //WAZNE! Niekompatybilny z @DatabaseSetup
+    @Ignore
+    public void searchByEmailTest() {
+
+        List<User> u = null;
+        try {
+            u = userDAO.searchByEmail("jarke@jarke.jr");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(":: " + u.size());
+        System.out.println(":: " + u.get(0).getName());
+
     }
 }

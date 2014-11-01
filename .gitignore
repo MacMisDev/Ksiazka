@@ -1,4 +1,7 @@
 # Ignore db.properties
 src/main/webapp/db.properties
+# Ignore searching_indexes
+src/searching_indexes
+#
 *.class
 .idea/workspace.xml

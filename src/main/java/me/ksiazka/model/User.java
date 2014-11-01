@@ -1,10 +1,14 @@
 package me.ksiazka.model;
 
+import org.hibernate.search.annotations.*;
+import org.hibernate.search.annotations.Index;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Indexed
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,9 +18,12 @@ public class User {
     private String name;
     private String surname;
     @Column(nullable = false, unique = true)
+    @Field(index = Index.YES, analyze=Analyze.YES, store=Store.NO)
     private String email;
     @Column(nullable = false)
     private String password;
+    @Column(nullable = false, unique = true)
+    @Field(index = Index.YES, analyze=Analyze.YES, store=Store.NO)
     private String username;
     @ManyToMany
     @JoinTable(name = "booksWant",

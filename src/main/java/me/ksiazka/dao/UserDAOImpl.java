@@ -1,21 +1,29 @@
 package me.ksiazka.dao;
 
 import me.ksiazka.model.*;
+import org.hibernate.CacheMode;
 import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.hibernate.search.FullTextSession;
+import org.hibernate.search.Search;
+import org.hibernate.search.jpa.FullTextEntityManager;
+import org.hibernate.search.query.dsl.QueryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Repository
 public class UserDAOImpl implements UserDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
+
+    static private boolean usersIndexed = false;
 
 //    @Override
 //    public List<UserBook> getUserHaveList(long userId) {
@@ -95,5 +103,19 @@ public class UserDAOImpl implements UserDAO {
         return user;
     }
 
+    //Zostanie przeniesione do search service, plz dont touch
+//    @Override
+//    public List<User> searchByEmail(String email) throws InterruptedException {
+//
+//        FullTextSession fullTextSession = Search.getFullTextSession(sessionFactory.getCurrentSession());
+//        QueryBuilder queryBuilder = fullTextSession.getSearchFactory().buildQueryBuilder().forEntity(User.class).get();
+//
+//        org.apache.lucene.search.Query lQuery = queryBuilder.keyword().onFields("email").matching(email).createQuery();
+//        org.hibernate.Query fullTextQuery = fullTextSession.createFullTextQuery(lQuery, User.class);
+//
+//        System.out.println(":: " + usersIndexed);
+//
+//        return fullTextQuery.list();
+//    }
 
 }
