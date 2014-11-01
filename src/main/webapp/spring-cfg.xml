@@ -27,7 +27,7 @@
 
     <!-- Spring mvc -->
     <mvc:resources mapping="/resources/**" location="/resources/" />
-    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
+    <mvc:resources mapping="/webjars/**" location="/webjars/"/>
     <mvc:annotation-driven />
 
     <!-- DataSource -->
