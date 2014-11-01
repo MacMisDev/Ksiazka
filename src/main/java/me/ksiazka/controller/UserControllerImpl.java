@@ -16,11 +16,6 @@ public class UserControllerImpl implements UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = {"/", "home"}, method = RequestMethod.GET)
-    public String showHomePage(Model model) {
-        return "home";
-    }
-
     public String showUserPage(Long id, Model model) {
         return null;
     }
