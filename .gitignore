@@ -4,14 +4,17 @@ src/main/webapp/db.properties
 # Ignore searching_indexes
 src/searching_indexes
 
-#IntelliJ
+#Compiled
+*.class
+
+# Maven
+target/
+*.ser
+*.ec
+
+# IntelliJ Idea
 .idea/
 out/
 *.ipr
 *.iws
 *.iml
-
-#
-*.class
-.idea/workspace.xml
-target/*

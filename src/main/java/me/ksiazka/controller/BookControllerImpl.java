@@ -14,18 +14,17 @@ public class BookControllerImpl implements BookController {
     @Autowired
     BookService bookService;
 
-    public String showBook(Long id, Model model) { return null; }
+    public String list(Model model) { return null; }
 
+    public String showBook(Long id, Model model) { return null; }
 
     public String addBookToSystem(Model model) {
         return null;
     }
 
-
     public String addedBookToSystem(Book book) {
         return null;
     }
-
 
     public String deleteBook(Long bookId) {
         return null;
