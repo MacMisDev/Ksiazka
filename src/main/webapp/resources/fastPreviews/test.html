@@ -2,9 +2,8 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <link rel='stylesheet' href='style.css'/>
-    <script type='text/javascript' src='jquery-2.1.1.js'></script>
-    <script type='text/javascript' src='UI.js'></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.css">
+    <link rel='stylesheet' href='../css/style.css'/>
     <title></title>
 </head>
 <body>
@@ -17,7 +16,7 @@
 
 
     <div id="pageContentWrapper">
-        <main class="contentManager">sdfsdfds
+        <main class="contentManager">
             <!--<div style="margin-top:100px;border:2px solid red;">dsdsd</div>-->
             <div id="loginWrapper">
 
@@ -25,6 +24,30 @@
 
                     <div id="loginBookLockedImage"></div>
                     <div id="ribbon"><p>Hello Motherfucker!</p></div>
+                    <form method="post" name="f" action="${auth}">
+
+                        <div class="form-group">
+                            <p>Username</p>
+                            <input type="text" name="j_username" id="username"/>
+                        </div>
+                        <div class="form-group">
+                            <p>Password</p>
+                            <input type="password" name="j_password" id="password"/>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" name="commit" value="Submit" class="btn btn-default"> Login</button>
+                            <button type="submit" name="commit" value="Submit" class="btn btn-default"> Login</button>
+                        </div>
+
+                        href="<s:url value="/register" />"
+                        <div class="checkbox">
+                            <label><input type="checkbox" name="_spring_security_remember_me" id="remember_me"> Remember
+                                me</label>
+                        </div>
+
+                    </form>
+
+
                 </div>
 
             </div>
@@ -36,4 +59,8 @@
 
 
 </body>
+
+<script type='text/javascript' src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type='text/javascript' src="maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script type='text/javascript' src='../js/UI.js'></script>
 </html>

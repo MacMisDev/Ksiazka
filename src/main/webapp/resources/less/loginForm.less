@@ -30,6 +30,47 @@
   height: 600px;
   width: 470px;
   margin: 0 auto;
+  .btn-default:first-child {
+    width: 180px;
+    height: 50px;
+    margin-left: 10px;
+    font-size: 1.25em;
+    background-color: @base;
+    color:@white;
+    font-weight: lighter;
+    font-family: 'Lato', sans-serif;
+    &:hover{
+      background-color: lighten(@base,3%);
+      border-color: @base;
+    }
+  }
+  .btn-default:nth-child(2){
+    width: 180px;
+    height: 50px;
+    margin-left: 15px;
+    font-size: 1.25em;
+    font-weight: lighter;
+  }
+  .form-group {
+    width: 400px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    input {
+      margin-left: 10px;
+      width: 380px;
+      text-align: center;
+    }
+    p {
+      width: 380px;
+      margin: 0 auto;
+      padding-left: 1px;
+    }
+  }
+  form {
+    position: relative;
+    top: 220px;
+  }
+
   //border: 4px solid mediumvioletred; only for testing
   .alphaColorBackground(@white, 0.85);
   .transition-duration(0.4s);
@@ -70,34 +111,35 @@
   }
 }
 
-#ribbon{
-  width:510px;
-  height:64px;
+#ribbon {
+  width: 510px;
+  height: 64px;
   position: absolute;
   margin-left: -20px;
   margin-top: 90px;
-  color:@white;
+  color: @white;
+  font-size: 1.0em;
   background: url("../images/ribbonLoginPage.png") no-repeat;
   -moz-background-size: cover;
   background-size: cover;
 
-  p{
-    width:320px;
-    height:15px;
-    margin:0 auto;
-    margin-top:12px;
+  p {
+    width: 320px;
+    height: 15px;
+    margin: 0 auto;
+    margin-top: 12px;
     text-align: center;
     @media @tablet {
-      width:85/100*320px;
-      height:85/100*15px;
-      margin-top:8px;
+      width: 85/100*320px;
+      height: 85/100*15px;
+      margin-top: 8px;
     }
   }
 
   @media @tablet {
-    width:85/100 * 510px;
+    width: 85/100 * 510px;
     height: 85/100 * 64px;
-    margin-left:-18px;
+    margin-left: -18px;
     margin-top: 85/100 * 90px;
     -moz-background-size: cover;
     background-size: cover;
