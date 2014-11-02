@@ -21,7 +21,7 @@
         <intercept-url pattern="/about" access="permitAll" />
         <intercept-url pattern="/webjars/**" access="isAnonymous() or hasRole('ROLE_USER')" />
         <intercept-url pattern="/resources/**" access="isAnonymous() or hasRole('ROLE_USER')" />
-        <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
 
         <access-denied-handler error-page="/accessDenied" />
