@@ -7,11 +7,13 @@ package me.ksiazka.controller;
 @Controller("staticPageController")
 public class StaticPagesControllerImpl implements StaticPagesController {
 
+    @Override
     @RequestMapping(value = "/about", method = RequestMethod.GET)
     public String showAbout() {
         return "about";
     }
 
+    @Override
     @RequestMapping(value = "/contact", method = RequestMethod.GET)
     public String showContact() {
         return "contact";

@@ -16,31 +16,32 @@ public class UserControllerImpl implements UserController {
     @Autowired
     UserService userService;
 
+    @Override
     public String showUserPage(Long id, Model model) {
         return null;
     }
 
-
+    @Override
     public String editUserData(Long id, Model model) {
         return null;
     }
 
-
+    @Override
     public String updateEditedUser(User user) {
         return null;
     }
 
-
+    @Override
     public String deleteAccount(Model model) {
         return null;
     }
 
-
+    @Override
     public String acceptTrade(Long tradeId) {
         return null;
     }
 
-
+    @Override
     public String declineTrade(Long tradeId) {
         return null;
     }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller("homeController")
 public class HomeControllerImpl implements HomeController{
 
+    @Override
     @RequestMapping(value = {"/", "home"}, method = RequestMethod.GET)
     public String showHomePage(Model model) {
         return "home";

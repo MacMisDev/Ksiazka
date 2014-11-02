@@ -21,23 +21,27 @@ public class AuthControllerImpl implements AuthController{
     @Autowired
     private UserService userService;
 
+    @Override
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
         return "login";
     }
 
+    @Override
     @RequestMapping(value = "/login", params = "error", method = RequestMethod.GET)
     public String login(@RequestParam(value = "error", defaultValue = "Zly email albo haslo!") String error, Model model) {
         model.addAttribute("error", error);
         return "login";
     }
 
+    @Override
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register(Model model) {
         model.addAttribute("user", new User());
         return "register";
     }
 
+    @Override
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(@Valid User user, BindingResult bindingResult){
 
@@ -51,6 +55,7 @@ public class AuthControllerImpl implements AuthController{
         return "redirect:/login";
     }
 
+    @Override
     @RequestMapping(value = "/login", params = "logout", method = RequestMethod.GET)
     public String logout(@RequestParam(value = "logout", defaultValue = "Wylogowano!") String info, Model model) {
         model.addAttribute("logout", info);
