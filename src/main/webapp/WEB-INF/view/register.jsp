@@ -22,6 +22,11 @@
                         <td><sf:errors path="name" cssClas="error" /></td>
                     </tr>
                     <tr>
+                        <td><label>username: </label></td>
+                        <td><sf:input path="username" id="username" /></td>
+                        <td><sf:errors path="username" cssClas="error" /></td>
+                    </tr>
+                    <tr>
                         <td><label>password: </label></td>
                         <td><sf:password path="password" id="password" /></td>
                         <td><sf:errors path="password" cssClas="error" /></td>
