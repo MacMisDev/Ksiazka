@@ -18,4 +18,10 @@ public class StaticPagesControllerImpl implements StaticPagesController {
     public String showContact() {
         return "contact";
     }
+
+    @Override
+    @RequestMapping(value = "/accessDenied")
+    public String accessDeniec() {
+        return "403";
+    }
 }

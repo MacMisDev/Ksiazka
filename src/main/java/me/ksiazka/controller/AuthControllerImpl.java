@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller("authController")
 public class AuthControllerImpl implements AuthController{
@@ -23,8 +24,12 @@ public class AuthControllerImpl implements AuthController{
 
     @Override
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login() {
-        return "login";
+    public String login(Principal principal) {
+        if(principal != null){
+            return "redirect:/home";
+        }else{
+            return "login";
+        }
     }
 
     @Override
