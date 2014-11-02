@@ -27,18 +27,18 @@
 }
 
 #loginGroup {
-  height: 600px;
+  height: 550px;
   width: 470px;
   margin: 0 auto;
   .btn-default:first-child {
     width: 180px;
     height: 50px;
     margin-left: 10px;
-    font-size: 1.25em;
     background-color: @base;
     color:@white;
+    font-size: 1.45em;
     font-weight: lighter;
-    font-family: 'Lato', sans-serif;
+    line-height: 0.5;
     &:hover{
       background-color: lighten(@base,3%);
       border-color: @base;
@@ -48,8 +48,9 @@
     width: 180px;
     height: 50px;
     margin-left: 15px;
-    font-size: 1.25em;
+    font-size: 1.45em;
     font-weight: lighter;
+    line-height: 1.2;
   }
   .form-group {
     width: 400px;
@@ -66,6 +67,12 @@
       padding-left: 1px;
     }
   }
+
+  .form-group:nth-child(3){
+    .form-group();
+    margin-top: 50px;
+  }
+
   form {
     position: relative;
     top: 220px;

@@ -7,7 +7,7 @@
 <tiles:insertDefinition name="template">
 
     <tiles:putAttribute name="content">
-        <div>
+        <%--<div>
             <p>Please login!</p>
             <spring:url var="auth" value="/static/j_spring_security_check" />
 
@@ -43,6 +43,56 @@
             <script type="text/javascript">
                 document.getElementsByName('username').focus();
             </script>
+        </div>--%>
+        <spring:url var="auth" value="/static/j_spring_security_check" />
+        <div id="wrapper">
+            <nav>
+                <div id='hideShowButton' class="menuButton">
+                    sd
+                </div>
+            </nav>
+
+
+            <div id="pageContentWrapper">
+                <main class="contentManager">
+                    <!--<div style="margin-top:100px;border:2px solid red;">dsdsd</div>-->
+                    <div id="loginWrapper">
+
+                        <div id="loginGroup">
+
+                            <div id="loginBookLockedImage"></div>
+                            <div id="ribbon"><p>Hello Motherfucker!</p></div>
+                            <form method="post" name="f" action="${auth}">
+                                <fieldset>
+                                <div class="form-group">
+                                    <p>Username</p>
+                                    <input type="text" name="j_username" id="username"/>
+                                </div>
+                                <div class="form-group">
+                                    <p>Password</p>
+                                    <input type="password" name="j_password" id="password"/>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" name="commit" class="btn btn-default">Log In</button>
+                                    <a  href="<s:url value="/register" />" class="btn btn-default"> Sign Up</a >
+                                </div>
+
+
+
+                                <input class="css-checkbox" type="checkbox" name="_spring_security_remember_me" id="remember_me">
+                                <label for="remember_me" class="css-label">Remember me</label>
+
+                            </fieldset>
+                            </form>
+
+
+                        </div>
+
+                    </div>
+
+                </main>
+                <!--<div class="spliterContent"></div>-->
+            </div>
         </div>
 
     </tiles:putAttribute>
