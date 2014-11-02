@@ -19,7 +19,7 @@ public class BookControllerImpl implements BookController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model) {
 
-        return "list";
+        return "book/list";
     }
 
     @Override
