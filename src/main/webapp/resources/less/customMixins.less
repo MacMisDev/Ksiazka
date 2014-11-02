@@ -1,0 +1,10 @@
+//Custom Mixins
+
+.alphaColorBackground(@color,@alpha) {
+  @rgba: rgba(red(@color), green(@color), blue(@color),@alpha);
+  @argb: argb(@rgba);
+  background-color: @color;
+  background-color: @rgba;
+}
+
+//---------------------------------- end of Custom Mixins
