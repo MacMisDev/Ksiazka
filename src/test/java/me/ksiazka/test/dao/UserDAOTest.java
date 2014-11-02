@@ -2,14 +2,11 @@ package me.ksiazka.test.dao;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
-import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import junit.framework.Assert;
-import me.ksiazka.dao.BookDAO;
 import me.ksiazka.dao.UserBookDAO;
 import me.ksiazka.dao.UserDAO;
 import me.ksiazka.model.*;
-import org.hibernate.exception.ConstraintViolationException;
-import org.junit.Ignore;
+import me.ksiazka.service.SearchService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +22,6 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:/spring-cfg.xml", "classpath:/spring-tests-cfg.xml"})
@@ -73,6 +69,9 @@ public class UserDAOTest {
 
     }
 
+    @Autowired
+    SearchService searchService;
+
     @Test
     public void addUserTest() {
 
@@ -118,7 +117,7 @@ public class UserDAOTest {
     public void updateUserTest() {
 
        User user = userDAO.get(2);
-       Assert.assertFalse(user.getEmail() == "wojtek.py");
+       Assert.assertFalse(user.getEmail().equals("wojtek.py"));
        user.setEmail("wojtek.py");
        userDAO.update(user);
 
@@ -164,21 +163,4 @@ public class UserDAOTest {
         userDAO.save(new User());
     }
 
-    @Test
-    //Test do przeniesienia w inna klase z @Before.
-    //WAZNE! Niekompatybilny z @DatabaseSetup
-    @Ignore
-    public void searchByEmailTest() {
-
-//        List<User> u = null;
-//        try {
-//            u = userDAO.searchByEmail("jarke@jarke.jr");
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//
-//        System.out.println(":: " + u.size());
-//        System.out.println(":: " + u.get(0).getName());
-
-    }
 }

@@ -1,7 +1,16 @@
 # Ignore db.properties
 src/main/webapp/db.properties
+
 # Ignore searching_indexes
 src/searching_indexes
+
+#IntelliJ
+.idea/
+out/
+*.ipr
+*.iws
+*.iml
+
 #
 *.class
 .idea/workspace.xml
