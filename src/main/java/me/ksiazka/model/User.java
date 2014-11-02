@@ -48,6 +48,18 @@ public class User {
     )
     private List<Offer> offerList = new ArrayList<Offer>(0);
 
+    public  User() {
+
+    }
+
+    public User(String name, String username, String password, String email, String surname) {
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.surname = surname;
+    }
+
     public Long getId() {
         return id;
     }

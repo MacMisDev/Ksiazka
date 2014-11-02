@@ -23,26 +23,6 @@ public class UserDAOImpl implements UserDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
-    static private boolean usersIndexed = false;
-
-//    @Override
-//    public List<UserBook> getUserHaveList(long userId) {
-//
-//        List<UserBook> list;
-//        String query = "FROM UserBook where userId=:id";
-//        Query listQuery = this.sessionFactory.getCurrentSession().createQuery(query);
-//        list = listQuery.setParameter("id", userId).list();
-//
-//        return list;
-//    }
-//
-//    @Override
-//    public UserBook getUserBook(long userBookId) {
-//
-//        UserBook ub = (UserBook) this.sessionFactory.getCurrentSession().get(UserBook.class, userBookId);
-//        return ub;
-//    }
-
     @Override
     public long save(User toSave) {
 
@@ -101,25 +81,25 @@ public class UserDAOImpl implements UserDAO {
         if(list.isEmpty()){
             return null;
         }
-        User user = (User)list.get(0);
-        return user;
+        return (User)list.get(0);
     }
 
 
-    //Plz dont touch now
     @Override
     public List<User> searchByEmail(String email) throws InterruptedException {
-//
-//        FullTextSession fullTextSession = Search.getFullTextSession(sessionFactory.getCurrentSession());
-//        QueryBuilder queryBuilder = fullTextSession.getSearchFactory().buildQueryBuilder().forEntity(User.class).get();
-//
-//        org.apache.lucene.search.Query lQuery = queryBuilder.keyword().onFields("email").matching(email).createQuery();
-//        org.hibernate.Query fullTextQuery = fullTextSession.createFullTextQuery(lQuery, User.class);
-//
-//        System.out.println(":: " + usersIndexed);
-//
-//        return fullTextQuery.list();
-        return null;
+
+        return generateHibernateSearchQueryFor("email", email).list();
+    }
+
+    private org.hibernate.Query generateHibernateSearchQueryFor(String field, String searchParam) {
+
+        FullTextSession fullTextSession = Search.getFullTextSession(sessionFactory.getCurrentSession());
+        QueryBuilder queryBuilder = fullTextSession.getSearchFactory().buildQueryBuilder().forEntity(User.class).get();
+
+        org.apache.lucene.search.Query lQuery = queryBuilder.keyword().onFields(field).matching(searchParam).createQuery();
+        org.hibernate.Query fullTextQuery = fullTextSession.createFullTextQuery(lQuery, User.class);
+
+        return fullTextQuery;
     }
 
 }

@@ -41,6 +41,18 @@ public class Book {
         this.bookStatus = BookStatus.AWAITING;
     }
 
+    public Book(String title, String ISBN, String author, String publisher, String description,
+                int publicationYear, int pages, BookStatus bookStatus) {
+        this.title = title;
+        this.ISBN = ISBN;
+        this.author = author;
+        this.publisher = publisher;
+        this.description = description;
+        this.publicationYear = publicationYear;
+        this.pages = pages;
+        this.bookStatus = bookStatus;
+    }
+
     public Long getId() {
         return id;
     }
