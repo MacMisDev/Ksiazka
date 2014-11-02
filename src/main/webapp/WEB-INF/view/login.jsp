@@ -14,6 +14,9 @@
             <c:if test="${error!=null}">
                 <div class="alert alert-danger" role="alert"><c:out value="${error}" /></div>
             </c:if>
+            <c:if test="${logout!=null}">
+                <div class="alert alert-info" role="alert"><c:out value="${logout}" /></div>
+            </c:if>
 
             <form method="post" name="f" action="${auth}">
                 <fieldset>

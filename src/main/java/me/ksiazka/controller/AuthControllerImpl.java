@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
+
 @Controller("authController")
 public class AuthControllerImpl implements AuthController{
 
@@ -25,7 +27,7 @@ public class AuthControllerImpl implements AuthController{
     }
 
     @RequestMapping(value = "/login", params = "error", method = RequestMethod.GET)
-    public String login(@RequestParam(value = "error", defaultValue = "Wrong email or password!") String error, Model model) {
+    public String login(@RequestParam(value = "error", defaultValue = "Zly email albo haslo!") String error, Model model) {
         model.addAttribute("error", error);
         return "login";
     }
@@ -37,7 +39,7 @@ public class AuthControllerImpl implements AuthController{
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(User user, BindingResult bindingResult){
+    public String register(@Valid User user, BindingResult bindingResult){
 
         if(!bindingResult.hasErrors()){
             authService.includeRoles(user);
@@ -47,6 +49,12 @@ public class AuthControllerImpl implements AuthController{
         }
 
         return "redirect:/login";
+    }
+
+    @RequestMapping(value = "/login", params = "logout", method = RequestMethod.GET)
+    public String logout(@RequestParam(value = "logout", defaultValue = "Wylogowano!") String info, Model model) {
+        model.addAttribute("logout", info);
+        return "login";
     }
 
 }

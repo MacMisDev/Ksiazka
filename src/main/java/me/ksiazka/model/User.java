@@ -4,6 +4,8 @@ import org.hibernate.search.annotations.*;
 import org.hibernate.search.annotations.Index;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 

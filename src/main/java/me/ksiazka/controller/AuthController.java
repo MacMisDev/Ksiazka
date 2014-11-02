@@ -9,4 +9,5 @@ public interface AuthController {
     public String login(String error, Model model);
     public String register(Model model);
     public String register(User user, BindingResult bindingResult);
+    public String logout(String info, Model model);
 }
