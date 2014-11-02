@@ -18,11 +18,11 @@ import java.util.List;
 public class SearchServiceImpl implements SearchService {
 
     @Autowired
-    UserDAO userDAO;
+    private UserDAO userDAO;
     @Autowired
-    BookDAO bookDAO;
+    private BookDAO bookDAO;
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     @Override
     @Transactional
@@ -52,6 +52,6 @@ public class SearchServiceImpl implements SearchService {
 
         FullTextSession fullTextSession = Search.getFullTextSession(sessionFactory.getCurrentSession());
         fullTextSession.createIndexer().startAndWait();
-        fullTextSession.flushToIndexes();
+        //fullTextSession.flushToIndexes();
     }
 }

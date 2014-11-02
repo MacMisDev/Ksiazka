@@ -7,12 +7,16 @@ import me.ksiazka.model.Book;
 import me.ksiazka.model.BookStatus;
 import me.ksiazka.model.User;
 import me.ksiazka.service.SearchService;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Repeat;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
@@ -25,7 +29,6 @@ import java.util.List;
 @ContextConfiguration(locations = {"classpath:/spring-cfg.xml"})
 @EnableTransactionManagement
 @TransactionConfiguration(defaultRollback = false)
-@Transactional
 public class SearchingServiceTest {
 
     @Autowired
@@ -34,13 +37,22 @@ public class SearchingServiceTest {
     UserDAO userDAO;
     @Autowired
     BookDAO bookDAO;
+    //Needed for creating explicite transaction
+    @Autowired
+    SessionFactory sessionFactory;
+
+    private long saved1id;
 
     private static boolean doneBefore = false;
 
-    //@Before
+    @Before
     public void setupDatabase() {
 
         if(!doneBefore) {
+
+            Session session = sessionFactory.openSession();
+            Transaction tx = session.getTransaction();
+            tx.begin();
 
             System.out.println("setup");
 
@@ -67,7 +79,7 @@ public class SearchingServiceTest {
             Book b3 = new Book("Jarek i przygody na dzikiej plazy", "1358", "Mis", "Mis", "Ksiazeczka o Jarku 2",
                     2012, 89, BookStatus.AWAITING);
 
-            userDAO.save(u1);
+            saved1id = userDAO.save(u1);
             userDAO.save(u2);
             userDAO.save(u3);
 
@@ -75,20 +87,40 @@ public class SearchingServiceTest {
             bookDAO.save(b2);
             bookDAO.save(b3);
 
+            tx.commit();
+
+            try {
+                searchService.reindex();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             doneBefore = true;
         }
 
     }
 
     @Test
-    @Repeat(3)
+    //@Repeat(3)
+    @Transactional
+    @Rollback(false)
     @Ignore
     public void searchByEmailTest() throws InterruptedException {
 
-        searchService.reindex();
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.getTransaction();
+        tx.begin();
+            sessionFactory.getCurrentSession().save(
+                    new User("Magdalena", "Hara", "hara", "hara@gmial.com", "Hara"));
+        tx.commit();
+
+        Assert.assertNotNull(userDAO.get(saved1id));
+
+        //userDAO.save(new User("Magdalena", "Hara", "hara", "hara@gmial.com", "Hara"));
+
         List<User> u = null;
         try {
-            u = searchService.searchByEmail("krzys@gmail.com");
+            u = searchService.searchByEmail("lukskarkoks@gmial.com");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
