@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller("offerController")
-@RequestMapping(value = "offer")
+@RequestMapping("/offer")
 public class OfferControllerImpl implements OfferController {
 
     @Autowired
