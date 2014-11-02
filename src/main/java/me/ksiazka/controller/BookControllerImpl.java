@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller("bookController")
 @RequestMapping("/book")
@@ -15,7 +16,11 @@ public class BookControllerImpl implements BookController {
     BookService bookService;
 
     @Override
-    public String list(Model model) { return null; }
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public String list(Model model) {
+
+        return "list";
+    }
 
     @Override
     public String showBook(Long id, Model model) { return null; }
