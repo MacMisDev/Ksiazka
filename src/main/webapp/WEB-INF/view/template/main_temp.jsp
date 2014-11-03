@@ -6,13 +6,8 @@
         <title>Wymiana książek, wirtualna biblioteczka!</title>
         <!-- Include meta tag to ensure proper rendering and touch zooming -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <link rel='stylesheet' href='webjars/bootstrap/3.3.0/css/bootstrap.min.css'>
-        <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
         <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
-        <script src="<c:url value="/resources/js/UI.js" />"></script>
-
-        <script src="webjars/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     </head>
 
     <body>
@@ -20,4 +15,7 @@
         <tiles:insertAttribute name="content" />
         <tiles:insertAttribute name="footer" />
     </body>
+    <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
+    <script src="<c:url value="/resources/js/UI.js" />"></script>
+    <script src="webjars/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 </html>
