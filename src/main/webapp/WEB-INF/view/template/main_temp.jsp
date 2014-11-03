@@ -6,7 +6,6 @@
         <title>Wymiana książek, wirtualna biblioteczka!</title>
         <!-- Include meta tag to ensure proper rendering and touch zooming -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <%--<a reszte kurwa takl--%>
         <link rel='stylesheet' href='<c:url value="/webjars/bootstrap/3.3.0/css/bootstrap.min.css" />'>
         <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
     </head>
