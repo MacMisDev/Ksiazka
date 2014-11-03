@@ -1,0 +1,31 @@
+
+//real check box is hidden !!!!!
+input[type=checkbox].css-checkbox {
+  position: absolute;
+  z-index: -1000;
+  left: -1000px;
+}
+
+//in fact what we see is only a label connected with particular checkbox !!!
+input[type=checkbox].css-checkbox + label.css-label {
+  padding-left: 55px;
+  margin-left: 46px;
+  margin-top: 10px;
+  height: 44px;
+  //display: inline-block;
+  line-height: 44px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  font-size: 1.0em;
+  font-weight: 300;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+  background-position: 0 -44px;
+}
+
+label.css-label {
+  background-image: url(../images/checkbox.png);
+}
