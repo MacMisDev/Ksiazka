@@ -8,8 +8,6 @@
     <tiles:putAttribute name="content">
         <h2>about.jsp</h2>
 
-
-
     </tiles:putAttribute>
 </tiles:insertDefinition>
 

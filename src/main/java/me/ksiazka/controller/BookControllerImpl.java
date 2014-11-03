@@ -22,7 +22,8 @@ public class BookControllerImpl implements BookController {
         if(!bookService.checkPageNumberForPagination(page)){
             page = 0;
         }
-        model.addAttribute("maxBooks", bookService.checkMaxPagesLimit()+1);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("maxPages", bookService.checkMaxPagesLimit());
         model.addAttribute("lastBooks", bookService.lastBooksAdded(page));
         return "book/list";
     }
