@@ -45,8 +45,6 @@ public class UserBookDAOTest {
     private UserDAO userDAO;
 
     @Test
-    //Brak implementacji metody get
-    @Ignore
     public void getUserBookTest() {
 
         UserBook userBook = userBookDAO.get(3);
@@ -59,16 +57,12 @@ public class UserBookDAOTest {
     }
 
     @Test
-    //Brak implementacji getAll
-    @Ignore
     public void getAllUserBookTest() {
 
-        Assert.assertEquals(userBooksInDatabase, userBookDAO.getAll());
+        Assert.assertEquals((int) userBooksInDatabase, userBookDAO.getAll().size());
     }
 
     @Test
-    //Brak implementacji metody save, get i getAll
-    @Ignore
     public void saveUserBookTest() {
 
         UserBook userBook = new UserBook();
@@ -82,11 +76,10 @@ public class UserBookDAOTest {
         Assert.assertEquals(2, (long) retrivedUserBook.getUser().getId());
         Assert.assertEquals(Condition.BAD, retrivedUserBook.getBookCondition());
         Assert.assertEquals(userBooksInDatabase+1, userBookDAO.getAll().size());
+
     }
 
     @Test
-    //Brak implementacji metod update, get, getAll
-    @Ignore
     public void updateUserBookTest() {
 
         UserBook userBook = userBookDAO.get(1);
@@ -102,13 +95,11 @@ public class UserBookDAOTest {
     }
 
     @Test
-    //Brak implementacji metod delete i getAll
-    @Ignore
     public void deleteUserBookTest() {
 
         Assert.assertNotNull(userBookDAO.get(3));
         userBookDAO.delete(3);
         Assert.assertNull(userBookDAO.get(3));
-        Assert.assertEquals(userBooksInDatabase-1, userBookDAO.getAll());
+        Assert.assertEquals((int) userBooksInDatabase-1, userBookDAO.getAll().size());
     }
 }
