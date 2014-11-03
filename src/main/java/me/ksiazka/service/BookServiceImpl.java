@@ -56,7 +56,7 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public int checkMaxPagesLimit() {
-        double maxNumberPage = Math.ceil((double) bookDAO.getAll().size() / BookLimitOnPage);
+        double maxNumberPage = Math.floor((double) bookDAO.getAll().size() / BookLimitOnPage);
         return (int) maxNumberPage;
     }
 
