@@ -14,6 +14,9 @@ public class BookServiceImpl implements BookService {
     @Autowired
     BookDAO bookDAO;
 
+    //Ilosc ksiazek na strone.
+    private int BookLimitOnPage = 5;
+
     @Override
     @Transactional
     public long save(Book toSave) {
@@ -46,7 +49,25 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public List<Book> lastFiveBooksAdded(int page) {
-        return bookDAO.getLastFiveBooks(page);
+    public List<Book> lastBooksAdded(int page) {
+        return bookDAO.getLastBooks(page, BookLimitOnPage);
+    }
+
+    @Override
+    @Transactional
+    public int checkMaxPagesLimit() {
+        double maxNumberPage = Math.ceil((double) bookDAO.getAll().size() / BookLimitOnPage);
+        return (int) maxNumberPage;
+    }
+
+    @Override
+    @Transactional
+    public boolean checkPageNumberForPagination(int number) {
+        int pageLimit = this.checkMaxPagesLimit();
+        if(number > pageLimit){
+            return false;
+        }else{
+            return true;
+        }
     }
 }

@@ -60,8 +60,7 @@ public class BookDAOImpl implements BookDAO {
 
 
     @Override
-    public List<Book> getLastFiveBooks(int page) {
-        int BookLimitOnPage = 5;
+    public List<Book> getLastBooks(int page, int BookLimitOnPage) {
 
         Query query = sessionFactory.getCurrentSession().createQuery("from Book order by bookId desc");
         query.setMaxResults(BookLimitOnPage);

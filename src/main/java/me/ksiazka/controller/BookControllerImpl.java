@@ -19,7 +19,11 @@ public class BookControllerImpl implements BookController {
     @Override
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(@RequestParam(value = "page", defaultValue = "0", required = false) int page, Model model) {
-        model.addAttribute("lastFiveBooks", bookService.lastFiveBooksAdded(page));
+        if(!bookService.checkPageNumberForPagination(page)){
+            page = 0;
+        }
+        model.addAttribute("maxBooks", bookService.checkMaxPagesLimit());
+        model.addAttribute("lastBooks", bookService.lastBooksAdded(page));
         return "book/list";
     }
 

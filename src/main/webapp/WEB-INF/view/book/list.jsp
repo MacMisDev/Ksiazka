@@ -7,7 +7,10 @@
 <tiles:insertDefinition name="template">
     <tiles:putAttribute name="content">
 
-        <c:forEach items="${lastFiveBooks}" var="book">
+        <div>
+            Ilosc stron : <c:out value="${maxBooks}" />
+        </div>
+        <c:forEach items="${lastBooks}" var="book">
             <table>
                 <tr>
                     <td>ISBN : </td><td><c:out value="${book.ISBN}" /></td>
