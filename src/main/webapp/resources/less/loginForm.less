@@ -2,16 +2,20 @@
 @import "customMixins.less";
 @import "elements.less";
 
-@desktop: ~"all and (min-width: 960px) and (min-height:800px)";
-@tablet: ~"all and (max-width: 959px) and (min-width:600px), (min-height: 645px) and (max-height: 800px)";
-@phone: ~"all and (max-width: 599px), (max-height: 645px)";
+@desktop: ~"all and (min-width: 700px) and (min-height:700px)";
+@tablet: ~"all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px)";
+@phone: ~"all and (max-width: 499px), (max-height: 645px)";
 @veryShort: ~"(max-height: 500px)";
+
+//Globals same for all buttons on login Page
+@button-width: 160px;
+@button-height: 45px;
 
 #loginWrapper {
   position: absolute;
   top: 50%;
   left: 0;
-  margin-top: -310px; /* half of #loginWrapper height*/
+  margin-top: -275px; /* half of #loginWrapper height*/
   height: auto;
   width: 100%;
   .transition-duration(0.4s);
@@ -31,30 +35,42 @@
   width: 470px;
   margin: 0 auto;
   .btn-default:first-child {
-    width: 180px;
-    height: 50px;
+    width: @button-width;
+    height: @button-height;
     margin-left: 10px;
     background-color: @base;
-    color:@white;
+    color: @white;
     font-size: 1.45em;
     font-weight: lighter;
     line-height: 0.5;
-    &:hover{
-      background-color: lighten(@base,3%);
+    &:hover {
+      background-color: lighten(@base, 3%);
       border-color: @base;
     }
+    @media @tablet {
+      width: 75/100*@button-width;
+      height: 75/100*@button-height;
+    }
   }
-  .btn-default:nth-child(2){
-    width: 180px;
-    height: 50px;
+  .btn-default:nth-child(2) {
+    width: @button-width;
+    height: @button-height;
     margin-left: 15px;
     font-size: 1.45em;
     font-weight: lighter;
     line-height: 1.2;
+    @media @tablet {
+      width: 75/100*@button-width;
+      height: 75/100*@button-height;
+    }
   }
   .form-group {
-    width: 400px;
-    margin: 0 auto;
+
+    @width:400px;
+
+    width: @width;
+    margin-left:auto;
+    margin-right: auto;
     margin-bottom: 10px;
     input {
       margin-left: 10px;
@@ -68,9 +84,11 @@
     }
   }
 
-  .form-group:nth-child(3){
+
+  //Buttons form-group
+  .form-group:nth-child(3) {
     .form-group();
-    margin-top: 50px;
+    margin-top: 30px;
   }
 
   form {
@@ -92,38 +110,48 @@
 }
 
 #loginBookLockedImage {
+
+  @top: -45px;
+  @height: 135px;
+  @width: 112px;
+
   margin-left: 470/2 - 112/2px;
-  top: -65px;
-  height: 135px;
-  width: 112px;
+  top: @top;
+  height: @height;
+  width: @width;
   background: url("../images/loginBookLocked.png") no-repeat;
   position: absolute;
   z-index: 9999;
   .transition-duration(0.4s);
   @media @tablet {
     margin-left: 85/100*470/2 - 85/100*112/2px;
-    top: 85/100*-65px;
-    height: 85/100*135px;
-    width: 85/100*112px;
+    top: 85/100*@top;
+    height: 85/100*@height;
+    width: 85/100*@width;
     -moz-background-size: cover;
     background-size: cover;
   }
   @media @phone {
     margin-left: 65/100*470/2 - 65/100*112/2px;
-    top: 65/100*-65px;
-    height: 65/100*135px;
-    width: 65/100*112px;
+    top: 65/100*@top;
+    height: 65/100*@height;
+    width: 65/100*@width;
     -moz-background-size: cover;
     background-size: cover;
   }
 }
 
 #ribbon {
-  width: 510px;
-  height: 64px;
+
+  @width: 510px;
+  @height: 64px;
+  @margin-top: 112px;
+
+  width: @width;
+  height: @height;
   position: absolute;
   margin-left: -20px;
-  margin-top: 90px;
+  margin-top: @margin-top;
   color: @white;
   font-size: 1.0em;
   background: url("../images/ribbonLoginPage.png") no-repeat;
@@ -144,10 +172,10 @@
   }
 
   @media @tablet {
-    width: 85/100 * 510px;
-    height: 85/100 * 64px;
+    width: 85/100 * @width;
+    height: 85/100 * @height;
     margin-left: -18px;
-    margin-top: 85/100 * 90px;
+    margin-top: 85/100 * @margin-top;
     -moz-background-size: cover;
     background-size: cover;
   }

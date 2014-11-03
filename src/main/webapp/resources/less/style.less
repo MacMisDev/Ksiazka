@@ -20,7 +20,7 @@ html, body {
   font-size: 20px;
   font-family: 'Lato', sans-serif;
   font-weight: 300 !important;
-  background: url(../images/bg.jpg) no-repeat center center fixed; /*background-size*/
+  background: url(../images/bg.jpg) no-repeat center center fixed; /* background-size */
   //Scale the background image to be as large as possible
   //so that the background area is completely covered by
   //the background image.Some parts of the background image
@@ -96,9 +96,9 @@ nav {
 }
 
 .navActive {
+  //SLOW , only cpu, on desktop it is ok , but mobile cpu's are still to slow in comparison to desktops
   //margin-left: -60px !important; //it's important because it has to overwrite menuLeft proprarties and class is less important then id
-  .transform(translate3d(90px, 0, 0);)
-
+  .transform(translate3d(90px, 0, 0)); //GPU UTILIZATION !!!
 }
 
 .menuButton {

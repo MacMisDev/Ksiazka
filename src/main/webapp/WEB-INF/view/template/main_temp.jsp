@@ -13,7 +13,6 @@
     <body>
         <tiles:insertAttribute name="header" />
         <tiles:insertAttribute name="content" />
-        <tiles:insertAttribute name="footer" />
     </body>
     <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
     <script src="<c:url value="/resources/js/UI.js" />"></script>
