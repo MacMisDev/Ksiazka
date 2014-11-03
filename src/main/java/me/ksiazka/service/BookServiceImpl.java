@@ -43,4 +43,10 @@ public class BookServiceImpl implements BookService {
     public void delete(Book toDelete) {
 
     }
+
+    @Override
+    @Transactional
+    public List<Book> lastFiveBooksAdded(int page) {
+        return bookDAO.getLastFiveBooks(page);
+    }
 }

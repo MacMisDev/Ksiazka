@@ -6,7 +6,21 @@
 
 <tiles:insertDefinition name="template">
     <tiles:putAttribute name="content">
-        <h2>list.jsp</h2>
+
+        <c:forEach items="${lastFiveBooks}" var="book">
+            <table>
+                <tr>
+                    <td>ISBN : </td><td><c:out value="${book.ISBN}" /></td>
+                </tr>
+                <tr>
+                    <td>Tytul : </td><td><c:out value="${book.title}" /></td>
+                </tr>
+                <tr>
+                    <td>Autor : </td><td><c:out value="${book.author}" /></td>
+                </tr>
+            </table>
+            <br />
+        </c:forEach>
 
 
     </tiles:putAttribute>

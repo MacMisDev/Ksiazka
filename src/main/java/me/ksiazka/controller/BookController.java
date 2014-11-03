@@ -5,7 +5,7 @@ import me.ksiazka.model.Book;
 import org.springframework.ui.Model;
 
 public interface BookController {
-    public String list(Model model);
+    public String list(int page, Model model);
     public String showBook(Long id, Model model);
     public String addBookToSystem(Model model);
     public String addedBookToSystem(Book book);

@@ -59,6 +59,17 @@ public class BookDAOImpl implements BookDAO {
     }
 
 
+    @Override
+    public List<Book> getLastFiveBooks(int page) {
+        int BookLimitOnPage = 5;
+
+        Query query = sessionFactory.getCurrentSession().createQuery("from Book order by bookId desc");
+        query.setMaxResults(BookLimitOnPage);
+        query.setFirstResult(page * BookLimitOnPage);
+
+        return (List<Book>) query.list();
+    }
+
     //Zapewne da sie to zrobic jakims zlaczeniem hql-owym. Daloby sie pewnie tez
     //zrobic to przeszukujac obiekty, ale zapytanie do bazy bedzie milion razy
     //efektywniejsze, dlatego ta metoda droga wyjatku chociaz wykonuje pewna logike
