@@ -17,7 +17,7 @@ public class UserBookDAOImpl implements UserBookDAO {
 
     @Override
     public long save(UserBook toSave) {
-        return 0;
+        return (Long) this.sessionFactory.getCurrentSession().save(toSave);
     }
 
     @Override
@@ -30,12 +30,15 @@ public class UserBookDAOImpl implements UserBookDAO {
 
     @Override
     public List<UserBook> getAll() {
-        return null;
+        String q = "FROM UserBook";
+        Query query =  this.sessionFactory.getCurrentSession().createQuery(q);
+        List<UserBook> list = (List<UserBook>) query.list();
+        return list;
     }
 
     @Override
     public void update(UserBook toUpdate) {
-
+        this.sessionFactory.getCurrentSession().update(toUpdate);
     }
 
     @Override
@@ -45,7 +48,8 @@ public class UserBookDAOImpl implements UserBookDAO {
 
     @Override
     public void delete(long id) {
-
+        UserBook ub = (UserBook) this.sessionFactory.getCurrentSession().get(UserBook.class, id);
+        sessionFactory.getCurrentSession().delete(ub);
     }
 
     //Wykomentowane bo doublowalo funcjonalnosc, zostawiam, zeby jak Krzysiowi przyszlo
