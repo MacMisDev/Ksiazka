@@ -53,5 +53,6 @@ public class SearchServiceImpl implements SearchService {
         FullTextSession fullTextSession = Search.getFullTextSession(sessionFactory.getCurrentSession());
         fullTextSession.createIndexer().startAndWait();
         //fullTextSession.flushToIndexes();
+        //fullTextSession.createIndexer().startAndWait();
     }
 }

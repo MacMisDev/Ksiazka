@@ -34,8 +34,8 @@ public class AuthControllerImpl implements AuthController{
 
     @Override
     @RequestMapping(value = "/login", params = "error", method = RequestMethod.GET)
-    public String login(@RequestParam(value = "error", defaultValue = "Zly email albo haslo!") String error, Model model) {
-        model.addAttribute("error", error);
+    public String login(@RequestParam(value = "error") String error, Model model) {
+        model.addAttribute("error", "Zly email albo haslo!");
         return "login";
     }
 
@@ -62,8 +62,8 @@ public class AuthControllerImpl implements AuthController{
 
     @Override
     @RequestMapping(value = "/login", params = "logout", method = RequestMethod.GET)
-    public String logout(@RequestParam(value = "logout", defaultValue = "Wylogowano!") String info, Model model) {
-        model.addAttribute("logout", info);
+    public String logout(@RequestParam(value = "logout") String info, Model model) {
+        model.addAttribute("logout", "Wylogowano!");
         return "login";
     }
 

@@ -6,12 +6,6 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/security
        http://www.springframework.org/schema/security/spring-security-3.2.xsd">
-<!--
-    <http auto-config="true" use-expressions="true" pattern="/login">
-        <intercept-url pattern="/**" access="isAnonymous()" />
-        <access-denied-handler error-page="/" />
-    </http>
--->
 
     <http auto-config="true" use-expressions="true">
         <intercept-url pattern="/favicon.ico" access="permitAll" />

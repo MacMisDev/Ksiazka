@@ -45,7 +45,7 @@ public class SearchingServiceTest {
 
     private static boolean doneBefore = false;
 
-    @Before
+    //@Before
     public void setupDatabase() {
 
         if(!doneBefore) {
@@ -83,9 +83,9 @@ public class SearchingServiceTest {
             userDAO.save(u2);
             userDAO.save(u3);
 
-            bookDAO.save(b1);
+            /*bookDAO.save(b1);
             bookDAO.save(b2);
-            bookDAO.save(b3);
+            bookDAO.save(b3);*/
 
             tx.commit();
 
@@ -104,23 +104,26 @@ public class SearchingServiceTest {
     //@Repeat(3)
     @Transactional
     @Rollback(false)
-    @Ignore
+    //@Ignore
     public void searchByEmailTest() throws InterruptedException {
 
         Session session = sessionFactory.openSession();
         Transaction tx = session.getTransaction();
         tx.begin();
-            sessionFactory.getCurrentSession().save(
-                    new User("Magdalena", "Hara", "hara", "hara@gmial.com", "Hara"));
+        searchService.reindex();
+        User uu = new User("zjjppppaaaa9999", "sdpppaaaja9999", "xxpppaa999jz", "a@o999p", "zzjpppp999px");
+
+           // sessionFactory.getCurrentSession().saveOrUpdate(uu);
+
         tx.commit();
 
-        Assert.assertNotNull(userDAO.get(saved1id));
+        //Assert.assertNotNull(userDAO.get(1));
 
         //userDAO.save(new User("Magdalena", "Hara", "hara", "hara@gmial.com", "Hara"));
 
         List<User> u = null;
         try {
-            u = searchService.searchByEmail("lukskarkoks@gmial.com");
+            u = searchService.searchByEmail("macmiskoks@gmail.com");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -128,6 +131,8 @@ public class SearchingServiceTest {
         System.out.println(":: " + u.size());
         for(User user : u) {
             System.out.println(":: " + u.get(0).getName());
+
+
         }
     }
 }
