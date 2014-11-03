@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller("bookController")
 @RequestMapping("/book")
@@ -17,8 +18,12 @@ public class BookControllerImpl implements BookController {
 
     @Override
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String list(Model model) {
-
+    public String list(@RequestParam(value = "page", defaultValue = "0", required = false) int page, Model model) {
+        if(!bookService.checkPageNumberForPagination(page)){
+            page = 0;
+        }
+        model.addAttribute("maxBooks", bookService.checkMaxPagesLimit()+1);
+        model.addAttribute("lastBooks", bookService.lastBooksAdded(page));
         return "book/list";
     }
 

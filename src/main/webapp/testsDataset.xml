@@ -4,6 +4,7 @@
     <Book bookId="2" title="XXX-Men Geneza: Jarek " ISBN="9785353031711" author="Profesor XXX" publisher="Beyond Dimension" description="Jarek Cimoch - geneza" publicationYear="2014" pages="953" bookStatus="ACCEPTED"/>
     <Book bookId="3" title="Ślepowidzenie" ISBN="9788374802932" author="Peter Watts" publisher="MAG" description="Hard-sf" publicationYear="2013" pages="408" bookStatus="ACCEPTED"/>
 
+
     <User userId="1" username="Konasz" email="jarke69@bdimension.org" name="Caroslaw" surname="Jimoch" password="tajne" />
     <User userId="2" username="ChybaTy" email="jarke@jarke.jr" name="Jarke" surname="Cimoche" password="jeszczeTajniejsze"/>
 

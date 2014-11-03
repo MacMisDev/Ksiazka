@@ -19,7 +19,7 @@
 
     <bean id="userBooksInDatabase"
           class="java.lang.Integer">
-        <constructor-arg value="4" type="int"/>
+        <constructor-arg value="3" type="int"/>
     </bean>
 
 </beans>

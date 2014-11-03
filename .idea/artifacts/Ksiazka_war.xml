@@ -2,12 +2,12 @@
   <artifact type="war" name="Ksiazka:war">
     <output-path>$PROJECT_DIR$/target</output-path>
     <root id="archive" name="ksiazka.war">
+      <element id="artifact" artifact-name="Ksiazka:war exploded" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="dir-copy" path="$PROJECT_DIR$/src/main/webapp" />
         </element>
       </element>
-      <element id="artifact" artifact-name="Ksiazka:war exploded" />
     </root>
   </artifact>
 </component>
