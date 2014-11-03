@@ -17,6 +17,12 @@ public class UserControllerImpl implements UserController {
     UserService userService;
 
     @Override
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public String userHaveWant() {
+        return "user/userList";
+    }
+
+    @Override
     public String showUserPage(Long id, Model model) {
         return null;
     }

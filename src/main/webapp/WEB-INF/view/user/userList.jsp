@@ -6,7 +6,8 @@
 
 <tiles:insertDefinition name="template">
     <tiles:putAttribute name="content">
-        <h2>contact.jsp</h2>
+        <h2>user/list.jsp</h2>
+
 
     </tiles:putAttribute>
 </tiles:insertDefinition>
