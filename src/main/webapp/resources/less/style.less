@@ -77,7 +77,9 @@ html, body {
 
 //nav html5 element used for navigation
 nav {
-  transform: translateZ(0);
+  //transform: translateZ(0);
+  //.transform(0);
+  //-webkit-transform: translateZ(0);
   margin-left: -150px;
   left: 60px;
   width: 150px;
@@ -89,12 +91,14 @@ nav {
   /* &:hover{
      margin-left: -60px;
    }*/
-  .transition-duration(0.4s);
+  .transition(0.4s,ease);
 
 }
 
 .navActive {
-  margin-left: -60px !important; //it's important because it has to overwrite menuLeft proprarties and class is less important then id
+  //margin-left: -60px !important; //it's important because it has to overwrite menuLeft proprarties and class is less important then id
+  .transform(translate3d(90px, 0, 0);)
+
 }
 
 .menuButton {
