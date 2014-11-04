@@ -43,7 +43,7 @@ public class BookControllerImpl implements BookController {
     @Override
     @RequestMapping(value = "/new", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody Book addBookToSystem(@RequestBody Book book) {
-        book.setBookStatus(BookStatus.AWAITING);
+
         return bookService.get(bookService.save(book));
     }
 

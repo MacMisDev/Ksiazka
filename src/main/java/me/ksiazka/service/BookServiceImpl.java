@@ -2,6 +2,7 @@ package me.ksiazka.service;
 
 import me.ksiazka.dao.BookDAO;
 import me.ksiazka.model.Book;
+import me.ksiazka.model.BookStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,8 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public long save(Book toSave) {
+
+        toSave.setBookStatus(BookStatus.AWAITING);
         return bookDAO.save(toSave);
     }
 
