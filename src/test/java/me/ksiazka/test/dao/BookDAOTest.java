@@ -51,8 +51,8 @@ public class BookDAOTest {
     @Test
     public void getBookTest() {
 
-        Book book = bookDAO.get(3);
-        Assert.assertEquals(3, (long) book.getId());
+        Book book = bookDAO.get(4);
+        Assert.assertEquals(4, (long) book.getId());
         Assert.assertEquals("Ślepowidzenie", book.getTitle());
         Assert.assertEquals("9788374802932", book.getISBN());
         Assert.assertEquals("Peter Watts", book.getAuthor());
@@ -111,9 +111,9 @@ public class BookDAOTest {
     public void deleteBookTest() {
 
         //Pobranie uzytkownika w celu ulatwienia testowania
-        User user = userDAO.get(2);
+        User user = userDAO.get(3);
         //Sprawdzamy czy ksiazka i jej kaskadowe zaleznosci istnieja w bazie
-        Book book = bookDAO.get(3);
+        Book book = bookDAO.get(4);
         Assert.assertNotNull(book);
         //Czy uzytkownik posiada ksiazke na have list
         Assert.assertEquals(user.getBooksHave().get(0).getBook().getId(),
@@ -129,7 +129,7 @@ public class BookDAOTest {
 
         bookDAO.delete(book);
 
-        Assert.assertEquals(null, bookDAO.get(3));
+        Assert.assertEquals(null, bookDAO.get(4));
 
         //Do dopisania sprawdzenie usuniecia zaleznosci
         //jak Krzysiu zrobi kaskadowe usuwanie, bo na razie nawet
@@ -142,15 +142,15 @@ public class BookDAOTest {
     @Test
     public void updateBookTest() {
 
-        Book book = bookDAO.get(3);
+        Book book = bookDAO.get(4);
         Assert.assertFalse(book.getPages()==410);
         book.setPages(410);
         book.setDescription("Best hard s-f ever made!");
         bookDAO.update(book);
 
         Assert.assertEquals((int) booksInDatabase, bookDAO.getAll().size());
-        Assert.assertEquals(410, bookDAO.get(3).getPages());
-        Assert.assertEquals("Best hard s-f ever made!", bookDAO.get(3).getDescription());
+        Assert.assertEquals(410, bookDAO.get(4).getPages());
+        Assert.assertEquals("Best hard s-f ever made!", bookDAO.get(4).getDescription());
     }
 
 
@@ -158,7 +158,7 @@ public class BookDAOTest {
     @Ignore
     public void findEachUserWithBookInHaveListTest() {
 
-        List<User> list = bookDAO.findEachUserWithBookInHaveList(3);
+        List<User> list = bookDAO.findEachUserWithBookInHaveList(4);
 
         Assert.assertEquals(2, list.size());
         //Sprawdzamy, czy na pewno mamy tych uzytkownikow, ktorych chcemy
@@ -174,7 +174,7 @@ public class BookDAOTest {
     public void findEachUserWithBookInWantListTest() {
 
         //Test analogiczny do testu wyzej
-        List<User> list = bookDAO.findEachUserWithBookInWantList(3);
+        List<User> list = bookDAO.findEachUserWithBookInWantList(4);
 
         Assert.assertEquals(1, list.size());
         Assert.assertTrue(list.get(0).getName().equals("Jarke"));

@@ -50,9 +50,9 @@ public class UserBookDAOTest {
         UserBook userBook = userBookDAO.get(3);
 
         Assert.assertNotNull(userBook);
-        Assert.assertEquals(1, (long) userBook.getUser().getId());
+        Assert.assertEquals(2, (long) userBook.getUser().getId());
         Assert.assertEquals("Caroslaw", userBook.getUser().getName());
-        Assert.assertEquals(3, (long) userBook.getBook().getId());
+        Assert.assertEquals(4, (long) userBook.getBook().getId());
         Assert.assertEquals("Ślepowidzenie", userBook.getBook().getTitle());
     }
 
@@ -66,14 +66,14 @@ public class UserBookDAOTest {
     public void saveUserBookTest() {
 
         UserBook userBook = new UserBook();
-        userBook.setBook(bookDAO.get(1));
-        userBook.setUser(userDAO.get(2));
+        userBook.setBook(bookDAO.get(2));
+        userBook.setUser(userDAO.get(3));
         userBook.setBookCondition(Condition.BAD);
         long id = userBookDAO.save(userBook);
 
         UserBook retrivedUserBook = userBookDAO.get(id);
-        Assert.assertEquals(1, (long) retrivedUserBook.getBook().getId());
-        Assert.assertEquals(2, (long) retrivedUserBook.getUser().getId());
+        Assert.assertEquals(2, (long) retrivedUserBook.getBook().getId());
+        Assert.assertEquals(3, (long) retrivedUserBook.getUser().getId());
         Assert.assertEquals(Condition.BAD, retrivedUserBook.getBookCondition());
         Assert.assertEquals(userBooksInDatabase+1, userBookDAO.getAll().size());
 
@@ -82,14 +82,14 @@ public class UserBookDAOTest {
     @Test
     public void updateUserBookTest() {
 
-        UserBook userBook = userBookDAO.get(1);
+        UserBook userBook = userBookDAO.get(2);
         Assert.assertNotNull(userBook);
         Assert.assertFalse(userBook.getBookCondition().equals(Condition.BAD));
 
         userBook.setBookCondition(Condition.BAD);
         userBookDAO.update(userBook);
 
-        UserBook userBookAfterUpdate = userBookDAO.get(1);
+        UserBook userBookAfterUpdate = userBookDAO.get(2);
         Assert.assertEquals(Condition.BAD, userBookAfterUpdate.getBookCondition());
         Assert.assertEquals((int) userBooksInDatabase, userBookDAO.getAll().size());
     }
