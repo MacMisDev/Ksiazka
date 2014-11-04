@@ -33,7 +33,7 @@
                     <li class="disabled"><a href="#">&laquo;</a></li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="/ksiazka/book/list?page=${currentPage-1}">&laquo;</a></li>
+                    <li><a href="${pageContext.request.contextPath}/book/list?page=${currentPage-1}">&laquo;</a></li>
                 </c:otherwise>
             </c:choose>
             <c:forEach var="i" begin="0" end="${maxPages}">
@@ -42,7 +42,7 @@
                         <li class="active"><a href="#">${i+1}</a></li>
                     </c:when>
                     <c:otherwise>
-                        <li><a href="/ksiazka/book/list?page=${i}">${i+1}</a></li>
+                        <li><a href="${pageContext.request.contextPath}/book/list?page=${i}">${i+1}</a></li>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
@@ -51,7 +51,7 @@
                     <li class="disabled"><a href="#">&raquo;</a></li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="/ksiazka/book/list?page=${currentPage+1}">&raquo;</a></li>
+                    <li><a href="${pageContext.request.contextPath}/book/list?page=${currentPage+1}">&raquo;</a></li>
                 </c:otherwise>
             </c:choose>
         </ul>
