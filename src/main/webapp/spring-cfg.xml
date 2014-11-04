@@ -41,7 +41,9 @@
         <property name="maxActive" value="100" />
     </bean>
 
-    <!-- Hibernate 4 SessionFactory Bean definition -->
+    <!-- JDBC exception translator -->
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
     <bean id="hibernate4AnnotatedSessionFactory"
           class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
@@ -53,7 +55,7 @@
                 <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory</prop>
                 <prop key="hibernate.cache.use_second_level_cache">true</prop>
                 <prop key="hibernate.cache.use_query_cache">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
+                <prop key="hibernate.hbm2ddl.auto">${db.status}</prop>
 
                 <prop key="hibernate.search.default.directory_provider">filesystem</prop>
                 <prop key="hibernate.search.default.indexBase">src/searching_indexes</prop>
@@ -61,16 +63,13 @@
         </property>
     </bean>
 
-    <!-- JDBC exception translator -->
-    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
-
     <!-- Spring transactions -->
     <bean id="transactionManager"
-          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="sessionFactory">
-            <ref bean="hibernate4AnnotatedSessionFactory" />
-        </property>
-    </bean>
+                 class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+    <property name="sessionFactory">
+        <ref bean="hibernate4AnnotatedSessionFactory" />
+    </property>
+</bean>
 
     <!-- Others -->
     <bean id="bookLimitOnPage"

@@ -25,22 +25,28 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User get(long id) {
-        return null;
+
+        return userDAO.get(id);
     }
 
     @Override
     public List<User> getAll() {
-        return null;
+
+        return userDAO.getAll();
     }
 
     @Override
     public void update(User toUpdate) {
 
+        userDAO.update(toUpdate);
     }
 
     @Override
     public void delete(User toDelete) {
-
+        /*
+        @ToDo: Podmienienie referencji do uzytkownika w UserBook przed usunięciem - Krzysiu musi zrobic query czy co
+         */
+        userDAO.delete(toDelete);
     }
 
     @Override

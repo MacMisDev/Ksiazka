@@ -7,6 +7,7 @@ import me.ksiazka.dao.UserBookDAO;
 import me.ksiazka.dao.UserDAO;
 import me.ksiazka.model.*;
 import me.ksiazka.service.SearchService;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,11 +55,13 @@ public class UserDAOTest {
         Assert.assertEquals("Jarke", user.getName());
         Assert.assertEquals("Cimoche", user.getSurname());
         Assert.assertEquals("ChybaTy", user.getUsername());
-        Assert.assertEquals(1, user.getBooksHave().size());
-        Assert.assertEquals(2, user.getBooksWant().size());
+        Assert.assertEquals(1, user.getSizeOfBooksHave());
+        Assert.assertEquals(2, user.getSizeOfBooksWant());
+        Assert.assertEquals(1, user.getRoles().size());
+        Assert.assertEquals("ROLE_ADMIN", user.getRoles().get(0).getRole());
         //Dla pewnosci sprawdzamy czy np. na liscie books have znajduje
         //sie odpowiednia ksiazka
-        Assert.assertEquals("Ślepowidzenie", user.getBooksHave().get(0).getBook().getTitle());
+        Assert.assertEquals("Ślepowidzenie", user.getBookFromBooksHave(0).getBook().getTitle());
 
     }
 
@@ -75,12 +78,16 @@ public class UserDAOTest {
     @Test
     public void addUserTest() {
 
+        UserRole userRole = new UserRole();
+        userRole.setRole("ROLE_USER");
+
         User user = new User();
         user.setName("Wojtek");
         user.setSurname("Nowak");
         user.setUsername("wojtekN");
         user.setEmail("Wojtek@py.py lolada heldan");
         user.setPassword("wojtek.py"); //cannot be null
+        user.getRoles().add(userRole);
 
         long id = userDAO.save(user);
 
@@ -90,13 +97,14 @@ public class UserDAOTest {
         Assert.assertEquals("wojtekN", retrivedUser.getUsername());
         Assert.assertEquals("Wojtek@py.py lolada heldan", retrivedUser.getEmail());
         Assert.assertEquals("wojtek.py", retrivedUser.getPassword());
+        Assert.assertEquals("ROLE_USER", retrivedUser.getRoles().get(0).getRole());
     }
 
     @Test
     public void deleteUserTest() {
 
         Assert.assertNotNull(userDAO.get(2));
-        Assert.assertEquals(2, userDAO.get(2).getBooksHave().size());
+        Assert.assertEquals(2, userDAO.get(2).getSizeOfBooksHave());
 
         userDAO.delete(2);
 
@@ -161,6 +169,19 @@ public class UserDAOTest {
     public void saveWithNullPropertyTest() {
 
         userDAO.save(new User());
+    }
+
+    @Test(expected = DataIntegrityViolationException.class)
+    @Ignore
+    public void saveUserWithNoRolesTest() {
+
+        User user = new User();
+        user.setName("Wojtek");
+        user.setSurname("Nowak");
+        user.setUsername("wojtekN");
+        user.setEmail("Wojtek@py.py lolada heldan");
+        user.setPassword("wojtek.py"); //cannot be null
+        userDAO.save(user);
     }
 
 }
