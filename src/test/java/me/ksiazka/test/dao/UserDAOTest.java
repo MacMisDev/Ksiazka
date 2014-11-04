@@ -47,9 +47,9 @@ public class UserDAOTest {
     @Test
     public void getUserTest() {
 
-        User user = userDAO.get(2);
+        User user = userDAO.get(3);
 
-        Assert.assertEquals(2, (long) user.getId());
+        Assert.assertEquals(3, (long) user.getId());
         Assert.assertEquals("jarke@jarke.jr", user.getEmail());
         Assert.assertEquals("Jarke", user.getName());
         Assert.assertEquals("Cimoche", user.getSurname());
@@ -95,12 +95,12 @@ public class UserDAOTest {
     @Test
     public void deleteUserTest() {
 
-        Assert.assertNotNull(userDAO.get(1));
-        Assert.assertEquals(2, userDAO.get(1).getBooksHave().size());
+        Assert.assertNotNull(userDAO.get(2));
+        Assert.assertEquals(2, userDAO.get(2).getBooksHave().size());
 
-        userDAO.delete(1);
+        userDAO.delete(2);
 
-        Assert.assertNull(userDAO.get(1));
+        Assert.assertNull(userDAO.get(2));
         //Uzytkownik posiadal w swojej liscie have ksiazki z encji UserBook o id 1 i 3
         //Sprawdzamy czy sie usunely.
         Assert.assertNull(userBookDAO.get(1));
@@ -116,13 +116,13 @@ public class UserDAOTest {
     @Test
     public void updateUserTest() {
 
-       User user = userDAO.get(2);
+       User user = userDAO.get(3);
        Assert.assertFalse(user.getEmail().equals("wojtek.py"));
        user.setEmail("wojtek.py");
        userDAO.update(user);
 
         Assert.assertEquals((int) usersInDatabse, userDAO.getAll().size());
-        Assert.assertEquals("wojtek.py", userDAO.get(2).getEmail());
+        Assert.assertEquals("wojtek.py", userDAO.get(3).getEmail());
     }
 
     @Test
@@ -130,7 +130,7 @@ public class UserDAOTest {
 
         User user = userDAO.findUserByUsername("Konasz");
 
-        Assert.assertEquals(new Long(1), user.getId());
+        Assert.assertEquals(new Long(2), user.getId());
         Assert.assertEquals("Konasz", user.getUsername());
         Assert.assertEquals("jarke69@bdimension.org", user.getEmail());
         Assert.assertEquals("Caroslaw", user.getName());
@@ -146,7 +146,7 @@ public class UserDAOTest {
 
         User user = userDAO.findUserByEmail("jarke69@bdimension.org");
 
-        Assert.assertEquals(new Long(1), user.getId());
+        Assert.assertEquals(new Long(2), user.getId());
         Assert.assertEquals("Konasz", user.getUsername());
         Assert.assertEquals("jarke69@bdimension.org", user.getEmail());
         Assert.assertEquals("Caroslaw", user.getName());
