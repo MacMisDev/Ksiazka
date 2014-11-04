@@ -17,5 +17,6 @@
     </body>
     <script src="<c:url value="/webjars/jquery/1.11.1/jquery.min.js" />"></script>
     <script src="<c:url value="/resources/js/UI.js" />"></script>
+    <script src="<c:url value="/resources/js/test.js" />"></script>
     <script src="<c:url value="/webjars/bootstrap/3.3.0/js/bootstrap.min.js" />"></script>
 </html>
