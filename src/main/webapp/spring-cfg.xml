@@ -41,7 +41,9 @@
         <property name="maxActive" value="100" />
     </bean>
 
-    <!-- Hibernate 4 SessionFactory Bean definition -->
+    <!-- JDBC exception translator -->
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
     <bean id="hibernate4AnnotatedSessionFactory"
           class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
@@ -61,16 +63,13 @@
         </property>
     </bean>
 
-    <!-- JDBC exception translator -->
-    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
-
     <!-- Spring transactions -->
     <bean id="transactionManager"
-          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="sessionFactory">
-            <ref bean="hibernate4AnnotatedSessionFactory" />
-        </property>
-    </bean>
+                 class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+    <property name="sessionFactory">
+        <ref bean="hibernate4AnnotatedSessionFactory" />
+    </property>
+</bean>
 
     <!-- Others -->
     <bean id="bookLimitOnPage"

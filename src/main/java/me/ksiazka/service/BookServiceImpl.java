@@ -15,13 +15,8 @@ public class BookServiceImpl implements BookService {
     BookDAO bookDAO;
 
     //Ilosc ksiazek na strone.
-    private int bookLimitOnPage;
-
     @Autowired
-    public BookServiceImpl(Integer bookLimitOnPage) {
-
-        this.bookLimitOnPage = bookLimitOnPage;
-    }
+    private Integer bookLimitOnPage;
 
     @Override
     @Transactional

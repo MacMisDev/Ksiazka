@@ -51,8 +51,10 @@ public class SearchServiceImpl implements SearchService {
     public void reindex() throws InterruptedException {
 
         FullTextSession fullTextSession = Search.getFullTextSession(sessionFactory.getCurrentSession());
-        fullTextSession.createIndexer().startAndWait();
+
         //fullTextSession.flushToIndexes();
-        //fullTextSession.createIndexer().startAndWait();
+        fullTextSession.purgeAll(User.class);
+        fullTextSession.createIndexer()
+                .startAndWait();
     }
 }

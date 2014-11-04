@@ -100,19 +100,19 @@ public class User {
         this.email = email;
     }
 
-    public List<Book> getBooksWant() {
+    private List<Book> getBooksWant() {
         return booksWant;
     }
 
-    public void setBooksWant(List<Book> booksWant) {
+    private void setBooksWant(List<Book> booksWant) {
         this.booksWant = booksWant;
     }
 
-    public List<UserBook> getBooksHave() {
+    private List<UserBook> getBooksHave() {
         return booksHave;
     }
 
-    public void setBooksHave(List<UserBook> booksHave) {
+    private void setBooksHave(List<UserBook> booksHave) {
         this.booksHave = booksHave;
     }
 
@@ -154,5 +154,65 @@ public class User {
 
     public void setOfferList(List<Offer> offerList) {
         this.offerList = offerList;
+    }
+
+    public void addToWantList(Book book) throws BookAlreadyExistingOnThisListException {
+
+        for(Book b : this.booksWant) {
+            if(book.getId().equals(b.getId()))
+                throw new BookAlreadyExistingOnThisListException("This book already exist on this list.");
+        }
+
+        this.booksWant.add(book);
+    }
+
+    public int getSizeOfBooksWant() {
+
+        return this.booksWant.size();
+    }
+
+    public Book getBookFromBooksWant(int index) {
+
+        return this.booksWant.get(index);
+    }
+
+    public void removeFromWantList(Book book) {
+
+        this.booksWant.remove(book);
+    }
+
+    public void removeFromWantList(int index) {
+
+        this.booksWant.remove(index);
+    }
+
+    public void addToHaveList(UserBook userBook) throws BookAlreadyExistingOnThisListException {
+
+        for(UserBook b : this.booksHave) {
+            if(userBook.getBook().getId().equals(b.getBook().getId()))
+                throw new BookAlreadyExistingOnThisListException("This book already exist on this list.");
+        }
+
+        this.booksHave.add(userBook);
+    }
+
+    public int getSizeOfBooksHave() {
+
+        return this.booksHave.size();
+    }
+
+    public UserBook getBookFromBooksHave(int index) {
+
+        return this.booksHave.get(index);
+    }
+
+    public void removeFromHaveList(int index) {
+
+        this.booksHave.remove(index);
+    }
+
+    public void removeFromHaveList(UserBook userBook) {
+
+        this.booksHave.remove(userBook);
     }
 }
