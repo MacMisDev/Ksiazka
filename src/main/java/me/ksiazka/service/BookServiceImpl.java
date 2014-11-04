@@ -20,7 +20,7 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public long save(Book toSave) {
-        return 0;
+        return bookDAO.save(toSave);
     }
 
     @Override
