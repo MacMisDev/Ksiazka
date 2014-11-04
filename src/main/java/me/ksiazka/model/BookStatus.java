@@ -1,5 +1,5 @@
 package me.ksiazka.model;
 
 public enum BookStatus {
-    AWAITING, ACCEPTED;
+    AWAITING, ACCEPTED, DELETED, SPECIAL;
 }

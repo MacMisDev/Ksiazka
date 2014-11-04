@@ -15,7 +15,13 @@ public class BookServiceImpl implements BookService {
     BookDAO bookDAO;
 
     //Ilosc ksiazek na strone.
-    private int BookLimitOnPage = 5;
+    private int bookLimitOnPage;
+
+    @Autowired
+    public BookServiceImpl(Integer bookLimitOnPage) {
+
+        this.bookLimitOnPage = bookLimitOnPage;
+    }
 
     @Override
     @Transactional
@@ -50,13 +56,13 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public List<Book> lastBooksAdded(int page) {
-        return bookDAO.getLastBooks(page, BookLimitOnPage);
+        return bookDAO.getLastBooks(page, bookLimitOnPage);
     }
 
     @Override
     @Transactional
     public int checkMaxPagesLimit() {
-        double maxNumberPage = Math.floor((double) bookDAO.getAll().size() / BookLimitOnPage);
+        double maxNumberPage = Math.floor((double) bookDAO.getAll().size() / bookLimitOnPage);
         return (int) maxNumberPage;
     }
 
