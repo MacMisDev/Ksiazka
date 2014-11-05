@@ -93,4 +93,9 @@ public class BookDAOImpl implements BookDAO {
     public List<Book> getAllAccepted() {
         return null;
     }
+
+    @Override
+    public void updateUserBookBeforeDelete(Book book) {
+
+    }
 }
