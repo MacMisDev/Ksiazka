@@ -153,8 +153,6 @@ public class User {
         this.offerList = offerList;
     }
 
-<<<<<<< HEAD
-=======
     public void addToWantList(Book book) throws BookAlreadyExistingOnThisListException {
 
         for(Book b : this.booksWant) {
@@ -214,5 +212,5 @@ public class User {
 
         this.booksHave.remove(userBook);
     }
->>>>>>> 3c334d651328b75da20727ddfcd4d1fb6d6a610f
+
 }
