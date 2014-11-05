@@ -138,4 +138,20 @@ public class Book {
         this.bookStatus = bookStatus;
     }
 
+    public List<User> getUser() {
+        return user;
+    }
+
+    public void setUser(List<User> user) {
+        this.user = user;
+    }
+
+    public List<UserBook> getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(List<UserBook> bookList) {
+        this.bookList = bookList;
+    }
+
 }

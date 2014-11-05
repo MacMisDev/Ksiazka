@@ -2,6 +2,8 @@ package me.ksiazka.service;
 
 import me.ksiazka.dao.BookDAO;
 import me.ksiazka.model.Book;
+import me.ksiazka.model.BookStatus;
+import me.ksiazka.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,8 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public long save(Book toSave) {
+
+        toSave.setBookStatus(BookStatus.AWAITING);
         return bookDAO.save(toSave);
     }
 
@@ -56,11 +60,18 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    @Transactional
-    public int checkMaxPagesLimit() {
-        double maxNumberPage = Math.floor((double) bookDAO.getAll().size() / bookLimitOnPage);
-        if(bookDAO.getAll().size()%10 == 0) return (int) maxNumberPage-1;
-        return (int) maxNumberPage;
+    public List<Book> getAllAccepted() {
+        return bookDAO.getAllAccepted();
+    }
+
+    @Override
+    public List<User> findEachUserWithBookInHaveList(long bookId) {
+        return bookDAO.findEachUserWithBookInHaveList(bookId);
+    }
+
+    @Override
+    public List<User> findEachUserWithBookInWantList(long bookId) {
+        return bookDAO.findEachUserWithBookInWantList(bookId);
     }
 
     @Override
@@ -72,5 +83,12 @@ public class BookServiceImpl implements BookService {
         }else{
             return true;
         }
+    }
+
+    @Transactional
+    public int checkMaxPagesLimit() {
+        double maxNumberPage = Math.floor((double) bookDAO.getAll().size() / bookLimitOnPage);
+        if (bookDAO.getAll().size() % 10 == 0) return (int) maxNumberPage - 1;
+        return (int) maxNumberPage;
     }
 }

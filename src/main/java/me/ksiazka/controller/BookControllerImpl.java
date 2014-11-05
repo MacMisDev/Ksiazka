@@ -1,12 +1,15 @@
 package me.ksiazka.controller;
 
 import me.ksiazka.model.Book;
+import me.ksiazka.model.BookStatus;
 import me.ksiazka.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.awt.*;
 
 @Controller("bookController")
 @RequestMapping("/book")
@@ -26,7 +29,6 @@ public class BookControllerImpl implements BookController {
         model.addAttribute("lastBooks", bookService.lastBooksAdded(page));
         return "book/list";
     }
-
 
     @Override
     public String showBook(Long id, Model model) { return null; }

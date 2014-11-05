@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -32,7 +33,7 @@ import javax.transaction.Transactional;
         DbUnitTestExecutionListener.class })
 @DatabaseSetup("classpath:/testsDataset.xml")
 @EnableTransactionManagement
-@TransactionConfiguration(defaultRollback = true)
+@TransactionConfiguration(defaultRollback = false)
 @Transactional
 public class UserDAOTest {
 
@@ -165,10 +166,13 @@ public class UserDAOTest {
         Assert.assertNull(nuser);
     }
 
+
     @Test(expected = DataIntegrityViolationException.class)
+    @Rollback(true)
     public void saveWithNullPropertyTest() {
 
-        userDAO.save(new User());
+        User u = new User();
+        userDAO.save(u);
     }
 
     @Test(expected = DataIntegrityViolationException.class)
