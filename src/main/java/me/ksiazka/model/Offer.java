@@ -13,8 +13,22 @@ public class Offer {
     @GeneratedValue
     @Column(name="offerId")
     private Long id;
-    @ManyToMany(mappedBy = "bookOffers")
-    private List<UserBook> userBookList = new ArrayList<UserBook>(0);
+    @OneToMany(mappedBy = "offer")
+    private List<OfferRelation> offerList = new ArrayList<OfferRelation>(0);
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="offeredBooks",
+            joinColumns = @JoinColumn(name = "offerId"),
+            inverseJoinColumns = @JoinColumn(name = "userBookId")
+    )
+    private List<UserBook> offeredBooks = new ArrayList<UserBook>(0);
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="wanteddBooks",
+            joinColumns = @JoinColumn(name = "offerId"),
+            inverseJoinColumns = @JoinColumn(name = "userBookId")
+    )
+    private List<UserBook> wantedBooks = new ArrayList<UserBook>(0);
+
     @Enumerated(value = EnumType.STRING)
     private OfferStatus offerStatus;
     private Date date;
@@ -25,14 +39,6 @@ public class Offer {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public List<UserBook> getUserBookList() {
-        return userBookList;
-    }
-
-    public void setUserBookList(List<UserBook> userBookList) {
-        this.userBookList = userBookList;
     }
 
     public Date getDate() {
@@ -50,4 +56,29 @@ public class Offer {
     public void setOfferStatus(OfferStatus offerStatus) {
         this.offerStatus = offerStatus;
     }
+
+    public List<OfferRelation> getOfferList() {
+        return offerList;
+    }
+
+    public void setOfferList(List<OfferRelation> offerList) {
+        this.offerList = offerList;
+    }
+
+    public List<UserBook> getOfferedBooks() {
+        return offeredBooks;
+    }
+
+    public void setOfferedBooks(List<UserBook> offeredBooks) {
+        this.offeredBooks = offeredBooks;
+    }
+
+    public List<UserBook> getWantedBooks() {
+        return wantedBooks;
+    }
+
+    public void setWantedBooks(List<UserBook> wantedBooks) {
+        this.wantedBooks = wantedBooks;
+    }
+
 }

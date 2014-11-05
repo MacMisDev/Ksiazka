@@ -20,12 +20,10 @@ public class UserBook{
     private Book book;
     @Enumerated(EnumType.STRING)
     private Condition bookCondition;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="offers",
-            joinColumns = @JoinColumn(name = "ubId"),
-            inverseJoinColumns = @JoinColumn(name = "offerId")
-    )
-    private List<Offer> bookOffers = new ArrayList<Offer>(0);
+    @ManyToMany(mappedBy = "offeredBooks")
+    private List<Offer> offeredBooks = new ArrayList<Offer>(0);
+    @ManyToMany(mappedBy = "wantedBooks")
+    private List<Offer> wantedBooks = new ArrayList<Offer>(0);
 
     public Book getBook() {
         return book;
@@ -59,11 +57,20 @@ public class UserBook{
         this.bookCondition = bookCondition;
     }
 
-    public List<Offer> getBookOffers() {
-        return bookOffers;
+    public List<Offer> getOfferedBooks() {
+        return offeredBooks;
     }
 
-    public void setBookOffers(List<Offer> bookOffers) {
-        this.bookOffers = bookOffers;
+    public void setOfferedBooks(List<Offer> offeredBooks) {
+        this.offeredBooks = offeredBooks;
     }
+
+    public List<Offer> getWantedBooks() {
+        return wantedBooks;
+    }
+
+    public void setWantedBooks(List<Offer> wantedBooks) {
+        this.wantedBooks = wantedBooks;
+    }
+
 }
