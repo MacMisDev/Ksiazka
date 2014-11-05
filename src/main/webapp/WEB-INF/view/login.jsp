@@ -44,7 +44,7 @@
                 document.getElementsByName('username').focus();
             </script>
         </div>--%>
-        <spring:url var="auth" value="/static/j_spring_security_check" />
+        <spring:url var="auth" value="${pageContext.request.contextPath}/static/j_spring_security_check" />
         <div id="wrapper">
             <nav>
                 <div id='hideShowButton' class="menuButton">

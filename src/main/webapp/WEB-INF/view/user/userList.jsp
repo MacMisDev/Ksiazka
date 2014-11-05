@@ -6,11 +6,9 @@
 
 <tiles:insertDefinition name="template">
     <tiles:putAttribute name="content">
-        <h2>home.jsp</h2>
+        <h2>user/list.jsp</h2>
 
-        Hello!
-        <a href="${pageContext.request.contextPath}/static/j_spring_security_logout"> <input type="submit" name="logout" value="logout" class="btn btn-primary" /></a>
-      
+
     </tiles:putAttribute>
 </tiles:insertDefinition>
 

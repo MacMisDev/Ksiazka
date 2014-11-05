@@ -13,4 +13,7 @@ public interface UserDAO extends BasicDAOInterface<User> {
 
     //Wyszukiwanie po emailu
     public List<User> searchByEmail(String email) throws InterruptedException;
+
+    ////Query update'ujaca przed usunieciem User
+    public void updateOfferRelationBeforeDelete(User user);
 }

@@ -91,6 +91,11 @@ public class UserDAOImpl implements UserDAO {
         return generateHibernateSearchQueryFor("email", email).list();
     }
 
+    @Override
+    public void updateOfferRelationBeforeDelete(User user) {
+
+    }
+
     private org.hibernate.Query generateHibernateSearchQueryFor(String field, String searchParam) {
 
         FullTextSession fullTextSession = Search.getFullTextSession(sessionFactory.getCurrentSession());

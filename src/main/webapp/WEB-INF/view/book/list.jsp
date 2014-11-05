@@ -6,9 +6,11 @@
 
 <tiles:insertDefinition name="template">
     <tiles:putAttribute name="content">
+        <h2>book/list.jsp</h2>
+
 
         <div>
-            Ilosc stron : <c:out value="${maxBooks}" />
+            Ilosc stron : <c:out value="${maxPages}" />
         </div>
         <c:forEach items="${lastBooks}" var="book">
             <table>
@@ -24,6 +26,35 @@
             </table>
             <br />
         </c:forEach>
+
+        <ul class="pagination">
+            <c:choose>
+                <c:when test="${currentPage==0}">
+                    <li class="disabled"><a href="#">&laquo;</a></li>
+                </c:when>
+                <c:otherwise>
+                    <li><a href="${pageContext.request.contextPath}/book/list?page=${currentPage-1}">&laquo;</a></li>
+                </c:otherwise>
+            </c:choose>
+            <c:forEach var="i" begin="0" end="${maxPages}">
+                <c:choose>
+                    <c:when test="${i==currentPage}">
+                        <li class="active"><a href="#">${i+1}</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li><a href="${pageContext.request.contextPath}/book/list?page=${i}">${i+1}</a></li>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+            <c:choose>
+                <c:when test="${currentPage==maxPages}">
+                    <li class="disabled"><a href="#">&raquo;</a></li>
+                </c:when>
+                <c:otherwise>
+                    <li><a href="${pageContext.request.contextPath}/book/list?page=${currentPage+1}">&raquo;</a></li>
+                </c:otherwise>
+            </c:choose>
+        </ul>
 
 
     </tiles:putAttribute>

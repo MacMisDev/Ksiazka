@@ -7,6 +7,7 @@ import me.ksiazka.dao.UserBookDAO;
 import me.ksiazka.dao.UserDAO;
 import me.ksiazka.model.*;
 import me.ksiazka.service.SearchService;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,18 +49,20 @@ public class UserDAOTest {
     @Test
     public void getUserTest() {
 
-        User user = userDAO.get(2);
+        User user = userDAO.get(3);
 
-        Assert.assertEquals(2, (long) user.getId());
+        Assert.assertEquals(3, (long) user.getId());
         Assert.assertEquals("jarke@jarke.jr", user.getEmail());
         Assert.assertEquals("Jarke", user.getName());
         Assert.assertEquals("Cimoche", user.getSurname());
         Assert.assertEquals("ChybaTy", user.getUsername());
-        Assert.assertEquals(1, user.getBooksHave().size());
-        Assert.assertEquals(2, user.getBooksWant().size());
+        Assert.assertEquals(1, user.getSizeOfBooksHave());
+        Assert.assertEquals(2, user.getSizeOfBooksWant());
+        Assert.assertEquals(1, user.getRoles().size());
+        Assert.assertEquals("ROLE_ADMIN", user.getRoles().get(0).getRole());
         //Dla pewnosci sprawdzamy czy np. na liscie books have znajduje
         //sie odpowiednia ksiazka
-        Assert.assertEquals("Ślepowidzenie", user.getBooksHave().get(0).getBook().getTitle());
+        Assert.assertEquals("Ślepowidzenie", user.getBookFromBooksHave(0).getBook().getTitle());
 
     }
 
@@ -76,12 +79,16 @@ public class UserDAOTest {
     @Test
     public void addUserTest() {
 
+        UserRole userRole = new UserRole();
+        userRole.setRole("ROLE_USER");
+
         User user = new User();
         user.setName("Wojtek");
         user.setSurname("Nowak");
         user.setUsername("wojtekN");
         user.setEmail("Wojtek@py.py lolada heldan");
         user.setPassword("wojtek.py"); //cannot be null
+        user.getRoles().add(userRole);
 
         long id = userDAO.save(user);
 
@@ -91,17 +98,18 @@ public class UserDAOTest {
         Assert.assertEquals("wojtekN", retrivedUser.getUsername());
         Assert.assertEquals("Wojtek@py.py lolada heldan", retrivedUser.getEmail());
         Assert.assertEquals("wojtek.py", retrivedUser.getPassword());
+        Assert.assertEquals("ROLE_USER", retrivedUser.getRoles().get(0).getRole());
     }
 
     @Test
     public void deleteUserTest() {
 
-        Assert.assertNotNull(userDAO.get(1));
-        Assert.assertEquals(2, userDAO.get(1).getBooksHave().size());
+        Assert.assertNotNull(userDAO.get(2));
+        Assert.assertEquals(2, userDAO.get(2).getSizeOfBooksHave());
 
-        userDAO.delete(1);
+        userDAO.delete(2);
 
-        Assert.assertNull(userDAO.get(1));
+        Assert.assertNull(userDAO.get(2));
         //Uzytkownik posiadal w swojej liscie have ksiazki z encji UserBook o id 1 i 3
         //Sprawdzamy czy sie usunely.
         Assert.assertNull(userBookDAO.get(1));
@@ -117,13 +125,13 @@ public class UserDAOTest {
     @Test
     public void updateUserTest() {
 
-       User user = userDAO.get(2);
+       User user = userDAO.get(3);
        Assert.assertFalse(user.getEmail().equals("wojtek.py"));
        user.setEmail("wojtek.py");
        userDAO.update(user);
 
         Assert.assertEquals((int) usersInDatabse, userDAO.getAll().size());
-        Assert.assertEquals("wojtek.py", userDAO.get(2).getEmail());
+        Assert.assertEquals("wojtek.py", userDAO.get(3).getEmail());
     }
 
     @Test
@@ -131,7 +139,7 @@ public class UserDAOTest {
 
         User user = userDAO.findUserByUsername("Konasz");
 
-        Assert.assertEquals(new Long(1), user.getId());
+        Assert.assertEquals(new Long(2), user.getId());
         Assert.assertEquals("Konasz", user.getUsername());
         Assert.assertEquals("jarke69@bdimension.org", user.getEmail());
         Assert.assertEquals("Caroslaw", user.getName());
@@ -147,7 +155,7 @@ public class UserDAOTest {
 
         User user = userDAO.findUserByEmail("jarke69@bdimension.org");
 
-        Assert.assertEquals(new Long(1), user.getId());
+        Assert.assertEquals(new Long(2), user.getId());
         Assert.assertEquals("Konasz", user.getUsername());
         Assert.assertEquals("jarke69@bdimension.org", user.getEmail());
         Assert.assertEquals("Caroslaw", user.getName());
@@ -165,6 +173,19 @@ public class UserDAOTest {
 
         User u = new User();
         userDAO.save(u);
+    }
+
+    @Test(expected = DataIntegrityViolationException.class)
+    @Ignore
+    public void saveUserWithNoRolesTest() {
+
+        User user = new User();
+        user.setName("Wojtek");
+        user.setSurname("Nowak");
+        user.setUsername("wojtekN");
+        user.setEmail("Wojtek@py.py lolada heldan");
+        user.setPassword("wojtek.py"); //cannot be null
+        userDAO.save(user);
     }
 
 }
