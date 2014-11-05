@@ -1,5 +1,7 @@
 package me.ksiazka.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.search.annotations.*;
 import org.hibernate.search.annotations.Index;
 
@@ -15,26 +17,37 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "bookId")
+    @JsonIgnore
     private Long id;
     @Column(nullable = false)
     @Field(index = Index.YES, analyze=Analyze.YES, store=Store.NO)
+    @JsonProperty("title")
     private String title;
     @Column(nullable = false, unique = true)
+    @JsonProperty("ISBN")
     private String ISBN;
     @Column(nullable = false)
     @Field(index = Index.YES, analyze=Analyze.YES, store=Store.NO)
+    @JsonProperty("author")
     private String author;
+    @JsonProperty("publisher")
     private String publisher;
     @Column(length = 1000)
+    @JsonProperty("description")
     private String description;
+    @JsonProperty("publicationYear")
     private int publicationYear;
+    @JsonProperty("pages")
     private int pages;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @JsonIgnore
     private BookStatus bookStatus;
     @ManyToMany(mappedBy = "booksWant", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<User> user = new ArrayList<User>(0);
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<UserBook> bookList = new ArrayList<UserBook>(0);
 
     public Book() {
