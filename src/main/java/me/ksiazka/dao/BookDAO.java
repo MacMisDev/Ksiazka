@@ -16,4 +16,10 @@ public interface BookDAO extends BasicDAOInterface<Book> {
 
     //Zwraca wszystkich uzytkownikow, ktorzy posiadaja ta ksiazke na liscie want
     public List<User> findEachUserWithBookInWantList(long bookId);
+
+    //Zwraca wszystkie ksiazki o statusie ACCEPTED
+    public List<Book> getAllAccepted();
+
+    //Query update'ujaca przed usunieciem Book
+    public void updateUserBookBeforeDelete(Book book);
 }
