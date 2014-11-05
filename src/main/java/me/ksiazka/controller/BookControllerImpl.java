@@ -1,13 +1,15 @@
 package me.ksiazka.controller;
 
 import me.ksiazka.model.Book;
+import me.ksiazka.model.BookStatus;
 import me.ksiazka.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.awt.*;
 
 @Controller("bookController")
 @RequestMapping("/book")
@@ -32,13 +34,17 @@ public class BookControllerImpl implements BookController {
     public String showBook(Long id, Model model) { return null; }
 
     @Override
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String addBookToSystem(Model model) {
-        return null;
+        model.addAttribute("book", new Book());
+        return "book/newBook";
     }
 
     @Override
-    public String addedBookToSystem(Book book) {
-        return null;
+    @RequestMapping(value = "/new", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody Book addBookToSystem(@RequestBody Book book) {
+
+        return bookService.get(bookService.save(book));
     }
 
     @Override

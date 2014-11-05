@@ -1,14 +1,12 @@
-package me.ksiazka.test.service;
+package me.ksiazka.test.logic;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import junit.framework.Assert;
 import me.ksiazka.model.BookAlreadyExistingOnThisListException;
 import me.ksiazka.model.User;
-import me.ksiazka.model.UserRole;
 import me.ksiazka.service.BookService;
 import me.ksiazka.service.UserService;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +21,6 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class,
@@ -35,7 +32,7 @@ import java.util.List;
 @DatabaseSetup("classpath:/testsDataset.xml")
 @EnableTransactionManagement
 @TransactionConfiguration(defaultRollback = false)
-public class UserServiceTest {
+public class OnModelLogicTest {
 
     @Autowired
     UserService userService;
@@ -47,69 +44,30 @@ public class UserServiceTest {
     private Integer usersInDatabse;
 
     @Test
-    public void getUserTest() {
+    public void addToWantListTest() throws BookAlreadyExistingOnThisListException {
 
-        User user = userService.get(1);
-        Assert.assertNotNull(user);
-        Assert.assertEquals("Użytkownik usunięty", user.getUsername());
-        Assert.assertEquals("test", user.getPassword());
+        User user = userService.get(3);
+        Assert.assertEquals(2, user.getSizeOfBooksWant());
+
+        user.addToWantList(bookService.get(2));
+
+        User retrivedUser = userService.get(3);
+        Assert.assertEquals(3, retrivedUser.getSizeOfBooksWant());
+        Assert.assertEquals("Jarek Cimoch i Piwnica Tajemnic",
+                retrivedUser.getBookFromBooksWant(2).getTitle());
     }
 
     @Test
-    public void saveUserTest() {
+    public void deleteFromWantListTest() {
 
-        UserRole userRole = new UserRole();
-        userRole.setRole("ROLE_USER");
+        User user = userService.get(3);
+        Assert.assertEquals(2, user.getSizeOfBooksWant());
 
-        User user = new User();
-        user.setName("Pawel");
-        user.setSurname("Zygar");
-        user.setUsername("PZ");
-        user.setEmail("pikus321 lol jaki email@gmial.com");
-        user.setPassword("131191"); //cannot be null
-        user.getRoles().add(userRole);
+        user.removeFromWantList(0);
 
-        long id = userService.save(user);
-
-        Assert.assertEquals("Zygar", userService.get(id).getSurname());
-        Assert.assertEquals("ROLE_USER", userService.get(id).getRoles().get(0).getRole());
+        User retrivedUser = userService.get(3);
+        Assert.assertEquals(1, user.getSizeOfBooksWant());
+        Assert.assertEquals("Ślepowidzenie",
+                retrivedUser.getBookFromBooksWant(0).getTitle());
     }
-
-    @Test
-    public void getAllUserTest() {
-
-        List<User> userList = userService.getAll();
-
-        Assert.assertEquals((int) usersInDatabse, userList.size());
-    }
-
-    @Test
-    public void updateUserTest() {
-
-        User user = userService.get(2);
-        Assert.assertFalse(user.getUsername().equals("Jonasz"));
-        user.setUsername("Jonasz");
-        userService.save(user);
-
-        User retrivedUser = userService.get(2);
-        Assert.assertEquals("Jonasz", retrivedUser.getUsername());
-    }
-
-    @Test
-    @Ignore
-    public void deleteUserTest() {
-
-        /*
-        @ToDo: Test do napisania po tym jak rozwiazane zostanie issue #11
-         */
-    }
-
-    @Test
-    @Ignore
-    public void deleteFromHaveListTest() {
-
-    }
-
-
-
 }

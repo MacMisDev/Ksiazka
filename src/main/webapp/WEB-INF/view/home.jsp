@@ -9,7 +9,7 @@
         <h2>home.jsp</h2>
 
         Hello!
-        <a href="/ksiazka/static/j_spring_security_logout"> <input type="submit" name="logout" value="logout" class="btn btn-primary" /></a>
+        <a href="${pageContext.request.contextPath}/static/j_spring_security_logout"> <input type="submit" name="logout" value="logout" class="btn btn-primary" /></a>
       
     </tiles:putAttribute>
 </tiles:insertDefinition>

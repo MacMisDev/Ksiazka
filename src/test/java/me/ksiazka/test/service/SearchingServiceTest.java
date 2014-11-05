@@ -10,6 +10,8 @@ import me.ksiazka.service.SearchService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.search.FullTextSession;
+import org.hibernate.search.Search;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -42,31 +44,24 @@ public class SearchingServiceTest {
     SessionFactory sessionFactory;
 
     private long saved1id;
+    private long saved2id;
+    private long saved3id;
 
     private static boolean doneBefore = false;
 
     //@Before
+    @Transactional
     public void setupDatabase() {
 
         if(!doneBefore) {
 
-            Session session = sessionFactory.openSession();
-            Transaction tx = session.getTransaction();
-            tx.begin();
+            //FullTextSession fullTextSession = Search.getFullTextSession(sessionFactory.getCurrentSession());
+            //Transaction tx = fullTextSession.getTransaction();
+            //Session session = sessionFactory.getCurrentSession();
+            //Transaction tx = session.getTransaction();
+            //tx.begin();
 
             System.out.println("setup");
-
-            try {
-                searchService.reindex();
-            } catch (InterruptedException e) {
-
-                System.out.println("--------------------------------------------------");
-                System.out.println("--------------------------------------------------");
-                System.out.println("SearchingServiceTest failed to reindex database");
-                System.out.println("--------------------------------------------------");
-                System.out.println("--------------------------------------------------");
-                e.printStackTrace();
-            }
 
             User u1 = new User("Maciej", "Miś", "kolak122", "macmickoks@gmial.com", "MacMis");
             User u2 = new User("Łukasz", "Skarżyński", "kolak12", "lukskarkoks@gmail.com", "Konio");
@@ -80,21 +75,36 @@ public class SearchingServiceTest {
                     2012, 89, BookStatus.AWAITING);
 
             saved1id = userDAO.save(u1);
-            userDAO.save(u2);
-            userDAO.save(u3);
+            saved2id = userDAO.save(u2);
+            saved3id = userDAO.save(u3);
 
             /*bookDAO.save(b1);
             bookDAO.save(b2);
             bookDAO.save(b3);*/
 
-            tx.commit();
+            //fullTextSession.index(fullTextSession.load(User.class, saved1id));
+            //fullTextSession.index(fullTextSession.load(User.class, saved2id));
+            //fullTextSession.index(fullTextSession.load(User.class, saved3id));
+            //tx.commit();
+            //session.close();
+
+//            try {
+//                searchService.reindex();
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
 
             try {
                 searchService.reindex();
             } catch (InterruptedException e) {
+
+                System.out.println("--------------------------------------------------");
+                System.out.println("--------------------------------------------------");
+                System.out.println("SearchingServiceTest failed to reindex database");
+                System.out.println("--------------------------------------------------");
+                System.out.println("--------------------------------------------------");
                 e.printStackTrace();
             }
-
             doneBefore = true;
         }
 
@@ -107,23 +117,40 @@ public class SearchingServiceTest {
     //@Ignore
     public void searchByEmailTest() throws InterruptedException {
 
-        Session session = sessionFactory.openSession();
-        Transaction tx = session.getTransaction();
-        tx.begin();
-        searchService.reindex();
-        User uu = new User("zjjppppaaaa9999", "sdpppaaaja9999", "xxpppaa999jz", "a@o999p", "zzjpppp999px");
+//        Session session = sessionFactory.openSession();
+//        Transaction tx = session.getTransaction();
+//        tx.begin();
+//        searchService.reindex();
+//        User uu = new User("zjjppppaaaa9999", "sdpppaaaja9999", "xxpppaa999jz", "a@o999p", "zzjpppp999px");
 
            // sessionFactory.getCurrentSession().saveOrUpdate(uu);
 
-        tx.commit();
+//        tx.commit();
 
         //Assert.assertNotNull(userDAO.get(1));
 
         //userDAO.save(new User("Magdalena", "Hara", "hara", "hara@gmial.com", "Hara"));
 
+        try {
+
+            searchService.reindex();
+            System.out.println("omg");
+
+        } catch (InterruptedException e) {
+
+            System.out.println("--------------------------------------------------");
+            System.out.println("--------------------------------------------------");
+            System.out.println("SearchingServiceTest failed to reindex database");
+            System.out.println("--------------------------------------------------");
+            System.out.println("--------------------------------------------------");
+            e.printStackTrace();
+        }
+
+        //userDAO.save(new User("Magdalena", "Hara", "hara", "hara@gmial.com", "Hara"));
+
         List<User> u = null;
         try {
-            u = searchService.searchByEmail("macmiskoks@gmail.com");
+            u = searchService.searchByEmail("krzys@gmial.com");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

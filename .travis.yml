@@ -9,3 +9,4 @@ before_script:
   - echo db.url=jdbc:mysql://localhost:3306/myapp_test >> /home/travis/build/MacMisDev/Ksiazka/src/main/webapp/db.properties
   - echo db.username=root >> /home/travis/build/MacMisDev/Ksiazka/src/main/webapp/db.properties
   - echo db.password= >> /home/travis/build/MacMisDev/Ksiazka/src/main/webapp/db.properties
+  - echo db.status=create >> /home/travis/build/MacMisDev/Ksiazka/src/main/webapp/db.properties
