@@ -153,11 +153,12 @@
   }
 }
 #loginBookLockedImage {
-  margin-left: 179px;
-  top: -45px;
-  height: 135px;
-  width: 112px;
+  margin-left: 174;
+  top: -55px;
+  height: 145px;
+  width: 122px;
   background: url("../images/loginBookLocked.png") no-repeat;
+  background-position: center;
   position: absolute;
   z-index: 9999;
   -moz-transition-duration: 0.4s;
@@ -168,9 +169,9 @@
 @media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
   #loginBookLockedImage {
     margin-left: 152.15px;
-    top: -38.25px;
-    height: 114.75px;
-    width: 95.2px;
+    top: -46.75px;
+    height: 123.25px;
+    width: 103.7px;
     -moz-background-size: cover;
     background-size: cover;
   }
@@ -178,43 +179,42 @@
 @media all and (max-width: 499px), (max-height: 645px) {
   #loginBookLockedImage {
     margin-left: 116.35px;
-    top: -29.25px;
-    height: 87.75px;
-    width: 72.8px;
+    top: -35.75px;
+    height: 94.25px;
+    width: 79.3px;
     -moz-background-size: cover;
     background-size: cover;
   }
 }
 #ribbon {
   width: 510px;
-  height: 64px;
+  height: 75px;
   position: absolute;
   margin-left: -20px;
   margin-top: 112px;
   color: #e8e8e8;
   font-size: 1.0em;
   background: url("../images/ribbonLoginPage.png") no-repeat;
-  -moz-background-size: cover;
-  background-size: cover;
+  background-position: center;
 }
 #ribbon p {
   width: 320px;
   height: 15px;
   margin: 0 auto;
-  margin-top: 12px;
+  margin-top: 20px;
   text-align: center;
 }
 @media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
   #ribbon p {
     width: 272px;
     height: 12.75px;
-    margin-top: 8px;
+    margin-top: 14px;
   }
 }
 @media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
   #ribbon {
     width: 433.5px;
-    height: 54.4px;
+    height: 63.75px;
     margin-left: -18px;
     margin-top: 95.2px;
     -moz-background-size: cover;

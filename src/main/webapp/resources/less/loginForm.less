@@ -115,18 +115,18 @@
 }
 
 #loginBookLockedImage {
-
-  @top: -45px;
-  @height: 135px;
-  @width: 112px;
-
-  margin-left: 470/2 - 112/2px;
+  @top: -55px;
+  @height: 145px;
+  @width: 122px;
+  margin-left: 470/2 - @width/2px;
   top: @top;
   height: @height;
   width: @width;
   background: url("../images/loginBookLocked.png") no-repeat;
+  background-position: center;
   position: absolute;
   z-index: 9999;
+
   .transition-duration(0.4s);
   @media @tablet {
     margin-left: 85/100*470/2 - 85/100*112/2px;
@@ -149,7 +149,7 @@
 #ribbon {
 
   @width: 510px;
-  @height: 64px;
+  @height: 75px;
   @margin-top: 112px;
 
   width: @width;
@@ -160,19 +160,20 @@
   color: @white;
   font-size: 1.0em;
   background: url("../images/ribbonLoginPage.png") no-repeat;
-  -moz-background-size: cover;
-  background-size: cover;
+  background-position: center;
+  // -moz-background-size: cover;
+  //background-size: cover;
 
   p {
     width: 320px;
     height: 15px;
     margin: 0 auto;
-    margin-top: 12px;
+    margin-top: 20px;
     text-align: center;
     @media @tablet {
       width: 85/100*320px;
       height: 85/100*15px;
-      margin-top: 8px;
+      margin-top: 14px;
     }
   }
 
