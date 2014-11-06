@@ -38,15 +38,12 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Address> addressList = new ArrayList<Address>(0);
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @Column(nullable = false)
     private List<UserRole> roles = new ArrayList<UserRole>(0);
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Message> messages = new ArrayList<Message>(0);
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="UserOffer",
-            joinColumns = @JoinColumn(name="userId"),
-            inverseJoinColumns = @JoinColumn(name="offerId")
-    )
-    private List<Offer> offerList = new ArrayList<Offer>(0);
+    @OneToMany(mappedBy = "user")
+    private List<OfferRelation> offerList = new ArrayList<OfferRelation>(0);
 
     public  User() {
 
@@ -148,11 +145,11 @@ public class User {
         this.messages = messages;
     }
 
-    public List<Offer> getOfferList() {
+    public List<OfferRelation> getOfferList() {
         return offerList;
     }
 
-    public void setOfferList(List<Offer> offerList) {
+    public void setOfferList(List<OfferRelation> offerList) {
         this.offerList = offerList;
     }
 
@@ -215,4 +212,5 @@ public class User {
 
         this.booksHave.remove(userBook);
     }
+
 }

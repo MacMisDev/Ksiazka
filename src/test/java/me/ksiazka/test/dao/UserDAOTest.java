@@ -166,6 +166,7 @@ public class UserDAOTest {
         Assert.assertNull(nuser);
     }
 
+
     @Test(expected = DataIntegrityViolationException.class)
     @Rollback(true)
     public void saveWithNullPropertyTest() {

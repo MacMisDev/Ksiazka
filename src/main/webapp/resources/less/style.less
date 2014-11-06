@@ -9,7 +9,7 @@ Date of last update: 2014-10-30
 @import "loginForm.less";
 @import "customMixins.less";
 @import "checkbox.less";
-
+@import "mediaQuery.less";
 //lato font by Łukasz Dziedzic
 @import url(http://fonts.googleapis.com/css?family=Lato:400,300,300italic);
 
@@ -20,7 +20,7 @@ html, body {
   font-size: 20px;
   font-family: 'Lato', sans-serif;
   font-weight: 300 !important;
-  background: url(../images/bg.jpg) no-repeat center center fixed; /*background-size*/
+  background: url(../images/bg.jpg) no-repeat center center fixed; /* background-size */
   //Scale the background image to be as large as possible
   //so that the background area is completely covered by
   //the background image.Some parts of the background image
@@ -43,7 +43,12 @@ html, body {
 }
 
 .wrapperActive {
-  padding-left: 150px !important; ////it's important because it has to overwrite menuLeft proprarties and class is less important then id
+  @media @tablet {
+    padding-left: 150px !important; ////it's important because it has to overwrite menuLeft proprarties and class is less important then id
+  }
+  @media @phone {
+    padding-left: 150px !important;
+  }
 }
 
 #pageContentWrapper {
@@ -52,7 +57,6 @@ html, body {
   width: 100%;
   height: 100%;
   //height: auto;
-
 }
 
 //use it inside of pageContentWrapper
@@ -70,14 +74,16 @@ html, body {
   position: relative;
   margin: 0 auto;
   padding: 10px;
- // border: 1px solid aqua; //only for testing
+  // border: 1px solid aqua; //only for testing
   word-wrap: break-word;
   //.box-shadow(0 10px 10px red); //only for testing
 }
 
 //nav html5 element used for navigation
 nav {
-  transform: translateZ(0);
+  //transform: translateZ(0);
+  //.transform(0);
+  //-webkit-transform: translateZ(0);
   margin-left: -150px;
   left: 60px;
   width: 150px;
@@ -89,12 +95,14 @@ nav {
   /* &:hover{
      margin-left: -60px;
    }*/
-  .transition-duration(0.4s);
+  .transition(0.4s, ease);
 
 }
 
 .navActive {
-  margin-left: -60px !important; //it's important because it has to overwrite menuLeft proprarties and class is less important then id
+  //SLOW , only cpu, on desktop it is ok , but mobile cpu's are still to slow in comparison to desktops
+  //margin-left: -60px !important; //it's important because it has to overwrite menuLeft proprarties and class is less important then id
+  .transform(translate3d(90px, 0, 0)); //GPU UTILIZATION !!!
 }
 
 .menuButton {
@@ -106,3 +114,4 @@ nav {
     background-color: lighten(@base, 20%);
   }
 }
+

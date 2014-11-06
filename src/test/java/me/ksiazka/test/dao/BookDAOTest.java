@@ -36,7 +36,7 @@ import java.util.List;
         DbUnitTestExecutionListener.class })
 @DatabaseSetup("classpath:/testsDataset.xml")
 @EnableTransactionManagement
-@TransactionConfiguration(defaultRollback = true)
+@TransactionConfiguration(defaultRollback = false)
 @Transactional
 public class BookDAOTest {
 
@@ -194,6 +194,7 @@ public class BookDAOTest {
     }
 
     @Test(expected = DataIntegrityViolationException.class)
+    @Rollback(true)
     public void saveWithNullPropertyTest() {
 
         bookDAO.save(new Book());
