@@ -1,3 +1,4 @@
+@import "mediaQuery";
 
 //real check box is hidden !!!!!
 input[type=checkbox].css-checkbox {
@@ -10,6 +11,9 @@ input[type=checkbox].css-checkbox {
 input[type=checkbox].css-checkbox + label.css-label {
   padding-left: 55px;
   margin-left: 46px;
+  @media @tablet{
+    margin-left: 50px;
+  }
   margin-top: 10px;
   height: 44px;
   //display: inline-block;

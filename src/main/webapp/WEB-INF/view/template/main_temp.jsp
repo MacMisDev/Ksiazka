@@ -8,12 +8,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel='stylesheet' href='<c:url value="/webjars/bootstrap/3.3.0/css/bootstrap.min.css" />'>
         <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
+        <link href="<c:url value="webjars/animate.css/3.2.0/animate.min.css" />" rel="stylesheet">
     </head>
 
     <body>
         <tiles:insertAttribute name="header" />
         <tiles:insertAttribute name="content" />
-        <tiles:insertAttribute name="footer" />
     </body>
     <script src="<c:url value="/webjars/jquery/1.11.1/jquery.min.js" />"></script>
     <script src="<c:url value="/resources/js/UI.js" />"></script>

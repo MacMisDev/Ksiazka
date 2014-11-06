@@ -16,6 +16,11 @@ input[type=checkbox].css-checkbox + label.css-label {
   vertical-align: middle;
   cursor: pointer;
 }
+@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+  input[type=checkbox].css-checkbox + label.css-label {
+    margin-left: 50px;
+  }
+}
 input[type=checkbox].css-checkbox:checked + label.css-label {
   background-position: 0 -44px;
 }
