@@ -29,7 +29,7 @@ public class BookControllerImpl implements BookController {
 
     @Override
     @RequestMapping(value = "/{bookId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody Book showBook(Book book, @PathVariable Long bookId) {
+    public @ResponseBody Book showBook(@PathVariable Long bookId) {
         return bookService.get(bookId);
     }
 
