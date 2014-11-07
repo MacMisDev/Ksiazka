@@ -75,19 +75,21 @@ public class BookDAOImpl implements BookDAO {
     //znajduje sie w dao
     @Override
     public List<User> findEachUserWithBookInHaveList(long bookId) {
-//        List<User> list;
-//        String query = "FROM User WHERE id in (select user FROM UserBook WHERE bookId=:id)";
-//        Query listQuery = this.sessionFactory.getCurrentSession().createQuery(query);
-//        list = listQuery.setParameter("id", bookId).list();
-//        return list;
-        return null;
+        List<User> list;
+        String query = "FROM User WHERE id in (select user FROM UserBook WHERE bookId=:id)";
+        Query listQuery = this.sessionFactory.getCurrentSession().createQuery(query);
+        list = listQuery.setParameter("id", bookId).list();
+        return list;
     }
 
     //j.w.
     @Override
     public List<User> findEachUserWithBookInWantList(long bookId) {
-
-         return null;
+        List<User> list;
+        String query = "SELECT u FROM User u join u.booksWant b where b.id=:id)";
+        Query listQuery = this.sessionFactory.getCurrentSession().createQuery(query);
+        list = listQuery.setParameter("id", bookId).list();
+        return list;
     }
 
     @Override

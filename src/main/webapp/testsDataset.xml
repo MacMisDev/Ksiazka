@@ -23,22 +23,21 @@
     <User userId="7" username="Tomasz" email="Tomasz@email.com" name="Tomasz" surname="Comasz" password="aletajne" />
     <User userId="8" username="NieJonasz" email="Jonasz@email.com" name="Jonasz" surname="Niekonasz" password="najtajniesze" />
 
-
     <!-- booksHave (UserBook) -->
     <UserBook id="1" userId="2" bookId="2" bookCondition="GOOD" />
     <UserBook id="2" userId="3" bookId="4" bookCondition="GOOD" />
     <UserBook id="3" userId="2" bookId="4" bookCondition="GOOD" />
-    <UserBook id="4" userId="6" bookId="4" bookCondition="GOOD" />
-    <UserBook id="5" userId="4" bookId="4" bookCondition="GOOD" />
-    <UserBook id="6" userId="5" bookId="4" bookCondition="GOOD" />
-    <UserBook id="7" userId="1" bookId="4" bookCondition="GOOD" />
+    <UserBook id="4" userId="6" bookId="5" bookCondition="GOOD" />
+    <UserBook id="5" userId="4" bookId="2" bookCondition="GOOD" />
+    <UserBook id="6" userId="5" bookId="1" bookCondition="GOOD" />
+    <UserBook id="7" userId="1" bookId="6" bookCondition="GOOD" />
     <UserBook id="8" userId="5" bookId="4" bookCondition="GOOD" />
-    <UserBook id="9" userId="7" bookId="4" bookCondition="GOOD" />
-    <UserBook id="10" userId="7" bookId="4" bookCondition="GOOD" />
-    <UserBook id="11" userId="6" bookId="4" bookCondition="GOOD" />
-    <UserBook id="12" userId="4" bookId="4" bookCondition="GOOD" />
-    <UserBook id="13" userId="6" bookId="4" bookCondition="GOOD" />
-    <UserBook id="14" userId="4" bookId="4" bookCondition="GOOD" />
+    <UserBook id="9" userId="7" bookId="7" bookCondition="GOOD" />
+    <UserBook id="10" userId="7" bookId="2" bookCondition="GOOD" />
+    <UserBook id="11" userId="6" bookId="7" bookCondition="GOOD" />
+    <UserBook id="12" userId="4" bookId="3" bookCondition="GOOD" />
+    <UserBook id="13" userId="6" bookId="9" bookCondition="GOOD" />
+    <UserBook id="14" userId="4" bookId="9" bookCondition="GOOD" />
     <UserBook id="15" userId="7" bookId="4" bookCondition="GOOD" />
 
 
