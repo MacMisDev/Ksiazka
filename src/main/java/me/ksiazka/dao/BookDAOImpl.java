@@ -62,10 +62,7 @@ public class BookDAOImpl implements BookDAO {
     @Override
     public List<Book> getLastBooks(int page, int BookLimitOnPage) {
 
-        /*
-        @ToDo: getLastBooks musi pobierac tylko ksiazki o statusie ACCEPTED - ma to robic w query, nie przegladajac liste
-         */
-        Query query = sessionFactory.getCurrentSession().createQuery("from Book order by bookId desc");
+        Query query = sessionFactory.getCurrentSession().createQuery("from Book where bookStatus='Accepted' order by bookId desc");
         query.setMaxResults(BookLimitOnPage);
         query.setFirstResult(page * BookLimitOnPage);
 
@@ -78,7 +75,11 @@ public class BookDAOImpl implements BookDAO {
     //znajduje sie w dao
     @Override
     public List<User> findEachUserWithBookInHaveList(long bookId) {
-        
+//        List<User> list;
+//        String query = "FROM User WHERE id in (select user FROM UserBook WHERE bookId=:id)";
+//        Query listQuery = this.sessionFactory.getCurrentSession().createQuery(query);
+//        list = listQuery.setParameter("id", bookId).list();
+//        return list;
         return null;
     }
 
