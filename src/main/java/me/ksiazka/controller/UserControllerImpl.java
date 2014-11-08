@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class UserControllerImpl implements UserController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Override
     @RequestMapping(value = "/list", method = RequestMethod.GET)

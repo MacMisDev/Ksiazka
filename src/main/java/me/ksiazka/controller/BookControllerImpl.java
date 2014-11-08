@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class BookControllerImpl implements BookController {
 
     @Autowired
-    BookService bookService;
+    private BookService bookService;
 
     @Override
     @RequestMapping(value = {"/", ""}, method = RequestMethod.GET)
