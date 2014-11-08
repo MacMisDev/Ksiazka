@@ -16,7 +16,7 @@ public class BookControllerImpl implements BookController {
     BookService bookService;
 
     @Override
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = {"/", ""}, method = RequestMethod.GET)
     public String showBookHome() {
         return "redirect:/book/list";
     }

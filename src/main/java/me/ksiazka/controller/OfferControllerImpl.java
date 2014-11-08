@@ -17,7 +17,7 @@ public class OfferControllerImpl implements OfferController {
     private OfferService offerService;
 
     @Override
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = {"/", ""}, method = RequestMethod.GET)
     public String showOfferHome() {
         return "redirect:/offer/list";
     }
