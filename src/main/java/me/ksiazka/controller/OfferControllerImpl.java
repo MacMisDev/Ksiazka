@@ -19,7 +19,7 @@ public class OfferControllerImpl implements OfferController {
     @Override
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String showOfferHome() {
-        return "redirect:/offer/offerList";
+        return "redirect:/offer/list";
     }
 
     @Override
@@ -39,5 +39,12 @@ public class OfferControllerImpl implements OfferController {
     @RequestMapping(value = "/new", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody Offer newOffer(@RequestBody Offer offer) {
         return offerService.get(offerService.save(offer));
+    }
+
+    //todo
+    @Override
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public String offerList(Model model) {
+        return "offer/offerList";
     }
 }

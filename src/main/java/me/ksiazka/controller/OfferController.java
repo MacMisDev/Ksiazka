@@ -8,4 +8,5 @@ public interface OfferController {
     public Offer showOffer(Long id);
     public String newOffer(Model model);
     public Offer newOffer(Offer offer);
+    public String offerList(Model model);
 }
