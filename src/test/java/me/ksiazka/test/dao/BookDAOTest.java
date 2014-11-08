@@ -168,12 +168,11 @@ public class BookDAOTest {
 
 
     @Test
-    @Ignore
     public void findEachUserWithBookInHaveListTest() {
 
         List<User> list = bookDAO.findEachUserWithBookInHaveList(4);
 
-        Assert.assertEquals(2, list.size());
+        Assert.assertEquals(4, list.size());
         //Sprawdzamy, czy na pewno mamy tych uzytkownikow, ktorych chcemy
         Assert.assertTrue(
                 (list.get(0).getName().equals("Caroslaw") && list.get(1).getName().equals("Jarke")) ||
@@ -182,8 +181,6 @@ public class BookDAOTest {
     }
 
     @Test
-    //Brak implementacji metody findEachUserWithBookInWantList
-    @Ignore
     public void findEachUserWithBookInWantListTest() {
 
         //Test analogiczny do testu wyzej

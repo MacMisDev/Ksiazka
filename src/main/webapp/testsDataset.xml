@@ -1,27 +1,65 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dataset>
+
+
     <Book bookId="1" title="Książka usunięta" ISBN="0" author="test" publisher="test" description="Z powodu naruszenia regulaminu książka została usunięta. Przepraszamy." publicationYear="0000" pages="0" bookStatus="SPECIAL"/>
     <Book bookId="2" title="Jarek Cimoch i Piwnica Tajemnic" ISBN="9785353031710" author="Severus Snape" publisher="Beyond Dimension" description="Jarek Cimoch, historia prawdziwa" publicationYear="1992" pages="1081" bookStatus="ACCEPTED"/>
     <Book bookId="3" title="XXX-Men Geneza: Jarek" ISBN="9785353031711" author="Profesor XXX" publisher="Beyond Dimension" description="Jarek Cimoch - geneza" publicationYear="2014" pages="953" bookStatus="ACCEPTED"/>
     <Book bookId="4" title="Ślepowidzenie" ISBN="9788374802932" author="Peter Watts" publisher="MAG" description="Hard-sf" publicationYear="2013" pages="408" bookStatus="ACCEPTED"/>
     <Book bookId="5" title="Krzysiu i wpsaniałe pomysły" ISBN="9888374882938" author="Krzysztof L." publisher="Jarosław Cimoch" description=":)" publicationYear="1996" pages="411" bookStatus="DELETED"/>
+    <Book bookId="6" title="Z szynką raz!" ISBN="8388459031 " author="Bukowski Charles" publisher="Noir sur Blanc" description="Jest to ksiazka, ksiazke sie czyta" publicationYear="2002 " pages="387" bookStatus="ACCEPTED"/>
+    <Book bookId="7" title="Szmira" ISBN="9788373924895" author="Charles Bukowski" publisher="Noir sur Blanch" description="Ksiazka do czytania" publicationYear="2014" pages="204" bookStatus="ACCEPTED"/>
+    <Book bookId="8" title="Ryby śpiewają w Ukajaliy" ISBN="8373892346" author="Arkady Fiedler" publisher="Zielona Sowa " description="Ksiazka" publicationYear="2003" pages="178" bookStatus="ACCEPTED"/>
+    <Book bookId="9" title="Wyspa Robinsona" ISBN="9788374373784" author="Arkady Fiedler" publisher="Skrzat" description="xxx" publicationYear="2009" pages="278" bookStatus="ACCEPTED"/>
+    <Book bookId="10" title="Złoto Gór Czarnych. Orle pióra" ISBN="8373844872" author="Szklarska Krystyna, Szklarski Alfred" publisher="Dolnośląskie" description="Czerwoni" publicationYear="2006" pages="256" bookStatus="ACCEPTED"/>
+
 
     <User userId="1" username="Użytkownik usunięty" email="test" name="test" surname="test" password="test" />
     <User userId="2" username="Konasz" email="jarke69@bdimension.org" name="Caroslaw" surname="Jimoch" password="tajne" />
     <User userId="3" username="ChybaTy" email="jarke@jarke.jr" name="Jarke" surname="Cimoche" password="jeszczeTajniejsze"/>
+    <User userId="4" username="Anna" email="anna@email.com" name="Anna" surname="Kowalska" password="tajne" />
+    <User userId="5" username="Adam" email="Adam@email.com" name="Adam" surname="Kowalski" password="teztajne" />
+    <User userId="6" username="Roman" email="Roman@email.com" name="Roman" surname="Roman" password="megatajne" />
+    <User userId="7" username="Tomasz" email="Tomasz@email.com" name="Tomasz" surname="Comasz" password="aletajne" />
+    <User userId="8" username="NieJonasz" email="Jonasz@email.com" name="Jonasz" surname="Niekonasz" password="najtajniesze" />
 
     <!-- booksHave (UserBook) -->
     <UserBook id="1" userId="2" bookId="2" bookCondition="GOOD" />
     <UserBook id="2" userId="3" bookId="4" bookCondition="GOOD" />
     <UserBook id="3" userId="2" bookId="4" bookCondition="GOOD" />
+    <UserBook id="4" userId="6" bookId="5" bookCondition="GOOD" />
+    <UserBook id="5" userId="4" bookId="2" bookCondition="GOOD" />
+    <UserBook id="6" userId="5" bookId="1" bookCondition="GOOD" />
+    <UserBook id="7" userId="1" bookId="6" bookCondition="GOOD" />
+    <UserBook id="8" userId="5" bookId="4" bookCondition="GOOD" />
+    <UserBook id="9" userId="7" bookId="7" bookCondition="GOOD" />
+    <UserBook id="10" userId="7" bookId="2" bookCondition="GOOD" />
+    <UserBook id="11" userId="6" bookId="7" bookCondition="GOOD" />
+    <UserBook id="12" userId="4" bookId="3" bookCondition="GOOD" />
+    <UserBook id="13" userId="6" bookId="9" bookCondition="GOOD" />
+    <UserBook id="14" userId="4" bookId="9" bookCondition="GOOD" />
+    <UserBook id="15" userId="7" bookId="4" bookCondition="GOOD" />
+
 
     <!-- booksWant -->
     <booksWant userId="3" bookId="3" />
     <booksWant userId="3" bookId="4" />
+    <booksWant userId="1" bookId="3" />
+    <booksWant userId="2" bookId="7" />
+    <booksWant userId="4" bookId="5" />
+    <booksWant userId="4" bookId="6" />
+    <booksWant userId="4" bookId="7" />
+
 
     <UserRole id="2" role="ROLE_USER" userId="1"/>
     <UserRole id="3" role="ROLE_ADMIN" userId="1"/>
     <UserRole id="4" role="ROLE_ADMIN" userId="3"/>
+    <UserRole id="5" role="ROLE_USER" userId="2"/>
+    <UserRole id="7" role="ROLE_USER" userId="4"/>
+    <UserRole id="8" role="ROLE_USER" userId="5"/>
+    <UserRole id="9" role="ROLE_USER" userId="6"/>
+    <UserRole id="10" role="ROLE_USER" userId="7"/>
+    <UserRole id="11" role="ROLE_USER" userId="8"/>
 
 
 </dataset>
