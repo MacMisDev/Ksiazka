@@ -22,8 +22,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public long save(Book toSave) {
-
+    public long save(Book toSave){
         toSave.setBookStatus(BookStatus.AWAITING);
         return bookDAO.save(toSave);
     }
@@ -31,26 +30,25 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public Book get(long id) {
-
         return bookDAO.get(id);
     }
 
     @Override
     @Transactional
     public List<Book> getAll() {
-        return null;
+        return bookDAO.getAll();
     }
 
     @Override
     @Transactional
     public void update(Book toUpdate) {
-
+        bookDAO.update(toUpdate);
     }
 
     @Override
     @Transactional
     public void delete(Book toDelete) {
-
+        bookDAO.delete(toDelete);
     }
 
     @Override

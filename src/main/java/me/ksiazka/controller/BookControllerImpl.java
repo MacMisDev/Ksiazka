@@ -13,7 +13,13 @@ import org.springframework.web.bind.annotation.*;
 public class BookControllerImpl implements BookController {
 
     @Autowired
-    BookService bookService;
+    private BookService bookService;
+
+    @Override
+    @RequestMapping(value = {"/", ""}, method = RequestMethod.GET)
+    public String showBookHome() {
+        return "redirect:/book/list";
+    }
 
     @Override
     @RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -47,7 +53,9 @@ public class BookControllerImpl implements BookController {
     }
 
     @Override
-    public String deleteBook(Long bookId) {
-        return null;
+    @RequestMapping(value = "/admin/book/list", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE ,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Book deleteBook(Book book) {
+        bookService.delete(book);
+        return book;
     }
 }
