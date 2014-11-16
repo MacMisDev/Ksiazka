@@ -33,7 +33,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "bookId")
     )
     private List<Book> booksWant = new ArrayList<Book>(0);
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserBook> booksHave = new ArrayList<UserBook>(0);
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Address> addressList = new ArrayList<Address>(0);
@@ -97,7 +97,7 @@ public class User {
         this.email = email;
     }
 
-    private List<Book> getBooksWant() {
+    public List<Book> getBooksWant() {
         return booksWant;
     }
 
@@ -105,7 +105,7 @@ public class User {
         this.booksWant = booksWant;
     }
 
-    private List<UserBook> getBooksHave() {
+    public List<UserBook> getBooksHave() {
         return booksHave;
     }
 
@@ -213,4 +213,20 @@ public class User {
         this.booksHave.remove(userBook);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+
+        User user = (User) o;
+
+        if (!id.equals(user.id)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }

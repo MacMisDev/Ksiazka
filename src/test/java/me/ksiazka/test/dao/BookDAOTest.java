@@ -43,6 +43,9 @@ public class BookDAOTest {
     @Autowired
     @Qualifier("booksInDatabase")
     private Integer booksInDatabase;
+    @Autowired
+    @Qualifier("usersInDatabase")
+    private Integer usersInDatabse;
 
     @Autowired
     private BookDAO bookDAO;
@@ -111,7 +114,6 @@ public class BookDAOTest {
     //Test sprawdza usuniecie ksiazki i kaskadowe usuniecie z listy have i want.
     @Test
     //Usuwanie kaskadowe nie dziala
-    @Ignore
     public void deleteBookTest() {
 
         //Pobranie uzytkownika w celu ulatwienia testowania
@@ -134,6 +136,7 @@ public class BookDAOTest {
         bookDAO.delete(book);
 
         Assert.assertEquals(null, bookDAO.get(4));
+
         //Czy ksiazka zostala usunieta kaskadowo z listy want
         Assert.assertEquals(1, user.getSizeOfBooksWant());
         //Czy na pewno usunieto dobra ksiazke

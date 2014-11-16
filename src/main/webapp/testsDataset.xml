@@ -30,7 +30,7 @@
     <UserBook id="4" userId="6" bookId="5" bookCondition="GOOD" />
     <UserBook id="5" userId="4" bookId="2" bookCondition="GOOD" />
     <UserBook id="6" userId="5" bookId="1" bookCondition="GOOD" />
-    <UserBook id="7" userId="1" bookId="6" bookCondition="GOOD" />
+    <UserBook id="7" userId="6" bookId="6" bookCondition="GOOD" />
     <UserBook id="8" userId="5" bookId="4" bookCondition="GOOD" />
     <UserBook id="9" userId="7" bookId="7" bookCondition="GOOD" />
     <UserBook id="10" userId="7" bookId="2" bookCondition="GOOD" />

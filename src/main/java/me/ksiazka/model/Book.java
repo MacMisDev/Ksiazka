@@ -7,6 +7,7 @@ import org.hibernate.search.annotations.Index;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -43,7 +44,11 @@ public class Book {
     @Column(nullable = false)
     @JsonIgnore
     private BookStatus bookStatus;
-    @ManyToMany(mappedBy = "booksWant", cascade = CascadeType.ALL)
+    @ManyToMany
+    @JoinTable(name = "booksWant",
+            joinColumns = @JoinColumn(name = "bookId"),
+            inverseJoinColumns = @JoinColumn(name = "userId")
+    )
     @JsonIgnore
     private List<User> user = new ArrayList<User>(0);
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
@@ -154,4 +159,20 @@ public class Book {
         this.bookList = bookList;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Book)) return false;
+
+        Book book = (Book) o;
+
+        if (!id.equals(book.id)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }

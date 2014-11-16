@@ -1,6 +1,11 @@
 package me.ksiazka.model;
 
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
+
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,4 +78,21 @@ public class UserBook{
         this.wantedBooks = wantedBooks;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserBook)) return false;
+
+        UserBook userBook = (UserBook) o;
+
+        if (!id.equals(userBook.id)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }
