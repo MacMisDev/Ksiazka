@@ -8,6 +8,7 @@ import me.ksiazka.dao.BookDAO;
 import me.ksiazka.dao.OfferDAO;
 import me.ksiazka.dao.UserDAO;
 import me.ksiazka.model.*;
+import me.ksiazka.service.BookService;
 import org.hibernate.exception.ConstraintViolationException;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -53,6 +54,8 @@ public class BookDAOTest {
     private UserDAO userDAO;
     @Autowired
     private OfferDAO offerDAO;
+    @Autowired
+    private BookService bookService;
 
     @Test
     public void getBookTest() {
@@ -133,7 +136,7 @@ public class BookDAOTest {
         Assert.assertEquals(1, haveListLength);
         Assert.assertEquals(2, wantListLength);
 
-        bookDAO.delete(book);
+        bookService.hardDelete(book);
 
         Assert.assertEquals(null, bookDAO.get(4));
 

@@ -48,36 +48,9 @@ public class BookDAOImpl implements BookDAO {
     @Override
     public void delete(Book toDelete) {
 
-        List<User> list;
-        String query = "FROM User WHERE id in (select user FROM UserBook WHERE bookId=:id)";
-        Query listQuery = this.sessionFactory.getCurrentSession().createQuery(query);
-        list = listQuery.setParameter("id", toDelete.getId()).list();
-
         Book book = (Book) this.sessionFactory.getCurrentSession().get(Book.class, toDelete.getId());
-
-        Iterator lit = list.iterator();
-        while(lit.hasNext()){
-            User u = (User) lit.next();
-            //usuniecie ksiazek z listy want
-            u.getBooksWant().remove(book);
-
-            Iterator uit = u.getBooksHave().iterator();
-            while(uit.hasNext()){
-                UserBook ub = (UserBook) uit.next();
-                if(ub.getBook().equals(toDelete)) {
-                    /*
-                        Usuniecie UserBook z listy have, booksHave posiada
-                        orphanRemoval=true co oznacza, ze usuniecie z listy spowoduje
-                        usuniecie rekordu takze, z UserBook
-                     */
-                    u.getBooksHave().remove(ub);
-                    this.sessionFactory.getCurrentSession().update(u);
-                    break;
-                }
-            }
-        }
-
         this.sessionFactory.getCurrentSession().delete(book);
+
     }
 
     @Override

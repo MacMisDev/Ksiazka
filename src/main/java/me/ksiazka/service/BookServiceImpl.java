@@ -1,13 +1,16 @@
 package me.ksiazka.service;
 
 import me.ksiazka.dao.BookDAO;
+import me.ksiazka.dao.UserDAO;
 import me.ksiazka.model.Book;
 import me.ksiazka.model.BookStatus;
 import me.ksiazka.model.User;
+import me.ksiazka.model.UserBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -15,6 +18,9 @@ public class BookServiceImpl implements BookService {
 
     @Autowired
     BookDAO bookDAO;
+
+    @Autowired
+    UserDAO userDAO;
 
     //Ilosc ksiazek na strone.
     @Autowired
@@ -43,6 +49,27 @@ public class BookServiceImpl implements BookService {
     @Transactional
     public void update(Book toUpdate) {
         bookDAO.update(toUpdate);
+    }
+
+    @Transactional
+    public void hardDelete(Book toDelete){
+        List<User> list = (List<User>) userDAO.getUsersForBookHardDelete(toDelete);
+
+        Iterator lit = list.iterator();
+        while(lit.hasNext()){
+            User u = (User) lit.next();
+            u.getBooksWant().remove(toDelete);
+
+            Iterator uit = u.getBooksHave().iterator();
+            while(uit.hasNext()){
+                UserBook ub = (UserBook) uit.next();
+                if(ub.getBook().equals(toDelete)) {
+                    u.getBooksHave().remove(ub);
+                    break;
+                }
+            }
+        }
+        bookDAO.delete(toDelete);
     }
 
     @Override

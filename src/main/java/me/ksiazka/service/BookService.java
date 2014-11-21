@@ -13,4 +13,5 @@ public interface BookService extends BasicServiceInterface<Book> {
     public List<Book> getAllAccepted();
     public List<User> findEachUserWithBookInHaveList(long bookId);
     public List<User> findEachUserWithBookInWantList(long bookId);
+    public void hardDelete(Book toDelete);
 }
