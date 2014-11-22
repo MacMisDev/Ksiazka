@@ -47,9 +47,18 @@
         <spring:url var="auth" value="${pageContext.request.contextPath}/static/j_spring_security_check" />
         <div id="wrapper">
             <nav>
-                <div id='hideShowButton' class="menuButton">
-                    sd
-                </div>
+                <ul>
+                        <li>
+
+                        <a id='hideShowButton' class="menuButtonShowHide">Hide</a>
+                        </li>
+                    <li>
+                        <a  class="menuButtonHome">Home</a>
+                    </li>
+
+                </ul>
+
+
             </nav>
 
 
@@ -61,7 +70,7 @@
                         <div id="loginGroup">
 
                             <div id="loginBookLockedImage"></div>
-                            <div id="ribbon"><p>Hello Motherfucker!</p></div>
+                            <div id="ribbon"><p>Zaloguj sie !</p></div>
                             <form method="post" name="f" action="${auth}">
                                 <fieldset>
                                 <div class="form-group">

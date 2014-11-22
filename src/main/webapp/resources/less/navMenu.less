@@ -1,0 +1,102 @@
+//nav html5 element used for navigation
+@import "colors.less";
+@import "customMixins.less";
+@import "elements.less";
+@import "mediaQuery";
+
+nav {
+  left: -100px;
+  width: 170px;
+  .alphaColorBackground(darken(@darkGreyGreen,25%), 0.5);
+  //background-color: darken(@darkGreyGreen, 15%);
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 10000;
+  .transition(0.4s, ease);
+
+  @media @phone{
+    height: 100px;
+    width: 100%;
+    margin-left: 0px;
+    margin-top: -100px;
+    left: 0px;
+  }
+  @media @phoneSmall{
+    height: 100px;
+    width: 100%;
+    margin-left: 0px;
+    margin-top: -100px;
+    left: 0px;
+  }
+
+  ul {
+    padding: 0px;
+    margin-top: 10px;
+    float: right;
+    list-style-type: none;
+    height: 400px;
+    width: 100%;
+    li + li {
+      margin-top: 50px;
+    }
+  }
+
+  li {
+    float: right;
+    display: inline-block;
+    width: 100%;
+    padding: 0px;
+    margin-top: 10px;
+    //background-color: red;
+    line-height: 3;
+    text-align: left;
+    color: @white;
+    a {
+      text-decoration: none;
+      color: @white;
+      &:hover {
+        color: @base;
+        text-decoration: none;
+
+      }
+
+    }
+    &:hover {
+      .alphaColorBackground(darken(@darkGreyGreen, 25%), 0.3);
+    }
+  }
+
+  .menuButton {
+    width: 150px;
+    height: 60px;
+    float: right;
+    text-align: left;
+
+  }
+
+  .menuButtonShowHide {
+    .menuButton();
+    background: url(../images/menuItemShowHide.png) 90px 10px no-repeat;
+    &:hover {
+      background: url(../images/menuItemShowHide.png) 90px -51px no-repeat;
+    }
+  }
+
+  .menuButtonHome {
+    .menuButton();
+    background: url(../images/menuItemHome.png) 90px 10px no-repeat;
+    &:hover {
+      background: url(../images/menuItemHome.png) 90px  -49px no-repeat;
+    }
+  }
+
+}
+
+.navActive {
+  //SLOW , only cpu, on desktop it is ok , but mobile cpu's are still to slow in comparison to desktops
+  //margin-left: -60px !important; //it's important because it has to overwrite menuLeft proprarties and class is less important then id
+  .transform(translate3d(100px, 0, 0)); //GPU UTILIZATION !!!
+}
+
+
