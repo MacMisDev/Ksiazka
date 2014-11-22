@@ -17,19 +17,24 @@
   -o-transition-duration: 0.4s;
   transition-duration: 0.4s;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   #loginWrapper {
-    margin-top: -263.5px;
+    margin-top: -255px;
   }
 }
-@media all and (max-width: 499px), (max-height: 645px) {
+@media all and (max-width: 479px) and (min-width:360px) {
   #loginWrapper {
-    margin-top: -201.5px;
+    margin-top: -240px;
+  }
+}
+@media all and (max-width: 359px) {
+  #loginWrapper {
+    margin-top: -240px;
   }
 }
 @media (max-height: 500px) {
   #loginWrapper {
-    margin-top: -170.5px;
+    margin-top: -225px;
   }
 }
 #loginGroup {
@@ -57,10 +62,24 @@
   background-color: #81c31a;
   border-color: #78b518;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   #loginGroup .btn-default:first-child {
     width: 136px;
     height: 40.5px;
+  }
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  #loginGroup .btn-default:first-child {
+    display: block;
+    margin: 0 auto;
+  }
+}
+@media all and (max-width: 359px) {
+  #loginGroup .btn-default:first-child {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
   }
 }
 #loginGroup .btn-default:nth-child(2) {
@@ -71,11 +90,27 @@
   font-weight: lighter;
   line-height: 1.0;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   #loginGroup .btn-default:nth-child(2) {
     width: 136px;
     height: 40.5px;
     margin-left: 25px;
+  }
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  #loginGroup .btn-default:nth-child(2) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+  }
+}
+@media all and (max-width: 359px) {
+  #loginGroup .btn-default:nth-child(2) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
   }
 }
 #loginGroup .form-group {
@@ -84,25 +119,52 @@
   margin-right: auto;
   margin-bottom: 10px;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   #loginGroup .form-group {
     width: 320px;
   }
 }
+@media all and (max-width: 479px) and (min-width:360px) {
+  #loginGroup .form-group {
+    width: 200px;
+  }
+}
+@media all and (max-width: 359px) {
+  #loginGroup .form-group {
+    width: 200px;
+  }
+}
 #loginGroup .form-group input {
-  margin-left: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 380px;
   text-align: center;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   #loginGroup .form-group input {
     width: 300px;
+  }
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  #loginGroup .form-group input {
+    width: 200px;
+  }
+}
+@media all and (max-width: 359px) {
+  #loginGroup .form-group input {
+    width: 200px;
   }
 }
 #loginGroup .form-group p {
   width: 380px;
   margin: 0 auto;
   padding-left: 1px;
+}
+@media all and (max-width: 599px) {
+  #loginGroup .form-group p {
+    width: 300px;
+  }
 }
 #loginGroup .form-group:nth-child(3) {
   width: 400px;
@@ -111,19 +173,41 @@
   margin-bottom: 10px;
   margin-top: 30px;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   #loginGroup .form-group:nth-child(3) {
     width: 320px;
   }
 }
+@media all and (max-width: 479px) and (min-width:360px) {
+  #loginGroup .form-group:nth-child(3) {
+    width: 200px;
+  }
+}
+@media all and (max-width: 359px) {
+  #loginGroup .form-group:nth-child(3) {
+    width: 200px;
+  }
+}
 #loginGroup .form-group:nth-child(3) input {
-  margin-left: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 380px;
   text-align: center;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   #loginGroup .form-group:nth-child(3) input {
     width: 300px;
+  }
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  #loginGroup .form-group:nth-child(3) input {
+    width: 200px;
+  }
+}
+@media all and (max-width: 359px) {
+  #loginGroup .form-group:nth-child(3) input {
+    width: 200px;
   }
 }
 #loginGroup .form-group:nth-child(3) p {
@@ -131,30 +215,59 @@
   margin: 0 auto;
   padding-left: 1px;
 }
+@media all and (max-width: 599px) {
+  #loginGroup .form-group:nth-child(3) p {
+    width: 300px;
+  }
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  #loginGroup .form-group:nth-child(3) {
+    height: 100px;
+    width: 185px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 #loginGroup form {
   position: relative;
   top: 220px;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   #loginGroup form {
     top: 190px;
   }
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 479px) and (min-width:360px) {
+  #loginGroup form {
+    top: 150px;
+  }
+}
+@media all and (max-width: 359px) {
+  #loginGroup form {
+    top: 120px;
+  }
+}
+@media all and (max-width: 599px) {
   #loginGroup {
     height: 510px;
     width: 399.5px;
   }
 }
-@media all and (max-width: 499px), (max-height: 645px) {
+@media all and (max-width: 479px) and (min-width:360px) {
   #loginGroup {
-    height: 390px;
-    width: 305.5px;
+    height: 480px;
+    width: 235px;
+  }
+}
+@media all and (max-width: 359px) {
+  #loginGroup {
+    height: 480px;
+    width: 235px;
   }
 }
 #loginBookLockedImage {
-  margin-left: 174;
-  top: -55px;
+  margin-left: 174px;
+  top: -25px;
   height: 145px;
   width: 122px;
   background: url("../images/loginBookLocked.png") no-repeat;
@@ -166,22 +279,32 @@
   -o-transition-duration: 0.4s;
   transition-duration: 0.4s;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   #loginBookLockedImage {
-    margin-left: 152.15px;
-    top: -46.75px;
+    margin-left: 147.9px;
+    top: -21.25px;
     height: 123.25px;
     width: 103.7px;
     -moz-background-size: cover;
     background-size: cover;
   }
 }
-@media all and (max-width: 499px), (max-height: 645px) {
+@media all and (max-width: 479px) and (min-width:360px) {
   #loginBookLockedImage {
-    margin-left: 116.35px;
-    top: -35.75px;
-    height: 94.25px;
-    width: 79.3px;
+    margin-left: 71.75px;
+    top: -16.25px;
+    height: 108.75px;
+    width: 91.5px;
+    -moz-background-size: cover;
+    background-size: cover;
+  }
+}
+@media all and (max-width: 359px) {
+  #loginBookLockedImage {
+    margin-left: 71.75px;
+    top: -16.25px;
+    height: 108.75px;
+    width: 91.5px;
     -moz-background-size: cover;
     background-size: cover;
   }
@@ -199,19 +322,28 @@
 }
 #ribbon p {
   width: 320px;
-  height: 15px;
+  height: 30px;
   margin: 0 auto;
   margin-top: 20px;
   text-align: center;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   #ribbon p {
     width: 272px;
-    height: 12.75px;
     margin-top: 14px;
   }
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 479px) and (min-width:360px) {
+  #ribbon p {
+    margin-top: 8px;
+  }
+}
+@media all and (max-width: 359px) {
+  #ribbon p {
+    margin-top: 8px;
+  }
+}
+@media all and (max-width: 599px) {
   #ribbon {
     width: 433.5px;
     height: 63.75px;
@@ -219,5 +351,20 @@
     margin-top: 95.2px;
     -moz-background-size: cover;
     background-size: cover;
+  }
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  #ribbon {
+    width: 331.5px;
+    height: 48.75px;
+    margin-left: -48px;
+    margin-top: 89.60000000000001px;
+    -moz-background-size: cover;
+    background-size: cover;
+  }
+}
+@media all and (max-width: 359px) {
+  #ribbon {
+    display: none;
   }
 }

@@ -7,18 +7,27 @@ Date of last update: 2014-10-30
 @import "colors.less";
 @import "elements.less";
 @import "loginForm.less";
+@import "navMenu.less";
 @import "customMixins.less";
 @import "checkbox.less";
 @import "mediaQuery.less";
-//lato font by Łukasz Dziedzic
-@import url(http://fonts.googleapis.com/css?family=Lato:400,300,300italic);
+
+/* Webfont: Lato-Light */
+@font-face {
+  font-family: 'LatoLight';
+  src: url('../fonts/Lato-Light.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/Lato-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/Lato-Light.woff') format('woff'), /* Modern Browsers */ url('../fonts/Lato-Light.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
 
 html, body {
   height: 100%;
   min-width: 320px;
   margin: 0;
   font-size: 20px;
-  font-family: 'Lato', sans-serif;
+  font-family: 'LatoLight', sans-serif;
   font-weight: 300 !important;
   background: url(../images/bg.jpg) no-repeat center center fixed; /* background-size */
   //Scale the background image to be as large as possible
@@ -30,24 +39,40 @@ html, body {
   overflow-x: hidden;
 }
 
+//Wrapers starts here
+//===========================================================
+
 #wrapper {
-  padding-left: 60px;
+  padding-left: 70px;
   //IMPORTANT !!!
   //our wraper is container fo all elements, menu is the first element form the left side,
   //but it has fixed position so it does not count as real DOM element for positioning ,
   //we have to move our content 70px from left so it won't be "under" the menu
   height: 100%;
+  min-height: 500px;
   .transition-duration(0.4s);
   //&:hover{padding-left: 150px;} //only for testing
+  @media @phone{
+    padding-left: 0px;
+    padding-top: 100px;
+  }
+  @media @phoneSmall{
+    padding-left: 0px;
+    padding-top: 100px;
+  }
 
 }
 
 .wrapperActive {
+  padding-left: 170px !important;
   @media @tablet {
-    padding-left: 150px !important; ////it's important because it has to overwrite menuLeft proprarties and class is less important then id
+    padding-left: 170px !important; ////it's important because it has to overwrite menuLeft proprarties and class is less important then id
   }
   @media @phone {
-    padding-left: 150px !important;
+    padding-left: 170px !important;
+  }
+  @media @phoneSmall {
+    padding-left: 170px !important;
   }
 }
 
@@ -57,13 +82,6 @@ html, body {
   width: 100%;
   height: 100%;
   //height: auto;
-}
-
-//use it inside of pageContentWrapper
-.spliterContent {
-  min-height: 400px;
-  width: 100%;
-  background-color: @white;
 }
 
 //class for managing content, use it if you want to add text/images
@@ -79,39 +97,25 @@ html, body {
   //.box-shadow(0 10px 10px red); //only for testing
 }
 
-//nav html5 element used for navigation
-nav {
-  //transform: translateZ(0);
-  //.transform(0);
-  //-webkit-transform: translateZ(0);
-  margin-left: -150px;
-  left: 60px;
-  width: 150px;
-  .alphaColorBackground(@darkGreyGreen, 0.4);
-  position: fixed;
-  height: 100%;
-  overflow-y: auto;
-  z-index: 10000;
-  /* &:hover{
-     margin-left: -60px;
-   }*/
-  .transition(0.4s, ease);
+//Reusable Elements starst here
+//===========================================================
 
+//use it inside of pageContentWrapper !!!
+.spliterContent {
+  min-height: 400px;
+  width: 100%;
+  background-color: @white;
+  padding: 10px;
 }
 
-.navActive {
-  //SLOW , only cpu, on desktop it is ok , but mobile cpu's are still to slow in comparison to desktops
-  //margin-left: -60px !important; //it's important because it has to overwrite menuLeft proprarties and class is less important then id
-  .transform(translate3d(90px, 0, 0)); //GPU UTILIZATION !!!
-}
+.triangle{
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 110px 100px 110px;
+  border-color: transparent transparent @white transparent;
+  position: absolute;
+  bottom:0px;
+  left:calc(~"50% - 100px");
 
-.menuButton {
-  width: 40px;
-  height: 40px;
-  float: right;
-  background-color: @base;
-  &:hover {
-    background-color: lighten(@base, 20%);
-  }
 }
-

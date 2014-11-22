@@ -1,4 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:400,300,300italic);
 /*
 ===============================
 Engine Author: Jarosław Cimoch
@@ -24,19 +23,24 @@ Date of last update: 2014-10-30
   -o-transition-duration: 0.4s;
   transition-duration: 0.4s;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   #loginWrapper {
-    margin-top: -263.5px;
+    margin-top: -255px;
   }
 }
-@media all and (max-width: 499px), (max-height: 645px) {
+@media all and (max-width: 479px) and (min-width:360px) {
   #loginWrapper {
-    margin-top: -201.5px;
+    margin-top: -240px;
+  }
+}
+@media all and (max-width: 359px) {
+  #loginWrapper {
+    margin-top: -240px;
   }
 }
 @media (max-height: 500px) {
   #loginWrapper {
-    margin-top: -170.5px;
+    margin-top: -225px;
   }
 }
 #loginGroup {
@@ -64,10 +68,24 @@ Date of last update: 2014-10-30
   background-color: #81c31a;
   border-color: #78b518;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   #loginGroup .btn-default:first-child {
     width: 136px;
     height: 40.5px;
+  }
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  #loginGroup .btn-default:first-child {
+    display: block;
+    margin: 0 auto;
+  }
+}
+@media all and (max-width: 359px) {
+  #loginGroup .btn-default:first-child {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
   }
 }
 #loginGroup .btn-default:nth-child(2) {
@@ -78,11 +96,27 @@ Date of last update: 2014-10-30
   font-weight: lighter;
   line-height: 1.0;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   #loginGroup .btn-default:nth-child(2) {
     width: 136px;
     height: 40.5px;
     margin-left: 25px;
+  }
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  #loginGroup .btn-default:nth-child(2) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+  }
+}
+@media all and (max-width: 359px) {
+  #loginGroup .btn-default:nth-child(2) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
   }
 }
 #loginGroup .form-group {
@@ -91,25 +125,52 @@ Date of last update: 2014-10-30
   margin-right: auto;
   margin-bottom: 10px;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   #loginGroup .form-group {
     width: 320px;
   }
 }
+@media all and (max-width: 479px) and (min-width:360px) {
+  #loginGroup .form-group {
+    width: 200px;
+  }
+}
+@media all and (max-width: 359px) {
+  #loginGroup .form-group {
+    width: 200px;
+  }
+}
 #loginGroup .form-group input {
-  margin-left: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 380px;
   text-align: center;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   #loginGroup .form-group input {
     width: 300px;
+  }
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  #loginGroup .form-group input {
+    width: 200px;
+  }
+}
+@media all and (max-width: 359px) {
+  #loginGroup .form-group input {
+    width: 200px;
   }
 }
 #loginGroup .form-group p {
   width: 380px;
   margin: 0 auto;
   padding-left: 1px;
+}
+@media all and (max-width: 599px) {
+  #loginGroup .form-group p {
+    width: 300px;
+  }
 }
 #loginGroup .form-group:nth-child(3) {
   width: 400px;
@@ -118,19 +179,41 @@ Date of last update: 2014-10-30
   margin-bottom: 10px;
   margin-top: 30px;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   #loginGroup .form-group:nth-child(3) {
     width: 320px;
   }
 }
+@media all and (max-width: 479px) and (min-width:360px) {
+  #loginGroup .form-group:nth-child(3) {
+    width: 200px;
+  }
+}
+@media all and (max-width: 359px) {
+  #loginGroup .form-group:nth-child(3) {
+    width: 200px;
+  }
+}
 #loginGroup .form-group:nth-child(3) input {
-  margin-left: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 380px;
   text-align: center;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   #loginGroup .form-group:nth-child(3) input {
     width: 300px;
+  }
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  #loginGroup .form-group:nth-child(3) input {
+    width: 200px;
+  }
+}
+@media all and (max-width: 359px) {
+  #loginGroup .form-group:nth-child(3) input {
+    width: 200px;
   }
 }
 #loginGroup .form-group:nth-child(3) p {
@@ -138,30 +221,59 @@ Date of last update: 2014-10-30
   margin: 0 auto;
   padding-left: 1px;
 }
+@media all and (max-width: 599px) {
+  #loginGroup .form-group:nth-child(3) p {
+    width: 300px;
+  }
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  #loginGroup .form-group:nth-child(3) {
+    height: 100px;
+    width: 185px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 #loginGroup form {
   position: relative;
   top: 220px;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   #loginGroup form {
     top: 190px;
   }
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 479px) and (min-width:360px) {
+  #loginGroup form {
+    top: 150px;
+  }
+}
+@media all and (max-width: 359px) {
+  #loginGroup form {
+    top: 120px;
+  }
+}
+@media all and (max-width: 599px) {
   #loginGroup {
     height: 510px;
     width: 399.5px;
   }
 }
-@media all and (max-width: 499px), (max-height: 645px) {
+@media all and (max-width: 479px) and (min-width:360px) {
   #loginGroup {
-    height: 390px;
-    width: 305.5px;
+    height: 480px;
+    width: 235px;
+  }
+}
+@media all and (max-width: 359px) {
+  #loginGroup {
+    height: 480px;
+    width: 235px;
   }
 }
 #loginBookLockedImage {
-  margin-left: 174;
-  top: -55px;
+  margin-left: 174px;
+  top: -25px;
   height: 145px;
   width: 122px;
   background: url("../images/loginBookLocked.png") no-repeat;
@@ -173,22 +285,32 @@ Date of last update: 2014-10-30
   -o-transition-duration: 0.4s;
   transition-duration: 0.4s;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   #loginBookLockedImage {
-    margin-left: 152.15px;
-    top: -46.75px;
+    margin-left: 147.9px;
+    top: -21.25px;
     height: 123.25px;
     width: 103.7px;
     -moz-background-size: cover;
     background-size: cover;
   }
 }
-@media all and (max-width: 499px), (max-height: 645px) {
+@media all and (max-width: 479px) and (min-width:360px) {
   #loginBookLockedImage {
-    margin-left: 116.35px;
-    top: -35.75px;
-    height: 94.25px;
-    width: 79.3px;
+    margin-left: 71.75px;
+    top: -16.25px;
+    height: 108.75px;
+    width: 91.5px;
+    -moz-background-size: cover;
+    background-size: cover;
+  }
+}
+@media all and (max-width: 359px) {
+  #loginBookLockedImage {
+    margin-left: 71.75px;
+    top: -16.25px;
+    height: 108.75px;
+    width: 91.5px;
     -moz-background-size: cover;
     background-size: cover;
   }
@@ -206,19 +328,28 @@ Date of last update: 2014-10-30
 }
 #ribbon p {
   width: 320px;
-  height: 15px;
+  height: 30px;
   margin: 0 auto;
   margin-top: 20px;
   text-align: center;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   #ribbon p {
     width: 272px;
-    height: 12.75px;
     margin-top: 14px;
   }
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 479px) and (min-width:360px) {
+  #ribbon p {
+    margin-top: 8px;
+  }
+}
+@media all and (max-width: 359px) {
+  #ribbon p {
+    margin-top: 8px;
+  }
+}
+@media all and (max-width: 599px) {
   #ribbon {
     width: 433.5px;
     height: 63.75px;
@@ -227,6 +358,123 @@ Date of last update: 2014-10-30
     -moz-background-size: cover;
     background-size: cover;
   }
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  #ribbon {
+    width: 331.5px;
+    height: 48.75px;
+    margin-left: -48px;
+    margin-top: 89.60000000000001px;
+    -moz-background-size: cover;
+    background-size: cover;
+  }
+}
+@media all and (max-width: 359px) {
+  #ribbon {
+    display: none;
+  }
+}
+nav {
+  left: -100px;
+  width: 170px;
+  background-color: #151613;
+  background-color: rgba(21, 22, 19, 0.5);
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 10000;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  nav {
+    height: 100px;
+    width: 100%;
+    margin-left: 0px;
+    margin-top: -100px;
+    left: 0px;
+  }
+}
+@media all and (max-width: 359px) {
+  nav {
+    height: 100px;
+    width: 100%;
+    margin-left: 0px;
+    margin-top: -100px;
+    left: 0px;
+  }
+}
+nav ul {
+  padding: 0px;
+  margin-top: 10px;
+  float: right;
+  list-style-type: none;
+  height: 400px;
+  width: 100%;
+}
+nav ul li + li {
+  margin-top: 50px;
+}
+nav li {
+  float: right;
+  display: inline-block;
+  width: 100%;
+  padding: 0px;
+  margin-top: 10px;
+  line-height: 3;
+  text-align: left;
+  color: #e8e8e8;
+}
+nav li a {
+  text-decoration: none;
+  color: #e8e8e8;
+}
+nav li a:hover {
+  color: #78b518;
+  text-decoration: none;
+}
+nav li:hover {
+  background-color: #151613;
+  background-color: rgba(21, 22, 19, 0.3);
+  box-shadow: 0px 1px 0px 0px #545a4f, 0px -1px 0px 0px #545a4f;
+}
+nav .menuButton {
+  width: 150px;
+  height: 60px;
+  float: right;
+  text-align: left;
+  border: none;
+}
+nav .menuButtonShowHide {
+  width: 150px;
+  height: 60px;
+  float: right;
+  text-align: left;
+  border: none;
+  background: url(../images/menuItemShowHide.png) 90px 10px no-repeat;
+}
+nav .menuButtonShowHide:hover {
+  background: url(../images/menuItemShowHide.png) 90px -51px no-repeat;
+}
+nav .menuButtonHome {
+  width: 150px;
+  height: 60px;
+  float: right;
+  text-align: left;
+  border: none;
+  background: url(../images/menuItemHome.png) 90px 10px no-repeat;
+}
+nav .menuButtonHome:hover {
+  background: url(../images/menuItemHome.png) 90px -49px no-repeat;
+}
+.navActive {
+  -webkit-transform: translate3d(100px, 0, 0);
+  -moz-transform: translate3d(100px, 0, 0);
+  -o-transform: translate3d(100px, 0, 0);
+  -ms-transform: translate3d(100px, 0, 0);
+  transform: translate3d(100px, 0, 0);
 }
 input[type=checkbox].css-checkbox {
   position: absolute;
@@ -246,9 +494,20 @@ input[type=checkbox].css-checkbox + label.css-label {
   vertical-align: middle;
   cursor: pointer;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
+@media all and (max-width: 599px) {
   input[type=checkbox].css-checkbox + label.css-label {
     margin-left: 50px;
+  }
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  input[type=checkbox].css-checkbox + label.css-label {
+    margin-left: 16px;
+    margin-top: 2px;
+  }
+}
+@media all and (max-width: 359px) {
+  input[type=checkbox].css-checkbox + label.css-label {
+    margin-left: 16px;
   }
 }
 input[type=checkbox].css-checkbox:checked + label.css-label {
@@ -257,13 +516,24 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 label.css-label {
   background-image: url(../images/checkbox.png);
 }
+/* Webfont: Lato-Light */
+@font-face {
+  font-family: 'LatoLight';
+  src: url('../fonts/Lato-Light.eot');
+  src: url('../fonts/Lato-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/Lato-Light.woff') format('woff'), /* Modern Browsers */ url('../fonts/Lato-Light.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+  
+  /* IE9 Compat Modes */
+}
 html,
 body {
   height: 100%;
   min-width: 320px;
   margin: 0;
   font-size: 20px;
-  font-family: 'Lato', sans-serif;
+  font-family: 'LatoLight', sans-serif;
   font-weight: 300 !important;
   background: url(../images/bg.jpg) no-repeat center center fixed;
   /* background-size */
@@ -272,21 +542,42 @@ body {
   overflow-x: hidden;
 }
 #wrapper {
-  padding-left: 60px;
+  padding-left: 70px;
   height: 100%;
+  min-height: 500px;
   -moz-transition-duration: 0.4s;
   -webkit-transition-duration: 0.4s;
   -o-transition-duration: 0.4s;
   transition-duration: 0.4s;
 }
-@media all and (max-width: 699px) and (min-width:500px), (min-height: 645px) and (max-height: 699px) {
-  .wrapperActive {
-    padding-left: 150px !important;
+@media all and (max-width: 479px) and (min-width:360px) {
+  #wrapper {
+    padding-left: 0px;
+    padding-top: 100px;
   }
 }
-@media all and (max-width: 499px), (max-height: 645px) {
+@media all and (max-width: 359px) {
+  #wrapper {
+    padding-left: 0px;
+    padding-top: 100px;
+  }
+}
+.wrapperActive {
+  padding-left: 170px !important;
+}
+@media all and (max-width: 599px) {
   .wrapperActive {
-    padding-left: 150px !important;
+    padding-left: 170px !important;
+  }
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  .wrapperActive {
+    padding-left: 170px !important;
+  }
+}
+@media all and (max-width: 359px) {
+  .wrapperActive {
+    padding-left: 170px !important;
   }
 }
 #pageContentWrapper {
@@ -294,11 +585,6 @@ body {
   margin-top: 0;
   width: 100%;
   height: 100%;
-}
-.spliterContent {
-  min-height: 400px;
-  width: 100%;
-  background-color: #e8e8e8;
 }
 .contentManager {
   width: 100%;
@@ -308,37 +594,19 @@ body {
   padding: 10px;
   word-wrap: break-word;
 }
-nav {
-  margin-left: -150px;
-  left: 60px;
-  width: 150px;
-  background-color: #545a4f;
-  background-color: rgba(84, 90, 79, 0.4);
-  position: fixed;
-  height: 100%;
-  overflow-y: auto;
-  z-index: 10000;
-  /* &:hover{
-     margin-left: -60px;
-   }*/
-  -webkit-transition: all 0.4s ease;
-  -moz-transition: all 0.4s ease;
-  -o-transition: all 0.4s ease;
-  transition: all 0.4s ease;
+.spliterContent {
+  min-height: 400px;
+  width: 100%;
+  background-color: #e8e8e8;
+  padding: 10px;
 }
-.navActive {
-  -webkit-transform: translate3d(90px, 0, 0);
-  -moz-transform: translate3d(90px, 0, 0);
-  -o-transform: translate3d(90px, 0, 0);
-  -ms-transform: translate3d(90px, 0, 0);
-  transform: translate3d(90px, 0, 0);
-}
-.menuButton {
-  width: 40px;
-  height: 40px;
-  float: right;
-  background-color: #78b518;
-}
-.menuButton:hover {
-  background-color: #abe74c;
+.triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 110px 100px 110px;
+  border-color: transparent transparent #e8e8e8 transparent;
+  position: absolute;
+  bottom: 0px;
+  left: calc(50% - 100px);
 }
