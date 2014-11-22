@@ -8,6 +8,7 @@ import me.ksiazka.dao.BookDAO;
 import me.ksiazka.dao.OfferDAO;
 import me.ksiazka.dao.UserDAO;
 import me.ksiazka.model.*;
+import me.ksiazka.service.BookService;
 import org.hibernate.exception.ConstraintViolationException;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -43,6 +44,9 @@ public class BookDAOTest {
     @Autowired
     @Qualifier("booksInDatabase")
     private Integer booksInDatabase;
+    @Autowired
+    @Qualifier("usersInDatabase")
+    private Integer usersInDatabse;
 
     @Autowired
     private BookDAO bookDAO;
@@ -50,6 +54,8 @@ public class BookDAOTest {
     private UserDAO userDAO;
     @Autowired
     private OfferDAO offerDAO;
+    @Autowired
+    private BookService bookService;
 
     @Test
     public void getBookTest() {
@@ -111,7 +117,6 @@ public class BookDAOTest {
     //Test sprawdza usuniecie ksiazki i kaskadowe usuniecie z listy have i want.
     @Test
     //Usuwanie kaskadowe nie dziala
-    @Ignore
     public void deleteBookTest() {
 
         //Pobranie uzytkownika w celu ulatwienia testowania
@@ -131,9 +136,10 @@ public class BookDAOTest {
         Assert.assertEquals(1, haveListLength);
         Assert.assertEquals(2, wantListLength);
 
-        bookDAO.delete(book);
+        bookService.hardDelete(book);
 
         Assert.assertEquals(null, bookDAO.get(4));
+
         //Czy ksiazka zostala usunieta kaskadowo z listy want
         Assert.assertEquals(1, user.getSizeOfBooksWant());
         //Czy na pewno usunieto dobra ksiazke
@@ -168,12 +174,11 @@ public class BookDAOTest {
 
 
     @Test
-    @Ignore
     public void findEachUserWithBookInHaveListTest() {
 
         List<User> list = bookDAO.findEachUserWithBookInHaveList(4);
 
-        Assert.assertEquals(2, list.size());
+        Assert.assertEquals(4, list.size());
         //Sprawdzamy, czy na pewno mamy tych uzytkownikow, ktorych chcemy
         Assert.assertTrue(
                 (list.get(0).getName().equals("Caroslaw") && list.get(1).getName().equals("Jarke")) ||
@@ -182,8 +187,6 @@ public class BookDAOTest {
     }
 
     @Test
-    //Brak implementacji metody findEachUserWithBookInWantList
-    @Ignore
     public void findEachUserWithBookInWantListTest() {
 
         //Test analogiczny do testu wyzej

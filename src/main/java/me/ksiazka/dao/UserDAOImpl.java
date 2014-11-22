@@ -46,6 +46,15 @@ public class UserDAOImpl implements UserDAO {
 
     }
 
+    public List<User> getUsersForBookHardDelete(Book toDelete) {
+        List<User> list;
+        String query = "FROM User WHERE id in (select user FROM UserBook WHERE bookId=:id)";
+        Query listQuery = this.sessionFactory.getCurrentSession().createQuery(query);
+        list = listQuery.setParameter("id", toDelete.getId()).list();
+
+        return list;
+    }
+
     @Override
     public void update(User toUpdate) {
         this.sessionFactory.getCurrentSession().update(toUpdate);

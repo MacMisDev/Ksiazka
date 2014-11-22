@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import java.util.Iterator;
 import java.util.List;
 
 @Repository
@@ -47,8 +48,9 @@ public class BookDAOImpl implements BookDAO {
     @Override
     public void delete(Book toDelete) {
 
-        Book b = (Book) this.sessionFactory.getCurrentSession().get(Book.class, toDelete.getId());
-        sessionFactory.getCurrentSession().delete(b);
+        Book book = (Book) this.sessionFactory.getCurrentSession().get(Book.class, toDelete.getId());
+        this.sessionFactory.getCurrentSession().delete(book);
+
     }
 
     @Override
@@ -62,10 +64,7 @@ public class BookDAOImpl implements BookDAO {
     @Override
     public List<Book> getLastBooks(int page, int BookLimitOnPage) {
 
-        /*
-        @ToDo: getLastBooks musi pobierac tylko ksiazki o statusie ACCEPTED - ma to robic w query, nie przegladajac liste
-         */
-        Query query = sessionFactory.getCurrentSession().createQuery("from Book order by bookId desc");
+        Query query = sessionFactory.getCurrentSession().createQuery("from Book where bookStatus='Accepted' order by bookId desc");
         query.setMaxResults(BookLimitOnPage);
         query.setFirstResult(page * BookLimitOnPage);
 
@@ -78,15 +77,21 @@ public class BookDAOImpl implements BookDAO {
     //znajduje sie w dao
     @Override
     public List<User> findEachUserWithBookInHaveList(long bookId) {
-        
-        return null;
+        List<User> list;
+        String query = "FROM User WHERE id in (select user FROM UserBook WHERE bookId=:id)";
+        Query listQuery = this.sessionFactory.getCurrentSession().createQuery(query);
+        list = listQuery.setParameter("id", bookId).list();
+        return list;
     }
 
     //j.w.
     @Override
     public List<User> findEachUserWithBookInWantList(long bookId) {
-
-         return null;
+        List<User> list;
+        String query = "SELECT u FROM User u join u.booksWant b where b.id=:id)";
+        Query listQuery = this.sessionFactory.getCurrentSession().createQuery(query);
+        list = listQuery.setParameter("id", bookId).list();
+        return list;
     }
 
     @Override

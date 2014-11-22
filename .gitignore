@@ -1,17 +1,13 @@
 # Ignore db.properties
 src/main/webapp/db.properties
-
 # Ignore searching_indexes
 src/searching_indexes
-
 #Compiled
 *.class
-
 # Maven
 target/
 *.ser
 *.ec
-
 # IntelliJ Idea
 .idea/
 out/
