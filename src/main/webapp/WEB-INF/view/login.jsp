@@ -95,7 +95,9 @@
                     </div>
 
                 </main>
-                <!--<div class="spliterContent"></div>-->
+                <div class="spliterContent">
+                    <p>This is just to show ten concept. Login Page do not have this white area</p>
+                </div>
             </div>
         </div>
 
