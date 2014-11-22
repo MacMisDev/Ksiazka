@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@page language="Java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page language="Java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <tiles:insertDefinition name="template">
 
@@ -44,24 +44,19 @@
                 document.getElementsByName('username').focus();
             </script>
         </div>--%>
-        <spring:url var="auth" value="${pageContext.request.contextPath}/static/j_spring_security_check" />
+        <spring:url var="auth" value="${pageContext.request.contextPath}/static/j_spring_security_check"/>
         <div id="wrapper">
             <nav>
                 <ul>
-                        <li>
-
-                        <a id='hideShowButton' class="menuButtonShowHide">Hide</a>
-                        </li>
                     <li>
-                        <a  class="menuButtonHome">Home</a>
+                        <button id='hideShowButton' class="menuButtonShowHide">Hide</button>
+                    </li>
+                    <li>
+                        <a href="" class="menuButtonHome">Home</a>
                     </li>
 
                 </ul>
-
-
             </nav>
-
-
             <div id="pageContentWrapper">
                 <main class="contentManager">
                     <!--<div style="margin-top:100px;border:2px solid red;">dsdsd</div>-->
@@ -73,25 +68,25 @@
                             <div id="ribbon"><p>Zaloguj sie !</p></div>
                             <form method="post" name="f" action="${auth}">
                                 <fieldset>
-                                <div class="form-group">
-                                    <p>Username</p>
-                                    <input type="text" name="j_username" id="username"/>
-                                </div>
-                                <div class="form-group">
-                                    <p>Password</p>
-                                    <input type="password" name="j_password" id="password"/>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" name="commit" class="btn btn-default">Log In</button>
-                                    <a  href="<s:url value="/register" />" class="btn btn-default"> Sign Up</a >
-                                </div>
+                                    <div class="form-group">
+                                        <p>Username</p>
+                                        <input type="text" name="j_username" id="username"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Password</p>
+                                        <input type="password" name="j_password" id="password"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" name="commit" class="btn btn-default">Log In</button>
+                                        <a href="<s:url value="/register" />" class="btn btn-default"> Sign Up</a>
+                                    </div>
 
 
+                                    <input class="css-checkbox" type="checkbox" name="_spring_security_remember_me"
+                                           id="remember_me">
+                                    <label for="remember_me" class="css-label">Remember me</label>
 
-                                <input class="css-checkbox" type="checkbox" name="_spring_security_remember_me" id="remember_me">
-                                <label for="remember_me" class="css-label">Remember me</label>
-
-                            </fieldset>
+                                </fieldset>
                             </form>
 
 

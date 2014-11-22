@@ -444,12 +444,14 @@ nav .menuButton {
   height: 60px;
   float: right;
   text-align: left;
+  border: none;
 }
 nav .menuButtonShowHide {
   width: 150px;
   height: 60px;
   float: right;
   text-align: left;
+  border: none;
   background: url(../images/menuItemShowHide.png) 90px 10px no-repeat;
 }
 nav .menuButtonShowHide:hover {
@@ -460,6 +462,7 @@ nav .menuButtonHome {
   height: 60px;
   float: right;
   text-align: left;
+  border: none;
   background: url(../images/menuItemHome.png) 90px 10px no-repeat;
 }
 nav .menuButtonHome:hover {
