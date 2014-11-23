@@ -1,11 +1,10 @@
 package me.ksiazka.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.search.annotations.*;
 import org.hibernate.search.annotations.Index;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +14,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "userId")
+    @JsonIgnore
     private Long id;
     @Column(nullable = false)
     private String name;
@@ -23,6 +23,7 @@ public class User {
     @Field(index = Index.YES, analyze=Analyze.YES, store=Store.NO)
     private String email;
     @Column(nullable = false)
+    @JsonIgnore
     private String password;
     @Column(nullable = false, unique = true)
     @Field(index = Index.YES, analyze=Analyze.YES, store=Store.NO)
@@ -32,17 +33,23 @@ public class User {
             joinColumns = @JoinColumn(name = "userId"),
             inverseJoinColumns = @JoinColumn(name = "bookId")
     )
+    @JsonIgnore
     private List<Book> booksWant = new ArrayList<Book>(0);
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<UserBook> booksHave = new ArrayList<UserBook>(0);
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Address> addressList = new ArrayList<Address>(0);
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @Column(nullable = false)
+    @JsonIgnore
     private List<UserRole> roles = new ArrayList<UserRole>(0);
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Message> messages = new ArrayList<Message>(0);
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<OfferRelation> offerList = new ArrayList<OfferRelation>(0);
 
     public  User() {
@@ -164,7 +171,6 @@ public class User {
     }
 
     public int getSizeOfBooksWant() {
-
         return this.booksWant.size();
     }
 

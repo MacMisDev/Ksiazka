@@ -57,8 +57,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public User findUserByEmail(String email) {
 
-        User user = userDAO.findUserByEmail(email);
-        return user;
+        return userDAO.findUserByEmail(email);
     }
 
 }

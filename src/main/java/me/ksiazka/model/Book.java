@@ -1,13 +1,11 @@
 package me.ksiazka.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.search.annotations.*;
 import org.hibernate.search.annotations.Index;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -22,23 +20,16 @@ public class Book {
     private Long id;
     @Column(nullable = false)
     @Field(index = Index.YES, analyze=Analyze.YES, store=Store.NO)
-    @JsonProperty("title")
     private String title;
     @Column(nullable = false, unique = true)
-    @JsonProperty("ISBN")
     private String ISBN;
     @Column(nullable = false)
     @Field(index = Index.YES, analyze=Analyze.YES, store=Store.NO)
-    @JsonProperty("author")
     private String author;
-    @JsonProperty("publisher")
     private String publisher;
     @Column(length = 1000)
-    @JsonProperty("description")
     private String description;
-    @JsonProperty("publicationYear")
     private int publicationYear;
-    @JsonProperty("pages")
     private int pages;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
