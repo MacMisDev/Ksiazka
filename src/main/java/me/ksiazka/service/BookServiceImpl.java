@@ -2,6 +2,7 @@ package me.ksiazka.service;
 
 import me.ksiazka.dao.BookDAO;
 import me.ksiazka.dao.UserDAO;
+import me.ksiazka.misc.BookLists;
 import me.ksiazka.model.Book;
 import me.ksiazka.model.BookStatus;
 import me.ksiazka.model.User;
@@ -78,11 +79,11 @@ public class BookServiceImpl implements BookService {
         bookDAO.delete(toDelete);
     }
 
-    @Override
+/*    @Override
     @Transactional
     public List<Book> lastBooksAdded(int page) {
         return bookDAO.getLastBooks(page, bookLimitOnPage);
-    }
+    }*/
 
     @Override
     public List<Book> getAllAccepted() {
@@ -113,7 +114,17 @@ public class BookServiceImpl implements BookService {
     @Transactional
     public int checkMaxPagesLimit() {
         double maxNumberPage = Math.floor((double) bookDAO.getAll().size() / bookLimitOnPage);
-        if (bookDAO.getAll().size() % 10 == 0) return (int) maxNumberPage - 1;
+        if (bookDAO.getAll().size() % 5 == 0) return (int) maxNumberPage - 1;
         return (int) maxNumberPage;
+    }
+
+    @Override
+    @Transactional
+    public BookLists bookLists(int lastBooksAddedPage, int mostPopularBooksPage){
+        BookLists bookLists = new BookLists();
+        bookLists.setLastBooksAdded(bookDAO.getLastBooks(lastBooksAddedPage, bookLimitOnPage));
+        bookLists.setMostPopularBooks(bookDAO.getMostPopularBooks(mostPopularBooksPage, bookLimitOnPage));
+        bookLists.setMaxPages(this.checkMaxPagesLimit());
+        return bookLists;
     }
 }

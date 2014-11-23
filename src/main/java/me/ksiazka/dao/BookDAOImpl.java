@@ -32,7 +32,7 @@ public class BookDAOImpl implements BookDAO {
     public List<Book> getAll() {
 
         List<Book> list;
-        String query = "FROM Book";
+        String query = "FROM Book where bookStatus='Accepted'";
         Query listQuery = this.sessionFactory.getCurrentSession().createQuery(query);
         list = listQuery.list();
 
@@ -69,6 +69,12 @@ public class BookDAOImpl implements BookDAO {
         query.setFirstResult(page * BookLimitOnPage);
 
         return (List<Book>) query.list();
+    }
+
+    @Override
+    public List<Book> getMostPopularBooks(int page, int bookLimitOnPage) {
+        //todo
+        return null;
     }
 
     //Zapewne da sie to zrobic jakims zlaczeniem hql-owym. Daloby sie pewnie tez

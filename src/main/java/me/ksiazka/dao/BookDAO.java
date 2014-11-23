@@ -8,8 +8,11 @@ import java.util.List;
 
 public interface BookDAO extends BasicDAOInterface<Book> {
 
-    //Pobiera ostatnie 5 dodanych ksiazek do bazy
-    public List<Book> getLastBooks(int page, int BookLimitOnPage);
+    //Pobiera ostatnie x dodanych ksiazek do bazy
+    public List<Book> getLastBooks(int page, int bookLimitOnPage);
+
+    //Pobiera x najpopularniejszych ksiazek
+    public List<Book> getMostPopularBooks(int page, int bookLimitOnPage);
 
     //Zwraca wszystkich uzytkownikow, ktorzy posiadaja ta ksiazke na liscie have
     public List<User> findEachUserWithBookInHaveList(long bookId);

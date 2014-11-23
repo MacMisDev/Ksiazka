@@ -4,6 +4,7 @@ package me.ksiazka.controller;
 import me.ksiazka.model.User;
 import me.ksiazka.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ public class UserControllerImpl implements UserController {
 
     @Override
     public String showUserPage(Long id, Model model) {
+        //SecurityContextHolder.getContext().getAuthentication().getName();
         return null;
     }
 
