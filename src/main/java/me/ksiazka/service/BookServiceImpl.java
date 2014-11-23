@@ -114,7 +114,7 @@ public class BookServiceImpl implements BookService {
     @Transactional
     public int checkMaxPagesLimitForAccepted() {
         double maxNumberPage = Math.floor((double) bookDAO.getAllAccepted().size() / bookLimitOnPage);
-        if (bookDAO.getAll().size() % bookLimitOnPage == 0) return (int) maxNumberPage - 1;
+        if (bookDAO.getAllAccepted().size() % bookLimitOnPage == 0) return (int) maxNumberPage - 1;
         return (int) maxNumberPage;
     }
 
