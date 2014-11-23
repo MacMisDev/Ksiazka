@@ -10,7 +10,7 @@ public interface BookService extends BasicServiceInterface<Book> {
 
 /*    public List<Book> lastBooksAdded(int page);*/
     public boolean checkPageNumberForPagination(int number);
-    public int checkMaxPagesLimit();
+    public int checkMaxPagesLimitForAccepted();
     public List<Book> getAllAccepted();
     public List<User> findEachUserWithBookInHaveList(long bookId);
     public List<User> findEachUserWithBookInWantList(long bookId);

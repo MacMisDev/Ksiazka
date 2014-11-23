@@ -103,7 +103,7 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public boolean checkPageNumberForPagination(int number) {
-        int pageLimit = this.checkMaxPagesLimit();
+        int pageLimit = this.checkMaxPagesLimitForAccepted();
         if(number > pageLimit){
             return false;
         }else{
@@ -112,8 +112,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Transactional
-    public int checkMaxPagesLimit() {
-        double maxNumberPage = Math.floor((double) bookDAO.getAll().size() / bookLimitOnPage);
+    public int checkMaxPagesLimitForAccepted() {
+        double maxNumberPage = Math.floor((double) bookDAO.getAllAccepted().size() / bookLimitOnPage);
         if (bookDAO.getAll().size() % bookLimitOnPage == 0) return (int) maxNumberPage - 1;
         return (int) maxNumberPage;
     }
@@ -124,7 +124,7 @@ public class BookServiceImpl implements BookService {
         BookLists bookLists = new BookLists();
         bookLists.setLastBooksAdded(bookDAO.getLastBooks(lastBooksAddedPage, bookLimitOnPage));
         bookLists.setMostPopularBooks(bookDAO.getMostPopularBooks(mostPopularBooksPage, bookLimitOnPage));
-        bookLists.setMaxPages(this.checkMaxPagesLimit());
+        bookLists.setMaxPages(this.checkMaxPagesLimitForAccepted());
         return bookLists;
     }
 }

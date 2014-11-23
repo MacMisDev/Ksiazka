@@ -32,7 +32,7 @@ public class BookDAOImpl implements BookDAO {
     public List<Book> getAll() {
 
         List<Book> list;
-        String query = "FROM Book where bookStatus='Accepted'";
+        String query = "FROM Book";
         Query listQuery = this.sessionFactory.getCurrentSession().createQuery(query);
         list = listQuery.list();
 
@@ -102,7 +102,13 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     public List<Book> getAllAccepted() {
-        return null;
+
+        List<Book> list;
+        String query = "FROM Book where bookStatus='Accepted'";
+        Query listQuery = this.sessionFactory.getCurrentSession().createQuery(query);
+        list = listQuery.list();
+
+        return list;
     }
 
     @Override
