@@ -13,20 +13,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller("userController")
-@RequestMapping("/user")
 public class UserControllerImpl implements UserController {
 
     @Autowired
     private UserService userService;
 
     @Override
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/list", method = RequestMethod.GET)
     public String userHaveWant() {
         return "user/userList";
     }
 
     @Override
-    @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = {"/", "home"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody User showUserPage() {
         return userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
     }
