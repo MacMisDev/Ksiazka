@@ -7,7 +7,7 @@
 <tiles:insertDefinition name="template">
 
     <tiles:putAttribute name="content">
-        <%--
+        <%-- OLD CONTENT FOR REFERENCE ONLY
         <h2>REGISTER</h2>
         <sf:form method="POST" modelAttribute="user" action="register">
             <fieldset>
@@ -38,8 +38,8 @@
         </sf:form>
         --%>
 
-        <spring:url var="auth" value="${pageContext.request.contextPath}/static/j_spring_security_check"/>
         <div id="wrapper">
+
             <nav>
                 <ul>
                     <li>
@@ -51,6 +51,7 @@
 
                 </ul>
             </nav>
+
             <div id="pageContentWrapper">
                 <main class="contentManager">
                     <div id="registerWrapper">
@@ -78,7 +79,7 @@
                                         <input type="password" name="password" id="password"/>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" name="commit" class="btn btn-default">Zarejestruj się</button>
+                                        <button type="submit" name="commit" class="btn btn-default">Zarejestruj</button>
                                         <a href="<s:url value="/login" />" class="btn btn-default">Logowanie</a>
                                     </div>
 

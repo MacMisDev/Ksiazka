@@ -536,7 +536,6 @@ label.css-label {
   top: 50%;
   left: 0;
   margin-top: -275px;
-  /* half of #loginWrapper height*/
   height: auto;
   width: 100%;
   -moz-transition-duration: 0.4s;
@@ -565,7 +564,7 @@ label.css-label {
   }
 }
 #registerGroup {
-  height: 550px;
+  height: 600px;
   width: 470px;
   margin: 0 auto;
   background-color: #e8e8e8;
@@ -696,7 +695,7 @@ label.css-label {
     width: 300px;
   }
 }
-#registerGroup .form-group:nth-child(3) {
+#registerGroup .form-group:nth-child(5) {
   width: 400px;
   margin-left: auto;
   margin-right: auto;
@@ -704,21 +703,21 @@ label.css-label {
   margin-top: 30px;
 }
 @media all and (max-width: 599px) {
-  #registerGroup .form-group:nth-child(3) {
+  #registerGroup .form-group:nth-child(5) {
     width: 320px;
   }
 }
 @media all and (max-width: 479px) and (min-width:360px) {
-  #registerGroup .form-group:nth-child(3) {
+  #registerGroup .form-group:nth-child(5) {
     width: 200px;
   }
 }
 @media all and (max-width: 359px) {
-  #registerGroup .form-group:nth-child(3) {
+  #registerGroup .form-group:nth-child(5) {
     width: 200px;
   }
 }
-#registerGroup .form-group:nth-child(3) input {
+#registerGroup .form-group:nth-child(5) input {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -726,32 +725,32 @@ label.css-label {
   text-align: center;
 }
 @media all and (max-width: 599px) {
-  #registerGroup .form-group:nth-child(3) input {
+  #registerGroup .form-group:nth-child(5) input {
     width: 300px;
   }
 }
 @media all and (max-width: 479px) and (min-width:360px) {
-  #registerGroup .form-group:nth-child(3) input {
+  #registerGroup .form-group:nth-child(5) input {
     width: 200px;
   }
 }
 @media all and (max-width: 359px) {
-  #registerGroup .form-group:nth-child(3) input {
+  #registerGroup .form-group:nth-child(5) input {
     width: 200px;
   }
 }
-#registerGroup .form-group:nth-child(3) p {
+#registerGroup .form-group:nth-child(5) p {
   width: 380px;
   margin: 0 auto;
   padding-left: 1px;
 }
 @media all and (max-width: 599px) {
-  #registerGroup .form-group:nth-child(3) p {
+  #registerGroup .form-group:nth-child(5) p {
     width: 300px;
   }
 }
 @media all and (max-width: 479px) and (min-width:360px) {
-  #registerGroup .form-group:nth-child(3) {
+  #registerGroup .form-group:nth-child(5) {
     height: 100px;
     width: 185px;
     margin-left: auto;

@@ -77,7 +77,7 @@
                                         <input type="password" name="j_password" id="password"/>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" name="commit" class="btn btn-default">Zaloguj się</button>
+                                        <button type="submit" name="commit" class="btn btn-default">Zaloguj</button>
                                         <a href="<s:url value="/register" />" class="btn btn-default">Rejestracja</a>
                                     </div>
 
