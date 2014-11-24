@@ -9,17 +9,17 @@
 
     <bean id="booksInDatabase"
           class="java.lang.Integer">
-        <constructor-arg value="5" type="int"/>
+        <constructor-arg value="10" type="int"/>
     </bean>
 
     <bean id="usersInDatabase"
           class="java.lang.Integer">
-        <constructor-arg value="3" type="int"/>
+        <constructor-arg value="8" type="int"/>
     </bean>
 
     <bean id="userBooksInDatabase"
           class="java.lang.Integer">
-        <constructor-arg value="3" type="int"/>
+        <constructor-arg value="15" type="int"/>
     </bean>
 
 </beans>

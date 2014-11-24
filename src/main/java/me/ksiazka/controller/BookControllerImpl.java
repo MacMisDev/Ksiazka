@@ -1,7 +1,8 @@
 package me.ksiazka.controller;
 
+import me.ksiazka.misc.BookLists;
+import me.ksiazka.misc.PageNumbers;
 import me.ksiazka.model.Book;
-import me.ksiazka.model.BookStatus;
 import me.ksiazka.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -9,16 +10,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.*;
-
 @Controller("bookController")
 @RequestMapping("/book")
 public class BookControllerImpl implements BookController {
 
     @Autowired
-    BookService bookService;
+    private BookService bookService;
 
     @Override
+    @RequestMapping(value = {"/", ""}, method = RequestMethod.GET)
+    public String showBookHome() {
+        return "redirect:/book/list";
+    }
+
+/*    @Override
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(@RequestParam(value = "page", defaultValue = "0", required = false) int page, Model model) {
         if(!bookService.checkPageNumberForPagination(page)){
@@ -28,10 +33,25 @@ public class BookControllerImpl implements BookController {
         model.addAttribute("maxPages", bookService.checkMaxPagesLimit());
         model.addAttribute("lastBooks", bookService.lastBooksAdded(page));
         return "book/list";
+    }*/
+
+    @Override
+    @RequestMapping(value = "/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody BookLists list() {
+        return bookService.bookLists(0,0);
     }
 
     @Override
-    public String showBook(Long id, Model model) { return null; }
+    @RequestMapping(value = "/list", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody BookLists list(@RequestBody PageNumbers pageNumbers) {
+        return bookService.bookLists(pageNumbers.getLastBooksAddedPage(), pageNumbers.getMostPopularBooksPage());
+    }
+
+    @Override
+    @RequestMapping(value = "/{bookId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody Book showBook(@PathVariable Long bookId) {
+        return bookService.get(bookId);
+    }
 
     @Override
     @RequestMapping(value = "/new", method = RequestMethod.GET)
@@ -47,7 +67,9 @@ public class BookControllerImpl implements BookController {
     }
 
     @Override
-    public String deleteBook(Long bookId) {
-        return null;
+    @RequestMapping(value = "/admin/book/list", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE ,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Book deleteBook(Book book) {
+        bookService.delete(book);
+        return book;
     }
 }

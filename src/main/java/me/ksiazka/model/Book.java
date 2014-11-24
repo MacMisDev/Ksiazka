@@ -1,7 +1,6 @@
 package me.ksiazka.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.search.annotations.*;
 import org.hibernate.search.annotations.Index;
 
@@ -21,33 +20,30 @@ public class Book {
     private Long id;
     @Column(nullable = false)
     @Field(index = Index.YES, analyze=Analyze.YES, store=Store.NO)
-    @JsonProperty("title")
     private String title;
     @Column(nullable = false, unique = true)
-    @JsonProperty("ISBN")
     private String ISBN;
     @Column(nullable = false)
     @Field(index = Index.YES, analyze=Analyze.YES, store=Store.NO)
-    @JsonProperty("author")
     private String author;
-    @JsonProperty("publisher")
     private String publisher;
     @Column(length = 1000)
-    @JsonProperty("description")
     private String description;
-    @JsonProperty("publicationYear")
     private int publicationYear;
-    @JsonProperty("pages")
     private int pages;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     @JsonIgnore
     private BookStatus bookStatus;
-    @ManyToMany(mappedBy = "booksWant", cascade = CascadeType.ALL)
-    @JsonIgnore
+    @ManyToMany
+    @JoinTable(name = "booksWant",
+            joinColumns = @JoinColumn(name = "bookId"),
+            inverseJoinColumns = @JoinColumn(name = "userId")
+    )
+
     private List<User> user = new ArrayList<User>(0);
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-    @JsonIgnore
+
     private List<UserBook> bookList = new ArrayList<UserBook>(0);
 
     public Book() {
@@ -138,6 +134,7 @@ public class Book {
         this.bookStatus = bookStatus;
     }
 
+    @JsonIgnore
     public List<User> getUser() {
         return user;
     }
@@ -146,6 +143,7 @@ public class Book {
         this.user = user;
     }
 
+    @JsonIgnore
     public List<UserBook> getBookList() {
         return bookList;
     }
@@ -154,4 +152,20 @@ public class Book {
         this.bookList = bookList;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Book)) return false;
+
+        Book book = (Book) o;
+
+        if (!id.equals(book.id)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }

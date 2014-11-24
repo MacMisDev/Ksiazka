@@ -17,30 +17,26 @@ public class OfferServiceImpl implements OfferService {
     @Override
     @Transactional
     public long save(Offer toSave) {
-        return 0;
+        return offerDAO.save(toSave);
     }
 
     @Override
     @Transactional
     public Offer get(long id) {
-        return null;
+        return offerDAO.get(id);
     }
 
     @Override
     @Transactional
     public List<Offer> getAll() {
-        return null;
+        return offerDAO.getAll();
     }
 
     @Override
     @Transactional
-    public void update(Offer toUpdate) {
-
-    }
+    public void update(Offer toUpdate) { offerDAO.update(toUpdate); }
 
     @Override
     @Transactional
-    public void delete(Offer toDelete) {
-
-    }
+    public void delete(Offer toDelete) { offerDAO.delete(toDelete); }
 }

@@ -24,24 +24,28 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public User get(long id) {
 
         return userDAO.get(id);
     }
 
     @Override
+    @Transactional
     public List<User> getAll() {
 
         return userDAO.getAll();
     }
 
     @Override
+    @Transactional
     public void update(User toUpdate) {
 
         userDAO.update(toUpdate);
     }
 
     @Override
+    @Transactional
     public void delete(User toDelete) {
         /*
         @ToDo: Podmienienie referencji do uzytkownika w UserBook przed usunięciem - Krzysiu musi zrobic query czy co
@@ -53,8 +57,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public User findUserByEmail(String email) {
 
-        User user = userDAO.findUserByEmail(email);
-        return user;
+        return userDAO.findUserByEmail(email);
     }
 
 }
