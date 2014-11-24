@@ -100,7 +100,6 @@ public class User {
         this.email = email;
     }
 
-    @JsonIgnore
     public List<Book> getBooksWant() {
         return booksWant;
     }
@@ -109,7 +108,6 @@ public class User {
         this.booksWant = booksWant;
     }
 
-    @JsonIgnore
     public List<UserBook> getBooksHave() {
         return booksHave;
     }
@@ -170,7 +168,7 @@ public class User {
 
         this.booksWant.add(book);
     }
-
+    @JsonIgnore
     public int getSizeOfBooksWant() {
         return this.booksWant.size();
     }
@@ -199,7 +197,7 @@ public class User {
 
         this.booksHave.add(userBook);
     }
-
+    @JsonIgnore
     public int getSizeOfBooksHave() {
 
         return this.booksHave.size();

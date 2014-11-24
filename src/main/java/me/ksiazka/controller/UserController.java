@@ -1,13 +1,12 @@
 package me.ksiazka.controller;
 
-import me.ksiazka.dto.UserDTO;
 import me.ksiazka.model.User;
 import org.springframework.ui.Model;
 
 
 public interface UserController {
     public String userHaveWant();
-    public UserDTO showUserPage();
+    public User showUserPage();
     public String editUserData(Long id, Model model);
     public String updateEditedUser(User user);
     /* -- Prawdopodobnie zrobimy to w przeływach (Web Flow)
