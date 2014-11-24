@@ -1,6 +1,7 @@
 package me.ksiazka.service;
 
 import me.ksiazka.dao.UserDAO;
+import me.ksiazka.dto.UserDTO;
 import me.ksiazka.model.User;
 import me.ksiazka.model.UserRole;
 import org.hibernate.Hibernate;
@@ -56,8 +57,15 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public User findUserByEmail(String email) {
-
         return userDAO.findUserByEmail(email);
+    }
+
+    @Override
+    @Transactional
+    public UserDTO findUserByEmailDTO(String email) {
+        User user = userDAO.findUserByEmail(email);
+        UserDTO userDTO = new UserDTO(user.getName(), user.getUsername(), user.getPassword(), user.getEmail(), user.getSurname());
+        return userDTO;
     }
 
 }

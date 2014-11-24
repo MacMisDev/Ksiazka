@@ -1,6 +1,7 @@
 package me.ksiazka.controller;
 
 
+import me.ksiazka.dto.UserDTO;
 import me.ksiazka.model.User;
 import me.ksiazka.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,8 @@ public class UserControllerImpl implements UserController {
 
     @Override
     @RequestMapping(value = "/check", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody User showUserPage() {
-        return userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+    public @ResponseBody UserDTO showUserPage() {
+        return userService.findUserByEmailDTO(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 
     @Override
