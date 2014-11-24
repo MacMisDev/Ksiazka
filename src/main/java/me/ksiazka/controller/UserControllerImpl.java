@@ -1,13 +1,17 @@
 package me.ksiazka.controller;
 
 
+import me.ksiazka.dto.UserDTO;
 import me.ksiazka.model.User;
 import me.ksiazka.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller("userController")
 @RequestMapping("/user")
@@ -23,8 +27,9 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    public String showUserPage(Long id, Model model) {
-        return null;
+    @RequestMapping(value = "/check", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody UserDTO showUserPage() {
+        return userService.findUserByEmailDTO(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 
     @Override

@@ -1,5 +1,7 @@
 package me.ksiazka.controller;
 
+import me.ksiazka.misc.BookLists;
+import me.ksiazka.misc.PageNumbers;
 import me.ksiazka.model.Book;
 import me.ksiazka.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +23,7 @@ public class BookControllerImpl implements BookController {
         return "redirect:/book/list";
     }
 
-    @Override
+/*    @Override
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(@RequestParam(value = "page", defaultValue = "0", required = false) int page, Model model) {
         if(!bookService.checkPageNumberForPagination(page)){
@@ -31,6 +33,18 @@ public class BookControllerImpl implements BookController {
         model.addAttribute("maxPages", bookService.checkMaxPagesLimit());
         model.addAttribute("lastBooks", bookService.lastBooksAdded(page));
         return "book/list";
+    }*/
+
+    @Override
+    @RequestMapping(value = "/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody BookLists list() {
+        return bookService.bookLists(0,0);
+    }
+
+    @Override
+    @RequestMapping(value = "/list", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody BookLists list(@RequestBody PageNumbers pageNumbers) {
+        return bookService.bookLists(pageNumbers.getLastBooksAddedPage(), pageNumbers.getMostPopularBooksPage());
     }
 
     @Override

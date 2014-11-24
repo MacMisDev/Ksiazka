@@ -7,6 +7,7 @@
 <tiles:insertDefinition name="template">
 
     <tiles:putAttribute name="content">
+        <%-- OLD CONTENT FOR REFERENCE ONLY
         <h2>REGISTER</h2>
         <sf:form method="POST" modelAttribute="user" action="register">
             <fieldset>
@@ -35,6 +36,63 @@
                 <input name="submit" type="submit" value="Submit" class="btn btn-primary" />
             </fieldset>
         </sf:form>
+        --%>
+
+        <div id="wrapper">
+
+            <nav>
+                <ul>
+                    <li>
+                        <button id='hideShowButton' class="menuButtonShowHide">Hide</button>
+                    </li>
+                    <li>
+                        <a href="" class="menuButtonHome">Home</a>
+                    </li>
+
+                </ul>
+            </nav>
+
+            <div id="pageContentWrapper">
+                <main class="contentManager">
+                    <div id="loginWrapper">
+
+                        <div class="registerGroup loginGroup">
+
+                            <div id="loginBookLockedImage"></div>
+                            <div id="ribbon"><p>Zarejestruj się!</p></div>
+                            <form method="post" name="f" action="${auth}">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <p>Adres email</p>
+                                        <input type="text" name="email" id="email"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Imię</p>
+                                        <input type="text" name="name" id="name"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Nazwa użytkownika</p>
+                                        <input type="text" name="username" id="username"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Hasło</p>
+                                        <input type="password" name="password" id="password"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" name="commit" class="btn btn-default">Zarejestruj</button>
+                                        <a href="<s:url value="/login" />" class="btn btn-default">Logowanie</a>
+                                    </div>
+
+                                </fieldset>
+                            </form>
+
+
+                        </div>
+
+                    </div>
+                </main>
+            </div>
+        </div>
 
     </tiles:putAttribute>
 

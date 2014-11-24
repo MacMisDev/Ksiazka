@@ -71,6 +71,12 @@ public class BookDAOImpl implements BookDAO {
         return (List<Book>) query.list();
     }
 
+    @Override
+    public List<Book> getMostPopularBooks(int page, int bookLimitOnPage) {
+        //todo
+        return null;
+    }
+
     //Zapewne da sie to zrobic jakims zlaczeniem hql-owym. Daloby sie pewnie tez
     //zrobic to przeszukujac obiekty, ale zapytanie do bazy bedzie milion razy
     //efektywniejsze, dlatego ta metoda droga wyjatku chociaz wykonuje pewna logike
@@ -96,7 +102,13 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     public List<Book> getAllAccepted() {
-        return null;
+
+        List<Book> list;
+        String query = "FROM Book where bookStatus='Accepted'";
+        Query listQuery = this.sessionFactory.getCurrentSession().createQuery(query);
+        list = listQuery.list();
+
+        return list;
     }
 
     @Override
