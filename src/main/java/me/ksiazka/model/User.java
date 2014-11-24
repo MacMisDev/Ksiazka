@@ -100,11 +100,11 @@ public class User {
         this.email = email;
     }
 
+    @JsonIgnore
     public List<Book> getBooksWant() {
         return booksWant;
     }
 
-    @JsonIgnore
     private void setBooksWant(List<Book> booksWant) {
         this.booksWant = booksWant;
     }
