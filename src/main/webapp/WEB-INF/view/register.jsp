@@ -54,9 +54,9 @@
 
             <div id="pageContentWrapper">
                 <main class="contentManager">
-                    <div id="registerWrapper">
+                    <div id="loginWrapper">
 
-                        <div id="registerGroup">
+                        <div class="registerGroup loginGroup">
 
                             <div id="loginBookLockedImage"></div>
                             <div id="ribbon"><p>Zarejestruj się!</p></div>
