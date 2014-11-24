@@ -68,6 +68,11 @@
                             <div id="ribbon"><p>Zaloguj sie !</p></div>
                             <form method="post" name="f" action="${auth}">
                                 <fieldset>
+                                    <div>
+                                        <c:if test="${(not empty SPRING_SECURITY_LAST_EXCEPTION)}">
+                                            Zły email lub hasło.
+                                        </c:if>
+                                    </div>
                                     <div class="form-group">
                                         <p>Username</p>
                                         <input type="text" name="j_username" id="username"/>

@@ -23,7 +23,7 @@
 
         <form-login login-processing-url="/static/j_spring_security_check"
                     login-page="/login"
-                    authentication-failure-url="/login?error" />
+                    authentication-failure-url="/login" />
         <logout logout-url="/static/j_spring_security_logout"
                 logout-success-url="/login?logout" />
 
