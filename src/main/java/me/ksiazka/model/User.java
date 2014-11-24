@@ -33,23 +33,18 @@ public class User {
             joinColumns = @JoinColumn(name = "userId"),
             inverseJoinColumns = @JoinColumn(name = "bookId")
     )
-    @JsonIgnore
     private List<Book> booksWant = new ArrayList<Book>(0);
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
     private List<UserBook> booksHave = new ArrayList<UserBook>(0);
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    @JsonIgnore
     private List<Address> addressList = new ArrayList<Address>(0);
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @Column(nullable = false)
-    @JsonIgnore
     private List<UserRole> roles = new ArrayList<UserRole>(0);
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    @JsonIgnore
     private List<Message> messages = new ArrayList<Message>(0);
     @OneToMany(mappedBy = "user")
-    @JsonIgnore
+
     private List<OfferRelation> offerList = new ArrayList<OfferRelation>(0);
 
     public  User() {
@@ -72,6 +67,7 @@ public class User {
         this.id = id;
     }
 
+    @JsonIgnore
     public List<Address> getAddressList() {
         return addressList;
     }
@@ -108,10 +104,12 @@ public class User {
         return booksWant;
     }
 
+    @JsonIgnore
     private void setBooksWant(List<Book> booksWant) {
         this.booksWant = booksWant;
     }
 
+    @JsonIgnore
     public List<UserBook> getBooksHave() {
         return booksHave;
     }
@@ -120,6 +118,7 @@ public class User {
         this.booksHave = booksHave;
     }
 
+    @JsonIgnore
     public List<UserRole> getRoles() {
         return roles;
     }
@@ -144,6 +143,7 @@ public class User {
         this.username = username;
     }
 
+    @JsonIgnore
     public List<Message> getMessages() {
         return messages;
     }
@@ -152,6 +152,7 @@ public class User {
         this.messages = messages;
     }
 
+    @JsonIgnore
     public List<OfferRelation> getOfferList() {
         return offerList;
     }

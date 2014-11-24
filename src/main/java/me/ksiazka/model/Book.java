@@ -40,10 +40,10 @@ public class Book {
             joinColumns = @JoinColumn(name = "bookId"),
             inverseJoinColumns = @JoinColumn(name = "userId")
     )
-    @JsonIgnore
+
     private List<User> user = new ArrayList<User>(0);
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-    @JsonIgnore
+
     private List<UserBook> bookList = new ArrayList<UserBook>(0);
 
     public Book() {
@@ -134,6 +134,7 @@ public class Book {
         this.bookStatus = bookStatus;
     }
 
+    @JsonIgnore
     public List<User> getUser() {
         return user;
     }
@@ -142,6 +143,7 @@ public class Book {
         this.user = user;
     }
 
+    @JsonIgnore
     public List<UserBook> getBookList() {
         return bookList;
     }
