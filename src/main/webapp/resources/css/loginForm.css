@@ -48,6 +48,9 @@
   -o-transition-duration: 0.4s;
   transition-duration: 0.4s;
 }
+#loginGroup *:focus {
+  outline: 0;
+}
 #loginGroup .btn-default:first-child {
   width: 160px;
   height: 45px;

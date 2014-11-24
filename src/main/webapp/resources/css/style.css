@@ -54,6 +54,9 @@ Date of last update: 2014-10-30
   -o-transition-duration: 0.4s;
   transition-duration: 0.4s;
 }
+#loginGroup *:focus {
+  outline: 0;
+}
 #loginGroup .btn-default:first-child {
   width: 160px;
   height: 45px;
@@ -440,12 +443,18 @@ nav li:hover {
   background-color: rgba(21, 22, 19, 0.3);
   box-shadow: 0px 1px 0px 0px #545a4f, 0px -1px 0px 0px #545a4f;
 }
+nav li *:focus {
+  outline: 0;
+}
 nav .menuButton {
   width: 150px;
   height: 60px;
   float: right;
   text-align: left;
   border: none;
+}
+nav .menuButton *:focus {
+  outline: 0;
 }
 nav .menuButtonShowHide {
   width: 150px;
@@ -454,6 +463,9 @@ nav .menuButtonShowHide {
   text-align: left;
   border: none;
   background: url(../images/menuItemShowHide.png) 90px 10px no-repeat;
+}
+nav .menuButtonShowHide *:focus {
+  outline: 0;
 }
 nav .menuButtonShowHide:hover {
   background: url(../images/menuItemShowHide.png) 90px -51px no-repeat;
@@ -465,6 +477,9 @@ nav .menuButtonHome {
   text-align: left;
   border: none;
   background: url(../images/menuItemHome.png) 90px 10px no-repeat;
+}
+nav .menuButtonHome *:focus {
+  outline: 0;
 }
 nav .menuButtonHome:hover {
   background: url(../images/menuItemHome.png) 90px -49px no-repeat;
