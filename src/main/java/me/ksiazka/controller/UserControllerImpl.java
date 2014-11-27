@@ -3,6 +3,7 @@ package me.ksiazka.controller;
 
 import me.ksiazka.misc.BookWantHave;
 import me.ksiazka.model.User;
+import me.ksiazka.service.UserBookService;
 import me.ksiazka.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -18,12 +19,17 @@ public class UserControllerImpl implements UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserBookService userBookService;
 
     @Override
     @RequestMapping(value = "/user/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody BookWantHave userHaveWant() {
-
-        return "user/userList";
+        BookWantHave bookWantHave = new BookWantHave();
+        bookWantHave.setUserHave(userBookService.getAllUserHaveBooks(userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).getId()));
+        bookWantHave.setUserWant(userBookService.getAllUserWantBooks(userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).getId()));
+        //todo ile bedzie obiektow na listach
+        return bookWantHave;
     }
 
     @Override

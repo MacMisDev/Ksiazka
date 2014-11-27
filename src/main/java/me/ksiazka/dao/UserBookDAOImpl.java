@@ -1,10 +1,10 @@
 package me.ksiazka.dao;
 
+import me.ksiazka.model.Book;
 import me.ksiazka.model.UserBook;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -53,10 +53,16 @@ public class UserBookDAOImpl implements UserBookDAO {
     }
 
     @Override
-    public List<UserBook> getAllUserBooks(long userId) {
-        String q = "FROM UserBook WHERE userId=:userId";
+    public List<Book> getAllUserHaveBooks(long userId) {
+        String q = "FROM Book WHERE bookId in (select book FROM UserBook WHERE userId=:userId)";
         Query query =  this.sessionFactory.getCurrentSession().createQuery(q);
-        return (List<UserBook>) query.setParameter("userId", userId).list();
+        return (List<Book>) query.setParameter("userId", userId).list();
+    }
+
+    @Override
+    public List<Book> getAllUserWantBooks(long userId) {
+        //krzys napisz tutaj kod, ktory wybiera wszystkie ksiazki usera o danym userId z bookswant
+        return null;
     }
 
     //Wykomentowane bo doublowalo funcjonalnosc, zostawiam, zeby jak Krzysiowi przyszlo

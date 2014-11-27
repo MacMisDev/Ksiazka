@@ -5,10 +5,10 @@ import me.ksiazka.model.Book;
 import java.util.List;
 
 public class BookWantHave {
-    public List<Book> userHave;
-    public List<Book> userWant;
-    int haveListPages;
-    int wantListPages;
+    private List<Book> userHave;
+    private List<Book> userWant;
+    private int haveListPages;
+    private int wantListPages;
 
     public BookWantHave() {
     }
