@@ -54,37 +54,37 @@
 
             <div id="pageContentWrapper">
                 <main class="contentManager">
-                    <div id="loginWrapper">
+                    <div id="formWrapper">
 
-                        <div class="registerGroup loginGroup">
+                        <div class="formTemplate registerGroup ">
 
                             <div id="loginBookLockedImage"></div>
                             <div id="ribbon"><p>Zarejestruj się!</p></div>
-                            <form method="post" name="f" action="${auth}">
+                            <sf:form method="POST" modelAttribute="user" action="register">
                                 <fieldset>
                                     <div class="form-group">
                                         <p>Adres email</p>
-                                        <input type="text" name="email" id="email"/>
+                                        <sf:input path="email" type="text" name="email" id="email"/>
                                     </div>
                                     <div class="form-group">
                                         <p>Imię</p>
-                                        <input type="text" name="name" id="name"/>
+                                        <sf:input path="name" type="text" name="name" id="name"/>
                                     </div>
                                     <div class="form-group">
                                         <p>Nazwa użytkownika</p>
-                                        <input type="text" name="username" id="username"/>
+                                        <sf:input path="username" type="text" name="username" id="username"/>
                                     </div>
                                     <div class="form-group">
                                         <p>Hasło</p>
-                                        <input type="password" name="password" id="password"/>
+                                        <sf:input path="password" type="password" name="password" id="password"/>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" name="commit" class="btn btn-default">Zarejestruj</button>
+                                        <button type="submit"  name="submit" class="btn btn-default">Zarejestruj</button>
                                         <a href="<s:url value="/login" />" class="btn btn-default">Logowanie</a>
                                     </div>
 
                                 </fieldset>
-                            </form>
+                            </sf:form>
 
 
                         </div>

@@ -7,11 +7,11 @@
 @button-width: 160px;
 @button-height: 45px;
 
-#loginWrapper {
+#formWrapper {
   position: absolute;
   top: 50%;
   left: 0;
-  margin-top: -275px; /* half of #loginWrapper height*/
+  margin-top: -275px; /* half of #formWrapper height*/
   height: auto;
   width: 100%;
   .transition-duration(0.4s);
@@ -29,7 +29,7 @@
   }
 }
 
-.loginGroup {
+.formTemplate {
   height: 550px;
   width: 470px;
   margin: 0 auto;
@@ -42,7 +42,7 @@
     margin-left: 9px;
     background-color: @base;
     color: @white;
-    font-size: 1.45em;
+    font-size: 1.25em;
     font-weight: lighter;
     line-height: 0.5;
     &:hover {
@@ -69,9 +69,9 @@
     width: @button-width;
     height: @button-height;
     margin-left: 55px;
-    font-size: 1.45em;
+    font-size: 1.25em;
     font-weight: lighter;
-    line-height: 1.0;
+    line-height: 1.25;
     @media @tablet {
       width: 85/100*@button-width;
       height: 90/100*@button-height;
@@ -132,7 +132,6 @@
       }
     }
   }
-
   //Buttons form-group
   .form-group:nth-child(3) {
     .form-group();
@@ -174,6 +173,10 @@
     height: 80/100*600px;
     width: 50/100*470px;
   }
+}
+
+.loginGroup {
+  &:extend(.formTemplate);
 }
 
 #loginBookLockedImage {

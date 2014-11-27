@@ -60,9 +60,9 @@
             <div id="pageContentWrapper">
                 <main class="contentManager">
                     <!--<div style="margin-top:100px;border:2px solid red;">dsdsd</div>-->
-                    <div id="loginWrapper">
+                    <div id="formWrapper">
 
-                        <div class="loginGroup">
+                        <div class="formTemplate loginGroup">
 
                             <div id="loginBookLockedImage"></div>
                             <div id="ribbon"><p>Zaloguj się!</p></div>
