@@ -48,6 +48,8 @@
         <property name="password" value="${db.password}" />
         <property name="initialSize" value="5" />
         <property name="maxActive" value="100" />
+        <property name="timeBetweenEvictionRunsMillis" value="30000" />
+
     </bean>-->
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -60,6 +62,10 @@
         <property name="maxPoolSize" value="25"/>
         <property name="checkoutTimeout" value="1000"/>
         <property name="maxStatements" value="50" />
+        <property name="testConnectionOnCheckout" value="true" />
+        <property name="maxIdleTime" value="180" /> <!--3min-->
+        <property name="maxConnectionAge" value="10" /> <!--1h-->
+        <property name="idleConnectionTestPeriod" value="60" />
     </bean>
 
     <!-- JDBC exception translator -->
@@ -78,7 +84,6 @@
                 <prop key="hibernate.cache.use_query_cache">true</prop>
 
                 <prop key="hibernate.hbm2ddl.auto">${db.status}</prop>
-
                 <prop key="hibernate.search.default.directory_provider">filesystem</prop>
                 <prop key="hibernate.search.default.indexBase">src/searching_indexes</prop>
             </props>

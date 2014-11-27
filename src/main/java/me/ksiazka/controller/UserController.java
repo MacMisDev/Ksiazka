@@ -1,11 +1,12 @@
 package me.ksiazka.controller;
 
+import me.ksiazka.misc.BookWantHave;
 import me.ksiazka.model.User;
 import org.springframework.ui.Model;
 
 
 public interface UserController {
-    public String userHaveWant();
+    public BookWantHave userHaveWant();
     public User showUserPage();
     public String editUserData(Long id, Model model);
     public String updateEditedUser(User user);

@@ -1,6 +1,7 @@
 package me.ksiazka.controller;
 
 
+import me.ksiazka.misc.BookWantHave;
 import me.ksiazka.model.User;
 import me.ksiazka.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class UserControllerImpl implements UserController {
 
     @Override
     @RequestMapping(value = "/user/list", method = RequestMethod.GET)
-    public String userHaveWant() {
+    public BookWantHave userHaveWant() {
         return "user/userList";
     }
 
