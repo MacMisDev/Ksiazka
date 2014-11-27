@@ -74,7 +74,7 @@
                                         </c:if>
                                     </div>
                                     <div class="form-group">
-                                        <p>Nazwa użytkownika</p>
+                                        <p>Email</p>
                                         <input type="text" name="j_username" id="username"/>
                                     </div>
                                     <div class="form-group">
