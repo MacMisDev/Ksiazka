@@ -60,12 +60,12 @@
             <div id="pageContentWrapper">
                 <main class="contentManager">
                     <!--<div style="margin-top:100px;border:2px solid red;">dsdsd</div>-->
-                    <div id="loginWrapper">
+                    <div id="formWrapper">
 
-                        <div id="loginGroup">
+                        <div class="formTemplate loginGroup">
 
                             <div id="loginBookLockedImage"></div>
-                            <div id="ribbon"><p>Zaloguj sie !</p></div>
+                            <div id="ribbon"><p>Zaloguj się!</p></div>
                             <form method="post" name="f" action="${auth}">
                                 <fieldset>
                                     <div>
@@ -74,22 +74,22 @@
                                         </c:if>
                                     </div>
                                     <div class="form-group">
-                                        <p>Username</p>
+                                        <p>Nazwa użytkownika</p>
                                         <input type="text" name="j_username" id="username"/>
                                     </div>
                                     <div class="form-group">
-                                        <p>Password</p>
+                                        <p>Hasło</p>
                                         <input type="password" name="j_password" id="password"/>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" name="commit" class="btn btn-default">Log In</button>
-                                        <a href="<s:url value="/register" />" class="btn btn-default"> Sign Up</a>
+                                        <button type="submit" name="commit" class="btn btn-default">Zaloguj</button>
+                                        <a href="<s:url value="/register" />" class="btn btn-default">Rejestracja</a>
                                     </div>
 
 
                                     <input class="css-checkbox" type="checkbox" name="_spring_security_remember_me"
                                            id="remember_me">
-                                    <label for="remember_me" class="css-label">Remember me</label>
+                                    <label for="remember_me" class="css-label">Zapamiętaj mnie</label>
 
                                 </fieldset>
                             </form>
