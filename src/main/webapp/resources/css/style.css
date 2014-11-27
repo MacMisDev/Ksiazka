@@ -10,12 +10,12 @@ Date of last update: 2014-10-30
     A set of useful LESS mixins
     More info at: http://lesselements.com
   ---------------------------------------------------*/
-#loginWrapper {
+#formWrapper {
   position: absolute;
   top: 50%;
   left: 0;
   margin-top: -275px;
-  /* half of #loginWrapper height*/
+  /* half of #formWrapper height*/
   height: auto;
   width: 100%;
   -moz-transition-duration: 0.4s;
@@ -24,26 +24,28 @@ Date of last update: 2014-10-30
   transition-duration: 0.4s;
 }
 @media all and (max-width: 599px) {
-  #loginWrapper {
+  #formWrapper {
     margin-top: -255px;
   }
 }
 @media all and (max-width: 479px) and (min-width:360px) {
-  #loginWrapper {
+  #formWrapper {
     margin-top: -240px;
   }
 }
 @media all and (max-width: 359px) {
-  #loginWrapper {
+  #formWrapper {
     margin-top: -240px;
   }
 }
 @media (max-height: 500px) {
-  #loginWrapper {
+  #formWrapper {
     margin-top: -225px;
   }
 }
-#loginGroup {
+.formTemplate,
+.loginGroup,
+.registerGroup {
   height: 550px;
   width: 470px;
   margin: 0 auto;
@@ -54,57 +56,60 @@ Date of last update: 2014-10-30
   -o-transition-duration: 0.4s;
   transition-duration: 0.4s;
 }
-#loginGroup .btn-default:first-child {
+.formTemplate *:focus {
+  outline: 0;
+}
+.formTemplate .btn-default:first-child {
   width: 160px;
   height: 45px;
   margin-left: 9px;
   background-color: #78b518;
   color: #e8e8e8;
-  font-size: 1.45em;
+  font-size: 1.25em;
   font-weight: lighter;
   line-height: 0.5;
 }
-#loginGroup .btn-default:first-child:hover {
+.formTemplate .btn-default:first-child:hover {
   background-color: #81c31a;
   border-color: #78b518;
 }
 @media all and (max-width: 599px) {
-  #loginGroup .btn-default:first-child {
+  .formTemplate .btn-default:first-child {
     width: 136px;
     height: 40.5px;
   }
 }
 @media all and (max-width: 479px) and (min-width:360px) {
-  #loginGroup .btn-default:first-child {
+  .formTemplate .btn-default:first-child {
     display: block;
     margin: 0 auto;
   }
 }
 @media all and (max-width: 359px) {
-  #loginGroup .btn-default:first-child {
+  .formTemplate .btn-default:first-child {
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
   }
 }
-#loginGroup .btn-default:nth-child(2) {
+.formTemplate .btn-default:nth-child(2) {
   width: 160px;
   height: 45px;
   margin-left: 55px;
-  font-size: 1.45em;
+  font-size: 1.25em;
   font-weight: lighter;
-  line-height: 1.0;
+  line-height: 1.25;
 }
 @media all and (max-width: 599px) {
-  #loginGroup .btn-default:nth-child(2) {
+  .formTemplate .btn-default:nth-child(2) {
     width: 136px;
     height: 40.5px;
     margin-left: 25px;
   }
 }
 @media all and (max-width: 479px) and (min-width:360px) {
-  #loginGroup .btn-default:nth-child(2) {
+  .formTemplate .btn-default:nth-child(2) {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -112,35 +117,35 @@ Date of last update: 2014-10-30
   }
 }
 @media all and (max-width: 359px) {
-  #loginGroup .btn-default:nth-child(2) {
+  .formTemplate .btn-default:nth-child(2) {
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
   }
 }
-#loginGroup .form-group {
+.formTemplate .form-group {
   width: 400px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
 }
 @media all and (max-width: 599px) {
-  #loginGroup .form-group {
+  .formTemplate .form-group {
     width: 320px;
   }
 }
 @media all and (max-width: 479px) and (min-width:360px) {
-  #loginGroup .form-group {
+  .formTemplate .form-group {
     width: 200px;
   }
 }
 @media all and (max-width: 359px) {
-  #loginGroup .form-group {
+  .formTemplate .form-group {
     width: 200px;
   }
 }
-#loginGroup .form-group input {
+.formTemplate .form-group input {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -148,31 +153,31 @@ Date of last update: 2014-10-30
   text-align: center;
 }
 @media all and (max-width: 599px) {
-  #loginGroup .form-group input {
+  .formTemplate .form-group input {
     width: 300px;
   }
 }
 @media all and (max-width: 479px) and (min-width:360px) {
-  #loginGroup .form-group input {
+  .formTemplate .form-group input {
     width: 200px;
   }
 }
 @media all and (max-width: 359px) {
-  #loginGroup .form-group input {
+  .formTemplate .form-group input {
     width: 200px;
   }
 }
-#loginGroup .form-group p {
+.formTemplate .form-group p {
   width: 380px;
   margin: 0 auto;
   padding-left: 1px;
 }
 @media all and (max-width: 599px) {
-  #loginGroup .form-group p {
+  .formTemplate .form-group p {
     width: 300px;
   }
 }
-#loginGroup .form-group:nth-child(3) {
+.formTemplate .form-group:nth-child(3) {
   width: 400px;
   margin-left: auto;
   margin-right: auto;
@@ -180,21 +185,21 @@ Date of last update: 2014-10-30
   margin-top: 30px;
 }
 @media all and (max-width: 599px) {
-  #loginGroup .form-group:nth-child(3) {
+  .formTemplate .form-group:nth-child(3) {
     width: 320px;
   }
 }
 @media all and (max-width: 479px) and (min-width:360px) {
-  #loginGroup .form-group:nth-child(3) {
+  .formTemplate .form-group:nth-child(3) {
     width: 200px;
   }
 }
 @media all and (max-width: 359px) {
-  #loginGroup .form-group:nth-child(3) {
+  .formTemplate .form-group:nth-child(3) {
     width: 200px;
   }
 }
-#loginGroup .form-group:nth-child(3) input {
+.formTemplate .form-group:nth-child(3) input {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -202,71 +207,77 @@ Date of last update: 2014-10-30
   text-align: center;
 }
 @media all and (max-width: 599px) {
-  #loginGroup .form-group:nth-child(3) input {
+  .formTemplate .form-group:nth-child(3) input {
     width: 300px;
   }
 }
 @media all and (max-width: 479px) and (min-width:360px) {
-  #loginGroup .form-group:nth-child(3) input {
+  .formTemplate .form-group:nth-child(3) input {
     width: 200px;
   }
 }
 @media all and (max-width: 359px) {
-  #loginGroup .form-group:nth-child(3) input {
+  .formTemplate .form-group:nth-child(3) input {
     width: 200px;
   }
 }
-#loginGroup .form-group:nth-child(3) p {
+.formTemplate .form-group:nth-child(3) p {
   width: 380px;
   margin: 0 auto;
   padding-left: 1px;
 }
 @media all and (max-width: 599px) {
-  #loginGroup .form-group:nth-child(3) p {
+  .formTemplate .form-group:nth-child(3) p {
     width: 300px;
   }
 }
 @media all and (max-width: 479px) and (min-width:360px) {
-  #loginGroup .form-group:nth-child(3) {
+  .formTemplate .form-group:nth-child(3) {
     height: 100px;
     width: 185px;
     margin-left: auto;
     margin-right: auto;
   }
 }
-#loginGroup form {
+.formTemplate form {
   position: relative;
   top: 220px;
 }
 @media all and (max-width: 599px) {
-  #loginGroup form {
+  .formTemplate form {
     top: 190px;
   }
 }
 @media all and (max-width: 479px) and (min-width:360px) {
-  #loginGroup form {
+  .formTemplate form {
     top: 150px;
   }
 }
 @media all and (max-width: 359px) {
-  #loginGroup form {
+  .formTemplate form {
     top: 120px;
   }
 }
 @media all and (max-width: 599px) {
-  #loginGroup {
+  .formTemplate,
+  .loginGroup,
+  .registerGroup {
     height: 510px;
     width: 399.5px;
   }
 }
 @media all and (max-width: 479px) and (min-width:360px) {
-  #loginGroup {
+  .formTemplate,
+  .loginGroup,
+  .registerGroup {
     height: 480px;
     width: 235px;
   }
 }
 @media all and (max-width: 359px) {
-  #loginGroup {
+  .formTemplate,
+  .loginGroup,
+  .registerGroup {
     height: 480px;
     width: 235px;
   }
@@ -440,12 +451,18 @@ nav li:hover {
   background-color: rgba(21, 22, 19, 0.3);
   box-shadow: 0px 1px 0px 0px #545a4f, 0px -1px 0px 0px #545a4f;
 }
+nav li *:focus {
+  outline: 0;
+}
 nav .menuButton {
   width: 150px;
   height: 60px;
   float: right;
   text-align: left;
   border: none;
+}
+nav .menuButton *:focus {
+  outline: 0;
 }
 nav .menuButtonShowHide {
   width: 150px;
@@ -454,6 +471,9 @@ nav .menuButtonShowHide {
   text-align: left;
   border: none;
   background: url(../images/menuItemShowHide.png) 90px 10px no-repeat;
+}
+nav .menuButtonShowHide *:focus {
+  outline: 0;
 }
 nav .menuButtonShowHide:hover {
   background: url(../images/menuItemShowHide.png) 90px -51px no-repeat;
@@ -465,6 +485,9 @@ nav .menuButtonHome {
   text-align: left;
   border: none;
   background: url(../images/menuItemHome.png) 90px 10px no-repeat;
+}
+nav .menuButtonHome *:focus {
+  outline: 0;
 }
 nav .menuButtonHome:hover {
   background: url(../images/menuItemHome.png) 90px -49px no-repeat;
@@ -515,6 +538,15 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 }
 label.css-label {
   background-image: url(../images/checkbox.png);
+}
+.registerGroup {
+  height: 620px;
+}
+.registerGroup .form-group:nth-child(3) {
+  margin-top: 10px;
+}
+.registerGroup .form-group:nth-child(4) {
+  margin-bottom: 30px;
 }
 /* Webfont: Lato-Light */
 @font-face {
