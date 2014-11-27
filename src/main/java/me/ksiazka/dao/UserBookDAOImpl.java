@@ -61,8 +61,10 @@ public class UserBookDAOImpl implements UserBookDAO {
 
     @Override
     public List<Book> getAllUserWantBooks(long userId) {
-        //krzys napisz tutaj kod, ktory wybiera wszystkie ksiazki usera o danym userId z bookswant
-        return null;
+        String q = "select  b FROM Book b inner JOIN b.user u where u.id = :userId";
+
+        List<Book> list = (List<Book>) this.sessionFactory.getCurrentSession().createQuery(q).setParameter("userId", userId).list();
+        return list;
     }
 
     //Wykomentowane bo doublowalo funcjonalnosc, zostawiam, zeby jak Krzysiowi przyszlo

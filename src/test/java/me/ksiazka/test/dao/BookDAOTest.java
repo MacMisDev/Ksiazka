@@ -196,6 +196,7 @@ public class BookDAOTest {
         Assert.assertTrue(list.get(0).getName().equals("Jarke"));
     }
 
+
     @Test(expected = DataIntegrityViolationException.class)
     @Rollback(true)
     public void saveWithNullPropertyTest() {
