@@ -20,8 +20,9 @@ public class UserControllerImpl implements UserController {
     private UserService userService;
 
     @Override
-    @RequestMapping(value = "/user/list", method = RequestMethod.GET)
-    public BookWantHave userHaveWant() {
+    @RequestMapping(value = "/user/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody BookWantHave userHaveWant() {
+
         return "user/userList";
     }
 

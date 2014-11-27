@@ -52,6 +52,13 @@ public class UserBookDAOImpl implements UserBookDAO {
         sessionFactory.getCurrentSession().delete(ub);
     }
 
+    @Override
+    public List<UserBook> getAllUserBooks(long userId) {
+        String q = "FROM UserBook WHERE userId=:userId";
+        Query query =  this.sessionFactory.getCurrentSession().createQuery(q);
+        return (List<UserBook>) query.setParameter("userId", userId).list();
+    }
+
     //Wykomentowane bo doublowalo funcjonalnosc, zostawiam, zeby jak Krzysiowi przyszlo
     //znowu do glowy to napisac, to bedzie widzial, ze raz juz napisal i bylo niepotrzebne
     /*@Override
