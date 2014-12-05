@@ -75,8 +75,28 @@ public class OfferDAOTest {
     }
 
     @Test
-    @Ignore
-    public void deleteOfferTest() {
+    public void deleteOfferTestObject() {
+
+        Offer offer = offerDAO.get(3);
+        int sizeBefore = offersInDatabse;
+
+        offerDAO.delete(offer);
+
+        Assert.assertEquals(sizeBefore-1, offerDAO.getAll().size());
+        Assert.assertNull(offerDAO.get(3));
+    }
+
+    @Test
+    public void deleteOfferTestId() {
+
+        Long id = new Long(3);
+        Offer offer = offerDAO.get(id);
+        int sizeBefore = offersInDatabse;
+
+        offerDAO.delete(id);
+
+        Assert.assertEquals(sizeBefore-1, offerDAO.getAll().size());
+        Assert.assertNull(offerDAO.get(3));
 
     }
 

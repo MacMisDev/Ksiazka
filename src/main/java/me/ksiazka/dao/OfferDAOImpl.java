@@ -49,10 +49,15 @@ public class OfferDAOImpl implements OfferDAO {
     @Override
     public void delete(Offer toDelete) {
 
+        this.sessionFactory.getCurrentSession().delete(toDelete);
+
     }
 
     @Override
     public void delete(long id) {
+
+        Offer offerToDelete = (Offer) this.sessionFactory.getCurrentSession().get(Offer.class, id);
+        this.sessionFactory.getCurrentSession().delete(offerToDelete);
 
     }
 }
