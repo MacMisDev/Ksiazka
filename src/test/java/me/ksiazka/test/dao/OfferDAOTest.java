@@ -2,7 +2,9 @@ package me.ksiazka.test.dao;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
+import junit.framework.Assert;
 import me.ksiazka.dao.OfferDAO;
+import me.ksiazka.model.Offer;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +18,8 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
 import javax.transaction.Transactional;
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.NotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:/spring-cfg.xml", "classpath:/spring-tests-cfg.xml"})
@@ -33,8 +37,12 @@ public class OfferDAOTest {
     OfferDAO offerDAO;
 
     @Test
-    @Ignore
     public void getOfferTest() {
+
+        Offer offer = offerDAO.get(new Long(1));
+
+        Assert.assertNotNull(offer);
+        Assert.assertEquals(new Long(1), offer.getId());
 
     }
 

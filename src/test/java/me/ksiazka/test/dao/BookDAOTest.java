@@ -70,6 +70,7 @@ public class BookDAOTest {
         Assert.assertEquals(2013, book.getPublicationYear());
         Assert.assertEquals(408, book.getPages());
         Assert.assertEquals(BookStatus.ACCEPTED, book.getBookStatus());
+
     }
 
     @Test

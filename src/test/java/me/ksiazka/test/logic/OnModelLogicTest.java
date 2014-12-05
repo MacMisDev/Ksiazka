@@ -52,10 +52,10 @@ public class OnModelLogicTest {
 
         user.addToWantList(bookService.get(2));
 
-        User retrivedUser = userService.get(3);
-        Assert.assertEquals(3, retrivedUser.getSizeOfBooksWant());
+        User retrievedUser = userService.get(3);
+        Assert.assertEquals(3, retrievedUser.getSizeOfBooksWant());
         Assert.assertEquals("Jarek Cimoch i Piwnica Tajemnic",
-                retrivedUser.getBookFromBooksWant(2).getTitle());
+                retrievedUser.getBookFromBooksWant(2).getTitle());
     }
 
     @Test

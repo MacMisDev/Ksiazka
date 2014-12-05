@@ -61,5 +61,15 @@
     <UserRole id="10" role="ROLE_USER" userId="7"/>
     <UserRole id="11" role="ROLE_USER" userId="8"/>
 
+    <Offer offerId="1" date="2014-01-01"/>
+    <Offer offerId="2"/>
+    <Offer offerId="3"/>
+    <Offer offerId="4"/>
+    <Offer offerId="5"/>
+    <Offer offerId="6"/>
+
+    <OfferRelation offerRelationId="1" userId="1" offerId="1" offerRelationStatus="Offering"/>
+    <OfferRelation offerRelationId="2" userId="2" offerId="1" offerRelationStatus="Offered"/>
+
 
 </dataset>

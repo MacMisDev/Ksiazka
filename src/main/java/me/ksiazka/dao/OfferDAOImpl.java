@@ -1,6 +1,9 @@
 package me.ksiazka.dao;
 
 import me.ksiazka.model.Offer;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
@@ -9,6 +12,10 @@ import java.util.List;
 @Repository
 public class OfferDAOImpl implements OfferDAO {
 
+    @Autowired
+    private SessionFactory sessionFactory;
+
+
     @Override
     public long save(Offer toSave) {
         return 0;
@@ -16,7 +23,8 @@ public class OfferDAOImpl implements OfferDAO {
 
     @Override
     public Offer get(long id) {
-        return null;
+        Offer offer = (Offer) this.sessionFactory.getCurrentSession().get(Offer.class, id);
+        return offer;
     }
 
     @Override
