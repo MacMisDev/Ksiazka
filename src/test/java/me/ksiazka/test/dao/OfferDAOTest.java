@@ -9,6 +9,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -20,6 +21,7 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import javax.transaction.Transactional;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:/spring-cfg.xml", "classpath:/spring-tests-cfg.xml"})
@@ -36,6 +38,11 @@ public class OfferDAOTest {
     @Autowired
     OfferDAO offerDAO;
 
+
+    @Autowired
+    @Qualifier("offersInDatabase")
+    private Integer offersInDatabse;
+
     @Test
     public void getOfferTest() {
 
@@ -47,8 +54,11 @@ public class OfferDAOTest {
     }
 
     @Test
-    @Ignore
-    public void getAllOffersTests() {
+    public void getAllOffersTest() {
+
+        List<Offer> offers = offerDAO.getAll();
+
+        Assert.assertEquals((int) offersInDatabse, offers.size());
 
     }
 
