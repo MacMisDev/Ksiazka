@@ -19,7 +19,9 @@ public class OfferDAOImpl implements OfferDAO {
 
     @Override
     public long save(Offer toSave) {
-        return 0;
+
+        return (Long) this.sessionFactory.getCurrentSession().save(toSave);
+
     }
 
     @Override

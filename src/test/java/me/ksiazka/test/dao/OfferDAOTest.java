@@ -64,8 +64,17 @@ public class OfferDAOTest {
     }
 
     @Test
-    @Ignore
     public void saveOfferTest() {
+
+        Offer offer = new Offer();
+        offer.setOfferStatus(OfferStatus.PENDING);
+
+        Long id = offerDAO.save(offer);
+
+        Offer fetchedBook = offerDAO.get(id);
+        Assert.assertNotNull(fetchedBook);
+        Assert.assertEquals(fetchedBook.getOfferStatus(), offer.getOfferStatus());
+
 
     }
 
