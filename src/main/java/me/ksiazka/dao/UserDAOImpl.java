@@ -110,6 +110,10 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void updateOfferRelationBeforeDelete(User user) {
 
+            Long id = user.getId();
+            String query = "UPDATE OfferRelation set userId=1 where userId=:id";
+            this.sessionFactory.getCurrentSession().createQuery(query).setParameter("id", id).executeUpdate();
+
     }
 
     private org.hibernate.Query generateHibernateSearchQueryFor(String field, String searchParam) {

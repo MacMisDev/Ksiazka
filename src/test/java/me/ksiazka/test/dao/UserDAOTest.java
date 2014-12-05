@@ -107,6 +107,8 @@ public class UserDAOTest {
         Assert.assertNotNull(userDAO.get(2));
         Assert.assertEquals(2, userDAO.get(2).getSizeOfBooksHave());
 
+        User u = userDAO.get(2);
+        userDAO.updateOfferRelationBeforeDelete(u);
         userDAO.delete(2);
 
         Assert.assertNull(userDAO.get(2));
