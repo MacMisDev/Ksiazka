@@ -5,6 +5,7 @@ import com.github.springtestdbunit.annotation.DatabaseSetup;
 import junit.framework.Assert;
 import me.ksiazka.dao.OfferDAO;
 import me.ksiazka.model.Offer;
+import me.ksiazka.model.OfferStatus;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -69,8 +70,19 @@ public class OfferDAOTest {
     }
 
     @Test
-    @Ignore
     public void updateOfferTest() {
+
+        Offer offer = offerDAO.get(2);
+        OfferStatus currentOfferStatus = offer.getOfferStatus();
+        OfferStatus newOfferStatus = OfferStatus.CONFIRMED;
+
+        //Sprawdzamy, czy są różne żeby nie zmienić przez przypadek na ten sam status
+        Assert.assertNotSame(currentOfferStatus, newOfferStatus);
+
+        offer.setOfferStatus(newOfferStatus);
+        offerDAO.update(offer);
+
+        Assert.assertEquals(newOfferStatus, offerDAO.get(2).getOfferStatus());
 
     }
 

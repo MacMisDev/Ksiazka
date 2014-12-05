@@ -57,7 +57,9 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void update(User toUpdate) {
+
         this.sessionFactory.getCurrentSession().update(toUpdate);
+
     }
 
     @Override
@@ -67,8 +69,10 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void delete(long id) {
+
         User u = (User) this.sessionFactory.getCurrentSession().get(User.class, id);
         sessionFactory.getCurrentSession().delete(u);
+
     }
 
     @Override
@@ -79,6 +83,7 @@ public class UserDAOImpl implements UserDAO {
         List list = userQuery.setParameter("username", username).list();
 
         return list.isEmpty()?null:(User)list.get(0);
+
     }
 
     @Override
@@ -91,6 +96,7 @@ public class UserDAOImpl implements UserDAO {
             return null;
         }
         return (User)list.get(0);
+
     }
 
 
@@ -98,6 +104,7 @@ public class UserDAOImpl implements UserDAO {
     public List<User> searchByEmail(String email) throws InterruptedException {
 
         return generateHibernateSearchQueryFor("email", email).list();
+
     }
 
     @Override
@@ -114,6 +121,7 @@ public class UserDAOImpl implements UserDAO {
         org.hibernate.Query fullTextQuery = fullTextSession.createFullTextQuery(lQuery, User.class);
 
         return fullTextQuery;
+
     }
 
 }

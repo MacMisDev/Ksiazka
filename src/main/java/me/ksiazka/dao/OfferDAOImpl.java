@@ -44,6 +44,8 @@ public class OfferDAOImpl implements OfferDAO {
     @Override
     public void update(Offer toUpdate) {
 
+        this.sessionFactory.getCurrentSession().update(toUpdate);
+
     }
 
     @Override
