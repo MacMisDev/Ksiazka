@@ -28,14 +28,15 @@ public class UserControllerImpl implements UserController {
         BookWantHave bookWantHave = new BookWantHave();
         bookWantHave.setUserHave(userBookService.getAllUserHaveBooks(userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).getId()));
         bookWantHave.setUserWant(userBookService.getAllUserWantBooks(userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).getId()));
-        //todo ile bedzie obiektow na listach
+        bookWantHave.setHaveListPages(userBookService.checkPagesMaxLimit(bookWantHave.getUserHave().size()));
+        bookWantHave.setWantListPages(userBookService.checkPagesMaxLimit(bookWantHave.getUserWant().size()));
         return bookWantHave;
     }
 
     @Override
     @RequestMapping(value = {"/", "home"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody User showUserPage() {
-        return userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        return userService.findUserByEmailWithLists(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 
     @Override

@@ -15,6 +15,9 @@ public class UserBookServiceImpl implements BasicServiceInterface<UserBook>, Use
     @Autowired
     UserBookDAO userBookDAO;
 
+    @Autowired
+    private Integer bookLimitOnPage;
+
     @Override
     @Transactional
     public long save(UserBook toSave) {
@@ -53,5 +56,12 @@ public class UserBookServiceImpl implements BasicServiceInterface<UserBook>, Use
     @Transactional
     public List<Book> getAllUserWantBooks(long userId) {
         return userBookDAO.getAllUserWantBooks(userId);
+    }
+
+    @Transactional
+    public int checkPagesMaxLimit(int listSize) {
+        double maxNumberPage = Math.floor((double) listSize / bookLimitOnPage);
+        if (listSize % bookLimitOnPage == 0) return (int) maxNumberPage - 1;
+        return (int) maxNumberPage;
     }
 }

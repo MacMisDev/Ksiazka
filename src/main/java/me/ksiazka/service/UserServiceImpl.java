@@ -57,4 +57,9 @@ public class UserServiceImpl implements UserService {
         return userDAO.findUserByEmail(email);
     }
 
+
+    @Transactional
+    public User findUserByEmailWithLists(String email){
+        return userDAO.findUserByEmailWithLists(email);
+    }
 }
