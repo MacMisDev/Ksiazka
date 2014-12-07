@@ -114,5 +114,9 @@ public class BookDAOImpl implements BookDAO {
     @Override
     public void updateUserBookBeforeDelete(Book book) {
 
+        Long id = book.getId();
+        String query = "UPDATE UserBook set bookId=1 where bookId=:id";
+        this.sessionFactory.getCurrentSession().createQuery(query).setParameter("id", id).executeUpdate();
+
     }
 }

@@ -111,16 +111,25 @@ public class UserDAOTest {
         Assert.assertEquals(2, userDAO.get(2).getSizeOfBooksHave());
 
         User u = userDAO.get(2);
-        userDAO.updateOfferRelationBeforeDelete(u);
-        userDAO.delete(u);
+//        userDAO.updateOfferRelationBeforeDelete(u);
+//        userDAO.delete(u);
 
-       // userService.delete(u);
+        userService.delete(u);
 
         Assert.assertNull(userDAO.get(2));
         //Uzytkownik posiadal w swojej liscie have ksiazki z encji UserBook o id 1 i 3
         //Sprawdzamy czy sie usunely.
-        Assert.assertNull(userBookDAO.get(1));
-        Assert.assertNull(userBookDAO.get(3));
+
+
+        /*
+            Ksiazki zostaly przypisane do uzytkownika widmo
+            ??Sprawdzenie czy ksiazki znajduja sie w ofertach przed przypisaniem
+            W przypadku jesli nie to usuwamy bez przepisania(na stale)
+
+         */
+
+        //Assert.assertNull(userBookDAO.get(1));
+        //Assert.assertNull(userBookDAO.get(3));
         //Dla pewnosci sprawdzamy, czy w bazie pozostal wpis w UserBook o id 2
         Assert.assertNotNull(userBookDAO.get(2));
 

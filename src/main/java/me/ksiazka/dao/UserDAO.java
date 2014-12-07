@@ -17,5 +17,7 @@ public interface UserDAO extends BasicDAOInterface<User> {
     ////Query update'ujaca przed usunieciem User
     public void updateOfferRelationBeforeDelete(User user);
 
+    public void updateUserBookBeforeDelete(User user);
+
     public List<User> getUsersForBookHardDelete(Book toDelete);
 }
