@@ -101,6 +101,22 @@ public class UserDAOImpl implements UserDAO {
 
     }
 
+    @Override
+    public User findUserByEmailWithLists(String email) {
+
+        String query = "FROM User where email=:email";
+        Query userQuery = this.sessionFactory.getCurrentSession().createQuery(query);
+        List list = userQuery.setParameter("email", email).list();
+        if(list.isEmpty()){
+            return null;
+        }
+        User user = (User)list.get(0);
+        Hibernate.initialize(user.getBooksHave());
+        Hibernate.initialize(user.getBooksWant());
+        return user;
+
+    }
+
 
     @Override
     public List<User> searchByEmail(String email) throws InterruptedException {
