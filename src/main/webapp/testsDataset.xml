@@ -68,8 +68,11 @@
     <Offer offerId="5" offerStatus="PENDING"/>
     <Offer offerId="6" offerStatus="CONFIRMED"/>
 
-    <OfferRelation offerRelationId="1" userId="1" offerId="1" offerRelationStatus="Offering"/>
-    <OfferRelation offerRelationId="2" userId="2" offerId="1" offerRelationStatus="Offered"/>
+    <OfferRelation offerRelationId="1" userId="2" offerId="1" offerRelationStatus="Offering"/>
+    <OfferRelation offerRelationId="2" userId="7" offerId="1" offerRelationStatus="Offered"/>
+
+    <wantedBooks offerId="1" userBookId="1"/>
+    <offeredBooks offerId="1" userBookId="15"/>
 
 
 </dataset>

@@ -48,6 +48,7 @@ public class UserServiceImpl implements UserService {
         /*
         @ToDo: Podmienienie referencji do uzytkownika w UserBook przed usunięciem - Krzysiu musi zrobic query czy co
          */
+        userDAO.updateOfferRelationBeforeDelete(toDelete);
         userDAO.delete(toDelete);
     }
 

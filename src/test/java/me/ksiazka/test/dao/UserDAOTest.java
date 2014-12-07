@@ -7,6 +7,7 @@ import me.ksiazka.dao.UserBookDAO;
 import me.ksiazka.dao.UserDAO;
 import me.ksiazka.model.*;
 import me.ksiazka.service.SearchService;
+import me.ksiazka.service.UserService;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -45,6 +46,8 @@ public class UserDAOTest {
     private UserDAO userDAO;
     @Autowired
     private UserBookDAO userBookDAO;
+    @Autowired
+    private UserService userService;
 
     @Test
     public void getUserTest() {
@@ -109,7 +112,9 @@ public class UserDAOTest {
 
         User u = userDAO.get(2);
         userDAO.updateOfferRelationBeforeDelete(u);
-        userDAO.delete(2);
+        userDAO.delete(u);
+
+       // userService.delete(u);
 
         Assert.assertNull(userDAO.get(2));
         //Uzytkownik posiadal w swojej liscie have ksiazki z encji UserBook o id 1 i 3
