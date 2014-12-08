@@ -69,4 +69,10 @@ public class UserServiceImpl implements UserService {
     public User getUserWithLists(long id) {
         return userDAO.getUserWithLists(id);
     }
+
+    @Override
+    @Transactional
+    public User findUserByUsername(String username) {
+        return userDAO.findUserByUsername(username);
+    }
 }
