@@ -52,6 +52,8 @@ public class AuthControllerImpl implements AuthController{
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(@Valid User user, BindingResult bindingResult){
 
+        user.getEmail().toLowerCase();
+
         if(!bindingResult.hasErrors()){
             authService.includeRoles(user);
             try{
