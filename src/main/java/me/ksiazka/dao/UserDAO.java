@@ -21,4 +21,6 @@ public interface UserDAO extends BasicDAOInterface<User> {
 
     //Jesli uzytkownik o podanym emailu istnieje to go zwraca oraz inicjalizuje listy booksWant i booksHave, jesl nie to zwraca null
     public User findUserByEmailWithLists(String email);
+
+    public User getUserWithLists(long id);
 }

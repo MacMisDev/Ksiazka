@@ -1,7 +1,5 @@
 package me.ksiazka.model;
 
-import org.springframework.context.annotation.Lazy;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
