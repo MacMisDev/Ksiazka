@@ -57,18 +57,24 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void update(User toUpdate) {
+
         this.sessionFactory.getCurrentSession().update(toUpdate);
+
     }
 
     @Override
     public void delete(User toDelete) {
 
+        this.sessionFactory.getCurrentSession().delete(toDelete);
+
     }
 
     @Override
     public void delete(long id) {
+
         User u = (User) this.sessionFactory.getCurrentSession().get(User.class, id);
-        sessionFactory.getCurrentSession().delete(u);
+        this.sessionFactory.getCurrentSession().delete(u);
+
     }
 
     @Override
@@ -79,6 +85,7 @@ public class UserDAOImpl implements UserDAO {
         List list = userQuery.setParameter("username", username).list();
 
         return list.isEmpty()?null:(User)list.get(0);
+
     }
 
     @Override
@@ -91,6 +98,23 @@ public class UserDAOImpl implements UserDAO {
             return null;
         }
         return (User)list.get(0);
+
+    }
+
+    @Override
+    public User findUserByEmailWithLists(String email) {
+
+        String query = "FROM User where email=:email";
+        Query userQuery = this.sessionFactory.getCurrentSession().createQuery(query);
+        List list = userQuery.setParameter("email", email).list();
+        if(list.isEmpty()){
+            return null;
+        }
+        User user = (User)list.get(0);
+        Hibernate.initialize(user.getBooksHave());
+        Hibernate.initialize(user.getBooksWant());
+        return user;
+
     }
 
 
@@ -98,10 +122,24 @@ public class UserDAOImpl implements UserDAO {
     public List<User> searchByEmail(String email) throws InterruptedException {
 
         return generateHibernateSearchQueryFor("email", email).list();
+
     }
 
     @Override
     public void updateOfferRelationBeforeDelete(User user) {
+
+            Long id = user.getId();
+            String query = "UPDATE OfferRelation set userId=1 where userId=:id";
+            this.sessionFactory.getCurrentSession().createQuery(query).setParameter("id", id).executeUpdate();
+
+    }
+
+    @Override
+    public void updateUserBookBeforeDelete(User user) {
+
+        Long id = user.getId();
+        String query = "UPDATE UserBook set userId=1 where userId=:id";
+        this.sessionFactory.getCurrentSession().createQuery(query).setParameter("id", id).executeUpdate();
 
     }
 
@@ -114,6 +152,7 @@ public class UserDAOImpl implements UserDAO {
         org.hibernate.Query fullTextQuery = fullTextSession.createFullTextQuery(lQuery, User.class);
 
         return fullTextQuery;
+
     }
 
 }

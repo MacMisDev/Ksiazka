@@ -45,10 +45,11 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void delete(User toDelete) {
-        /*
-        @ToDo: Podmienienie referencji do uzytkownika w UserBook przed usunięciem - Krzysiu musi zrobic query czy co
-         */
+
+        userDAO.updateUserBookBeforeDelete(toDelete);
+        userDAO.updateOfferRelationBeforeDelete(toDelete);
         userDAO.delete(toDelete);
+
     }
 
     @Override
@@ -57,4 +58,9 @@ public class UserServiceImpl implements UserService {
         return userDAO.findUserByEmail(email);
     }
 
+
+    @Transactional
+    public User findUserByEmailWithLists(String email){
+        return userDAO.findUserByEmailWithLists(email);
+    }
 }

@@ -1,7 +1,6 @@
 package me.ksiazka.model;
 
-import org.hibernate.annotations.*;
-import org.hibernate.annotations.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
@@ -16,9 +15,11 @@ public class UserBook{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JoinColumn(name = "ubId")
+    @JsonIgnore
     private Long id;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userId")
+    @JsonIgnore
     private User user;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "bookId")
@@ -26,8 +27,10 @@ public class UserBook{
     @Enumerated(EnumType.STRING)
     private Condition bookCondition;
     @ManyToMany(mappedBy = "offeredBooks")
+    @JsonIgnore
     private List<Offer> offeredBooks = new ArrayList<Offer>(0);
     @ManyToMany(mappedBy = "wantedBooks")
+    @JsonIgnore
     private List<Offer> wantedBooks = new ArrayList<Offer>(0);
 
     public Book getBook() {

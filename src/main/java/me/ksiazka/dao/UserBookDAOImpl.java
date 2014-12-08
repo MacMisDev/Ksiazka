@@ -1,10 +1,10 @@
 package me.ksiazka.dao;
 
+import me.ksiazka.model.Book;
 import me.ksiazka.model.UserBook;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -50,6 +50,21 @@ public class UserBookDAOImpl implements UserBookDAO {
     public void delete(long id) {
         UserBook ub = (UserBook) this.sessionFactory.getCurrentSession().get(UserBook.class, id);
         sessionFactory.getCurrentSession().delete(ub);
+    }
+
+    @Override
+    public List<Book> getAllUserHaveBooks(long userId) {
+        String q = "FROM Book WHERE bookId in (select book FROM UserBook WHERE userId=:userId)";
+        Query query =  this.sessionFactory.getCurrentSession().createQuery(q);
+        return (List<Book>) query.setParameter("userId", userId).list();
+    }
+
+    @Override
+    public List<Book> getAllUserWantBooks(long userId) {
+        String q = "select  b FROM Book b inner JOIN b.user u where u.id = :userId";
+
+        List<Book> list = (List<Book>) this.sessionFactory.getCurrentSession().createQuery(q).setParameter("userId", userId).list();
+        return list;
     }
 
     //Wykomentowane bo doublowalo funcjonalnosc, zostawiam, zeby jak Krzysiowi przyszlo

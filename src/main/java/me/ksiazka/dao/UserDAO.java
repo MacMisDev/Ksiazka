@@ -17,5 +17,10 @@ public interface UserDAO extends BasicDAOInterface<User> {
     ////Query update'ujaca przed usunieciem User
     public void updateOfferRelationBeforeDelete(User user);
 
+    public void updateUserBookBeforeDelete(User user);
+
     public List<User> getUsersForBookHardDelete(Book toDelete);
+
+    //Jesli uzytkownik o podanym emailu istnieje to go zwraca oraz inicjalizuje listy booksWant i booksHave, jesl nie to zwraca null
+    public User findUserByEmailWithLists(String email);
 }

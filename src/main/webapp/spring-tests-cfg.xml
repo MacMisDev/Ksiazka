@@ -22,4 +22,9 @@
         <constructor-arg value="15" type="int"/>
     </bean>
 
+    <bean id="offersInDatabase"
+          class="java.lang.Integer">
+        <constructor-arg value="6" type="int"/>
+    </bean>
+
 </beans>
