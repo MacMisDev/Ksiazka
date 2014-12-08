@@ -64,8 +64,8 @@ public class UserServiceTest {
         User user = new User();
         user.setName("Pawel");
         user.setSurname("Zygar");
-        user.setUsername("PZ");
-        user.setEmail("pikus321 lol jaki email@gmial.com");
+        user.setUsername("PWZ");
+        user.setEmail("pikus321@gmial.com");
         user.setPassword("131191"); //cannot be null
         user.getRoles().add(userRole);
 

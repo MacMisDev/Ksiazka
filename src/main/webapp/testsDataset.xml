@@ -14,7 +14,7 @@
     <Book bookId="10" title="Złoto Gór Czarnych. Orle pióra" ISBN="8373844872" author="Szklarska Krystyna, Szklarski Alfred" publisher="Dolnośląskie" description="Czerwoni" publicationYear="2006" pages="256" bookStatus="ACCEPTED"/>
 
 
-    <User userId="1" username="Użytkownik usunięty" email="test" name="test" surname="test" password="test" />
+    <User userId="1" username="Użytkownik usunięty" email="test@test.com" name="test" surname="test" password="test" />
     <User userId="2" username="Konasz" email="jarke69@bdimension.org" name="Caroslaw" surname="Jimoch" password="tajne" />
     <User userId="3" username="ChybaTy" email="jarke@jarke.jr" name="Jarke" surname="Cimoche" password="jeszczeTajniejsze"/>
     <User userId="4" username="Anna" email="anna@email.com" name="Anna" surname="Kowalska" password="tajne" />

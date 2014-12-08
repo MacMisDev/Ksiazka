@@ -139,7 +139,7 @@ public class User {
         this.password = password;
     }
 
-    @Length(min = 3, max = 10, message = "Nazwa użytkownika musi mieć conajmniej 3 znaki, maksymalnie 10")
+    @Length(min = 3, max = 20, message = "Nazwa użytkownika musi mieć conajmniej 3 znaki, maksymalnie 20")
     @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Podaj poprawną nazwę użytkownika (tylko liczby i/lub litery)")
     public String getUsername() {
         return username;

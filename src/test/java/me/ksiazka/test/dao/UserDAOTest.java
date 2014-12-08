@@ -89,7 +89,7 @@ public class UserDAOTest {
         user.setName("Wojtek");
         user.setSurname("Nowak");
         user.setUsername("wojtekN");
-        user.setEmail("Wojtek@py.py lolada heldan");
+        user.setEmail("wojtek@py.py");
         user.setPassword("wojtek.py"); //cannot be null
         user.getRoles().add(userRole);
 
@@ -99,7 +99,7 @@ public class UserDAOTest {
         Assert.assertEquals("Wojtek", retrivedUser.getName());
         Assert.assertEquals("Nowak", retrivedUser.getSurname());
         Assert.assertEquals("wojtekN", retrivedUser.getUsername());
-        Assert.assertEquals("Wojtek@py.py lolada heldan", retrivedUser.getEmail());
+        Assert.assertEquals("wojtek@py.py", retrivedUser.getEmail());
         Assert.assertEquals("wojtek.py", retrivedUser.getPassword());
         Assert.assertEquals("ROLE_USER", retrivedUser.getRoles().get(0).getRole());
     }
@@ -142,12 +142,12 @@ public class UserDAOTest {
     public void updateUserTest() {
 
        User user = userDAO.get(3);
-       Assert.assertFalse(user.getEmail().equals("wojtek.py"));
-       user.setEmail("wojtek.py");
+       Assert.assertFalse(user.getEmail().equals("wojtek@py.py"));
+       user.setEmail("wojtek@py.py");
        userDAO.update(user);
 
         Assert.assertEquals((int) usersInDatabse, userDAO.getAll().size());
-        Assert.assertEquals("wojtek.py", userDAO.get(3).getEmail());
+        Assert.assertEquals("wojtek@py.py", userDAO.get(3).getEmail());
     }
 
     @Test
