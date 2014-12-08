@@ -6,6 +6,7 @@ import org.hibernate.search.annotations.Index;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,6 +69,7 @@ public class User {
     }
 
     @JsonIgnore
+    @Valid
     public List<Address> getAddressList() {
         return addressList;
     }
@@ -77,7 +79,7 @@ public class User {
     }
 
     @Length(min = 3, max = 15, message = "Imię musi mieć conajmniej 3 znaki, maksymalnie 15")
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "Podaj poprawne imię")
+    @Pattern(regexp = "^[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$", message = "Podaj poprawne imię")
     public String getName() {
         return name;
     }
