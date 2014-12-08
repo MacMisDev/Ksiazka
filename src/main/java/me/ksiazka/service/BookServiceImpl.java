@@ -76,7 +76,10 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public void delete(Book toDelete) {
+
+        bookDAO.updateUserBookBeforeDelete(toDelete);
         bookDAO.delete(toDelete);
+
     }
 
 /*    @Override

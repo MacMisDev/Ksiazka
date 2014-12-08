@@ -60,13 +60,15 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void delete(User toDelete) {
 
+        this.sessionFactory.getCurrentSession().delete(toDelete);
+
     }
 
     @Override
     public void delete(long id) {
 
         User u = (User) this.sessionFactory.getCurrentSession().get(User.class, id);
-        sessionFactory.getCurrentSession().delete(u);
+        this.sessionFactory.getCurrentSession().delete(u);
 
     }
 
@@ -132,6 +134,15 @@ public class UserDAOImpl implements UserDAO {
             Long id = user.getId();
             String query = "UPDATE OfferRelation set userId=1 where userId=:id";
             this.sessionFactory.getCurrentSession().createQuery(query).setParameter("id", id).executeUpdate();
+
+    }
+
+    @Override
+    public void updateUserBookBeforeDelete(User user) {
+
+        Long id = user.getId();
+        String query = "UPDATE UserBook set userId=1 where userId=:id";
+        this.sessionFactory.getCurrentSession().createQuery(query).setParameter("id", id).executeUpdate();
 
     }
 

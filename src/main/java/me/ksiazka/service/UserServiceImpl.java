@@ -45,10 +45,11 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void delete(User toDelete) {
-        /*
-        @ToDo: Podmienienie referencji do uzytkownika w UserBook przed usunięciem - Krzysiu musi zrobic query czy co
-         */
+
+        userDAO.updateUserBookBeforeDelete(toDelete);
+        userDAO.updateOfferRelationBeforeDelete(toDelete);
         userDAO.delete(toDelete);
+
     }
 
     @Override

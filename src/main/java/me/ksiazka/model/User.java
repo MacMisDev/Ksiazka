@@ -34,7 +34,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "bookId")
     )
     private List<Book> booksWant = new ArrayList<Book>(0);
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user")
     private List<UserBook> booksHave = new ArrayList<UserBook>(0);
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Address> addressList = new ArrayList<Address>(0);
