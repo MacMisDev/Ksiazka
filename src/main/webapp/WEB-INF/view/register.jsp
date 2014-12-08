@@ -65,15 +65,18 @@
                                     <div class="form-group">
                                         <p>Adres email</p>
                                         <sf:input path="email" type="text" name="email" id="email"/>
+                                        <sf:errors path="email" cssClass="error" />
                                     </div>
                                     <div class="form-group">
                                         <p>Imię</p>
                                         <sf:input path="name" type="text" name="name" id="name"/>
+                                        <sf:errors path="name" cssClass="error" />
                                     </div>
                                     <div class="form-group">
                                         <p>Nazwa użytkownika</p>
                                         <sf:input path="username" type="text" name="username" id="username"/>
-                                    </div>
+                                        <sf:errors path="username" cssClass="error" />
+                                      </div>
                                     <div class="form-group">
                                         <p>Hasło</p>
                                         <sf:input path="password" type="password" name="password" id="password"/>

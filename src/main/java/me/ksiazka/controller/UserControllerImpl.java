@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -35,8 +36,14 @@ public class UserControllerImpl implements UserController {
 
     @Override
     @RequestMapping(value = {"/", "home"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody User showUserPage() {
+    public @ResponseBody User showLoggedUserPage() {
         return userService.findUserByEmailWithLists(SecurityContextHolder.getContext().getAuthentication().getName());
+    }
+
+    @Override
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody User showUser(@PathVariable long id) {
+        return userService.getUserWithLists(id);
     }
 
     @Override

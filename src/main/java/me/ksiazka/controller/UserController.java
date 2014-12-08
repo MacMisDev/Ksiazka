@@ -7,7 +7,8 @@ import org.springframework.ui.Model;
 
 public interface UserController {
     public BookWantHave userHaveWant();
-    public User showUserPage();
+    public User showLoggedUserPage();
+    public User showUser(long id);
     public String editUserData(Long id, Model model);
     public String updateEditedUser(User user);
     /* -- Prawdopodobnie zrobimy to w przeływach (Web Flow)

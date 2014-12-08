@@ -3,8 +3,11 @@ package me.ksiazka.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.search.annotations.*;
 import org.hibernate.search.annotations.Index;
-
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +17,6 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "userId")
-    @JsonIgnore
     private Long id;
     @Column(nullable = false)
     private String name;
@@ -23,7 +25,6 @@ public class User {
     @Field(index = Index.YES, analyze=Analyze.YES, store=Store.NO)
     private String email;
     @Column(nullable = false)
-    @JsonIgnore
     private String password;
     @Column(nullable = false, unique = true)
     @Field(index = Index.YES, analyze=Analyze.YES, store=Store.NO)
@@ -44,7 +45,6 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Message> messages = new ArrayList<Message>(0);
     @OneToMany(mappedBy = "user")
-
     private List<OfferRelation> offerList = new ArrayList<OfferRelation>(0);
 
     public  User() {
@@ -59,6 +59,7 @@ public class User {
         this.surname = surname;
     }
 
+    @JsonIgnore
     public Long getId() {
         return id;
     }
@@ -68,6 +69,7 @@ public class User {
     }
 
     @JsonIgnore
+    @Valid
     public List<Address> getAddressList() {
         return addressList;
     }
@@ -76,6 +78,8 @@ public class User {
         this.addressList = addressList;
     }
 
+    @Length(min = 3, max = 15, message = "Imię musi mieć conajmniej 3 znaki, maksymalnie 15")
+    @Pattern(regexp = "^[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$", message = "Podaj poprawne imię")
     public String getName() {
         return name;
     }
@@ -92,6 +96,7 @@ public class User {
         this.surname = surname;
     }
 
+    @Email(regexp = "^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$", message = "Podaj poprawny email")
     public String getEmail() {
         return email;
     }
@@ -125,6 +130,7 @@ public class User {
         this.roles = roles;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
@@ -133,6 +139,8 @@ public class User {
         this.password = password;
     }
 
+    @Length(min = 3, max = 10, message = "Nazwa użytkownika musi mieć conajmniej 3 znaki, maksymalnie 10")
+    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Podaj poprawną nazwę użytkownika (tylko liczby i/lub litery)")
     public String getUsername() {
         return username;
     }
@@ -230,8 +238,8 @@ public class User {
         return true;
     }
 
-    @Override
+/*    @Override
     public int hashCode() {
         return id.hashCode();
-    }
+    }*/
 }
