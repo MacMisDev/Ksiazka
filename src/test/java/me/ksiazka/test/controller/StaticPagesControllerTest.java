@@ -31,6 +31,9 @@ public class StaticPagesControllerTest {
                 .build();
     }
 
+    /**
+    @author Konio
+     */
     @Test
     public void showAboutTest() throws Exception {
 
@@ -40,6 +43,9 @@ public class StaticPagesControllerTest {
                 .andExpect(forwardedUrl("/WEB-INF/view/about.jsp"));
     }
 
+    /**
+     @author Konio
+     */
     @Test
     public void showContactTest() throws Exception {
 
@@ -49,6 +55,9 @@ public class StaticPagesControllerTest {
                 .andExpect(forwardedUrl("/WEB-INF/view/contact.jsp"));
     }
 
+    /**
+     @author Konio
+     */
     @Test
     public void accessDeniedTest() throws Exception {
 

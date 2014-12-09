@@ -155,7 +155,8 @@ public class BookDAOTest {
                 userDAO.get(2).getBookFromBooksHave(0).getBook().getTitle());
 
         /*
-        @ToDo: Sprawdzenie czy usunieta ksiazka zostala odpowiednio podmieniona na zaleznych Offer
+        @ToDo: Sprawdzenie czy usunieta ksiazka zostala odpowiednio podmieniona na zaleznych Offer - bedzie zrobione w deletingScenarios
+
          */
     }
 
