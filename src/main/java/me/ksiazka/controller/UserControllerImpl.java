@@ -24,7 +24,7 @@ public class UserControllerImpl implements UserController {
     private UserBookService userBookService;
 
     @Override
-    @RequestMapping(value = "/user/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/user/list", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public @ResponseBody BookWantHave userHaveWant() {
         BookWantHave bookWantHave = new BookWantHave();
         bookWantHave.setUserHave(userBookService.getAllUserHaveBooks(userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName()).getId()));
@@ -35,25 +35,25 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    @RequestMapping(value = {"/", "home"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = {"/", "home"}, method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public @ResponseBody User showLoggedUserPage() {
         return userService.findUserByEmailWithLists(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 
     @Override
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public @ResponseBody User showUser(@PathVariable long id) {
         return userService.getUserWithLists(id);
     }
 
     @Override
-    @RequestMapping(value = "/user/settings/edit", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/user/settings/edit", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public @ResponseBody User editUserData() {
         return userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 
     @Override
-    @RequestMapping(value = "/user/settings/edit", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/user/settings/edit", method = RequestMethod.POST, consumes = "application/json;charset=UTF-8", produces = "application/json;charset=UTF-8")
     public @ResponseBody User updateEditedUser(@RequestBody @Valid User user) {
         //todo rest validation
         try{
