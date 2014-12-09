@@ -9,8 +9,8 @@ public interface UserController {
     public BookWantHave userHaveWant();
     public User showLoggedUserPage();
     public User showUser(long id);
-    public String editUserData(Long id, Model model);
-    public String updateEditedUser(User user);
+    public User editUserData();
+    public User updateEditedUser(User user);
     /* -- Prawdopodobnie zrobimy to w przeływach (Web Flow)
     public String addBookToWantList(Model model);
     public String delBookFromWantList(Model model);
