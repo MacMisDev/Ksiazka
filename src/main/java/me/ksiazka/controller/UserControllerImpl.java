@@ -10,10 +10,9 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller("userController")
 public class UserControllerImpl implements UserController {
@@ -47,13 +46,22 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    public String editUserData(Long id, Model model) {
-        return null;
+    @RequestMapping(value = "/user/settings/edit", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody User editUserData() {
+        return userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 
     @Override
-    public String updateEditedUser(User user) {
-        return null;
+    @RequestMapping(value = "/user/settings/edit", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody User updateEditedUser(@RequestBody @Valid User user) {
+        //todo rest validation
+        try{
+            userService.update(user);
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+
+        return userService.findUserByEmail(user.getEmail());
     }
 
     @Override
