@@ -95,6 +95,7 @@ public class UserControllerTest {
      * @author Konio
      */
     @Test
+    @Ignore
     public void sHomeTest() throws Exception {
 
         //ToDo - rozbudowac test o usera z lista ksiazek

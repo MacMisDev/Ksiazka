@@ -8,7 +8,7 @@
     <tiles:putAttribute name="content">
         <h2>home.jsp</h2>
 
-        Hello!
+        Hello <c:out value="${user.name}" />!
         <a href="${pageContext.request.contextPath}/static/j_spring_security_logout"> <input type="submit" name="logout" value="logout" class="btn btn-primary" /></a>
       
     </tiles:putAttribute>

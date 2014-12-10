@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 
 public interface UserController {
     public BookWantHave userHaveWant();
-    public User showLoggedUserPage();
+    public String showLoggedUserPage(Model model);
     public User showUser(long id);
     public User editUserData();
     public User updateEditedUser(User user);

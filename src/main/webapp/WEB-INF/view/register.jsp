@@ -46,7 +46,7 @@
                         <button id='hideShowButton' class="menuButtonShowHide">Hide</button>
                     </li>
                     <li>
-                        <a href="" class="menuButtonHome">Home</a>
+                        <a href="<s:url value="/" />" class="menuButtonHome">Home</a>
                     </li>
 
                 </ul>
