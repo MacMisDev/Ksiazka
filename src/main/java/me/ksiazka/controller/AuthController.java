@@ -4,6 +4,7 @@ import me.ksiazka.model.User;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
+import javax.servlet.ServletRequest;
 import java.security.Principal;
 
 public interface AuthController {

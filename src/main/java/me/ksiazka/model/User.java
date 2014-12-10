@@ -140,7 +140,7 @@ public class User {
     }
 
     @Length(min = 3, max = 20, message = "Nazwa użytkownika musi mieć conajmniej 3 znaki, maksymalnie 20")
-    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Podaj poprawną nazwę użytkownika (tylko liczby i/lub litery)")
+    @Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Podaj poprawną nazwę użytkownika (tylko liczby i/lub litery, bez polskich znaków)")
     public String getUsername() {
         return username;
     }

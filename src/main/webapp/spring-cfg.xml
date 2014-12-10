@@ -39,6 +39,11 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
+    <!--reCAPTCHA-->
+    <bean id="reCaptcha" class="net.tanesha.recaptcha.ReCaptchaImpl">
+        <property name="privateKey" value="6LfLHP8SAAAAADkN7VHwFG8oR1AUmXVn8CKrY6Bh"/>
+    </bean>
+
     <!-- DataSource -->
     <context:property-placeholder location="db.properties" />
 <!--    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
