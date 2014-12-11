@@ -78,18 +78,21 @@ public class OfferServiceImpl implements OfferService {
         offerDAO.offerRelationSave(offerRelationOffered);
 
         return offer;
+
     }
 
     @Override
     public User getOfferingUser(Offer offer) {
-        //Ma zwrocic uzytkownika, ktory w danej ofercie jest 'offering' - patrz opis
-        //metody prepareNewOffer w interfejsie
-        return null;
+
+        User offeringUser = offerDAO.getOfferingUser(offer.getId());
+        return offeringUser;
     }
 
     @Override
     public User getOfferedUser(Offer offer) {
-        //Analogicznie j.w. tylko ze zwraca 'offered'
-        return null;
+
+        User offeredUser = offerDAO.getOfferedUser(offer.getId());
+        return offeredUser;
+
     }
 }

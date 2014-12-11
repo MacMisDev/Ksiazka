@@ -106,8 +106,8 @@ public class DeletingScenariosTest {
         //Sprawdzamy, czy oferta w czasie tworzenia otrzymala odpowiedni status
         Assert.assertEquals(OfferStatus.PENDING, gettedOffer.getOfferStatus());
         //Sprawdzamy, czy uzytkownicy zostali odpowiednio przypisani
-        Assert.assertEquals("A", offerService.getOfferedUser(gettedOffer).getUsername());
         Assert.assertEquals("C", offerService.getOfferingUser(gettedOffer).getUsername());
+        Assert.assertEquals("A", offerService.getOfferedUser(gettedOffer).getUsername());
         //Sprawdzamy, czy ksiazki znalazly sie na odpowiednich listach
         Assert.assertEquals("c1", offer.getOfferedBooks().get(0).getBook().getTitle());
         Assert.assertEquals("a2", offer.getWantedBooks().get(0).getBook().getTitle());

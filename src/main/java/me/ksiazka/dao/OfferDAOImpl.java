@@ -74,7 +74,14 @@ public class OfferDAOImpl implements OfferDAO {
 
     @Override
     public User getOfferingUser(Long offerId){
-        return null;
+
+        String query = "Select u from User u LEFT JOIN u.offerList o where o.offer.id = :id and offerRelationStatus='Offering'";
+        Query q = this.sessionFactory.getCurrentSession().createQuery(query).setParameter("id", offerId);
+        if(q.list().isEmpty())
+            return null;
+        else
+            return (User) q.list().get(0);
+
     }
 
     @Override
