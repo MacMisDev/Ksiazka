@@ -29,6 +29,8 @@
                             <div id="HomeUserAvatar"></div>
                             <div id="hello"><h2>Cześć <c:out value="${user.name}" />!</h2></div>
 
+                            <a href="${pageContext.request.contextPath}/static/j_spring_security_logout"> <input type="submit" name="logout" value="logout" class="btn btn-primary" /></a>
+
                             <form method="post" name="home">
                                 <fieldset>
 
@@ -48,7 +50,6 @@
                                 </fieldset>
                             </form>
 
-                            <a href="${pageContext.request.contextPath}/static/j_spring_security_logout"> <input type="submit" name="logout" value="logout" class="btn btn-primary" /></a>
                         </div>
 
                     </div>
