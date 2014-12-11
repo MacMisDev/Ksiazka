@@ -4,6 +4,8 @@ import me.ksiazka.model.Offer;
 import me.ksiazka.model.OfferRelation;
 import me.ksiazka.model.User;
 
+import java.util.List;
+
 public interface OfferDAO extends BasicDAOInterface<Offer> {
 
     /*

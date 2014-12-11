@@ -82,4 +82,16 @@ public class Offer {
         this.wantedBooks = wantedBooks;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Offer)) return false;
+
+        Offer offer = (Offer) o;
+
+        if (!id.equals(offer.id)) return false;
+
+        return true;
+    }
 }

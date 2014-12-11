@@ -65,8 +65,9 @@ public class BookServiceImpl implements BookService {
             while(uit.hasNext()){
                 UserBook ub = (UserBook) uit.next();
                 if(ub.getBook().equals(toDelete)) {
-                    u.getBooksHave().remove(ub);
-                    break;
+//                    u.getBooksHave().remove(ub);
+//                    break;
+                    uit.remove();
                 }
             }
         }

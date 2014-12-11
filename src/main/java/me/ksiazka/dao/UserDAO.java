@@ -25,4 +25,6 @@ public interface UserDAO extends BasicDAOInterface<User> {
     public User findUserByEmailWithLists(String email);
 
     public User getUserWithLists(long id);
+
+    public List<User> getUsersForOfferDelete(Long offerId);
 }

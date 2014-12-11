@@ -158,4 +158,14 @@ public class UserDAOImpl implements UserDAO {
 
     }
 
+    @Override
+    public List<User> getUsersForOfferDelete(Long offerId){
+        List<User> list;
+        String query = "FROM User WHERE id in (select user FROM OfferRelation WHERE offerId=:id)";
+        Query listQuery = this.sessionFactory.getCurrentSession().createQuery(query);
+        list = listQuery.setParameter("id", offerId).list();
+
+        return list;
+    }
+
 }

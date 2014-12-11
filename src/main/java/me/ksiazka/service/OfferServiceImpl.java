@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -42,7 +43,21 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     @Transactional
-    public void delete(Offer toDelete) { offerDAO.delete(toDelete); }
+    public void delete(Offer toDelete) {
+        List<User> offers = userDAO.getUsersForOfferDelete(toDelete.getId());
+        Iterator it = offers.iterator();
+        while(it.hasNext()){
+            User u = (User) it.next();
+            Iterator oit = u.getOfferList().iterator();
+            while(oit.hasNext()){
+                OfferRelation or = (OfferRelation) oit.next();
+                if(or.getOffer().equals(toDelete)){
+                    oit.remove();
+                }
+            }
+        }
+        offerDAO.delete(toDelete);
+    }
 
     @Override
     public Offer prepareNewOffer(User offering, User offered,
