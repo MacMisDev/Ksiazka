@@ -26,10 +26,30 @@
                     <div id="formWrapper">
 
                         <div class="formTemplate">
-                            <h2>Cześć <c:out value="${user.name}" />!</h2>
-                        </div>
+                            <div id="HomeUserAvatar"></div>
+                            <div id="hello"><h2>Cześć <c:out value="${user.name}" />!</h2></div>
 
-                        <a href="${pageContext.request.contextPath}/static/j_spring_security_logout"> <input type="submit" name="logout" value="logout" class="btn btn-primary" /></a>
+                            <form method="post" name="home">
+                                <fieldset>
+
+                                    <div class="form-group">
+                                        <p>Imię i nazwisko</p>
+                                        <input type="text" name="name" id="name" value='<c:out value="${user.name}" />'/>
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Nick</p>
+                                        <input type="text" name="username" id="username" value='<c:out value="${user.username}" />'/>
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Adres email</p>
+                                        <input type="text" name="email" id="email" value='<c:out value="${user.email}" />'/>
+                                    </div>
+
+                                </fieldset>
+                            </form>
+
+                            <a href="${pageContext.request.contextPath}/static/j_spring_security_logout"> <input type="submit" name="logout" value="logout" class="btn btn-primary" /></a>
+                        </div>
 
                     </div>
                 </main>

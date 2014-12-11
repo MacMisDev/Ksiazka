@@ -548,6 +548,55 @@ label.css-label {
 .registerGroup .form-group:nth-child(4) {
   margin-bottom: 30px;
 }
+#hello {
+  text-align: center;
+  position: relative;
+  top: 100px;
+}
+#HomeUserAvatar {
+  margin-left: 174px;
+  top: -25px;
+  height: 145px;
+  width: 122px;
+  background: url("../images/loginBookLocked.png") no-repeat;
+  background-position: center;
+  position: absolute;
+  z-index: 9999;
+  -moz-transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+@media all and (max-width: 599px) {
+  #HomeUserAvatar {
+    margin-left: 147.9px;
+    top: -21.25px;
+    height: 123.25px;
+    width: 103.7px;
+    -moz-background-size: cover;
+    background-size: cover;
+  }
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  #HomeUserAvatar {
+    margin-left: 71.75px;
+    top: -16.25px;
+    height: 108.75px;
+    width: 91.5px;
+    -moz-background-size: cover;
+    background-size: cover;
+  }
+}
+@media all and (max-width: 359px) {
+  #HomeUserAvatar {
+    margin-left: 71.75px;
+    top: -16.25px;
+    height: 108.75px;
+    width: 91.5px;
+    -moz-background-size: cover;
+    background-size: cover;
+  }
+}
 /* Webfont: Lato-Light */
 @font-face {
   font-family: 'LatoLight';
