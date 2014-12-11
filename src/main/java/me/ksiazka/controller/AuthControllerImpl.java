@@ -4,19 +4,15 @@ package me.ksiazka.controller;
 import me.ksiazka.model.User;
 import me.ksiazka.service.AuthService;
 import me.ksiazka.service.UserService;
-import net.tanesha.recaptcha.ReCaptchaImpl;
-import net.tanesha.recaptcha.ReCaptchaResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.ServletRequest;
 import javax.validation.Valid;
 import java.security.Principal;
 
@@ -27,8 +23,6 @@ public class AuthControllerImpl implements AuthController{
     private AuthService authService;
     @Autowired
     private UserService userService;
-    @Autowired
-    private ReCaptchaImpl reCaptcha;
 
     @Override
     @RequestMapping(value = "/login", method = RequestMethod.GET)

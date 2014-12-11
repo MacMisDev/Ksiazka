@@ -1,13 +1,11 @@
 package me.ksiazka.controller;
 
 
-import me.ksiazka.misc.BookWantHave;
+import me.ksiazka.Wrapper.BookWantHave;
 import me.ksiazka.model.User;
 import me.ksiazka.service.UserBookService;
 import me.ksiazka.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

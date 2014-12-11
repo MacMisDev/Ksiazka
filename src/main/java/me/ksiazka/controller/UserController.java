@@ -1,6 +1,6 @@
 package me.ksiazka.controller;
 
-import me.ksiazka.misc.BookWantHave;
+import me.ksiazka.Wrapper.BookWantHave;
 import me.ksiazka.model.User;
 import org.springframework.ui.Model;
 

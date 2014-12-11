@@ -1,8 +1,8 @@
 package me.ksiazka.controller;
 
 
-import me.ksiazka.misc.BookLists;
-import me.ksiazka.misc.PageNumbers;
+import me.ksiazka.Wrapper.BookLists;
+import me.ksiazka.Wrapper.PageNumbers;
 import me.ksiazka.model.Book;
 import org.springframework.ui.Model;
 

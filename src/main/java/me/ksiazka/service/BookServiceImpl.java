@@ -2,7 +2,7 @@ package me.ksiazka.service;
 
 import me.ksiazka.dao.BookDAO;
 import me.ksiazka.dao.UserDAO;
-import me.ksiazka.misc.BookLists;
+import me.ksiazka.Wrapper.BookLists;
 import me.ksiazka.model.Book;
 import me.ksiazka.model.BookStatus;
 import me.ksiazka.model.User;
