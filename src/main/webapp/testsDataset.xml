@@ -62,7 +62,7 @@
     <UserRole id="11" role="ROLE_USER" userId="8"/>
 
     <Offer offerId="1" date="2014-01-01" offerStatus="PENDING"/>
-    <Offer offerId="2" offerStatus="PENDING"/>
+    <Offer offerId="2" date="2014-01-01" offerStatus="PENDING"/>
     <Offer offerId="3" offerStatus="PENDING"/>
     <Offer offerId="4" offerStatus="ACCEPTED"/>
     <Offer offerId="5" offerStatus="PENDING"/>

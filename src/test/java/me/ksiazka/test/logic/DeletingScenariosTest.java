@@ -68,7 +68,6 @@ public class DeletingScenariosTest {
      * @author Konio
      */
     @Test
-    @Ignore
     public void newOfferTest() {
 
         //Test symulujacy skladanie nowej oferty
@@ -86,6 +85,7 @@ public class DeletingScenariosTest {
         Assert.assertEquals("c1", C.getBookFromBooksHave(0).getBook().getTitle());
         List<UserBook> wantedBooks = new ArrayList<UserBook>();
         wantedBooks.add(A.getBookFromBooksHave(1));
+
         //Asercja dla pewnosci
         Assert.assertEquals("a2", A.getBookFromBooksHave(1).getBook().getTitle());
         //(3) Przygotowujemy i wysylamy do bazy oferte
