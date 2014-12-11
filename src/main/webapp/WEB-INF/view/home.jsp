@@ -6,11 +6,36 @@
 
 <tiles:insertDefinition name="template">
     <tiles:putAttribute name="content">
-        <h2>home.jsp</h2>
+        <div id="wrapper">
 
-        Hello <c:out value="${user.name}" />!
-        <a href="${pageContext.request.contextPath}/static/j_spring_security_logout"> <input type="submit" name="logout" value="logout" class="btn btn-primary" /></a>
-      
+            <nav>
+                <ul>
+                    <li>
+                        <button id='hideShowButton' class="menuButtonShowHide">Hide</button>
+                    </li>
+                    <li>
+                        <a href="" class="menuButtonHome">Home</a>
+                    </li>
+
+                </ul>
+            </nav>
+
+
+            <div id="pageContentWrapper">
+                <main class="contentManager">
+                    <div id="formWrapper">
+
+                        <div class="formTemplate">
+                            <h2>Cześć <c:out value="${user.name}" />!</h2>
+                        </div>
+
+                        <a href="${pageContext.request.contextPath}/static/j_spring_security_logout"> <input type="submit" name="logout" value="logout" class="btn btn-primary" /></a>
+
+                    </div>
+                </main>
+            </div>
+        </div>
+
     </tiles:putAttribute>
 </tiles:insertDefinition>
 
