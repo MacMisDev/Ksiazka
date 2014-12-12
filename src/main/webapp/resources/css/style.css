@@ -45,7 +45,8 @@ Date of last update: 2014-10-30
 }
 .formTemplate,
 .loginGroup,
-.registerGroup {
+.registerGroup,
+.homeGroup {
   height: 550px;
   width: 470px;
   margin: 0 auto;
@@ -261,7 +262,8 @@ Date of last update: 2014-10-30
 @media all and (max-width: 599px) {
   .formTemplate,
   .loginGroup,
-  .registerGroup {
+  .registerGroup,
+  .homeGroup {
     height: 510px;
     width: 399.5px;
   }
@@ -269,7 +271,8 @@ Date of last update: 2014-10-30
 @media all and (max-width: 479px) and (min-width:360px) {
   .formTemplate,
   .loginGroup,
-  .registerGroup {
+  .registerGroup,
+  .homeGroup {
     height: 480px;
     width: 235px;
   }
@@ -277,7 +280,8 @@ Date of last update: 2014-10-30
 @media all and (max-width: 359px) {
   .formTemplate,
   .loginGroup,
-  .registerGroup {
+  .registerGroup,
+  .homeGroup {
     height: 480px;
     width: 235px;
   }
@@ -551,10 +555,57 @@ label.css-label {
 #hello {
   text-align: center;
   position: relative;
-  top: 100px;
+  top: 120px;
+}
+.homeGroup {
+  width: 420px;
+  height: 450px;
+}
+.homeGroup .form-group:nth-child(3) {
+  margin-top: 10px;
+}
+.homeGroup .form-group:nth-child(4) {
+  margin-bottom: 30px;
+}
+.homeGroup form {
+  top: 120px;
+  width: 390px;
+  left: 10px;
+}
+.formExtension {
+  height: 60px;
+  width: 420px;
+  margin: 0 auto;
+  background-color: #545a4f;
+  background-color: rgba(84, 90, 79, 0.85);
+  -moz-transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+.formExtension *:focus {
+  outline: 0;
+}
+@media all and (max-width: 599px) {
+  .formExtension {
+    height: 510px;
+    width: 399.5px;
+  }
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  .formExtension {
+    height: 480px;
+    width: 235px;
+  }
+}
+@media all and (max-width: 359px) {
+  .formExtension {
+    height: 480px;
+    width: 235px;
+  }
 }
 #HomeUserAvatar {
-  margin-left: 174px;
+  margin-left: 149px;
   top: -25px;
   height: 145px;
   width: 122px;

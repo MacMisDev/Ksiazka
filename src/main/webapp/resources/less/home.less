@@ -1,14 +1,57 @@
+@width: 420px;
+
 #hello {
   text-align: center;
   position: relative;
-  top: 100px;
+  top: 120px;
+}
+
+.homeGroup {
+  &:extend(.formTemplate);
+  width: @width;
+  height: 450px;
+  .form-group:nth-child(3) {
+    margin-top: 10px;
+  }
+  .form-group:nth-child(4) {
+    margin-bottom: 30px;
+  }
+  form{
+    top: 120px;
+    width: @width - 30px;
+    left: 10px;
+  }
+}
+
+.formExtension {
+  height: 60px;
+  width: @width;
+  margin: 0 auto;
+  *:focus {
+    outline: 0;
+  }
+
+  .alphaColorBackground(@darkGreyGreen, 0.85);
+  .transition-duration(0.4s);
+  @media @tablet {
+    height: 85/100*600px;
+    width: 85/100*470px;
+  }
+  @media @phone {
+    height: 80/100*600px;
+    width: 50/100*470px;
+  }
+  @media @phoneSmall {
+    height: 80/100*600px;
+    width: 50/100*470px;
+  }
 }
 
 #HomeUserAvatar {
   @top: -25px;
   @height: 145px;
   @width: 122px;
-  margin-left: 470/2-122/2px;
+  margin-left: 420/2-122/2px;
   top: @top;
   height: @height;
   width: @width;

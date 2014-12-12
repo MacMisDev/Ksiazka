@@ -25,7 +25,7 @@
                 <main class="contentManager">
                     <div id="formWrapper">
 
-                        <div class="formTemplate">
+                        <div class="formTemplate homeGroup">
                             <div id="HomeUserAvatar"></div>
                             <div id="hello"><h2>Cześć <c:out value="${user.name}" />!</h2></div>
 
@@ -36,19 +36,23 @@
 
                                     <div class="form-group">
                                         <p>Imię i nazwisko</p>
-                                        <input type="text" name="name" id="name" value='<c:out value="${user.name}" />'/>
+                                        <input type="text" name="name" id="name" value='<c:out value="${user.name}" />' disabled="true" />
                                     </div>
                                     <div class="form-group">
-                                        <p>Nick</p>
-                                        <input type="text" name="username" id="username" value='<c:out value="${user.username}" />'/>
+                                        <p>Nazwa użytkownika</p>
+                                        <input type="text" name="username" id="username" value='<c:out value="${user.username}" />' disabled="true" />
                                     </div>
                                     <div class="form-group">
                                         <p>Adres email</p>
-                                        <input type="text" name="email" id="email" value='<c:out value="${user.email}" />'/>
+                                        <input type="text" name="email" id="email" value='<c:out value="${user.email}" />' disabled="true" />
                                     </div>
 
                                 </fieldset>
                             </form>
+
+                        </div>
+
+                        <div class="formExtension">
 
                         </div>
 
