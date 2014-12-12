@@ -52,7 +52,20 @@
                         </div>
 
                         <div class="formExtension">
-                            <a href="${pageContext.request.contextPath}/static/j_spring_security_logout"> <input type="submit" name="logout" value="logout" class="btn btn-primary" /></a>
+                            <ul class="extensionBtns">
+                                <li>
+                                    <a href=#> <input type="image" src="resources/images/icon-location.png"class="extBtn" /></a>
+                                </li>
+                                <li>
+                                    <a href=#> <input type="image" src="resources/images/icon-collection.png"class="extBtn" /></a>
+                                </li>
+                                <li>
+                                    <a href=#> <input type="image" src="resources/images/icon-reputation.png"class="extBtn" /></a>
+                                </li>
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/static/j_spring_security_logout"> <input type="image" src="resources/images/icon-logout.png" name="logout" value="logout" class="extBtn" /></a>
+                                </li>
+                            </ul>
                         </div>
 
                     </div>

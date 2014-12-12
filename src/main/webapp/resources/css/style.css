@@ -644,6 +644,53 @@ label.css-label {
     width: 210px;
   }
 }
+.extensionBtns {
+  display: inline-block;
+  display: -moz-inline-box;
+  width: 100%;
+  margin-left: -30px;
+  list-style-type: none;
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  .extensionBtns {
+    margin-left: -35px;
+  }
+}
+.extBtn {
+  margin-top: 5px;
+  margin-left: 25px;
+  margin-right: 25px;
+  height: 50px;
+  width: 50px;
+  -moz-transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+@media all and (max-width: 599px) {
+  .extBtn {
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 42.5px;
+    width: 42.5px;
+  }
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  .extBtn {
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 30px;
+    width: 30px;
+  }
+}
+@media all and (max-width: 359px) {
+  .extBtn {
+    margin-left: 0px;
+    margin-right: 5px;
+    height: 30px;
+    width: 30px;
+  }
+}
 .HomeUserAvatar,
 .avatarBorder {
   margin-left: 137.5px;
