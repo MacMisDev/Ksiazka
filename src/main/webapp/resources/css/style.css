@@ -572,6 +572,9 @@ label.css-label {
   width: 390px;
   left: 10px;
 }
+.homeGroup input:disabled {
+  opacity: 0.75;
+}
 .formExtension {
   height: 60px;
   width: 420px;
@@ -605,12 +608,14 @@ label.css-label {
   }
 }
 #HomeUserAvatar {
-  margin-left: 149px;
+  border-radius: 50%;
+  margin-left: 137.5px;
   top: -25px;
   height: 145px;
-  width: 122px;
-  background: url("../images/loginBookLocked.png") no-repeat;
+  width: 145px;
+  background: url("../images/avatarPlaceholder.jpg") no-repeat;
   background-position: center;
+  background-size: contain;
   position: absolute;
   z-index: 9999;
   -moz-transition-duration: 0.4s;
@@ -623,7 +628,7 @@ label.css-label {
     margin-left: 147.9px;
     top: -21.25px;
     height: 123.25px;
-    width: 103.7px;
+    width: 123.25px;
     -moz-background-size: cover;
     background-size: cover;
   }
@@ -633,7 +638,7 @@ label.css-label {
     margin-left: 71.75px;
     top: -16.25px;
     height: 108.75px;
-    width: 91.5px;
+    width: 108.75px;
     -moz-background-size: cover;
     background-size: cover;
   }
@@ -643,7 +648,7 @@ label.css-label {
     margin-left: 71.75px;
     top: -16.25px;
     height: 108.75px;
-    width: 91.5px;
+    width: 108.75px;
     -moz-background-size: cover;
     background-size: cover;
   }

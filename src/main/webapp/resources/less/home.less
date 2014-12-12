@@ -21,6 +21,9 @@
     width: @width - 30px;
     left: 10px;
   }
+  input:disabled{
+    opacity: 0.75;
+  }
 }
 
 .formExtension {
@@ -50,13 +53,15 @@
 #HomeUserAvatar {
   @top: -25px;
   @height: 145px;
-  @width: 122px;
-  margin-left: 420/2-122/2px;
+  @width: 145px;
+  border-radius: 50%;
+  margin-left: 420/2-145/2px;
   top: @top;
   height: @height;
   width: @width;
-  background: url("../images/loginBookLocked.png") no-repeat;
+  background: url("../images/avatarPlaceholder.jpg") no-repeat;
   background-position: center;
+  background-size: contain;
   position: absolute;
   z-index: 9999;
 
