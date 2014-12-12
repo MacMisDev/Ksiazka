@@ -607,15 +607,13 @@ label.css-label {
     width: 235px;
   }
 }
-#HomeUserAvatar {
-  border-radius: 50%;
+.HomeUserAvatar,
+.avatarBorder {
   margin-left: 137.5px;
   top: -25px;
   height: 145px;
   width: 145px;
-  background: url("../images/avatarPlaceholder.jpg") no-repeat;
-  background-position: center;
-  background-size: contain;
+  border-radius: 50%;
   position: absolute;
   z-index: 9999;
   -moz-transition-duration: 0.4s;
@@ -624,7 +622,8 @@ label.css-label {
   transition-duration: 0.4s;
 }
 @media all and (max-width: 599px) {
-  #HomeUserAvatar {
+  .HomeUserAvatar,
+  .avatarBorder {
     margin-left: 147.9px;
     top: -21.25px;
     height: 123.25px;
@@ -634,7 +633,8 @@ label.css-label {
   }
 }
 @media all and (max-width: 479px) and (min-width:360px) {
-  #HomeUserAvatar {
+  .HomeUserAvatar,
+  .avatarBorder {
     margin-left: 71.75px;
     top: -16.25px;
     height: 108.75px;
@@ -644,7 +644,8 @@ label.css-label {
   }
 }
 @media all and (max-width: 359px) {
-  #HomeUserAvatar {
+  .HomeUserAvatar,
+  .avatarBorder {
     margin-left: 71.75px;
     top: -16.25px;
     height: 108.75px;
@@ -652,6 +653,13 @@ label.css-label {
     -moz-background-size: cover;
     background-size: cover;
   }
+}
+.avatarBorder {
+  margin-left: 130px;
+  top: -32.5px;
+  height: 160px;
+  width: 160px;
+  background-image: linear-gradient(#78b518 60%, transparent 75%);
 }
 /* Webfont: Lato-Light */
 @font-face {

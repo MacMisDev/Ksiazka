@@ -26,7 +26,8 @@
                     <div id="formWrapper">
 
                         <div class="formTemplate homeGroup">
-                            <div id="HomeUserAvatar"></div>
+                            <div class="avatarBorder"></div>
+                            <img class="HomeUserAvatar" src="resources/images/avatarPlaceholder.jpg">
                             <div id="hello"><h2>Cześć <c:out value="${user.name}" />!</h2></div>
 
                             <form method="post" name="home">

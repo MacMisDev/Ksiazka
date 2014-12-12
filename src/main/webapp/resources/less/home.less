@@ -1,4 +1,5 @@
 @width: 420px;
+@avatarSize: 145px;
 
 #hello {
   text-align: center;
@@ -50,18 +51,16 @@
   }
 }
 
-#HomeUserAvatar {
+.HomeUserAvatar {
   @top: -25px;
-  @height: 145px;
-  @width: 145px;
-  border-radius: 50%;
   margin-left: 420/2-145/2px;
   top: @top;
-  height: @height;
-  width: @width;
-  background: url("../images/avatarPlaceholder.jpg") no-repeat;
-  background-position: center;
-  background-size: contain;
+  height: @avatarSize;
+  width: @avatarSize;
+  //background: url("../images/avatarPlaceholder.jpg") no-repeat;
+  //background-position: center;
+  //background-size: contain;
+  border-radius: 50%;
   position: absolute;
   z-index: 9999;
 
@@ -69,26 +68,36 @@
   @media @tablet {
     margin-left: 85/100*470/2 - 85/100*122/2px;
     top: 85/100*@top;
-    height: 85/100*@height;
-    width: 85/100*@width;
+    height: 85/100*@avatarSize;
+    width: 85/100*@avatarSize;
     -moz-background-size: cover;
     background-size: cover;
   }
   @media @phone {
     margin-left: 50/100*470/2 - 75/100*122/2px;
     top: 65/100*@top;
-    height: 75/100*@height;
-    width: 75/100*@width;
+    height: 75/100*@avatarSize;
+    width: 75/100*@avatarSize;
     -moz-background-size: cover;
     background-size: cover;
   }
   @media @phoneSmall {
     margin-left: 50/100*470/2 - 75/100*122/2px;
     top: 65/100*@top;
-    height: 75/100*@height;
-    width: 75/100*@width;
+    height: 75/100*@avatarSize;
+    width: 75/100*@avatarSize;
     -moz-background-size: cover;
     background-size: cover;
   }
+}
 
+.avatarBorder {
+  &:extend(.HomeUserAvatar);
+
+  margin-left: 415/2-155/2px;
+  top: -32.5px;
+  height: @avatarSize + 15px;
+  width: @avatarSize + 15px;
+  
+  background-image: linear-gradient(@base 60%, transparent 75%);
 }
