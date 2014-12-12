@@ -557,6 +557,24 @@ label.css-label {
   position: relative;
   top: 120px;
 }
+@media all and (max-width: 599px) {
+  #hello {
+    width: 357px;
+    top: 102px;
+  }
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  #hello {
+    width: 210px;
+    top: 78px;
+  }
+}
+@media all and (max-width: 359px) {
+  #hello {
+    width: 210px;
+    top: 78px;
+  }
+}
 .homeGroup {
   width: 420px;
   height: 450px;
@@ -564,16 +582,35 @@ label.css-label {
 .homeGroup .form-group:nth-child(3) {
   margin-top: 10px;
 }
-.homeGroup .form-group:nth-child(4) {
-  margin-bottom: 30px;
+.homeGroup .form-group:nth-child(3) input {
+  text-align: left;
 }
 .homeGroup form {
   top: 150px;
-  width: 390px;
-  left: 10px;
 }
-.homeGroup input:disabled {
+.homeGroup .form-group input {
+  text-align: left;
+}
+.homeGroup .form-group input:disabled {
   opacity: 0.75;
+}
+@media all and (max-width: 599px) {
+  .homeGroup {
+    width: 357px;
+    top: 127.5px;
+  }
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  .homeGroup {
+    width: 210px;
+    top: 97.5px;
+  }
+}
+@media all and (max-width: 359px) {
+  .homeGroup {
+    width: 210px;
+    top: 97.5px;
+  }
 }
 .formExtension {
   height: 60px;
@@ -591,20 +628,20 @@ label.css-label {
 }
 @media all and (max-width: 599px) {
   .formExtension {
-    height: 510px;
-    width: 399.5px;
+    height: 51px;
+    width: 357px;
   }
 }
 @media all and (max-width: 479px) and (min-width:360px) {
   .formExtension {
-    height: 480px;
-    width: 235px;
+    height: 48px;
+    width: 210px;
   }
 }
 @media all and (max-width: 359px) {
   .formExtension {
-    height: 480px;
-    width: 235px;
+    height: 48px;
+    width: 210px;
   }
 }
 .HomeUserAvatar,
@@ -624,6 +661,7 @@ label.css-label {
 @media all and (max-width: 599px) {
   .HomeUserAvatar,
   .avatarBorder {
+    margin-left: 116.875px;
     top: -21.25px;
     height: 123.25px;
     width: 123.25px;
@@ -634,6 +672,7 @@ label.css-label {
 @media all and (max-width: 479px) and (min-width:360px) {
   .HomeUserAvatar,
   .avatarBorder {
+    margin-left: 50.625px;
     top: -16.25px;
     height: 108.75px;
     width: 108.75px;
@@ -644,6 +683,7 @@ label.css-label {
 @media all and (max-width: 359px) {
   .HomeUserAvatar,
   .avatarBorder {
+    margin-left: 50.625px;
     top: -16.25px;
     height: 108.75px;
     width: 108.75px;
@@ -660,6 +700,7 @@ label.css-label {
 }
 @media all and (max-width: 599px) {
   .avatarBorder {
+    margin-left: 110.5px;
     top: -27.625px;
     height: 136px;
     width: 136px;
@@ -667,6 +708,7 @@ label.css-label {
 }
 @media all and (max-width: 479px) and (min-width:360px) {
   .avatarBorder {
+    margin-left: 45px;
     top: -21.125px;
     height: 120px;
     width: 120px;
@@ -674,6 +716,7 @@ label.css-label {
 }
 @media all and (max-width: 359px) {
   .avatarBorder {
+    margin-left: 45px;
     top: -21.125px;
     height: 120px;
     width: 120px;

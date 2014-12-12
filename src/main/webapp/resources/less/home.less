@@ -2,28 +2,59 @@
 @avatarSize: 145px;
 
 #hello {
+  @top: 120px;
+
   text-align: center;
   position: relative;
-  top: 120px;
+  top: @top;
+  @media @tablet {
+    width: 85/100*420px;
+    top: 85/100*@top;
+  }
+  @media @phone {
+    width: 50/100*420px;
+    top: 65/100*@top;
+  }
+  @media @phoneSmall {
+    width: 50/100*420px;
+    top: 65/100*@top;
+  }
 }
 
 .homeGroup {
   &:extend(.formTemplate);
+  @top: 150px;
   width: @width;
   height: 450px;
   .form-group:nth-child(3) {
     margin-top: 10px;
-  }
-  .form-group:nth-child(4) {
-    margin-bottom: 30px;
+    input{
+      text-align: left;
+    }
   }
   form{
-    top: 150px;
-    width: @width - 30px;
-    left: 10px;
+    top: @top;
   }
-  input:disabled{
-    opacity: 0.75;
+  .form-group {
+    input{
+      text-align: left;
+    }
+    input:disabled{
+      opacity: 0.75;
+    }
+  }
+
+  @media @tablet {
+    width: 85/100*420px;
+    top: 85/100*@top;
+  }
+  @media @phone {
+    width: 50/100*420px;
+    top: 65/100*@top;
+  }
+  @media @phoneSmall {
+    width: 50/100*420px;
+    top: 65/100*@top;
   }
 }
 
@@ -38,16 +69,16 @@
   .alphaColorBackground(@darkGreyGreen, 0.85);
   .transition-duration(0.4s);
   @media @tablet {
-    height: 85/100*600px;
-    width: 85/100*470px;
+    height: 85/100*60px;
+    width: 85/100*420px;
   }
   @media @phone {
-    height: 80/100*600px;
-    width: 50/100*470px;
+    height: 80/100*60px;
+    width: 50/100*420px;
   }
   @media @phoneSmall {
-    height: 80/100*600px;
-    width: 50/100*470px;
+    height: 80/100*60px;
+    width: 50/100*420px;
   }
 }
 
@@ -68,7 +99,7 @@
 
   .transition-duration(0.4s);
   @media @tablet {
-    //margin-left: 85/100*420/2 - 85/100*420/2px;
+    margin-left: 85/100*420/2 - 85/100*145/2px;
     top: 85/100*@top;
     height: 85/100*@height;
     width: 85/100*@width;
@@ -76,7 +107,7 @@
     background-size: cover;
   }
   @media @phone {
-    //margin-left: 50/100*420/2 - 75/100*420/2px;
+    margin-left: 50/100*420/2 - 75/100*145/2px;
     top: 65/100*@top;
     height: 75/100*@height;
     width: 75/100*@width;
@@ -84,7 +115,7 @@
     background-size: cover;
   }
   @media @phoneSmall {
-    //margin-left: 50/100*420/2 - 75/100*420/2px;
+    margin-left: 50/100*420/2 - 75/100*145/2px;
     top: 65/100*@top;
     height: 75/100*@height;
     width: 75/100*@width;
@@ -100,7 +131,7 @@
   @height: @avatarSize + 15px;
   @width: @avatarSize + 15px;
 
-  margin-left: 415/2-155/2px;
+  margin-left: 420/2-160/2px;
   top: @top;
   height: @height;
   width: @width;
@@ -108,19 +139,19 @@
   background-image: linear-gradient(@base 60%, transparent 75%);
 
   @media @tablet {
-    //margin-left: 85/100*435/2 - 85/100*435/2px;
+    margin-left: 85/100*420/2 - 85/100*160/2px;
     top: 85/100*@top;
     height: 85/100*@height;
     width: 85/100*@width;
   }
   @media @phone {
-    //margin-left: 50/100*435/2 - 75/100*435/2px;
+    margin-left: 50/100*420/2 - 75/100*160/2px;
     top: 65/100*@top;
     height: 75/100*@height;
     width: 75/100*@width;
   }
   @media @phoneSmall {
-    //margin-left: 50/100*435/2 - 75/100*435/2px;
+    margin-left: 50/100*420/2 - 75/100*160/2px;
     top: 65/100*@top;
     height: 75/100*@height;
     width: 75/100*@width;
