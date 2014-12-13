@@ -582,8 +582,12 @@ label.css-label {
 .homeGroup form {
   top: 150px;
 }
+.homeGroup .form-group {
+  height: 64px;
+}
 .homeGroup .form-group input {
-  width: 300px;
+  width: 290px;
+  float: left;
   margin-left: 10px;
   display: inline-block;
   text-align: left;
@@ -595,7 +599,8 @@ label.css-label {
   margin-top: 10px;
 }
 .homeGroup .form-group:nth-child(3) input {
-  width: 300px;
+  width: 290px;
+  float: left;
   margin-left: 10px;
   display: inline-block;
   text-align: left;
@@ -785,6 +790,34 @@ label.css-label {
 }
 .editBtns {
   display: inline-block;
+}
+.homeEditBtnGroup,
+.homeEditBtn,
+.homeSaveBtn {
+  height: 35px;
+  width: 35px;
+  top: 10px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+.homeEditBtn {
+  background: url("../images/edit.png");
+  float: right;
+  margin-right: 10px;
+}
+.homeEditBtn:hover {
+  background-position: 0 -35px;
+}
+.editActive {
+  background-position: 0 -35px;
+}
+.homeSaveBtn {
+  background: url("../images/editAccept.png");
+  margin-left: 10px;
+}
+.homeSaveBtn:hover {
+  background-position: 0 -35px;
 }
 /* Webfont: Lato-Light */
 @font-face {

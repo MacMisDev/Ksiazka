@@ -36,25 +36,25 @@
                                     <div class="form-group">
                                         <p>Imię i nazwisko</p>
                                         <input type="text" name="name" id="name" value='<c:out value="${user.name}" />' disabled="true" />
-                                        <button class="homeEditBtn" type="button">Test</button>
+                                        <div class="homeEditBtn"></div>
                                         <div class="editBtns" style="display: none">
-                                            <button class="saveBtn" type="button">Test</button>
+                                            <div class="homeSaveBtn"></div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <p>Nazwa użytkownika</p>
                                         <input type="text" name="username" id="username" value='<c:out value="${user.username}" />' disabled="true" />
-                                        <button class="homeEditBtn" type="button">Test</button>
+                                        <div class="homeEditBtn"></div>
                                         <div class="editBtns" style="display: none">
-                                            <button class="saveBtn" type="button">Test</button>
+                                            <div class="homeSaveBtn"></div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <p>Adres email</p>
                                         <input type="text" name="email" id="email" value='<c:out value="${user.email}" />' disabled="true" />
-                                        <button class="homeEditBtn" type="button">Test</button>
+                                        <div class="homeEditBtn"></div>
                                         <div class="editBtns" style="display: none">
-                                            <button class="saveBtn" type="button">Test</button>
+                                            <div class="homeSaveBtn"></div>
                                         </div>
                                     </div>
 
@@ -92,6 +92,7 @@
 <script>
     $(document).ready(function() {
         $('.homeEditBtn').click(function () {
+            $('.homeEditBtn').toggleClass('editActive');
             $('.editBtns').toggle('slow', function () {
                 //Buttons shown, yay!
             });
