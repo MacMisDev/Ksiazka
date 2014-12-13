@@ -1,4 +1,5 @@
 @width: 420px;
+@inputWidth: 260px;
 @avatarSize: 145px;
 
 #hello {
@@ -31,12 +32,21 @@
   }
   .form-group {
     height: 64px;
+    width: 350px;
     input{
-      width: 290px;
+      width: @inputWidth;
       float: left;
       margin-left: 10px;
       display: inline-block;
       text-align: left;
+
+      background-color: transparent;
+      border: 0px;
+      outline: none;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      cursor:default;
     }
     input:disabled{
       opacity: 0.75;
@@ -44,8 +54,9 @@
   }
   .form-group:nth-child(3) {
     margin-top: 10px;
+    width: 350px;
     input{
-      width: 290px;
+      width: @inputWidth;
       float: left;
       margin-left: 10px;
       display: inline-block;
@@ -62,13 +73,13 @@
     top: 65/100*@top;
     .form-group {
       input{
-        width: 200px;
+        width: 120px;
         margin-left: auto;
       }
     }
     .form-group:nth-child(3) {
       input{
-        width: 200px;
+        width: 120px;
         margin-left: auto;
       }
     }
@@ -240,7 +251,9 @@
   &:extend(.homeEditBtnGroup);
   background: url("../images/edit.png");
   float: right;
-  margin-right: 10px;
+  @media @phone {
+    margin-right: 150px;
+  }
 }
 .homeEditBtn:hover {
   background-position: 0 -35px;
@@ -256,4 +269,9 @@
 }
 .homeSaveBtn:hover {
   background-position: 0 -35px;
+}
+
+.homeFormBG {
+  height: 35px;
+  .alphaColorBackground(@darkGreyGreen, 0.1);
 }

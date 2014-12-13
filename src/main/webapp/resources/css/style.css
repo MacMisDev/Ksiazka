@@ -584,22 +584,31 @@ label.css-label {
 }
 .homeGroup .form-group {
   height: 64px;
+  width: 350px;
 }
 .homeGroup .form-group input {
-  width: 290px;
+  width: 260px;
   float: left;
   margin-left: 10px;
   display: inline-block;
   text-align: left;
+  background-color: transparent;
+  border: 0px;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  cursor: default;
 }
 .homeGroup .form-group input:disabled {
   opacity: 0.75;
 }
 .homeGroup .form-group:nth-child(3) {
   margin-top: 10px;
+  width: 350px;
 }
 .homeGroup .form-group:nth-child(3) input {
-  width: 290px;
+  width: 260px;
   float: left;
   margin-left: 10px;
   display: inline-block;
@@ -617,11 +626,11 @@ label.css-label {
     top: 97.5px;
   }
   .homeGroup .form-group input {
-    width: 200px;
+    width: 120px;
     margin-left: auto;
   }
   .homeGroup .form-group:nth-child(3) input {
-    width: 200px;
+    width: 120px;
     margin-left: auto;
   }
 }
@@ -804,7 +813,11 @@ label.css-label {
 .homeEditBtn {
   background: url("../images/edit.png");
   float: right;
-  margin-right: 10px;
+}
+@media all and (max-width: 479px) and (min-width:360px) {
+  .homeEditBtn {
+    margin-right: 150px;
+  }
 }
 .homeEditBtn:hover {
   background-position: 0 -35px;
@@ -818,6 +831,11 @@ label.css-label {
 }
 .homeSaveBtn:hover {
   background-position: 0 -35px;
+}
+.homeFormBG {
+  height: 35px;
+  background-color: #545a4f;
+  background-color: rgba(84, 90, 79, 0.1);
 }
 /* Webfont: Lato-Light */
 @font-face {

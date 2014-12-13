@@ -35,26 +35,32 @@
 
                                     <div class="form-group">
                                         <p>Imię i nazwisko</p>
-                                        <input type="text" name="name" id="name" value='<c:out value="${user.name}" />' disabled="true" />
-                                        <div class="homeEditBtn"></div>
-                                        <div class="editBtns" style="display: none">
-                                            <div class="homeSaveBtn"></div>
+                                        <div class="homeFormBG">
+                                            <input type="text" name="name" id="name" value='<c:out value="${user.name}" />' disabled="true" />
+                                            <div class="homeEditBtn"></div>
+                                            <div class="editBtns" style="display: none">
+                                                <div class="homeSaveBtn"></div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <p>Nazwa użytkownika</p>
-                                        <input type="text" name="username" id="username" value='<c:out value="${user.username}" />' disabled="true" />
-                                        <div class="homeEditBtn"></div>
-                                        <div class="editBtns" style="display: none">
-                                            <div class="homeSaveBtn"></div>
+                                            <div class="homeFormBG">
+                                            <input type="text" name="username" id="username" value='<c:out value="${user.username}" />' disabled="true" />
+                                            <div class="homeEditBtn"></div>
+                                            <div class="editBtns" style="display: none">
+                                                <div class="homeSaveBtn"></div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <p>Adres email</p>
-                                        <input type="text" name="email" id="email" value='<c:out value="${user.email}" />' disabled="true" />
-                                        <div class="homeEditBtn"></div>
-                                        <div class="editBtns" style="display: none">
-                                            <div class="homeSaveBtn"></div>
+                                        <div class="homeFormBG">
+                                            <input type="text" name="email" id="email" value='<c:out value="${user.email}" />' disabled="true" />
+                                            <div class="homeEditBtn"></div>
+                                            <div class="editBtns" style="display: none">
+                                                <div class="homeSaveBtn"></div>
+                                            </div>
                                         </div>
                                     </div>
 
