@@ -36,14 +36,26 @@
                                     <div class="form-group">
                                         <p>Imię i nazwisko</p>
                                         <input type="text" name="name" id="name" value='<c:out value="${user.name}" />' disabled="true" />
+                                        <button class="homeEditBtn" type="button">Test</button>
+                                        <div class="editBtns" style="display: none">
+                                            <button class="saveBtn" type="button">Test</button>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <p>Nazwa użytkownika</p>
                                         <input type="text" name="username" id="username" value='<c:out value="${user.username}" />' disabled="true" />
+                                        <button class="homeEditBtn" type="button">Test</button>
+                                        <div class="editBtns" style="display: none">
+                                            <button class="saveBtn" type="button">Test</button>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <p>Adres email</p>
                                         <input type="text" name="email" id="email" value='<c:out value="${user.email}" />' disabled="true" />
+                                        <button class="homeEditBtn" type="button">Test</button>
+                                        <div class="editBtns" style="display: none">
+                                            <button class="saveBtn" type="button">Test</button>
+                                        </div>
                                     </div>
 
                                 </fieldset>
@@ -75,4 +87,15 @@
 
     </tiles:putAttribute>
 </tiles:insertDefinition>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.homeEditBtn').click(function () {
+            $('.editBtns').toggle('slow', function () {
+                //Buttons shown, yay!
+            });
+        });
+    });
+</script>
 

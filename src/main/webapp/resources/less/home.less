@@ -26,21 +26,27 @@
   @top: 150px;
   width: @width;
   height: 450px;
-  .form-group:nth-child(3) {
-    margin-top: 10px;
-    input{
-      text-align: left;
-    }
-  }
   form{
     top: @top;
   }
   .form-group {
     input{
+      width: 300px;
+      margin-left: 10px;
+      display: inline-block;
       text-align: left;
     }
     input:disabled{
       opacity: 0.75;
+    }
+  }
+  .form-group:nth-child(3) {
+    margin-top: 10px;
+    input{
+      width: 300px;
+      margin-left: 10px;
+      display: inline-block;
+      text-align: left;
     }
   }
 
@@ -51,6 +57,18 @@
   @media @phone {
     width: 50/100*420px;
     top: 65/100*@top;
+    .form-group {
+      input{
+        width: 200px;
+        margin-left: auto;
+      }
+    }
+    .form-group:nth-child(3) {
+      input{
+        width: 200px;
+        margin-left: auto;
+      }
+    }
   }
   @media @phoneSmall {
     width: 50/100*420px;
@@ -199,4 +217,8 @@
     height: 75/100*@height;
     width: 75/100*@width;
   }
+}
+
+.editBtns {
+  display: inline-block;
 }
