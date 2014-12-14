@@ -27,7 +27,7 @@
 
                         <div class="formTemplate homeGroup">
                             <div class="avatarBorder"></div>
-                            <img class="HomeUserAvatar" src="resources/images/avatarPlaceholder.jpg">
+                            <img class="HomeUserAvatar" src="ksiazka/resources/images/avatarPlaceholder.jpg">
                             <div id="hello"><h2>Cześć <c:out value="${user.name}" />!</h2></div>
 
                             <form method="post" name="home">
@@ -72,16 +72,16 @@
                         <div class="formExtension">
                             <ul class="extensionBtns">
                                 <li>
-                                    <a href=#> <input type="image" src="resources/images/icon-location.png"class="extBtn" /></a>
+                                    <a href=#> <div class="extBtn" id="extLoc" ></div></a>
                                 </li>
                                 <li>
-                                    <a href=#> <input type="image" src="resources/images/icon-collection.png"class="extBtn" /></a>
+                                    <a href=#> <div class="extBtn" id="extColl" ></div></a>
                                 </li>
                                 <li>
-                                    <a href=#> <input type="image" src="resources/images/icon-reputation.png"class="extBtn" /></a>
+                                    <a href=#> <div class="extBtn" id="extRep"></div></a>
                                 </li>
                                 <li>
-                                    <a href="${pageContext.request.contextPath}/static/j_spring_security_logout"> <input type="image" src="resources/images/icon-logout.png" name="logout" value="logout" class="extBtn" /></a>
+                                    <a href="${pageContext.request.contextPath}/static/j_spring_security_logout"> <div name="logout" value="logout" class="extBtn" id="extLogout"></div></a>
                                 </li>
                             </ul>
                         </div>
