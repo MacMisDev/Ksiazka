@@ -34,7 +34,7 @@
                                 <fieldset>
 
                                     <div class="form-group">
-                                        <p>Imię i nazwisko</p>
+                                        <p>Imię</p>
                                         <div class="homeFormBG">
                                             <input type="text" name="name" id="name" value="${user.name}" disabled="true" />
                                             <div class="homeEditBtn" id="editName"></div>
