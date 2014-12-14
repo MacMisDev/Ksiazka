@@ -37,8 +37,8 @@
                                         <p>Imię i nazwisko</p>
                                         <div class="homeFormBG">
                                             <input type="text" name="name" id="name" value='<c:out value="${user.name}" />' disabled="true" />
-                                            <div class="homeEditBtn"></div>
-                                            <div class="editBtns" style="display: none">
+                                            <div class="homeEditBtn" id="editName"></div>
+                                            <div class="editBtns" id="saveName" style="display: none">
                                                 <div class="homeSaveBtn"></div>
                                             </div>
                                         </div>
@@ -47,8 +47,8 @@
                                         <p>Nazwa użytkownika</p>
                                             <div class="homeFormBG">
                                             <input type="text" name="username" id="username" value='<c:out value="${user.username}" />' disabled="true" />
-                                            <div class="homeEditBtn"></div>
-                                            <div class="editBtns" style="display: none">
+                                            <div class="homeEditBtn" id="editUsername"></div>
+                                            <div class="editBtns" id="saveUsername" style="display: none">
                                                 <div class="homeSaveBtn"></div>
                                             </div>
                                         </div>
@@ -57,8 +57,8 @@
                                         <p>Adres email</p>
                                         <div class="homeFormBG">
                                             <input type="text" name="email" id="email" value='<c:out value="${user.email}" />' disabled="true" />
-                                            <div class="homeEditBtn"></div>
-                                            <div class="editBtns" style="display: none">
+                                            <div class="homeEditBtn" id="editMail"></div>
+                                            <div class="editBtns" id="saveMail" style="display: none">
                                                 <div class="homeSaveBtn"></div>
                                             </div>
                                         </div>
@@ -97,11 +97,24 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('.homeEditBtn').click(function () {
-            $('.homeEditBtn').toggleClass('editActive');
-            $('.editBtns').toggle('slow', function () {
+        $('#editName').click(function () {
+            $('#editName').toggleClass('editActive');
+            $("#name").prop('disabled', ! $("#name").prop('disabled') );
+            $('#saveName').toggle('slow', function () {
                 //Buttons shown, yay!
             });
+        });
+
+        $('#editUsername').click(function () {
+            $('#editUsername').toggleClass('editActive');
+            $("#username").prop('disabled', ! $("#username").prop('disabled') );
+            $('#saveUsername').toggle('slow', function () { });
+        });
+
+        $('#editMail').click(function () {
+            $('#editMail').toggleClass('editActive');
+            $("#email").prop('disabled', ! $("#email").prop('disabled') );
+            $('#saveMail').toggle('slow', function () { });
         });
     });
 </script>
