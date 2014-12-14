@@ -23,7 +23,7 @@ public class OfferControllerImpl implements OfferController {
     }
 
     @Override
-    @RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "{id}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public @ResponseBody Offer showOffer(@PathVariable Long id) {
         return offerService.get(id);
     }
@@ -36,7 +36,7 @@ public class OfferControllerImpl implements OfferController {
     }
 
     @Override
-    @RequestMapping(value = "/new", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json;charset=UTF-8", consumes = "application/json;charset=UTF-8")
     public @ResponseBody Offer newOffer(@RequestBody Offer offer) {
         return offerService.get(offerService.save(offer));
     }

@@ -1,11 +1,10 @@
 package me.ksiazka.controller;
 
-import me.ksiazka.misc.BookLists;
-import me.ksiazka.misc.PageNumbers;
+import me.ksiazka.Wrapper.BookLists;
+import me.ksiazka.Wrapper.PageNumbers;
 import me.ksiazka.model.Book;
 import me.ksiazka.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -36,20 +35,20 @@ public class BookControllerImpl implements BookController {
     }*/
 
     @Override
-    @RequestMapping(value = "/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public @ResponseBody BookLists list() {
         return bookService.bookLists(0,0);
     }
 
     @Override
-    @RequestMapping(value = "/list", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/list", method = RequestMethod.POST, produces = "application/json;charset=UTF-8", consumes = "application/json;charset=UTF-8")
     public @ResponseBody BookLists list(@RequestBody PageNumbers pageNumbers) {
         return bookService.bookLists(pageNumbers.getLastBooksAddedPage(), pageNumbers.getMostPopularBooksPage());
     }
 
     @Override
-    @RequestMapping(value = "/{bookId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody Book showBook(@PathVariable Long bookId) {
+    @RequestMapping(value = "/{bookId}", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public @ResponseBody Book showBook(@PathVariable long bookId) {
         return bookService.get(bookId);
     }
 
@@ -61,13 +60,13 @@ public class BookControllerImpl implements BookController {
     }
 
     @Override
-    @RequestMapping(value = "/new", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json;charset=UTF-8", consumes = "application/json;charset=UTF-8")
     public @ResponseBody Book addBookToSystem(@RequestBody Book book) {
         return bookService.get(bookService.save(book));
     }
 
     @Override
-    @RequestMapping(value = "/admin/book/list", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE ,consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/admin/book/list", method = RequestMethod.DELETE, produces = "application/json;charset=UTF-8" ,consumes = "application/json;charset=UTF-8")
     public Book deleteBook(Book book) {
         bookService.delete(book);
         return book;

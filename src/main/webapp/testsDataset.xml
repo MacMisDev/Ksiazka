@@ -14,7 +14,7 @@
     <Book bookId="10" title="Złoto Gór Czarnych. Orle pióra" ISBN="8373844872" author="Szklarska Krystyna, Szklarski Alfred" publisher="Dolnośląskie" description="Czerwoni" publicationYear="2006" pages="256" bookStatus="ACCEPTED"/>
 
 
-    <User userId="1" username="Użytkownik usunięty" email="test" name="test" surname="test" password="test" />
+    <User userId="1" username="Użytkownik usunięty" email="test@test.com" name="test" surname="test" password="test" />
     <User userId="2" username="Konasz" email="jarke69@bdimension.org" name="Caroslaw" surname="Jimoch" password="tajne" />
     <User userId="3" username="ChybaTy" email="jarke@jarke.jr" name="Jarke" surname="Cimoche" password="jeszczeTajniejsze"/>
     <User userId="4" username="Anna" email="anna@email.com" name="Anna" surname="Kowalska" password="tajne" />
@@ -60,6 +60,19 @@
     <UserRole id="9" role="ROLE_USER" userId="6"/>
     <UserRole id="10" role="ROLE_USER" userId="7"/>
     <UserRole id="11" role="ROLE_USER" userId="8"/>
+
+    <Offer offerId="1" date="2014-01-01" offerStatus="PENDING"/>
+    <Offer offerId="2" offerStatus="PENDING"/>
+    <Offer offerId="3" offerStatus="PENDING"/>
+    <Offer offerId="4" offerStatus="ACCEPTED"/>
+    <Offer offerId="5" offerStatus="PENDING"/>
+    <Offer offerId="6" offerStatus="CONFIRMED"/>
+
+    <OfferRelation offerRelationId="1" userId="2" offerId="1" offerRelationStatus="Offering"/>
+    <OfferRelation offerRelationId="2" userId="7" offerId="1" offerRelationStatus="Offered"/>
+
+    <wantedBooks offerId="1" userBookId="1"/>
+    <offeredBooks offerId="1" userBookId="15"/>
 
 
 </dataset>

@@ -46,7 +46,7 @@
                         <button id='hideShowButton' class="menuButtonShowHide">Hide</button>
                     </li>
                     <li>
-                        <a href="" class="menuButtonHome">Home</a>
+                        <a href="<s:url value="/" />" class="menuButtonHome">Home</a>
                     </li>
 
                 </ul>
@@ -65,15 +65,18 @@
                                     <div class="form-group">
                                         <p>Adres email</p>
                                         <sf:input path="email" type="text" name="email" id="email"/>
+                                        <sf:errors path="email" class="formErrMsg"/>
                                     </div>
                                     <div class="form-group">
                                         <p>Imię</p>
                                         <sf:input path="name" type="text" name="name" id="name"/>
+                                        <sf:errors path="name" class="formErrMsg" />
                                     </div>
                                     <div class="form-group">
                                         <p>Nazwa użytkownika</p>
                                         <sf:input path="username" type="text" name="username" id="username"/>
-                                    </div>
+                                        <sf:errors path="username" class="formErrMsg" />
+                                      </div>
                                     <div class="form-group">
                                         <p>Hasło</p>
                                         <sf:input path="password" type="password" name="password" id="password"/>

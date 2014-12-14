@@ -6,6 +6,7 @@ import junit.framework.Assert;
 import me.ksiazka.dao.BookDAO;
 import me.ksiazka.dao.UserBookDAO;
 import me.ksiazka.dao.UserDAO;
+import me.ksiazka.model.Book;
 import me.ksiazka.model.Condition;
 import me.ksiazka.model.User;
 import me.ksiazka.model.UserBook;
@@ -23,6 +24,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:/spring-cfg.xml", "classpath:/spring-tests-cfg.xml"})
@@ -62,6 +64,16 @@ public class UserBookDAOTest {
     public void getAllUserBookTest() {
 
         Assert.assertEquals((int) userBooksInDatabase, userBookDAO.getAll().size());
+    }
+
+
+    @Test
+    public void getAllUserWantBooksTest() {
+
+        User u = userDAO.get(4);
+        List<Book> list = userBookDAO.getAllUserWantBooks(u.getId());
+        Assert.assertEquals(3, list.size());
+
     }
 
     @Test

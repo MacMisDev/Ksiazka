@@ -2,6 +2,7 @@ package me.ksiazka.model;
 
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,14 +17,14 @@ public class Offer {
     @OneToMany(mappedBy = "offer")
     private List<OfferRelation> offerList = new ArrayList<OfferRelation>(0);
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(name="offeredBooks",
             joinColumns = @JoinColumn(name = "offerId"),
             inverseJoinColumns = @JoinColumn(name = "userBookId")
     )
     private List<UserBook> offeredBooks = new ArrayList<UserBook>(0);
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="wanteddBooks",
+    @ManyToMany
+    @JoinTable(name="wantedBooks",
             joinColumns = @JoinColumn(name = "offerId"),
             inverseJoinColumns = @JoinColumn(name = "userBookId")
     )

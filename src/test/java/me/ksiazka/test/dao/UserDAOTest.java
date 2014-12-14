@@ -7,6 +7,7 @@ import me.ksiazka.dao.UserBookDAO;
 import me.ksiazka.dao.UserDAO;
 import me.ksiazka.model.*;
 import me.ksiazka.service.SearchService;
+import me.ksiazka.service.UserService;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -45,6 +46,8 @@ public class UserDAOTest {
     private UserDAO userDAO;
     @Autowired
     private UserBookDAO userBookDAO;
+    @Autowired
+    private UserService userService;
 
     @Test
     public void getUserTest() {
@@ -86,7 +89,7 @@ public class UserDAOTest {
         user.setName("Wojtek");
         user.setSurname("Nowak");
         user.setUsername("wojtekN");
-        user.setEmail("Wojtek@py.py lolada heldan");
+        user.setEmail("wojtek@py.py");
         user.setPassword("wojtek.py"); //cannot be null
         user.getRoles().add(userRole);
 
@@ -96,7 +99,7 @@ public class UserDAOTest {
         Assert.assertEquals("Wojtek", retrivedUser.getName());
         Assert.assertEquals("Nowak", retrivedUser.getSurname());
         Assert.assertEquals("wojtekN", retrivedUser.getUsername());
-        Assert.assertEquals("Wojtek@py.py lolada heldan", retrivedUser.getEmail());
+        Assert.assertEquals("wojtek@py.py", retrivedUser.getEmail());
         Assert.assertEquals("wojtek.py", retrivedUser.getPassword());
         Assert.assertEquals("ROLE_USER", retrivedUser.getRoles().get(0).getRole());
     }
@@ -107,13 +110,26 @@ public class UserDAOTest {
         Assert.assertNotNull(userDAO.get(2));
         Assert.assertEquals(2, userDAO.get(2).getSizeOfBooksHave());
 
-        userDAO.delete(2);
+        User u = userDAO.get(2);
+//        userDAO.updateOfferRelationBeforeDelete(u);
+//        userDAO.delete(u);
+
+        userService.delete(u);
 
         Assert.assertNull(userDAO.get(2));
         //Uzytkownik posiadal w swojej liscie have ksiazki z encji UserBook o id 1 i 3
         //Sprawdzamy czy sie usunely.
-        Assert.assertNull(userBookDAO.get(1));
-        Assert.assertNull(userBookDAO.get(3));
+
+
+        /*
+            Ksiazki zostaly przypisane do uzytkownika widmo
+            ??Sprawdzenie czy ksiazki znajduja sie w ofertach przed przypisaniem
+            W przypadku jesli nie to usuwamy bez przepisania(na stale)
+
+         */
+
+        //Assert.assertNull(userBookDAO.get(1));
+        //Assert.assertNull(userBookDAO.get(3));
         //Dla pewnosci sprawdzamy, czy w bazie pozostal wpis w UserBook o id 2
         Assert.assertNotNull(userBookDAO.get(2));
 
@@ -126,12 +142,12 @@ public class UserDAOTest {
     public void updateUserTest() {
 
        User user = userDAO.get(3);
-       Assert.assertFalse(user.getEmail().equals("wojtek.py"));
-       user.setEmail("wojtek.py");
+       Assert.assertFalse(user.getEmail().equals("wojtek@py.py"));
+       user.setEmail("wojtek@py.py");
        userDAO.update(user);
 
         Assert.assertEquals((int) usersInDatabse, userDAO.getAll().size());
-        Assert.assertEquals("wojtek.py", userDAO.get(3).getEmail());
+        Assert.assertEquals("wojtek@py.py", userDAO.get(3).getEmail());
     }
 
     @Test

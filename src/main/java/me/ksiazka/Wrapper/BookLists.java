@@ -1,4 +1,4 @@
-package me.ksiazka.misc;
+package me.ksiazka.Wrapper;
 
 import me.ksiazka.model.Book;
 

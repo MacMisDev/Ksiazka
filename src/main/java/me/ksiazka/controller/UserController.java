@@ -1,15 +1,16 @@
 package me.ksiazka.controller;
 
-import me.ksiazka.dto.UserDTO;
+import me.ksiazka.Wrapper.BookWantHave;
 import me.ksiazka.model.User;
 import org.springframework.ui.Model;
 
 
 public interface UserController {
-    public String userHaveWant();
-    public UserDTO showUserPage();
-    public String editUserData(Long id, Model model);
-    public String updateEditedUser(User user);
+    public BookWantHave userHaveWant();
+    public String showLoggedUserPage(Model model);
+    public User showUser(long id);
+    public User editUserData();
+    public User updateEditedUser(User user);
     /* -- Prawdopodobnie zrobimy to w przeływach (Web Flow)
     public String addBookToWantList(Model model);
     public String delBookFromWantList(Model model);

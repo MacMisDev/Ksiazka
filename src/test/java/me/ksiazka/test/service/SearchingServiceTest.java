@@ -114,7 +114,7 @@ public class SearchingServiceTest {
     //@Repeat(3)
     @Transactional
     @Rollback(false)
-    //@Ignore
+    @Ignore
     public void searchByEmailTest() throws InterruptedException {
 
 //        Session session = sessionFactory.openSession();

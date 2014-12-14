@@ -1,0 +1,75 @@
+.HomeUserAvatar {
+  @top: -25px;
+  @height: @avatarSize;
+  @width: @avatarSize;
+  margin-left: 420/2-145/2px;
+  top: @top;
+  height: @height;
+  width: @width;
+  //background: url("../images/avatarPlaceholder.jpg") no-repeat;
+  //background-position: center;
+  //background-size: contain;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 9999;
+
+  .transition-duration(0.4s);
+  @media @tablet {
+    margin-left: 85/100*420/2 - 85/100*145/2px;
+    top: 85/100*@top;
+    height: 85/100*@height;
+    width: 85/100*@width;
+    -moz-background-size: cover;
+    background-size: cover;
+  }
+  @media @phone {
+    margin-left: 50/100*420/2 - 75/100*145/2px;
+    top: 65/100*@top;
+    height: 75/100*@height;
+    width: 75/100*@width;
+    -moz-background-size: cover;
+    background-size: cover;
+  }
+  @media @phoneSmall {
+    margin-left: 50/100*420/2 - 75/100*145/2px;
+    top: 65/100*@top;
+    height: 75/100*@height;
+    width: 75/100*@width;
+    -moz-background-size: cover;
+    background-size: cover;
+  }
+}
+
+.avatarBorder {
+  &:extend(.HomeUserAvatar);
+
+  @top: -32.5px;
+  @height: @avatarSize + 15px;
+  @width: @avatarSize + 15px;
+
+  margin-left: 420/2-160/2px;
+  top: @top;
+  height: @height;
+  width: @width;
+
+  background-image: linear-gradient(@base 60%, transparent 75%);
+
+  @media @tablet {
+    margin-left: 85/100*420/2 - 85/100*160/2px;
+    top: 85/100*@top;
+    height: 85/100*@height;
+    width: 85/100*@width;
+  }
+  @media @phone {
+    margin-left: 50/100*420/2 - 75/100*160/2px;
+    top: 65/100*@top;
+    height: 75/100*@height;
+    width: 75/100*@width;
+  }
+  @media @phoneSmall {
+    margin-left: 50/100*420/2 - 75/100*160/2px;
+    top: 65/100*@top;
+    height: 75/100*@height;
+    width: 75/100*@width;
+  }
+}

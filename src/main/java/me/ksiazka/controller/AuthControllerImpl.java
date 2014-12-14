@@ -1,9 +1,11 @@
 package me.ksiazka.controller;
 
+
 import me.ksiazka.model.User;
 import me.ksiazka.service.AuthService;
 import me.ksiazka.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -48,14 +50,32 @@ public class AuthControllerImpl implements AuthController{
 
     @Override
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@Valid User user, BindingResult bindingResult){
+    public String register(@Valid User user,
+                           BindingResult bindingResult){
 
-        if(!bindingResult.hasErrors()){
+        if (!bindingResult.hasErrors()) {
             authService.includeRoles(user);
-            userService.save(user);
-        }else{
+            try {
+                userService.save(user);
+            } catch (DataIntegrityViolationException e) {
+                user.setPassword("");
+
+                if (userService.findUserByEmail(user.getEmail()) != null && userService.findUserByUsername(user.getUsername()) != null) {
+                    bindingResult.rejectValue("email", "error.user", "Taki email istnieje już w bazie!");
+                    bindingResult.rejectValue("username", "error.user", "Taka nazwa uzytkownika istnieje już w bazie!");
+                    return "register";
+                } else if (userService.findUserByUsername(user.getUsername()) != null) {
+                    bindingResult.rejectValue("username", "error.user", "Taka nazwa uzytkownika istnieje już w bazie!");
+                    return "register";
+                } else {
+                    bindingResult.rejectValue("email", "error.user", "Taki email istnieje już w bazie!");
+                    return "register";
+                }
+            }
+        } else {
             return "register";
         }
+
 
         return "redirect:/login";
     }

@@ -1,10 +1,7 @@
 package me.ksiazka.service;
 
 import me.ksiazka.dao.UserDAO;
-import me.ksiazka.dto.UserDTO;
 import me.ksiazka.model.User;
-import me.ksiazka.model.UserRole;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,10 +45,11 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void delete(User toDelete) {
-        /*
-        @ToDo: Podmienienie referencji do uzytkownika w UserBook przed usunięciem - Krzysiu musi zrobic query czy co
-         */
+
+        userDAO.updateUserBookBeforeDelete(toDelete);
+        userDAO.updateOfferRelationBeforeDelete(toDelete);
         userDAO.delete(toDelete);
+
     }
 
     @Override
@@ -62,10 +60,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public UserDTO findUserByEmailDTO(String email) {
-        User user = userDAO.findUserByEmail(email);
-        UserDTO userDTO = new UserDTO(user.getName(), user.getUsername(), user.getPassword(), user.getEmail(), user.getSurname());
-        return userDTO;
+    public User findUserByEmailWithLists(String email){
+        return userDAO.findUserByEmailWithLists(email);
     }
 
+    @Override
+    @Transactional
+    public User getUserWithLists(long id) {
+        return userDAO.getUserWithLists(id);
+    }
+
+    @Override
+    @Transactional
+    public User findUserByUsername(String username) {
+        return userDAO.findUserByUsername(username);
+    }
 }

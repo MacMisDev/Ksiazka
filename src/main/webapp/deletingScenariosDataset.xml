@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+
+
+    <!-- Books in db -->
+    <Book bookId="1" title="Książka usunięta" ISBN="9999" author="test" publisher="test" description="Z powodu naruszenia regulaminu książka została usunięta. Przepraszamy." publicationYear="0000" pages="0" bookStatus="SPECIAL"/>
+    <Book bookId="2" title="a1" ISBN="0" author="author_a1" publisher="publisher_a1" description="description_a1" publicationYear="0000" pages="0" bookStatus="ACCEPTED"/>
+    <Book bookId="3" title="a2" ISBN="1" author="author_a2" publisher="publisher_a2" description="description_a2" publicationYear="0000" pages="0" bookStatus="ACCEPTED"/>
+    <Book bookId="4" title="a3" ISBN="2" author="author_a3" publisher="publisher_a3" description="description_a3" publicationYear="0000" pages="0" bookStatus="ACCEPTED"/>
+    <Book bookId="5" title="b1" ISBN="3" author="author_b1" publisher="publisher_b1" description="description_b1" publicationYear="0000" pages="0" bookStatus="ACCEPTED"/>
+    <Book bookId="6" title="b2" ISBN="4" author="author_b2" publisher="publisher_b2" description="description_b2" publicationYear="0000" pages="0" bookStatus="ACCEPTED"/>
+    <Book bookId="7" title="b3" ISBN="5" author="author_b3" publisher="publisher_b3" description="description_b3" publicationYear="0000" pages="0" bookStatus="ACCEPTED"/>
+    <Book bookId="8" title="c1" ISBN="6" author="author_c1" publisher="publisher_c1" description="description_c1" publicationYear="0000" pages="0" bookStatus="ACCEPTED"/>
+
+    <!-- Users in db -->
+    <User userId="1" username="Użytkownik usunięty" email="test" name="Deleted" surname="Deleted" password="Deleted" />
+    <User userId="2" username="A" email="A@A.AA" name="A" surname="A" password="A" />
+    <User userId="3" username="B" email="B@B.BB" name="B" surname="B" password="B" />
+    <User userId="4" username="C" email="C@C.CC" name="C" surname="C" password="C" />
+
+
+    <!-- booksHave (UserBook) -->
+    <UserBook id="1" userId="2" bookId="2" bookCondition="GOOD" />
+    <UserBook id="2" userId="2" bookId="3" bookCondition="GOOD" />
+    <UserBook id="3" userId="2" bookId="4" bookCondition="GOOD" />
+
+    <UserBook id="4" userId="3" bookId="5" bookCondition="GOOD" />
+    <UserBook id="5" userId="3" bookId="6" bookCondition="GOOD" />
+    <UserBook id="6" userId="3" bookId="7" bookCondition="GOOD" />
+
+    <UserBook id="7" userId="4" bookId="8" bookCondition="GOOD" />
+    <UserBook id="8" userId="4" bookId="5" bookCondition="BAD" />
+
+    <!-- booksWant -->
+    <booksWant userId="2" bookId="5" />
+    <booksWant userId="2" bookId="6" />
+
+    <booksWant userId="3" bookId="4" />
+
+    <booksWant userId="4" bookId="3" />
+
+    <!-- Offers -->
+    <Offer offerId="1" offerStatus="PENDING" />
+
+    <!-- Offer Relation -->
+    <OfferRelation offerRelationId="1" userId="2" offerId="1" offerRelationStatus="Offering"/>
+    <OfferRelation offerRelationId="2" userId="3" offerId="1" offerRelationStatus="Offered"/>
+
+    <wantedBooks offerId="1" userBookId="5"/>
+    <wantedBooks offerId="1" userBookId="6"/>
+    <offeredBooks offerId="1" userBookId="4"/>
+
+    <!-- User Roles -->
+    <UserRole id="1" role="ROLE_SPECIAL" userId="1"/>
+    <UserRole id="2" role="ROLE_USER" userId="2"/>
+    <UserRole id="3" role="ROLE_USER" userId="3"/>
+    <UserRole id="4" role="ROLE_USER" userId="4"/>
+
+
+</dataset>

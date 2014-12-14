@@ -1,4 +1,4 @@
-package me.ksiazka.misc;
+package me.ksiazka.Wrapper;
 
 public final class PageNumbers {
     private int lastBooksAddedPage;
