@@ -552,6 +552,10 @@ label.css-label {
 .registerGroup .form-group:nth-child(4) {
   margin-bottom: 30px;
 }
+.formErrMsg {
+  text-align: center;
+  color: #e74c3c;
+}
 .HomeUserAvatar,
 .avatarBorder {
   margin-left: 137.5px;
