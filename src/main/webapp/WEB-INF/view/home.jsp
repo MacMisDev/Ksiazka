@@ -27,7 +27,7 @@
 
                         <div class="formTemplate homeGroup">
                             <div class="avatarBorder"></div>
-                            <img class="HomeUserAvatar" src="resources/images/avatarPlaceholder.jpg">
+                            <img class="HomeUserAvatar" src="/ksiazka/resources/images/avatarPlaceholder.jpg">
                             <div id="hello"><h2>Cześć <c:out value="${user.name}" />!</h2></div>
 
                             <form method="post" name="home">
