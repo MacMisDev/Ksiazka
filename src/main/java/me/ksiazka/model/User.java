@@ -68,7 +68,6 @@ public class User {
         this.id = id;
     }
 
-    @JsonIgnore
     @Valid
     public List<Address> getAddressList() {
         return addressList;
