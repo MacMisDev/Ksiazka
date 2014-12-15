@@ -5,6 +5,7 @@ import me.ksiazka.Wrapper.BookLists;
 import me.ksiazka.Wrapper.PageNumbers;
 import me.ksiazka.model.Book;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 
 public interface BookController {
     public String showBookHome();

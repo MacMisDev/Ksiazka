@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -52,15 +53,9 @@ public class BookControllerImpl implements BookController {
 
     @Override
     @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json;charset=UTF-8", consumes = "application/json;charset=UTF-8")
-    public @ResponseBody Book addBookToSystem(@Valid @RequestBody Book book) {
-        //todo
-/*        try{
-            return bookService.get(bookService.save(book));
-        }catch (DataIntegrityViolationException e){
-            if(bookService.findBookByISBN(Integer.parseInt(book.getISBN())) != null){
+    public @ResponseBody Book addBookToSystem(@RequestBody Book book) {
+        //todo fix
 
-            }
-        }*/
         return bookService.get(bookService.save(book));
     }
 
