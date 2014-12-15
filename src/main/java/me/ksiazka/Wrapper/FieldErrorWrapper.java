@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FieldErrorWrapper {
-    private List<FieldError> validationList = new ArrayList<>();
+    private List<FieldErrorDto> validationList = new ArrayList<>();
 
     public FieldErrorWrapper() {
     }
 
     public void addError(String field, String message){
-        FieldError error = new FieldError(field, message);
+        FieldErrorDto error = new FieldErrorDto(field, message);
         this.validationList.add(error);
     }
 
-    public List<FieldError> getValidationList() {
+    public List<FieldErrorDto> getValidationList() {
         return validationList;
     }
 
-    public void setValidationList(List<FieldError> validationList) {
+    public void setValidationList(List<FieldErrorDto> validationList) {
         this.validationList = validationList;
     }
 }

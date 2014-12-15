@@ -53,8 +53,7 @@ public class UserControllerImpl implements UserController {
 
     @Override
     @RequestMapping(value = "/user/settings/edit", method = RequestMethod.POST, consumes = "application/json;charset=UTF-8", produces = "application/json;charset=UTF-8")
-    public @ResponseBody User updateEditedUser(@RequestBody @Valid User user) {
-        //todo rest validation
+    public @ResponseBody User updateEditedUser(@Valid @RequestBody User user) {
         try{
             userService.update(user);
         }catch(Exception e){
