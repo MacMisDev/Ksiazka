@@ -119,4 +119,11 @@ public class BookDAOImpl implements BookDAO {
         this.sessionFactory.getCurrentSession().createQuery(query).setParameter("id", id).executeUpdate();
 
     }
+
+    @Override
+    public Book findBookByISBN(int isbn) {
+        Query query = sessionFactory.getCurrentSession().createQuery("from Book where ISBN=:isbn");
+
+        return (Book) query.setParameter("isbn", isbn).list().get(0);
+    }
 }

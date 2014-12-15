@@ -25,4 +25,7 @@ public interface BookDAO extends BasicDAOInterface<Book> {
 
     //Query update'ujaca przed usunieciem Book
     public void updateUserBookBeforeDelete(Book book);
+
+    //Zwraca ksiazke po isbn
+    public Book findBookByISBN(int isbn);
 }

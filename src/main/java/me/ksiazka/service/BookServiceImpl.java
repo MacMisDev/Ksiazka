@@ -131,4 +131,10 @@ public class BookServiceImpl implements BookService {
         bookLists.setMaxPages(this.checkMaxPagesLimitForAccepted());
         return bookLists;
     }
+
+    @Override
+    @Transactional
+    public Book findBookByISBN(int isbn) {
+        return bookDAO.findBookByISBN(isbn);
+    }
 }
