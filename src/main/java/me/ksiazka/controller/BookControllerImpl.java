@@ -22,18 +22,6 @@ public class BookControllerImpl implements BookController {
         return "redirect:/book/list";
     }
 
-/*    @Override
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String list(@RequestParam(value = "page", defaultValue = "0", required = false) int page, Model model) {
-        if(!bookService.checkPageNumberForPagination(page)){
-            page = 0;
-        }
-        model.addAttribute("currentPage", page);
-        model.addAttribute("maxPages", bookService.checkMaxPagesLimit());
-        model.addAttribute("lastBooks", bookService.lastBooksAdded(page));
-        return "book/list";
-    }*/
-
     @Override
     @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public @ResponseBody BookLists list() {
@@ -62,11 +50,12 @@ public class BookControllerImpl implements BookController {
     @Override
     @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json;charset=UTF-8", consumes = "application/json;charset=UTF-8")
     public @ResponseBody Book addBookToSystem(@RequestBody Book book) {
+        //todo walidacja
         return bookService.get(bookService.save(book));
     }
 
     @Override
-    @RequestMapping(value = "/admin/book/list", method = RequestMethod.DELETE, produces = "application/json;charset=UTF-8" ,consumes = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/admin/list", method = RequestMethod.DELETE, produces = "application/json;charset=UTF-8" ,consumes = "application/json;charset=UTF-8")
     public Book deleteBook(Book book) {
         bookService.delete(book);
         return book;

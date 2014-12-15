@@ -3,8 +3,10 @@ package me.ksiazka.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.search.annotations.*;
 import org.hibernate.search.annotations.Index;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,6 +72,8 @@ public class Book {
         this.id = id;
     }
 
+    @Length(min = 2, max = 50, message = "Tytuł musi mieć conajmniej 2 znaki, maksymalnie 50")
+    @Pattern(regexp = "^[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$", message = "Podaj poprawny tytuł")
     public String getTitle() {
         return title;
     }
@@ -78,14 +82,15 @@ public class Book {
         this.title = title;
     }
 
-    public String getISBN() {
-        return ISBN;
-    }
+    @Pattern(regexp = "^[0-9-]+$", message = "Podaj poprawny ISBN")
+    public String getISBN() { return ISBN; }
 
     public void setISBN(String ISBN) {
         this.ISBN = ISBN;
     }
 
+    @Length(min = 2, max = 25, message = "Autor musi mieć conajmniej 2 znaki, maksymalnie 25")
+    @Pattern(regexp = "^[.a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$", message = "Podaj poprawnego autora")
     public String getAuthor() {
         return author;
     }
@@ -94,6 +99,8 @@ public class Book {
         this.author = author;
     }
 
+    @Length(min = 2, max = 25, message = "Autor musi mieć conajmniej 2 znaki, maksymalnie 25")
+    @Pattern(regexp = "^[.a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$", message = "Podaj poprawnego wydawcę")
     public String getPublisher() {
         return publisher;
     }
@@ -102,6 +109,8 @@ public class Book {
         this.publisher = publisher;
     }
 
+    @Length(min = 100, max = 5000, message = "Opis musi mieć minimum 100 znaków")
+    @Pattern(regexp = "^[.a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ-]+$", message = "Podaj poprawnego autora")
     public String getDescription() {
         return description;
     }
@@ -118,6 +127,7 @@ public class Book {
         this.publicationYear = publicationYear;
     }
 
+    @Pattern(regexp = "^[0-9]+$", message = "Podaj same liczby")
     public int getPages() {
         return pages;
     }
