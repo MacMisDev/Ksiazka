@@ -21,8 +21,11 @@ public interface UserDAO extends BasicDAOInterface<User> {
 
     public List<User> getUsersForBookHardDelete(Book toDelete);
 
-    //Jesli uzytkownik o podanym emailu istnieje to go zwraca oraz inicjalizuje listy booksWant i booksHave, jesl nie to zwraca null
+    //Jesli uzytkownik o podanym emailu istnieje to go zwraca oraz inicjalizuje listy booksWant i booksHave, jesli nie to zwraca null
     public User findUserByEmailWithLists(String email);
+
+    //Jesli uzytkownik o podanym emailu istnieje to go zwraca oraz inicjalizuje liste adresow, jesli nie to zwraca null
+    public User findUserByEmailWithAddress(String email);
 
     public User getUserWithLists(long id);
 

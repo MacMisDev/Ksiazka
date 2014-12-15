@@ -48,7 +48,7 @@ public class UserControllerImpl implements UserController {
     @Override
     @RequestMapping(value = "/user/settings/edit", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public @ResponseBody User editUserData() {
-        return userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        return userService.findUserByEmailWithAddress(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 
     @Override

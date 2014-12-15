@@ -113,6 +113,21 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    public User findUserByEmailWithAddress(String email) {
+
+        String query = "FROM User where email=:email";
+        Query userQuery = this.sessionFactory.getCurrentSession().createQuery(query);
+        List list = userQuery.setParameter("email", email).list();
+        if(list.isEmpty()){
+            return null;
+        }
+        User user = (User)list.get(0);
+        Hibernate.initialize(user.getAddressList());
+        return user;
+
+    }
+
+    @Override
     public User getUserWithLists(long id) {
         User u = (User) this.sessionFactory.getCurrentSession().get(User.class, id);
         Hibernate.initialize(u.getBooksHave());
