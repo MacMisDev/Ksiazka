@@ -32,12 +32,6 @@ public class UserControllerImpl implements UserController {
         return bookWantHave;
     }
 
-/*    @Override
-    @RequestMapping(value = {"/", "home"}, method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
-    public @ResponseBody User showLoggedUserPage() {
-        return userService.findUserByEmailWithLists(SecurityContextHolder.getContext().getAuthentication().getName());
-    }*/
-
     @Override
     @RequestMapping(value = {"/", "home"}, method = RequestMethod.GET)
     public String showLoggedUserPage(Model model){
