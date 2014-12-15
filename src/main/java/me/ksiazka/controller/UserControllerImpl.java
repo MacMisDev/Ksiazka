@@ -60,7 +60,7 @@ public class UserControllerImpl implements UserController {
             System.out.println(e.toString());
         }
 
-        return userService.findUserByEmail(user.getEmail());
+        return userService.findUserByEmailWithAddress(user.getEmail());
     }
 
     @Override
