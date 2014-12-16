@@ -89,7 +89,7 @@ public class Book {
         this.ISBN = ISBN;
     }
 
-    @Length(min = 2, max = 25, message = "Autor musi mieć conajmniej 2 znaki, maksymalnie 25")
+    @Length(min = 2, max = 50, message = "Autor musi mieć conajmniej 2 znaki, maksymalnie 25")
     @Pattern(regexp = "^[.a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$", message = "Podaj poprawnego autora")
     public String getAuthor() {
         return author;
@@ -99,7 +99,7 @@ public class Book {
         this.author = author;
     }
 
-    @Length(min = 2, max = 25, message = "Autor musi mieć conajmniej 2 znaki, maksymalnie 25")
+    @Length(min = 2, max = 50, message = "Autor musi mieć conajmniej 2 znaki, maksymalnie 25")
     @Pattern(regexp = "^[.a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$", message = "Podaj poprawnego wydawcę")
     public String getPublisher() {
         return publisher;
