@@ -29,7 +29,7 @@ public class Book {
     @Field(index = Index.YES, analyze=Analyze.YES, store=Store.NO)
     private String author;
     private String publisher;
-    @Column(length = 1000)
+    @Column(length = 5000)
     private String description;
     private int publicationYear;
     private int pages;

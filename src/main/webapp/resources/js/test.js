@@ -18,7 +18,7 @@ $(document).ready(function(){
             data: JSON.stringify(json),
             type: "POST",
             dataType: 'json',
-            contentType: 'application/json',
+            contentType: 'application/json;charset=UTF-8',
 /*            beforeSend: function(xhr){
               xhr.setRequestHeader("Accept", "application/json");
               xhr.setRequestHeader("Content-Type", "application/json");
