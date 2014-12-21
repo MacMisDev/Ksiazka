@@ -66,7 +66,8 @@ public class BookDAOTest {
         Assert.assertEquals("9788374802932", book.getISBN());
         Assert.assertEquals("Peter Watts", book.getAuthor());
         Assert.assertEquals("MAG", book.getPublisher());
-        Assert.assertEquals("Hard-sf", book.getDescription());
+        Assert.assertEquals("Hard sf Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " +
+                "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", book.getDescription());
         Assert.assertEquals(2013, book.getPublicationYear());
         Assert.assertEquals(408, book.getPages());
         Assert.assertEquals(BookStatus.ACCEPTED, book.getBookStatus());
@@ -87,7 +88,7 @@ public class BookDAOTest {
         Book b = new Book();
         b.setTitle("Inne Pieśni");
         b.setISBN("9788308042267");
-        b.setAuthor("Jacek Dukaj");
+        b.setAuthor("Jacek Dukaj-Test");
         b.setPublisher("Wydawnictwo Literackie");
         b.setDescription("Nie science fiction, nie fantasy, nie historia alternatywna lecz rzecz dzieje się w innej Europie, " +
                 "w innym świecie, gdzie prawa rządzące rzeczywistością bliższe są domysłom Arystotelesa na temat Formy i Materii, " +
@@ -167,12 +168,14 @@ public class BookDAOTest {
         Book book = bookDAO.get(4);
         Assert.assertFalse(book.getPages()==410);
         book.setPages(410);
-        book.setDescription("Best hard s-f ever made!");
+        book.setDescription("Best hard s-f ever made! And some character so description will be 100 pages long aaa" +
+                "I hope this is enough, right? Right? Or maybe it is not? So now it should be.");
         bookDAO.update(book);
 
         Assert.assertEquals((int) booksInDatabase, bookDAO.getAll().size());
         Assert.assertEquals(410, bookDAO.get(4).getPages());
-        Assert.assertEquals("Best hard s-f ever made!", bookDAO.get(4).getDescription());
+        Assert.assertEquals("Best hard s-f ever made! And some character so description will be 100 pages long aaa" +
+                "I hope this is enough, right? Right? Or maybe it is not? So now it should be.", bookDAO.get(4).getDescription());
     }
 
 

@@ -73,7 +73,7 @@ public class Book {
     }
 
     @Length(min = 2, max = 50, message = "Tytuł musi mieć conajmniej 2 znaki, maksymalnie 50")
-    @Pattern(regexp = "^[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$", message = "Podaj poprawny tytuł")
+    @Pattern(regexp = "^[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ, ]+$", message = "Podaj poprawny tytuł")
     public String getTitle() {
         return title;
     }
@@ -90,7 +90,7 @@ public class Book {
     }
 
     @Length(min = 2, max = 50, message = "Autor musi mieć conajmniej 2 znaki, maksymalnie 25")
-    @Pattern(regexp = "^[.a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$", message = "Podaj poprawnego autora")
+    @Pattern(regexp = "^[.a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ, -]+$", message = "Podaj poprawnego autora")
     public String getAuthor() {
         return author;
     }
@@ -100,7 +100,7 @@ public class Book {
     }
 
     @Length(min = 2, max = 50, message = "Autor musi mieć conajmniej 2 znaki, maksymalnie 25")
-    @Pattern(regexp = "^[.a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$", message = "Podaj poprawnego wydawcę")
+    @Pattern(regexp = "^[.a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ0-9-?!, ]+$", message = "Podaj poprawnego wydawcę")
     public String getPublisher() {
         return publisher;
     }
@@ -110,7 +110,7 @@ public class Book {
     }
 
     @Length(min = 100, max = 5000, message = "Opis musi mieć minimum 100 znaków")
-    @Pattern(regexp = "^[.a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ-]+$", message = "Podaj poprawnego autora")
+    @Pattern(regexp = "^[a-zA-Z\\s,.żźćńółęąśŻŹĆĄŚĘŁÓŃ0-9\\n-?!]+$", message = "Podaj poprawny opis")
     public String getDescription() {
         return description;
     }
@@ -127,7 +127,7 @@ public class Book {
         this.publicationYear = publicationYear;
     }
 
-    @Pattern(regexp = "^[0-9]+$", message = "Podaj same liczby")
+    //@Pattern(regexp = "^[0-9]+$", message = "Podaj same liczby")
     public int getPages() {
         return pages;
     }
@@ -174,8 +174,8 @@ public class Book {
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        return id.hashCode();
-    }
+//    @Override
+//    public int hashCode() {
+//        return id.hashCode();
+//    }
 }
