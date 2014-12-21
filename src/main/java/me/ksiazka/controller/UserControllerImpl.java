@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller("userController")
@@ -64,8 +65,15 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    public String deleteAccount(Model model) {
-        return null;
+    @RequestMapping(value = "/user/settings/delete", method = RequestMethod.DELETE, produces = "application/json;charset=UTF-8")
+    public @ResponseBody String deleteAccount(HttpServletRequest request) {
+        try {
+            userService.delete(userService.findUserByEmailWithAddress(SecurityContextHolder.getContext().getAuthentication().getName()));
+            request.logout();
+        }catch (Exception e){
+            //todo
+        }
+        return "true";
     }
 
     @Override
