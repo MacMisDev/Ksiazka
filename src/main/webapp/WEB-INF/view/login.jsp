@@ -58,7 +58,7 @@
                 </ul>
             </nav>
             <div id="pageContentWrapper">
-                <main class="contentManager">
+                <main class="contentManagerCenter">
                     <!--<div style="margin-top:100px;border:2px solid red;">dsdsd</div>-->
                     <div id="formWrapper">
 
@@ -75,7 +75,7 @@
                                     </c:if>
                                     <div class="form-group">
                                         <p>Email</p>
-                                        <input type="text" name="j_username" id="username"/>
+                                        <input type="email" name="j_username" id="username"/>
                                     </div>
                                     <div class="form-group">
                                         <p>Hasło</p>

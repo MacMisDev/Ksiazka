@@ -5,373 +5,400 @@
     More info at: http://lesselements.com
   ---------------------------------------------------*/
 #formWrapper {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  margin-top: -275px;
-  /* half of #formWrapper height*/
-  height: auto;
-  width: 100%;
-  -moz-transition-duration: 0.4s;
-  -webkit-transition-duration: 0.4s;
-  -o-transition-duration: 0.4s;
-  transition-duration: 0.4s;
+    position: relative;
+    height: 700px;
+    width: 100%;
 }
-@media all and (max-width: 599px) {
-  #formWrapper {
-    margin-top: -255px;
-  }
-}
-@media all and (max-width: 479px) and (min-width:360px) {
-  #formWrapper {
-    margin-top: -240px;
-  }
-}
-@media all and (max-width: 359px) {
-  #formWrapper {
-    margin-top: -240px;
-  }
-}
-@media (max-height: 500px) {
-  #formWrapper {
-    margin-top: -225px;
-  }
-}
+
 .formTemplate,
 .loginGroup {
-  height: 550px;
-  width: 470px;
-  margin: 0 auto;
-  background-color: #e8e8e8;
-  background-color: rgba(232, 232, 232, 0.85);
-  -moz-transition-duration: 0.4s;
-  -webkit-transition-duration: 0.4s;
-  -o-transition-duration: 0.4s;
-  transition-duration: 0.4s;
-}
-.formTemplate *:focus {
-  outline: 0;
-}
-.formTemplate .btn-default:first-child {
-  width: 160px;
-  height: 45px;
-  margin-left: 9px;
-  background-color: #78b518;
-  color: #e8e8e8;
-  font-size: 1.25em;
-  font-weight: lighter;
-  line-height: 0.5;
-}
-.formTemplate .btn-default:first-child:hover {
-  background-color: #81c31a;
-  border-color: #78b518;
-}
-@media all and (max-width: 599px) {
-  .formTemplate .btn-default:first-child {
-    width: 136px;
-    height: 40.5px;
-  }
-}
-@media all and (max-width: 479px) and (min-width:360px) {
-  .formTemplate .btn-default:first-child {
+    min-height: 550px;
+    position: relative;
     display: block;
+    width: 470px;
     margin: 0 auto;
-  }
+    background-color: #e8e8e8;
+    background-color: rgba(232, 232, 232, 0.85);
+    -moz-transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+    -o-transition-duration: 0.4s;
+    transition-duration: 0.4s;
 }
+
+.formTemplate *:focus {
+    outline: 0;
+}
+
+.formTemplate .btn-default:first-child {
+    width: 160px;
+    height: 45px;
+    margin-left: 9px;
+    background-color: #78b518;
+    color: #e8e8e8;
+    font-size: 1.25em;
+    font-weight: lighter;
+    line-height: 0.5;
+}
+
+.formTemplate .btn-default:first-child:hover {
+    background-color: #81c31a;
+    border-color: #78b518;
+}
+
+@media all and (max-width: 599px) {
+    .formTemplate .btn-default:first-child {
+        width: 136px;
+        height: 40.5px;
+    }
+}
+
+@media all and (max-width: 479px) and (min-width: 360px) {
+    .formTemplate .btn-default:first-child {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
 @media all and (max-width: 359px) {
-  .formTemplate .btn-default:first-child {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-  }
+    .formTemplate .btn-default:first-child {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+    }
 }
+
 .formTemplate .btn-default:nth-child(2) {
-  width: 160px;
-  height: 45px;
-  margin-left: 55px;
-  font-size: 1.25em;
-  font-weight: lighter;
-  line-height: 1.25;
+    width: 160px;
+    height: 45px;
+    margin-left: 55px;
+    font-size: 1.25em;
+    font-weight: lighter;
+    line-height: 1.25;
 }
+
 @media all and (max-width: 599px) {
-  .formTemplate .btn-default:nth-child(2) {
-    width: 136px;
-    height: 40.5px;
-    margin-left: 25px;
-  }
+    .formTemplate .btn-default:nth-child(2) {
+        width: 136px;
+        height: 40.5px;
+        margin-left: 25px;
+    }
 }
-@media all and (max-width: 479px) and (min-width:360px) {
-  .formTemplate .btn-default:nth-child(2) {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-  }
+
+@media all and (max-width: 479px) and (min-width: 360px) {
+    .formTemplate .btn-default:nth-child(2) {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+    }
 }
+
 @media all and (max-width: 359px) {
-  .formTemplate .btn-default:nth-child(2) {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-  }
+    .formTemplate .btn-default:nth-child(2) {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+    }
 }
+
 .formTemplate .form-group {
-  width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 10px;
-}
-@media all and (max-width: 599px) {
-  .formTemplate .form-group {
-    width: 320px;
-  }
-}
-@media all and (max-width: 479px) and (min-width:360px) {
-  .formTemplate .form-group {
-    width: 200px;
-  }
-}
-@media all and (max-width: 359px) {
-  .formTemplate .form-group {
-    width: 200px;
-  }
-}
-.formTemplate .form-group input {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 380px;
-  text-align: center;
-}
-@media all and (max-width: 599px) {
-  .formTemplate .form-group input {
-    width: 300px;
-  }
-}
-@media all and (max-width: 479px) and (min-width:360px) {
-  .formTemplate .form-group input {
-    width: 200px;
-  }
-}
-@media all and (max-width: 359px) {
-  .formTemplate .form-group input {
-    width: 200px;
-  }
-}
-.formTemplate .form-group p {
-  width: 380px;
-  margin: 0 auto;
-  padding-left: 1px;
-}
-@media all and (max-width: 599px) {
-  .formTemplate .form-group p {
-    width: 300px;
-  }
-}
-.formTemplate .form-group:nth-child(3) {
-  width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 10px;
-  margin-top: 30px;
-}
-@media all and (max-width: 599px) {
-  .formTemplate .form-group:nth-child(3) {
-    width: 320px;
-  }
-}
-@media all and (max-width: 479px) and (min-width:360px) {
-  .formTemplate .form-group:nth-child(3) {
-    width: 200px;
-  }
-}
-@media all and (max-width: 359px) {
-  .formTemplate .form-group:nth-child(3) {
-    width: 200px;
-  }
-}
-.formTemplate .form-group:nth-child(3) input {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 380px;
-  text-align: center;
-}
-@media all and (max-width: 599px) {
-  .formTemplate .form-group:nth-child(3) input {
-    width: 300px;
-  }
-}
-@media all and (max-width: 479px) and (min-width:360px) {
-  .formTemplate .form-group:nth-child(3) input {
-    width: 200px;
-  }
-}
-@media all and (max-width: 359px) {
-  .formTemplate .form-group:nth-child(3) input {
-    width: 200px;
-  }
-}
-.formTemplate .form-group:nth-child(3) p {
-  width: 380px;
-  margin: 0 auto;
-  padding-left: 1px;
-}
-@media all and (max-width: 599px) {
-  .formTemplate .form-group:nth-child(3) p {
-    width: 300px;
-  }
-}
-@media all and (max-width: 479px) and (min-width:360px) {
-  .formTemplate .form-group:nth-child(3) {
-    height: 100px;
-    width: 185px;
+    width: 400px;
     margin-left: auto;
     margin-right: auto;
-  }
+    margin-bottom: 10px;
 }
+
+@media all and (max-width: 599px) {
+    .formTemplate .form-group {
+        width: 320px;
+    }
+}
+
+@media all and (max-width: 479px) and (min-width: 360px) {
+    .formTemplate .form-group {
+        width: 200px;
+    }
+}
+
+@media all and (max-width: 359px) {
+    .formTemplate .form-group {
+        width: 200px;
+    }
+}
+
+.formTemplate .form-group input {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 380px;
+    text-align: center;
+}
+
+@media all and (max-width: 599px) {
+    .formTemplate .form-group input {
+        width: 300px;
+    }
+}
+
+@media all and (max-width: 479px) and (min-width: 360px) {
+    .formTemplate .form-group input {
+        width: 200px;
+    }
+}
+
+@media all and (max-width: 359px) {
+    .formTemplate .form-group input {
+        width: 200px;
+    }
+}
+
+.formTemplate .form-group p {
+    width: 380px;
+    font-size: 0.75em;
+    margin: 0 auto;
+    padding-left: 1px;
+}
+
+@media all and (max-width: 599px) {
+    .formTemplate .form-group p {
+        width: 300px;
+    }
+}
+
+.formTemplate .form-group:nth-child(3) {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+@media all and (max-width: 599px) {
+    .formTemplate .form-group:nth-child(3) {
+        width: 320px;
+    }
+}
+
+@media all and (max-width: 479px) and (min-width: 360px) {
+    .formTemplate .form-group:nth-child(3) {
+        width: 200px;
+    }
+}
+
+@media all and (max-width: 359px) {
+    .formTemplate .form-group:nth-child(3) {
+        width: 200px;
+    }
+}
+
+.formTemplate .form-group:nth-child(3) input {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 380px;
+    text-align: center;
+}
+
+@media all and (max-width: 599px) {
+    .formTemplate .form-group:nth-child(3) input {
+        width: 300px;
+    }
+}
+
+@media all and (max-width: 479px) and (min-width: 360px) {
+    .formTemplate .form-group:nth-child(3) input {
+        width: 200px;
+    }
+}
+
+@media all and (max-width: 359px) {
+    .formTemplate .form-group:nth-child(3) input {
+        width: 200px;
+    }
+}
+
+.formTemplate .form-group:nth-child(3) p {
+    width: 380px;
+    font-size: 0.75em;
+    margin: 0 auto;
+    padding-left: 1px;
+}
+
+@media all and (max-width: 599px) {
+    .formTemplate .form-group:nth-child(3) p {
+        width: 300px;
+    }
+}
+
+@media all and (max-width: 479px) and (min-width: 360px) {
+    .formTemplate .form-group:nth-child(3) {
+        height: 100px;
+        width: 185px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
 .formTemplate form {
-  position: relative;
-  top: 220px;
+    position: relative;
+    top: 220px;
 }
+
 @media all and (max-width: 599px) {
-  .formTemplate form {
-    top: 190px;
-  }
+    .formTemplate form {
+        top: 190px;
+    }
 }
-@media all and (max-width: 479px) and (min-width:360px) {
-  .formTemplate form {
-    top: 150px;
-  }
+
+@media all and (max-width: 479px) and (min-width: 360px) {
+    .formTemplate form {
+        top: 150px;
+    }
 }
+
 @media all and (max-width: 359px) {
-  .formTemplate form {
-    top: 120px;
-  }
+    .formTemplate form {
+        top: 120px;
+    }
 }
+
 @media all and (max-width: 599px) {
-  .formTemplate,
-  .loginGroup {
-    height: 510px;
-    width: 399.5px;
-  }
+    .formTemplate,
+    .loginGroup {
+        height: 510px;
+        width: 399.5px;
+    }
 }
-@media all and (max-width: 479px) and (min-width:360px) {
-  .formTemplate,
-  .loginGroup {
-    height: 480px;
-    width: 235px;
-  }
+
+@media all and (max-width: 479px) and (min-width: 360px) {
+    .formTemplate,
+    .loginGroup {
+        height: 480px;
+        width: 235px;
+    }
 }
+
 @media all and (max-width: 359px) {
-  .formTemplate,
-  .loginGroup {
-    height: 480px;
-    width: 235px;
-  }
+    .formTemplate,
+    .loginGroup {
+        height: 480px;
+        width: 235px;
+    }
 }
+
 #loginBookLockedImage {
-  margin-left: 174px;
-  top: -25px;
-  height: 145px;
-  width: 122px;
-  background: url("../images/loginBookLocked.png") no-repeat;
-  background-position: center;
-  position: absolute;
-  z-index: 9999;
-  -moz-transition-duration: 0.4s;
-  -webkit-transition-duration: 0.4s;
-  -o-transition-duration: 0.4s;
-  transition-duration: 0.4s;
+    margin-left: 174px;
+    top: -25px;
+    height: 145px;
+    width: 122px;
+    background: url("../images/loginBookLocked.png") no-repeat;
+    background-position: center;
+    position: absolute;
+    z-index: 9999;
+    -moz-transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+    -o-transition-duration: 0.4s;
+    transition-duration: 0.4s;
 }
+
 @media all and (max-width: 599px) {
-  #loginBookLockedImage {
-    margin-left: 147.9px;
-    top: -21.25px;
-    height: 123.25px;
-    width: 103.7px;
-    -moz-background-size: cover;
-    background-size: cover;
-  }
+    #loginBookLockedImage {
+        margin-left: 147.9px;
+        top: -21.25px;
+        height: 123.25px;
+        width: 103.7px;
+        -moz-background-size: cover;
+        background-size: cover;
+    }
 }
-@media all and (max-width: 479px) and (min-width:360px) {
-  #loginBookLockedImage {
-    margin-left: 71.75px;
-    top: -16.25px;
-    height: 108.75px;
-    width: 91.5px;
-    -moz-background-size: cover;
-    background-size: cover;
-  }
+
+@media all and (max-width: 479px) and (min-width: 360px) {
+    #loginBookLockedImage {
+        margin-left: 71.75px;
+        top: -16.25px;
+        height: 108.75px;
+        width: 91.5px;
+        -moz-background-size: cover;
+        background-size: cover;
+    }
 }
+
 @media all and (max-width: 359px) {
-  #loginBookLockedImage {
-    margin-left: 71.75px;
-    top: -16.25px;
-    height: 108.75px;
-    width: 91.5px;
-    -moz-background-size: cover;
-    background-size: cover;
-  }
+    #loginBookLockedImage {
+        margin-left: 71.75px;
+        top: -16.25px;
+        height: 108.75px;
+        width: 91.5px;
+        -moz-background-size: cover;
+        background-size: cover;
+    }
 }
+
 #ribbon {
-  width: 510px;
-  height: 75px;
-  position: absolute;
-  margin-left: -20px;
-  margin-top: 112px;
-  color: #e8e8e8;
-  font-size: 1.0em;
-  background: url("../images/ribbonLoginPage.png") no-repeat;
-  background-position: center;
+    width: 510px;
+    height: 75px;
+    position: absolute;
+    margin-left: -20px;
+    margin-top: 112px;
+    color: #e8e8e8;
+    font-size: 1.0em;
+    background: url("../images/ribbonLoginPage.png") no-repeat;
+    background-position: center;
 }
+
 #ribbon p {
-  width: 320px;
-  height: 30px;
-  margin: 0 auto;
-  margin-top: 20px;
-  text-align: center;
+    width: 320px;
+    height: 30px;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
 }
+
 @media all and (max-width: 599px) {
-  #ribbon p {
-    width: 272px;
-    margin-top: 14px;
-  }
+    #ribbon p {
+        width: 272px;
+        margin-top: 14px;
+    }
 }
-@media all and (max-width: 479px) and (min-width:360px) {
-  #ribbon p {
-    margin-top: 8px;
-  }
+
+@media all and (max-width: 479px) and (min-width: 360px) {
+    #ribbon p {
+        margin-top: 8px;
+    }
 }
+
 @media all and (max-width: 359px) {
-  #ribbon p {
-    margin-top: 8px;
-  }
+    #ribbon p {
+        margin-top: 8px;
+    }
 }
+
 @media all and (max-width: 599px) {
-  #ribbon {
-    width: 433.5px;
-    height: 63.75px;
-    margin-left: -18px;
-    margin-top: 95.2px;
-    -moz-background-size: cover;
-    background-size: cover;
-  }
+    #ribbon {
+        width: 433.5px;
+        height: 63.75px;
+        margin-left: -18px;
+        margin-top: 95.2px;
+        -moz-background-size: cover;
+        background-size: cover;
+    }
 }
-@media all and (max-width: 479px) and (min-width:360px) {
-  #ribbon {
-    width: 331.5px;
-    height: 48.75px;
-    margin-left: -48px;
-    margin-top: 89.60000000000001px;
-    -moz-background-size: cover;
-    background-size: cover;
-  }
+
+@media all and (max-width: 479px) and (min-width: 360px) {
+    #ribbon {
+        width: 331.5px;
+        height: 48.75px;
+        margin-left: -48px;
+        margin-top: 89.60000000000001px;
+        -moz-background-size: cover;
+        background-size: cover;
+    }
 }
+
 @media all and (max-width: 359px) {
-  #ribbon {
-    display: none;
-  }
+    #ribbon {
+        display: none;
+    }
 }
