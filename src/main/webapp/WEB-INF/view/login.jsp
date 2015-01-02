@@ -71,6 +71,7 @@
                                     <c:if test="${(not empty SPRING_SECURITY_LAST_EXCEPTION)}">
                                         <div class="formErrMsg">
                                             Zły email lub hasło!
+                                            <c:out value="${SPRING_SECURITY_LAST_EXCEPTION}" />
                                         </div>
                                     </c:if>
                                     <div class="form-group">

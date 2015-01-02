@@ -106,7 +106,7 @@
                                                required="true"
                                                data-parsley-trigger="keypress"
                                                data-parsley-validation-threshold="0"
-                                               name="password" id="password2"/>
+                                               name="password2" id="password2"/>
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" name="submit" class="btn btn-default">Zarejestruj</button>
