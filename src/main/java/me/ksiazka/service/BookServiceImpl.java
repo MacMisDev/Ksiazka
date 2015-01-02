@@ -65,8 +65,9 @@ public class BookServiceImpl implements BookService {
             while(uit.hasNext()){
                 UserBook ub = (UserBook) uit.next();
                 if(ub.getBook().equals(toDelete)) {
-                    u.getBooksHave().remove(ub);
-                    break;
+//                    u.getBooksHave().remove(ub);
+//                    break;
+                    uit.remove();
                 }
             }
         }
@@ -129,5 +130,11 @@ public class BookServiceImpl implements BookService {
         bookLists.setMostPopularBooks(bookDAO.getMostPopularBooks(mostPopularBooksPage, bookLimitOnPage));
         bookLists.setMaxPages(this.checkMaxPagesLimitForAccepted());
         return bookLists;
+    }
+
+    @Override
+    @Transactional
+    public Book findBookByISBN(int isbn) {
+        return bookDAO.findBookByISBN(isbn);
     }
 }

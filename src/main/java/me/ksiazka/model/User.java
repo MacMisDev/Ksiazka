@@ -44,7 +44,7 @@ public class User {
     private List<UserRole> roles = new ArrayList<UserRole>(0);
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Message> messages = new ArrayList<Message>(0);
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
     private List<OfferRelation> offerList = new ArrayList<OfferRelation>(0);
 
     public  User() {
@@ -68,7 +68,6 @@ public class User {
         this.id = id;
     }
 
-    @JsonIgnore
     @Valid
     public List<Address> getAddressList() {
         return addressList;

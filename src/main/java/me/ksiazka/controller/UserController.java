@@ -4,6 +4,8 @@ import me.ksiazka.Wrapper.BookWantHave;
 import me.ksiazka.model.User;
 import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpServletRequest;
+
 
 public interface UserController {
     public BookWantHave userHaveWant();
@@ -18,7 +20,7 @@ public interface UserController {
     public String delBookFromHaveList(Model model);
     public String offerTrade();
     */
-    public String deleteAccount(Model model);
+    public String deleteAccount(HttpServletRequest request);
     public String acceptTrade(Long tradeId);
     public String declineTrade(Long tradeId);
 }

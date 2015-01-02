@@ -1,13 +1,14 @@
 package me.ksiazka.service;
 
 import me.ksiazka.dao.OfferDAO;
-import me.ksiazka.model.Offer;
-import me.ksiazka.model.User;
-import me.ksiazka.model.UserBook;
+import me.ksiazka.dao.UserDAO;
+import me.ksiazka.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -15,6 +16,8 @@ public class OfferServiceImpl implements OfferService {
 
     @Autowired
     OfferDAO offerDAO;
+    @Autowired
+    UserDAO userDAO;
 
     @Override
     @Transactional
@@ -40,27 +43,71 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     @Transactional
-    public void delete(Offer toDelete) { offerDAO.delete(toDelete); }
+    public void delete(Offer toDelete) {
+        List<User> offers = userDAO.getUsersForOfferDelete(toDelete.getId());
+        Iterator it = offers.iterator();
+        while(it.hasNext()){
+            User u = (User) it.next();
+            Iterator oit = u.getOfferList().iterator();
+            while(oit.hasNext()){
+                OfferRelation or = (OfferRelation) oit.next();
+                if(or.getOffer().equals(toDelete)){
+                    oit.remove();
+                }
+            }
+        }
+        offerDAO.delete(toDelete);
+    }
 
     @Override
     public Offer prepareNewOffer(User offering, User offered,
                                  List<UserBook> offeredBooks, List<UserBook> wantedBooks) {
+//
+        Offer offer = new Offer();
+        offer.setOfferStatus(OfferStatus.PENDING);
+        offer.setDate(new Date());
+        offer.setOfferedBooks(offeredBooks);
+        offer.setWantedBooks(wantedBooks);
 
-        return null;
-        //Pamietaj Krzysiu o ustawieniu daty kiedy zostala stworzona oferta
-        //i statusu PENDING
+        //Tworzymy relacje oferujace i uzupelniamy listy userow i oferty
+        //Oferujacy
+        OfferRelation offerRelationOffering = new OfferRelation();
+        offerRelationOffering.setOfferRelationStatus(OfferRelationStatus.OFFERING);
+        offerRelationOffering.setOffer(offer);
+        offerRelationOffering.setUser(offering);
+        offering.getOfferList().add(offerRelationOffering);
+
+        //Zaoferowany
+        OfferRelation offerRelationOffered = new OfferRelation();
+        offerRelationOffered.setOfferRelationStatus(OfferRelationStatus.OFFERED);
+        offerRelationOffered.setOffer(offer);
+        offerRelationOffered.setUser(offered);
+        offered.getOfferList().add(offerRelationOffered);
+
+        offer.getOfferList().add(offerRelationOffering);
+        offer.getOfferList().add(offerRelationOffered);
+
+        userDAO.update(offering);
+        userDAO.update(offered);
+        offerDAO.offerRelationSave(offerRelationOffering);
+        offerDAO.offerRelationSave(offerRelationOffered);
+
+        return offer;
+
     }
 
     @Override
     public User getOfferingUser(Offer offer) {
-        //Ma zwrocic uzytkownika, ktory w danej ofercie jest 'offering' - patrz opis
-        //metody prepareNewOffer w interfejsie
-        return null;
+
+        User offeringUser = offerDAO.getOfferingUser(offer.getId());
+        return offeringUser;
     }
 
     @Override
     public User getOfferedUser(Offer offer) {
-        //Analogicznie j.w. tylko ze zwraca 'offered'
-        return null;
+
+        User offeredUser = offerDAO.getOfferedUser(offer.getId());
+        return offeredUser;
+
     }
 }

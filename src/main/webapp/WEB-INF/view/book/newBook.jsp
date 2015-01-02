@@ -17,7 +17,7 @@
             Add a book to system:
         </div>
         <div>
-            <sf:form id="addBook" action="${pageContext.request.contextPath}/book/new.json" modelAttribute="book">
+            <sf:form id="addBook" action="${pageContext.request.contextPath}/book/new" modelAttribute="book">
                 <table>
                     <tr>
                         <td><label>isbn: </label></td>

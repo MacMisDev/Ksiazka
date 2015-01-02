@@ -68,7 +68,6 @@ public class DeletingScenariosTest {
      * @author Konio
      */
     @Test
-    @Ignore
     public void newOfferTest() {
 
         //Test symulujacy skladanie nowej oferty
@@ -86,6 +85,7 @@ public class DeletingScenariosTest {
         Assert.assertEquals("c1", C.getBookFromBooksHave(0).getBook().getTitle());
         List<UserBook> wantedBooks = new ArrayList<UserBook>();
         wantedBooks.add(A.getBookFromBooksHave(1));
+
         //Asercja dla pewnosci
         Assert.assertEquals("a2", A.getBookFromBooksHave(1).getBook().getTitle());
         //(3) Przygotowujemy i wysylamy do bazy oferte
@@ -106,8 +106,8 @@ public class DeletingScenariosTest {
         //Sprawdzamy, czy oferta w czasie tworzenia otrzymala odpowiedni status
         Assert.assertEquals(OfferStatus.PENDING, gettedOffer.getOfferStatus());
         //Sprawdzamy, czy uzytkownicy zostali odpowiednio przypisani
-        Assert.assertEquals("A", offerService.getOfferedUser(gettedOffer).getUsername());
         Assert.assertEquals("C", offerService.getOfferingUser(gettedOffer).getUsername());
+        Assert.assertEquals("A", offerService.getOfferedUser(gettedOffer).getUsername());
         //Sprawdzamy, czy ksiazki znalazly sie na odpowiednich listach
         Assert.assertEquals("c1", offer.getOfferedBooks().get(0).getBook().getTitle());
         Assert.assertEquals("a2", offer.getWantedBooks().get(0).getBook().getTitle());

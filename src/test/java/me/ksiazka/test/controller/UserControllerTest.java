@@ -95,7 +95,6 @@ public class UserControllerTest {
      * @author Konio
      */
     @Test
-    @Ignore
     public void sHomeTest() throws Exception {
 
         //ToDo - rozbudowac test o usera z lista ksiazek
@@ -105,16 +104,23 @@ public class UserControllerTest {
         when(userServiceMock.findUserByEmailWithLists(anyString()))
                 .thenReturn(u);
 
-        this.mockMvc.perform(get("/")
-                .contentType(MediaType.APPLICATION_JSON))
+        this.mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                //.andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$.name", is("Łukasz")))
-                .andExpect(jsonPath("$.surname", is("Skarżyński")))
-                .andExpect(jsonPath("$.email", is("lukskar@gmail.com")))
-                .andExpect(jsonPath("$.username", is("Łukasz")))
-                .andExpect(jsonPath("$.bookswant", nullValue()))
-                .andExpect(jsonPath("$.bookshave", nullValue()));
+                .andExpect(model().attributeExists("user"))
+                .andExpect(model().attribute("user", u))
+                .andExpect(view().name("home"))
+                .andExpect(forwardedUrl("/WEB-INF/view/home.jsp"));
+
+//        this.mockMvc.perform(get("/")
+//                .contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                //.andExpect(jsonPath("$", hasSize(1)))
+//                .andExpect(jsonPath("$.name", is("Łukasz")))
+//                .andExpect(jsonPath("$.surname", is("Skarżyński")))
+//                .andExpect(jsonPath("$.email", is("lukskar@gmail.com")))
+//                .andExpect(jsonPath("$.username", is("Łukasz")))
+//                .andExpect(jsonPath("$.bookswant", nullValue()))
+//                .andExpect(jsonPath("$.bookshave", nullValue()));
     }
 
     //test: odpowiedz na /user/{id}

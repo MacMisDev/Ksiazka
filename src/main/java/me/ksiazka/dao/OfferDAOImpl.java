@@ -1,6 +1,8 @@
 package me.ksiazka.dao;
 
 import me.ksiazka.model.Offer;
+import me.ksiazka.model.OfferRelation;
+import me.ksiazka.model.User;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -62,6 +64,35 @@ public class OfferDAOImpl implements OfferDAO {
 
         Offer offerToDelete = (Offer) this.sessionFactory.getCurrentSession().get(Offer.class, id);
         this.sessionFactory.getCurrentSession().delete(offerToDelete);
+
+    }
+
+    @Override
+    public Long offerRelationSave(OfferRelation or){
+        return (Long) this.sessionFactory.getCurrentSession().save(or);
+    }
+
+    @Override
+    public User getOfferingUser(Long offerId){
+
+        String query = "Select u from User u LEFT JOIN u.offerList o where o.offer.id = :id and offerRelationStatus='Offering'";
+        Query q = this.sessionFactory.getCurrentSession().createQuery(query).setParameter("id", offerId);
+        if(q.list().isEmpty())
+            return null;
+        else
+            return (User) q.list().get(0);
+
+    }
+
+    @Override
+    public User getOfferedUser(Long offerId){
+
+        String query = "Select u from User u LEFT JOIN u.offerList o where o.offer.id = :id and offerRelationStatus='Offered'";
+        Query q = this.sessionFactory.getCurrentSession().createQuery(query).setParameter("id", offerId);
+        if(q.list().isEmpty())
+            return null;
+        else
+            return (User) q.list().get(0);
 
     }
 }

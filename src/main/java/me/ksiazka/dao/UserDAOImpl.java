@@ -113,6 +113,21 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    public User findUserByEmailWithAddress(String email) {
+
+        String query = "FROM User where email=:email";
+        Query userQuery = this.sessionFactory.getCurrentSession().createQuery(query);
+        List list = userQuery.setParameter("email", email).list();
+        if(list.isEmpty()){
+            return null;
+        }
+        User user = (User)list.get(0);
+        Hibernate.initialize(user.getAddressList());
+        return user;
+
+    }
+
+    @Override
     public User getUserWithLists(long id) {
         User u = (User) this.sessionFactory.getCurrentSession().get(User.class, id);
         Hibernate.initialize(u.getBooksHave());
@@ -156,6 +171,16 @@ public class UserDAOImpl implements UserDAO {
 
         return fullTextQuery;
 
+    }
+
+    @Override
+    public List<User> getUsersForOfferDelete(Long offerId){
+        List<User> list;
+        String query = "FROM User WHERE id in (select user FROM OfferRelation WHERE offerId=:id)";
+        Query listQuery = this.sessionFactory.getCurrentSession().createQuery(query);
+        list = listQuery.setParameter("id", offerId).list();
+
+        return list;
     }
 
 }

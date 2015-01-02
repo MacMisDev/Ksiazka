@@ -5,9 +5,14 @@ import me.ksiazka.Wrapper.PageNumbers;
 import me.ksiazka.model.Book;
 import me.ksiazka.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller("bookController")
 @RequestMapping("/book")
@@ -21,18 +26,6 @@ public class BookControllerImpl implements BookController {
     public String showBookHome() {
         return "redirect:/book/list";
     }
-
-/*    @Override
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String list(@RequestParam(value = "page", defaultValue = "0", required = false) int page, Model model) {
-        if(!bookService.checkPageNumberForPagination(page)){
-            page = 0;
-        }
-        model.addAttribute("currentPage", page);
-        model.addAttribute("maxPages", bookService.checkMaxPagesLimit());
-        model.addAttribute("lastBooks", bookService.lastBooksAdded(page));
-        return "book/list";
-    }*/
 
     @Override
     @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
@@ -62,11 +55,13 @@ public class BookControllerImpl implements BookController {
     @Override
     @RequestMapping(value = "/new", method = RequestMethod.POST, produces = "application/json;charset=UTF-8", consumes = "application/json;charset=UTF-8")
     public @ResponseBody Book addBookToSystem(@RequestBody Book book) {
+        //todo fix
+
         return bookService.get(bookService.save(book));
     }
 
     @Override
-    @RequestMapping(value = "/admin/book/list", method = RequestMethod.DELETE, produces = "application/json;charset=UTF-8" ,consumes = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/admin/list", method = RequestMethod.DELETE, produces = "application/json;charset=UTF-8" ,consumes = "application/json;charset=UTF-8")
     public Book deleteBook(Book book) {
         bookService.delete(book);
         return book;
