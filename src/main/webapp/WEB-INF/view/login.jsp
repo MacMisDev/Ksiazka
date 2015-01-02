@@ -58,7 +58,7 @@
                 </ul>
             </nav>
             <div id="pageContentWrapper">
-                <main class="contentManager">
+                <main class="contentManagerCenter">
                     <!--<div style="margin-top:100px;border:2px solid red;">dsdsd</div>-->
                     <div id="formWrapper">
 
@@ -68,11 +68,11 @@
                             <div id="ribbon"><p>Zaloguj się!</p></div>
                             <form method="post" name="f" action="${auth}">
                                 <fieldset>
-                                    <div>
-                                        <c:if test="${(not empty SPRING_SECURITY_LAST_EXCEPTION)}">
-                                            Zły email lub hasło.
-                                        </c:if>
-                                    </div>
+                                    <c:if test="${(not empty SPRING_SECURITY_LAST_EXCEPTION)}">
+                                        <div class="formErrMsg">
+                                            Zły email lub hasło!
+                                        </div>
+                                    </c:if>
                                     <div class="form-group">
                                         <p>Email</p>
                                         <input type="text" name="j_username" id="username"/>
@@ -98,12 +98,9 @@
                         </div>
 
                     </div>
-                    <div class="triangle"></div>
-                </main>
-                <div class="spliterContent">
 
-                    <p>This is just to show ten concept. Login Page do not have this white area</p>
-                </div>
+                </main>
+
             </div>
         </div>
 

@@ -1,0 +1,224 @@
+@import "avatar.less";
+
+@width: 420px;
+@inputWidth: 260px;
+@avatarSize: 145px;
+
+#hello {
+  @top: 120px;
+
+  text-align: center;
+  position: relative;
+  top: @top;
+  @media @tablet {
+    width: 85/100*420px;
+    top: 85/100*@top;
+  }
+  @media @phone {
+    width: 50/100*420px;
+    top: 65/100*@top;
+  }
+  @media @phoneSmall {
+    width: 50/100*420px;
+    top: 65/100*@top;
+  }
+}
+
+.homeGroup {
+  &:extend(.formTemplate);
+  @top: 150px;
+  width: @width;
+  height: 450px;
+  form{
+    top: @top;
+  }
+  .form-group {
+    height: 64px;
+    width: 350px;
+    input{
+      width: @inputWidth;
+      float: left;
+      margin-left: 10px;
+      display: inline-block;
+      text-align: left;
+
+      background-color: transparent;
+      border: 0px;
+      outline: none;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      cursor:default;
+    }
+    input:disabled{
+      opacity: 0.75;
+    }
+  }
+  .form-group:nth-child(3) {
+    margin-top: 10px;
+    width: 350px;
+    input{
+      width: @inputWidth;
+      float: left;
+      margin-left: 10px;
+      display: inline-block;
+      text-align: left;
+    }
+  }
+
+  @media @tablet {
+    width: 85/100*420px;
+    top: 85/100*@top;
+  }
+  @media @phone {
+    width: 50/100*420px;
+    top: 65/100*@top;
+    .form-group {
+      input{
+        width: 120px;
+        margin-left: auto;
+      }
+    }
+    .form-group:nth-child(3) {
+      input{
+        width: 120px;
+        margin-left: auto;
+      }
+    }
+  }
+  @media @phoneSmall {
+    width: 50/100*420px;
+    top: 65/100*@top;
+  }
+}
+
+.formExtension {
+  height: 60px;
+  width: @width;
+  margin: 0 auto;
+  *:focus {
+    outline: 0;
+  }
+
+  .alphaColorBackground(@darkGreyGreen, 0.85);
+  .transition-duration(0.4s);
+  @media @tablet {
+    height: 85/100*60px;
+    width: 85/100*420px;
+  }
+  @media @phone {
+    height: 80/100*60px;
+    width: 50/100*420px;
+  }
+  @media @phoneSmall {
+    height: 80/100*60px;
+    width: 50/100*420px;
+  }
+}
+
+.extensionBtns {
+  display: inline-block;
+  display: -moz-inline-box;
+  width: 450px;
+  margin-left: -30px;
+
+  list-style-type: none;
+
+  a {
+    float: left;
+  }
+
+  @media @phone {
+    margin-left: -35px;
+  }
+}
+
+.extBtn {
+  @height: 50px;
+  @width: 50px;
+
+  margin-top: 5px;
+  margin-left: 25px;
+  margin-right: 25px;
+  height: @height;
+  width: @width;
+
+  background-position: center;
+  background-size: contain;
+
+  .transition-duration(0.4s);
+  @media @tablet {
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 85/100*50px;
+    width: 85/100*50px;
+  }
+  @media @phone {
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 60/100*50px;
+    width: 60/100*50px;
+  }
+  @media @phoneSmall {
+    margin-left: 0px;
+    margin-right: 5px;
+    height: 60/100*50px;
+    width: 60/100*50px;
+  }
+}
+
+#extLoc {
+  background-image: url("../images/icon-location.png");
+}
+#extColl {
+  background-image: url("../images/icon-collection.png");
+}
+#extRep {
+  background-image: url("../images/icon-reputation.png");
+}
+#extLogout {
+  background-image: url("../images/icon-logout.png");
+}
+
+.editBtns {
+  display: inline-block;
+}
+
+.homeEditBtnGroup {
+  height: 35px;
+  width: 35px;
+  top: 10px;
+  //position: relative;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+.homeEditBtn {
+  &:extend(.homeEditBtnGroup);
+  background: url("../images/edit.png");
+  float: right;
+  @media @phone {
+    margin-right: 150px;
+  }
+}
+.homeEditBtn:hover {
+  background-position: 0 -35px;
+}
+.editActive {
+  background-position: 0 -35px;
+}
+
+.homeSaveBtn {
+  &:extend(.homeEditBtnGroup);
+  background: url("../images/editAccept.png");
+  margin-left: 10px;
+}
+.homeSaveBtn:hover {
+  background-position: 0 -35px;
+}
+
+.homeFormBG {
+  height: 35px;
+  .alphaColorBackground(@darkGreyGreen, 0.1);
+}

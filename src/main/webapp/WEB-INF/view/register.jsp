@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %>
-<%@page language="Java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page language="Java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <tiles:insertDefinition name="template">
 
@@ -53,36 +53,63 @@
             </nav>
 
             <div id="pageContentWrapper">
-                <main class="contentManager">
+                <main class="contentManagerCenter">
                     <div id="formWrapper">
 
                         <div class="formTemplate registerGroup ">
 
                             <div id="loginBookLockedImage"></div>
                             <div id="ribbon"><p>Zarejestruj się!</p></div>
-                            <sf:form method="POST" modelAttribute="user" action="register">
+                            <sf:form method="POST" id="registerForm" modelAttribute="user" action="register"
+                                     data-parsley-validate="true"
+                                    >
                                 <fieldset>
                                     <div class="form-group">
                                         <p>Adres email</p>
-                                        <sf:input path="email" type="text" name="email" id="email"/>
-                                        <sf:errors path="email" cssClass="error" />
+                                        <sf:input type="email" path="email" name="email" id="email"
+                                                  data-parsley-trigger="change"
+                                                  data-parsley-required-message="To pole jest wymagane"
+                                                  data-parsley-type-message="Wprowadź prawdłowy adres email"
+                                                  required="true"/>
+                                        <sf:errors path="email" class="formErrMsg"/>
                                     </div>
                                     <div class="form-group">
                                         <p>Imię</p>
-                                        <sf:input path="name" type="text" name="name" id="name"/>
-                                        <sf:errors path="name" cssClass="error" />
+                                        <sf:input path="name" type="text" name="name"
+                                                  id="name"
+                                                  data-parsley-trigger="change"
+                                                  data-parsley-minlength="3"
+                                                  data-parsley-minlength-message="Minimalnie 3 znaków"
+                                                  required="true"/>
+                                        <sf:errors path="name" class="formErrMsg"/>
                                     </div>
                                     <div class="form-group">
                                         <p>Nazwa użytkownika</p>
-                                        <sf:input path="username" type="text" name="username" id="username"/>
-                                        <sf:errors path="username" cssClass="error" />
-                                      </div>
-                                    <div class="form-group">
-                                        <p>Hasło</p>
-                                        <sf:input path="password" type="password" name="password" id="password"/>
+                                        <sf:input path="username" type="text" name="username" id="username"
+                                                  data-parsley-trigger="change"
+                                                  data-parsley-minlength="3"
+                                                  data-parsley-minlength-message="Minimalnie 3 znaków"
+                                                  required="true"/>
+                                        <sf:errors path="username" class="formErrMsg"/>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit"  name="submit" class="btn btn-default">Zarejestruj</button>
+                                        <p>Hasło</p>
+                                        <sf:input path="password" type="password" required="true" name="password"
+                                                  id="password1"
+                                                  data-parsley-trigger="keypress"
+                                                  data-parsley-validation-threshold="0"
+                                                  data-parsley-minlength-message="Minimalnie 6 znaków"
+                                                  data-parsley-minlength="6"/>
+
+                                        <p>Powtórz Hasło</p>
+                                        <input data-parsley-equalto="#password1" type="password"
+                                               required="true"
+                                               data-parsley-trigger="keypress"
+                                               data-parsley-validation-threshold="0"
+                                               name="password" id="password2"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" name="submit" class="btn btn-default">Zarejestruj</button>
                                         <a href="<s:url value="/login" />" class="btn btn-default">Logowanie</a>
                                     </div>
 

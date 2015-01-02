@@ -1,11 +1,31 @@
+@import "colors";
+
 .registerGroup {
   &:extend(.formTemplate);
-  height: 620px;
+  min-height: 660px;
   .form-group:nth-child(3) {
     margin-top: 10px;
   }
   .form-group:nth-child(4) {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 }
 
+.formErrMsg {
+  text-align: center;
+  color: @red;
+}
+
+//Overides for parsley library
+
+input.parsley-error {
+  border: 1px solid darkred;
+
+}
+
+.parsley-errors-list {
+  text-align: center;
+  margin-top: 5px;
+  color: darkred;
+  text-decoration-style: dashed;
+}
