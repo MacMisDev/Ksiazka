@@ -7,15 +7,21 @@
     var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
 
     $(document).ready(function () {
-        $('#registerForm').parsley().subscribe('parsley:field:error', function (parsleyField) {
 
-            parsleyField.$element.focusout(function () {
-                if (!parsleyField.isValid())
-                    parsleyField.$element.addClass('animated shake').one(animationEnd, function () {
-                        parsleyField.$element.removeClass('animated shake');
-                    });
+        if ($('#registerForm').length) {
+
+            $('#registerForm').parsley().subscribe('parsley:field:error', function (parsleyField) {
+
+                parsleyField.$element.focusout(function () {
+                    if (!parsleyField.isValid())
+                        parsleyField.$element.addClass(animation).one(animationEnd, function () {
+                            parsleyField.$element.removeClass(animation);
+                        });
+                });
+
             });
-
-        });
+        } else {
+            console.log("no #registerForm found");
+        }
     });
 }());

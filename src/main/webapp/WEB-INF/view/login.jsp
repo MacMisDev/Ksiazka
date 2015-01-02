@@ -75,7 +75,7 @@
                                     </c:if>
                                     <div class="form-group">
                                         <p>Email</p>
-                                        <input type="email" name="j_username" id="username"/>
+                                        <input type="text" name="j_username" id="username"/>
                                     </div>
                                     <div class="form-group">
                                         <p>Hasło</p>
@@ -98,12 +98,9 @@
                         </div>
 
                     </div>
-                    <div class="triangle"></div>
-                </main>
-                <div class="spliterContent">
 
-                    <p>This is just to show ten concept. Login Page do not have this white area</p>
-                </div>
+                </main>
+
             </div>
         </div>
 

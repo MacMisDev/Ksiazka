@@ -61,32 +61,51 @@
                             <div id="loginBookLockedImage"></div>
                             <div id="ribbon"><p>Zarejestruj się!</p></div>
                             <sf:form method="POST" id="registerForm" modelAttribute="user" action="register"
-                                     data-parsley-validate="true">
+                                     data-parsley-validate="true"
+                                    >
                                 <fieldset>
                                     <div class="form-group">
                                         <p>Adres email</p>
                                         <sf:input type="email" path="email" name="email" id="email"
-                                                  data-parsley-trigger="change" data-parsley-error-message="my message"
+                                                  data-parsley-trigger="change"
+                                                  data-parsley-required-message="To pole jest wymagane"
+                                                  data-parsley-type-message="Wprowadź prawdłowy adres email"
                                                   required="true"/>
                                         <sf:errors path="email" class="formErrMsg"/>
                                     </div>
                                     <div class="form-group">
                                         <p>Imię</p>
-                                        <sf:input path="name" type="text" name="name" id="name"/>
+                                        <sf:input path="name" type="text" name="name"
+                                                  id="name"
+                                                  data-parsley-trigger="change"
+                                                  data-parsley-minlength="3"
+                                                  data-parsley-minlength-message="Minimalnie 3 znaków"
+                                                  required="true"/>
                                         <sf:errors path="name" class="formErrMsg"/>
                                     </div>
                                     <div class="form-group">
                                         <p>Nazwa użytkownika</p>
-                                        <sf:input path="username" type="text" name="username" id="username"/>
+                                        <sf:input path="username" type="text" name="username" id="username"
+                                                  data-parsley-trigger="change"
+                                                  data-parsley-minlength="3"
+                                                  data-parsley-minlength-message="Minimalnie 3 znaków"
+                                                  required="true"/>
                                         <sf:errors path="username" class="formErrMsg"/>
                                     </div>
                                     <div class="form-group">
                                         <p>Hasło</p>
                                         <sf:input path="password" type="password" required="true" name="password"
-                                                  id="password1"/>
+                                                  id="password1"
+                                                  data-parsley-trigger="keypress"
+                                                  data-parsley-validation-threshold="0"
+                                                  data-parsley-minlength-message="Minimalnie 6 znaków"
+                                                  data-parsley-minlength="6"/>
 
                                         <p>Powtórz Hasło</p>
-                                        <input data-parsley-equalto="#password1" type="password" required="true"
+                                        <input data-parsley-equalto="#password1" type="password"
+                                               required="true"
+                                               data-parsley-trigger="keypress"
+                                               data-parsley-validation-threshold="0"
                                                name="password" id="password2"/>
                                     </div>
                                     <div class="form-group">
