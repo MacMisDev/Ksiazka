@@ -27,6 +27,7 @@
 
     <!-- Spring mvc -->
     <mvc:resources mapping="/resources/**" location="/resources/" />
+    <mvc:resources mapping="/resources/lib/**" location="/resources/lib/" />
     <mvc:resources mapping="/webjars/**" location="/webjars/"/>
     <mvc:annotation-driven>
         <mvc:message-converters>
