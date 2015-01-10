@@ -108,7 +108,17 @@
                     <div class="triangle"></div>
                 </main>
                 <div class="spliterContent">
-                    <p>This is just to show ten concept. Login Page do not have this white area</p>
+
+                        <%-- <table data-url="http://wenzhixin.net.cn/p/bootstrap-table/docs/data1.json" data-height="299" data-sort-name="name" data-sort-order="desc">
+                             <thead>
+                             <tr>
+                                 <th data-field="id" data-align="right" data-sortable="true">Item ID</th>
+                                 <th data-field="name" data-align="center" data-sortable="true">Item Name</th>
+                                 <th data-field="price" data-sortable="true">Item Price</th>
+                             </tr>
+                             </thead>
+                         </table>--%>
+
                 </div>
             </div>
         </div>

@@ -14,3 +14,6 @@ out/
 *.ipr
 *.iws
 *.iml
+#bower
+src/main/webapp/resources/lib/*
+src/main/webapp/resources/lib

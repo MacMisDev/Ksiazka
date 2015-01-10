@@ -10,6 +10,7 @@
         <link href="<c:url value="/webjars/parsleyjs/2.0.5/parsley.css" />" rel="stylesheet">
         <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
         <link href="<c:url value="webjars/animate.css/3.2.0/animate.min.css" />" rel="stylesheet">
+        <%--<script src="<c:url value="/resources/lib/bootstrap-table/dist/bootstrap-table.min.css" />"></script>--%>
     </head>
 
     <body>
@@ -22,4 +23,5 @@
     <script src="<c:url value="/resources/js/test.js" />"></script>
     <script src="<c:url value="/resources/js/validators.js" />"></script>
     <script src="<c:url value="/webjars/bootstrap/3.3.0/js/bootstrap.min.js" />"></script>
+    <%--<script src="<c:url value="/resources/lib/bootstrap-table/dist/bootstrap-table.min.js" />"></script>--%>
 </html>
