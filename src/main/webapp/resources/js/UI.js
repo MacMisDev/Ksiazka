@@ -38,6 +38,27 @@ $(function () {
             $('#saveMail').toggle('slow', function () {
             });
         });
+
+        $('#menuBooks').click(function () {
+            $.ajax({
+                url: '/ksiazka/book/list',
+                type: 'GET',
+                dataType: 'json',
+                success: function(res) {
+                    $('.spliterContent').html("");
+                    data = res.lastBooksAdded;
+                    $.each(data, function(i, el){
+                        $('.spliterContent').append($('<div>',{
+                            text: (JSON.stringify(el))
+                        }));
+                        console.log(JSON.stringify(el.author));
+                    });
+                },
+                error: function(err){
+                    console.log(err);
+                }
+            });
+        });
     });
 
 

@@ -471,6 +471,20 @@ nav .menuButtonHome *:focus {
 nav .menuButtonHome:hover {
   background: url(../images/menuItemHome.png) 90px -49px no-repeat;
 }
+nav .menuButtonBooks {
+  width: 150px;
+  height: 60px;
+  float: right;
+  text-align: left;
+  border: none;
+  background: url(../images/menuItemHome.png) 90px 10px no-repeat;
+}
+nav .menuButtonBooks *:focus {
+  outline: 0;
+}
+nav .menuButtonBooks:hover {
+  background: url(../images/menuItemHome.png) 90px -49px no-repeat;
+}
 .navActive {
   -webkit-transform: translate3d(100px, 0, 0);
   -moz-transform: translate3d(100px, 0, 0);
