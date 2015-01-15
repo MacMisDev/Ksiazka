@@ -45,13 +45,22 @@ $(function () {
                 type: 'GET',
                 dataType: 'json',
                 success: function(res) {
-                    $('.spliterContent').html("");
-                    data = res.lastBooksAdded;
-                    $.each(data, function(i, el){
-                        $('.spliterContent').append($('<div>',{
-                            text: (JSON.stringify(el))
-                        }));
-                        console.log(JSON.stringify(el.author));
+                    //load template
+                    $('.spliterContent').load("/ksiazka/resources/partials/allBooks.html", function(){
+
+                        data = res.lastBooksAdded;
+
+                        $.each(data, function(i, el){
+                            $('#bookList').append('<tr>' +
+                                '<td>' + JSON.stringify(el.title) +
+                                '<td>' + JSON.stringify(el.author) +
+                                '<td>' + JSON.stringify(el.publisher) +
+                                '<td>' + JSON.stringify(el.publicationYear) +
+                                '<td>' + JSON.stringify(el.isbn) +
+                                '</tr>'
+                            );
+                        });
+
                     });
                 },
                 error: function(err){
