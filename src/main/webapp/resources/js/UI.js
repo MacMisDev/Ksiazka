@@ -45,29 +45,9 @@ $(function () {
                 type: 'GET',
                 dataType: 'json',
                 success: function(res) {
-                    //load template
-                    $('.spliterContent').load("/ksiazka/resources/partials/allBooks.html", function(){
 
-                        data = res.lastBooksAdded;
+                    fillBookList(res);
 
-                        $.each(data, function(i, el){
-                            $('#bookList').append('<tr class="bookSelect" id=' + JSON.stringify(el.isbn) + '>' +
-                                '<td>' + JSON.stringify(el.title) +
-                                '<td>' + JSON.stringify(el.author) +
-                                '<td>' + JSON.stringify(el.publisher) +
-                                '<td>' + JSON.stringify(el.publicationYear) +
-                                '<td>' + JSON.stringify(el.isbn) +
-                                '</tr>'
-                            );
-                        });
-
-                        data = res.maxPages;
-                        //temporary pagination (lists all pages)
-                        for( var i = 0; i <= data; i++ ){
-                            $('#booksPagination').append('<li class="booksPaginationBtn" id="' + i + '"><a>' + i + '</a></li>');
-                        }
-
-                    });
                 },
                 error: function(err){
                     console.log(err);
@@ -77,16 +57,45 @@ $(function () {
 
         //BOOK LIST PAGINATION
         $(document).on("click", 'div.pagination li.booksPaginationBtn', function(){
+
+            var val = $(this).attr("id");
+
             $.ajax({
                 url: '/ksiazka/book/list',
                 type: "POST",
-                data: JSON.stringify({lastBooksAddedPage:1}),
+                data: JSON.stringify({lastBooksAddedPage: val }),
                 contentType: "application/json",
                 success: function(data){
-                    console.log(data.lastBooksAdded);
+                    fillBookList(data);
                 }
             });
         });
+
+        var fillBookList = function(data){
+            //load template
+            $('.spliterContent').load("/ksiazka/resources/partials/allBooks.html", function(){
+
+                res = data.lastBooksAdded;
+
+                $.each(res, function(i, el){
+                    $('#bookList').append('<tr class="bookSelect" id=' + JSON.stringify(el.isbn) + '>' +
+                            '<td>' + JSON.stringify(el.title) +
+                            '<td>' + JSON.stringify(el.author) +
+                            '<td>' + JSON.stringify(el.publisher) +
+                            '<td>' + JSON.stringify(el.publicationYear) +
+                            '<td>' + JSON.stringify(el.isbn) +
+                            '</tr>'
+                    );
+                });
+
+                res = data.maxPages;
+                //temporary pagination (lists all pages)
+                for( var i = 0; i <= res; i++ ){
+                    $('#booksPagination').append('<li class="booksPaginationBtn" id="' + i + '"><a>' + i + '</a></li>');
+                }
+
+            });
+        };
 
     });
 
