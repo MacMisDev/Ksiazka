@@ -51,7 +51,7 @@ $(function () {
                         data = res.lastBooksAdded;
 
                         $.each(data, function(i, el){
-                            $('#bookList').append('<tr>' +
+                            $('#bookList').append('<tr class="bookSelect" id=' + JSON.stringify(el.isbn) + '>' +
                                 '<td>' + JSON.stringify(el.title) +
                                 '<td>' + JSON.stringify(el.author) +
                                 '<td>' + JSON.stringify(el.publisher) +
@@ -61,6 +61,12 @@ $(function () {
                             );
                         });
 
+                        data = res.maxPages;
+                        //temporary pagination (lists all pages)
+                        for( var i = 0; i <= data; i++ ){
+                            $('#booksPagination').append('<li class="booksPaginationBtn" id="' + i + '"><a>' + i + '</a></li>');
+                        }
+
                     });
                 },
                 error: function(err){
@@ -68,6 +74,20 @@ $(function () {
                 }
             });
         });
+
+        //BOOK LIST PAGINATION
+        $(document).on("click", 'div.pagination li.booksPaginationBtn', function(){
+            $.ajax({
+                url: '/ksiazka/book/list',
+                type: "POST",
+                data: JSON.stringify({lastBooksAddedPage:1}),
+                contentType: "application/json",
+                success: function(data){
+                    console.log(data.lastBooksAdded);
+                }
+            });
+        });
+
     });
 
 
