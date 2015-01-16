@@ -88,7 +88,8 @@ $(function () {
                 res = data.maxPages;
                 //temporary pagination (lists all pages)
                 for( var i = 0; i <= res; i++ ){
-                    $('#booksPagination').append('<li class="booksPaginationBtn" id="' + i + '"><a>' + i + '</a></li>');
+                    var j = i+1;
+                    $('#booksPagination').append('<li class="booksPaginationBtn" id="' + i + '"><a>' + j + '</a></li>');
                 }
 
             });

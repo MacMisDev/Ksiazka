@@ -477,13 +477,13 @@ nav .menuButtonBooks {
   float: right;
   text-align: left;
   border: none;
-  background: url(../images/menuItemHome.png) 90px 10px no-repeat;
+  background: url(../images/menuItemBook.png) 90px 7px no-repeat;
 }
 nav .menuButtonBooks *:focus {
   outline: 0;
 }
 nav .menuButtonBooks:hover {
-  background: url(../images/menuItemHome.png) 90px -49px no-repeat;
+  background: url(../images/menuItemBook.png) 90px -49px no-repeat;
 }
 .navActive {
   -webkit-transform: translate3d(100px, 0, 0);
