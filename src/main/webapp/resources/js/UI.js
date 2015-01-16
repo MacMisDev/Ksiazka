@@ -45,9 +45,7 @@ $(function () {
                 type: 'GET',
                 dataType: 'json',
                 success: function(res) {
-
                     fillBookList(res);
-
                 },
                 error: function(err){
                     console.log(err);
@@ -57,9 +55,7 @@ $(function () {
 
         //BOOK LIST PAGINATION
         $(document).on("click", 'div.pagination li.booksPaginationBtn', function(){
-
             var val = $(this).attr("id");
-
             $.ajax({
                 url: '/ksiazka/book/list',
                 type: "POST",
@@ -71,6 +67,7 @@ $(function () {
             });
         });
 
+        //Displays book list with data from passed JSON
         var fillBookList = function(data){
             //load template
             $('.spliterContent').load("/ksiazka/resources/partials/allBooks.html", function(){
@@ -96,6 +93,33 @@ $(function () {
 
             });
         };
+
+        //Choosing book from book list:
+        $(document).on("click", "tr.bookSelect", function(){
+            var val = $(this).attr("id");
+            $.ajax({
+                url: '/ksiazka/book/1',
+                type: "GET",
+                dataType: "json",
+                success: function(data){
+                    console.log(JSON.stringify(data));
+                    $('.spliterContent').load("/ksiazka/resources/partials/book.html", function(){
+
+                        $('.bookInfo').append(
+                           '<input value=' + JSON.stringify(data.title) + '></input>' +
+                           '<input value=' + JSON.stringify(data.author) + '></input>' +
+                           '<input value=' + JSON.stringify(data.publisher) + '></input>' +
+                           '<input value=' + JSON.stringify(data.publicationYear) + '></input>' +
+                           '<input value=' + JSON.stringify(data.isbn) + '></input>'
+                        );
+
+                    });
+                },
+                error: function(err){
+                    console.log(err);
+                }
+            });
+        });
 
     });
 
