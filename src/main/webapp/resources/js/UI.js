@@ -75,7 +75,7 @@ $(function () {
                 res = data.lastBooksAdded;
 
                 $.each(res, function(i, el){
-                    $('#bookList').append('<tr class="bookSelect" id=' + JSON.stringify(el.isbn) + '>' +
+                    $('#bookList').append('<tr class="bookSelect" id=' + JSON.stringify(el.id) + '>' +
                             '<td>' + JSON.stringify(el.title) +
                             '<td>' + JSON.stringify(el.author) +
                             '<td>' + JSON.stringify(el.publisher) +
@@ -98,7 +98,7 @@ $(function () {
         $(document).on("click", "tr.bookSelect", function(){
             var val = $(this).attr("id");
             $.ajax({
-                url: '/ksiazka/book/1',
+                url: '/ksiazka/book/' + val,
                 type: "GET",
                 dataType: "json",
                 success: function(data){
