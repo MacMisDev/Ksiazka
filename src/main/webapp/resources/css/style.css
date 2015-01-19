@@ -663,11 +663,13 @@ input.parsley-error {
 .homeGroup form {
   top: 150px;
 }
-.homeGroup .form-group {
+.homeGroup .form-group,
+.bookInfo {
   height: 64px;
   width: 350px;
 }
-.homeGroup .form-group input {
+.homeGroup .form-group input,
+.bookInfo input {
   width: 260px;
   float: left;
   margin-left: 10px;
@@ -706,7 +708,8 @@ input.parsley-error {
     width: 210px;
     top: 97.5px;
   }
-  .homeGroup .form-group input {
+  .homeGroup .form-group input,
+  .bookInfo input {
     width: 120px;
     margin-left: auto;
   }
@@ -857,6 +860,61 @@ input.parsley-error {
   background-color: #545a4f;
   background-color: rgba(84, 90, 79, 0.1);
 }
+.bookDetails {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  -moz-box-orient: horizontal;
+  box-orient: horizontal;
+  -webkit-box-orient: horizontal;
+}
+.bookCover {
+  max-width: 250px;
+  max-height: 350px;
+  margin: 30px;
+  margin-top: 60px;
+  border-color: #545a4f;
+  border-style: solid;
+  border-width: 2px;
+  -webkit-box-flex: 0;
+  -moz-box-flex: 0;
+  box-flex: 0;
+}
+.bookInfo {
+  min-height: 64px;
+  max-height: auto;
+  max-width: 350px;
+  margin: 30px;
+  -webkit-box-flex: 2;
+  -moz-box-flex: 2;
+  box-flex: 2;
+}
+.bookInfo input {
+  width: 100%;
+}
+.bookInfo p {
+  font-size: 0.75em;
+}
+.bookDescription {
+  width: auto;
+  margin: 30px;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+}
+.bookDescription .homeFormBG {
+  height: 360px;
+}
+.bookDescription textarea {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border-style: none;
+  resize: none;
+}
+.bookDescription p {
+  font-size: 0.75em;
+}
 /* Webfont: Lato-Light */
 @font-face {
   font-family: 'LatoLight';
@@ -946,6 +1004,7 @@ body {
 .spliterContent {
   min-height: 400px;
   width: 100%;
+  height: 100%;
   background-color: #e8e8e8;
   padding: 10px;
 }

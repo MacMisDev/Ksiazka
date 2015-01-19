@@ -106,13 +106,20 @@ $(function () {
                     console.log(JSON.stringify(data));
                     $('.spliterContent').load("/ksiazka/resources/partials/book.html", function(){
 
-                        $('.bookInfo').append(
-                           '<input value=' + JSON.stringify(data.title) + '></input>' +
-                           '<input value=' + JSON.stringify(data.author) + '></input>' +
-                           '<input value=' + JSON.stringify(data.publisher) + '></input>' +
-                           '<input value=' + JSON.stringify(data.publicationYear) + '></input>' +
-                           '<input value=' + JSON.stringify(data.isbn) + '></input>'
-                        );
+                        $('#description').val(JSON.stringify(data.description));
+                        $('#title').val(JSON.stringify(data.title));
+                        $('#author').val(JSON.stringify(data.author));
+                        $('#publisher').val(JSON.stringify(data.publisher));
+                        $('#year').val(JSON.stringify(data.publicationYear));
+                        $('#isbn').val(JSON.stringify(data.isbn));
+
+//                        $('.bookInfo').append(
+//                           '<input value=' + JSON.stringify(data.title) + '></input>' +
+//                           '<input value=' + JSON.stringify(data.author) + '></input>' +
+//                           '<input value=' + JSON.stringify(data.publisher) + '></input>' +
+//                           '<input value=' + JSON.stringify(data.publicationYear) + '></input>' +
+//                           '<input value=' + JSON.stringify(data.isbn) + '></input>'
+//                        );
 
                     });
                 },
