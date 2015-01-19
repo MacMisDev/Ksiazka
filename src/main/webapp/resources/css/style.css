@@ -861,6 +861,7 @@ input.parsley-error {
   background-color: rgba(84, 90, 79, 0.1);
 }
 .bookDetails {
+  width: 100%;
   display: -webkit-box;
   display: -moz-box;
   display: box;
@@ -870,7 +871,6 @@ input.parsley-error {
 }
 .bookCover {
   max-width: 250px;
-  max-height: 350px;
   margin: 30px;
   margin-top: 60px;
   border-color: #545a4f;
