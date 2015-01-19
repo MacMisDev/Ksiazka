@@ -65,7 +65,7 @@
                         <div class="formTemplate loginGroup">
 
                             <div id="loginBookLockedImage"></div>
-                            <div id="ribbon"><p>Zaloguj!</p></div>
+                            <div id="ribbon"><p>Zaloguj się!</p></div>
                             <form method="post" name="f" action="${auth}">
                                 <fieldset>
                                     <c:if test="${(not empty SPRING_SECURITY_LAST_EXCEPTION)}">
