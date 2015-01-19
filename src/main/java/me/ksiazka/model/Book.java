@@ -18,7 +18,6 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "bookId")
-    @JsonIgnore
     private Long id;
     @Column(nullable = false)
     @Field(index = Index.YES, analyze=Analyze.YES, store=Store.NO)
