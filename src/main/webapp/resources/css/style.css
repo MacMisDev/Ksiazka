@@ -871,7 +871,7 @@ input.parsley-error {
 }
 .bookCover {
   max-width: 250px;
-  margin: 30px;
+  margin: 20px;
   margin-top: 60px;
   border-color: #545a4f;
   border-style: solid;
@@ -884,7 +884,7 @@ input.parsley-error {
   min-height: 64px;
   max-height: auto;
   max-width: 350px;
-  margin: 30px;
+  margin: 20px;
   -webkit-box-flex: 2;
   -moz-box-flex: 2;
   box-flex: 2;
@@ -897,7 +897,7 @@ input.parsley-error {
 }
 .bookDescription {
   width: auto;
-  margin: 30px;
+  margin: 20px;
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   box-flex: 1;
@@ -914,6 +914,16 @@ input.parsley-error {
 }
 .bookDescription p {
   font-size: 0.75em;
+}
+.allBooks {
+  margin: 20px;
+}
+#booksTable {
+  margin-top: 20px;
+}
+#booksPagination {
+  position: relative;
+  left: 50%;
 }
 /* Webfont: Lato-Light */
 @font-face {
@@ -1004,7 +1014,6 @@ body {
 .spliterContent {
   min-height: 400px;
   width: 100%;
-  height: 100%;
   background-color: #e8e8e8;
   padding: 10px;
 }
